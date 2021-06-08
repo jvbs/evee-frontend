@@ -14,7 +14,9 @@ import {
   NavbarText,
   Row,
   Col,
+  Container,
 } from "reactstrap";
+import styles from "./styles.module.css";
 
 const Home = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,14 +55,38 @@ const Home = (props) => {
         </Navbar>
       </header>
       <main>
-        <Row>
-          <Col md="4" style={{ backgroundColor: "red" }} className="">
-            ddddd
-          </Col>
-          <Col md="8" style={{ backgroundColor: "green" }}>
-            aff
-          </Col>
-        </Row>
+        <Container className="fluid">
+          <Row>
+            <Col md="4" className="">
+              <section className={styles.logo}>
+                <span>logo</span>
+              </section>
+              <section className={styles.homeText}>
+                <h1>Flexível, </h1>
+                <h1>{"amigável &"}</h1>
+                <h1>fácil de usar</h1>
+              </section>
+              <section className={styles.text}>
+                <h2>
+                  Promova o crescimento dos seus colaboradores e impacte os
+                  resultados da sua organização.
+                </h2>
+              </section>
+              <section className={styles.textAlter}>
+                <h2>
+                  Plano de desenvolvimento PDI, Feedback, Avaliação 360 e mais,
+                  na plataforma mais fácil e intuitiva!
+                </h2>
+              </section>
+              <section className={styles.buttonSection}>
+                <button type="button">Conheça nosso produto</button>
+              </section>
+            </Col>
+            <Col md="8" style={{ backgroundColor: "green" }}>
+              aff
+            </Col>
+          </Row>
+        </Container>
       </main>
     </>
   );

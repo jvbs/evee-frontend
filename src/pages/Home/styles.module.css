@@ -1,0 +1,10 @@
+.homeText h1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.text h2 {
+  font-size: 1.5rem;
+  color: #c19e22;
+  font-weight: 400;
+}
