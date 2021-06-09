@@ -1,6 +1,24 @@
+@font-face {
+  font-family: "GothamRnd-Book";
+  src: url("../assets/fonts/Gotham.otf");
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --background: #e5e5e5;
+  --gray: #495458;
+  --text: #495458;
+  --title: #2e384d;
+  --yellow: #f5d872;
+  --yellow-gold: #c19e22;
+  --light-yellow: #f8eecc;
+  --light-brown: #a57948;
+}
+
 body {
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "GothamRnd-Book" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
