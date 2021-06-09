@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Row, Col, Container } from "reactstrap";
 
 import styles from "./styles.module.css";
