@@ -13,12 +13,12 @@ const Home = () => {
       <Container className={styles.content}>
         <header className={styles.menu}>
           <Row>
-            <Col md="4">
+            <Col md="4" xs="12" className={styles.logoGroup}>
               <img src={logo} className={styles.logo} alt="Logo" />
             </Col>
-            <Col md="8" className={styles.buttonGroup}>
-              <Button type="link" text="Entrar" />
-              <Button text="Agendar uma Demo" />
+            <Col md="8" xs="12" className={styles.buttonGroup}>
+              <Button data-testid="btnEntrar" type="link" text="Entrar" />
+              <Button data-testid="btnAgendarDemo" text="Agendar uma Demo" />
             </Col>
           </Row>
         </header>
@@ -44,7 +44,13 @@ const Home = () => {
                   na plataforma mais fácil e intuitiva!
                 </h2>
               </section>
-              <Button type="gray" text="Conheça nosso produto" />
+              <section className={styles.btnConhecaNossoProdutoGroup}>
+                <Button
+                  type="gray"
+                  className={styles.btnConhecaNossoProduto}
+                  text="Conheça nosso produto"
+                />
+              </section>
             </Col>
             <Col md="8" className={styles.imgWrapper}>
               <img src={homeSystem} className={styles.homeSystem} />

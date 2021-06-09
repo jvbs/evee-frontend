@@ -72,3 +72,39 @@
   z-index: 1;
   position: absolute;
 }
+
+@media screen and (max-width: 767px) {
+  .logoGroup {
+    text-align: center !important;
+  }
+
+  .logo {
+    width: 30%;
+  }
+
+  .buttonGroup {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeText {
+    margin-top: 6%;
+  }
+
+  .homeText h1 {
+    justify-content: center;
+  }
+
+  .text,
+  .textAlter h2 {
+    margin: 6% 0;
+    text-align: center;
+  }
+
+  .btnConhecaNossoProdutoGroup {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4%;
+  }
+}
