@@ -1,47 +1,68 @@
+.logo {
+  width: 45%;
+  height: auto;
+}
+
+.menu {
+  margin-top: 3%;
+}
+
 .homeText {
   margin-top: 12%;
 }
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .homeText h1 {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   font-weight: bolder;
   font-size: 3rem;
   line-height: 3rem;
+}
+
+.homeText span {
+  color: var(--yellow-gold);
 }
 
 .text h2 {
   font-size: 1.4rem;
   font-weight: bolder;
   color: #c19e22;
-  margin-top: 5%;
+  margin-top: 12%;
 }
 
 .textAlter h2 {
   /* font-weight: bolder; */
   font-size: 1.4rem;
-  margin-top: 5%;
+  margin: 12% 0;
 }
 
-.btnConhecerProdutos {
-  border-radius: 40px;
-  background-color: #495458 !important;
-  border: none;
-  padding: 2% 10%;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
+.imgWrapper {
+  position: relative;
+  display: flex;
+  justify-items: right;
 }
 
-.menu {
-  /* height: 25vh; */
+.homeSystem {
+  margin: 7% 9%;
+  width: 90%;
+  height: auto;
+  border-radius: 10%;
+
+  z-index: 2;
+  position: absolute;
 }
 
-.containerConteudo {
-  background-color: purple;
-}
+.baseHomeSystem {
+  margin: 3% 3%;
+  width: 80%;
+  height: auto;
 
-.colunaTexto {
-  height: 90vh;
-  background-color: yellow;
+  z-index: 1;
+  position: absolute;
 }

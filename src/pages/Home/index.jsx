@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Row, Col, Container, Button as BootstrapButton } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 
 import styles from "./styles.module.css";
 import Button from "../../components/Button";
+
+import logo from "../../assets/images/logo.png";
+import baseHomeSystem from "../../assets/images/base-home-system.svg";
+import homeSystem from "../../assets/images/home-system.svg";
 
 const Home = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,24 +14,26 @@ const Home = (props) => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <>
-      <header className={styles.menu}>
-        <Row>
-          <Col md="4" className={styles.containerConteudo}>
-            aaa
-          </Col>
-          <Col md="8">
-            <Button type="link" text="Entrar" />
-            <Button type="yellow" text="Agendar uma Demo" />
-          </Col>
-        </Row>
-      </header>
-      <main>
-        <Container>
+      <Container>
+        <header className={styles.menu}>
           <Row>
-            <Col md="4" className={styles.colunaTexto}>
+            <Col md="4">
+              <img src={logo} className={styles.logo} alt="Logo" />
+            </Col>
+            <Col md="8" className={styles.buttonGroup}>
+              <Button type="link" text="Entrar" />
+              <Button text="Agendar uma Demo" />
+            </Col>
+          </Row>
+        </header>
+        <main>
+          <Row>
+            <Col md="4">
               <section className={styles.homeText}>
                 <h1>Flexível, </h1>
-                <h1>{"amigável &"}</h1>
+                <h1>
+                  amigável&nbsp;<span>{"&"}</span>
+                </h1>
                 <h1>fácil de usar</h1>
               </section>
               <section className={styles.text}>
@@ -44,12 +50,17 @@ const Home = (props) => {
               </section>
               <Button type="gray" text="Conheça nosso produto" />
             </Col>
-            <Col md="8" className={styles.containerConteudo}>
-              aff
+            <Col md="8" className={styles.imgWrapper}>
+              <img src={homeSystem} className={styles.homeSystem} />
+              <img
+                src={baseHomeSystem}
+                alt="System"
+                className={styles.baseHomeSystem}
+              />
             </Col>
           </Row>
-        </Container>
-      </main>
+        </main>
+      </Container>
     </>
   );
 };

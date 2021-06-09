@@ -1,4 +1,4 @@
-import { Button as BootstrapButton } from "reactstrap";
+// import { Button as button } from "reactstrap";
 
 import styles from "./styles.module.css";
 
@@ -6,27 +6,19 @@ const Button = ({ type, text }) => {
   switch (type) {
     case "link":
       return (
-        <BootstrapButton className={styles.link} color="link">
+        <button className={styles.link} color="link">
           {text}
-        </BootstrapButton>
+        </button>
       );
 
     case "gray":
-      return (
-        <BootstrapButton className={styles.btnGray}>{text}</BootstrapButton>
-      );
+      return <button className={styles.btnGray}>{text}</button>;
 
     case "light-yellow":
-      return (
-        <BootstrapButton className={styles.btnLightYellow}>
-          {text}
-        </BootstrapButton>
-      );
+      return <button className={styles.btnLightYellow}>{text}</button>;
 
-    case "yellow":
-      return (
-        <BootstrapButton className={styles.btnYellow}>{text}</BootstrapButton>
-      );
+    default:
+      return <button className={styles.btnYellow}>{text}</button>;
   }
 };
 
