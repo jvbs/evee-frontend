@@ -23,9 +23,9 @@ const Button = ({ type, text }) => {
         </BootstrapButton>
       );
 
-    default:
+    case "yellow":
       return (
-        <BootstrapButton className={styles.btnPink}>{text}</BootstrapButton>
+        <BootstrapButton className={styles.btnYellow}>{text}</BootstrapButton>
       );
   }
 };

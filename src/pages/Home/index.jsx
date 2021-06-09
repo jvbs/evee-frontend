@@ -17,7 +17,7 @@ const Home = (props) => {
           </Col>
           <Col md="8">
             <Button type="link" text="Entrar" />
-            <Button text="Agendar uma Demo" />
+            <Button type="yellow" text="Agendar uma Demo" />
           </Col>
         </Row>
       </header>
