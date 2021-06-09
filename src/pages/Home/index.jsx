@@ -8,13 +8,10 @@ import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
-const Home = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+const Home = () => {
   return (
     <>
-      <Container>
+      <Container className={styles.content}>
         <header className={styles.menu}>
           <Row>
             <Col md="4">
