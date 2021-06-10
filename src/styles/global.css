@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "GothamRnd-Book";
-  src: url("../assets/fonts/Gotham.otf");
+  font-family: "Comfortaa";
+  src: url("../assets/fonts/Comfortaa-VariableFont_wght.ttf");
 }
 
 :root {
@@ -18,7 +18,7 @@
 
 body {
   margin: 0;
-  font-family: "GothamRnd-Book" !important;
+  font-family: "Comfortaa" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
