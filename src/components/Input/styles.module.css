@@ -1,0 +1,116 @@
+.materialInput {
+  position: relative;
+  margin-bottom: 30px;
+  margin-top: 12px;
+}
+
+.input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--yellow);
+  border-radius: 0px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ label,
+.input:valid ~ label {
+  font-size: 14px;
+  color: var(--gray);
+  top: -20px;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: var(--yellow-gold);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+.input:focus ~ .bar:before,
+.input:focus ~ .bar:after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 325px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+/* 
+.input:focus ~ .highlight {
+  -webkit-animation: inputlighter 0.3s ease;
+  -moz-animation: inputlighter 0.3s ease;
+  animation: inputlighter 0.3s ease;
+} */
+
+@-webkit-keyframes inputlighter {
+  from {
+    background: var(--yellow-gold);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@-moz-keyframes inputlighter {
+  from {
+    background: var(--yellow-gold);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputlighter {
+  from {
+    background: var(--yellow-gold);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

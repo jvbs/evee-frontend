@@ -1,15 +1,66 @@
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, FormGroup, Label } from "reactstrap";
 
-import styles from "./styles.module.css";
 import Button from "../../components/Button";
+import Input from "../../components/Input";
+import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
 
 import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
+import styles from "./styles.module.css";
+import { useState } from "react";
+
 const Home = () => {
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
   return (
     <>
+      <SolicitacaoDemoModal
+        modal={modal}
+        toggle={toggle}
+        title="Solicitar demonstração"
+        // firstBtnLabel="Cancelar"
+        secondBtnLabel="Enviar"
+      >
+        <Container fluid>
+          <p>
+            Um RH cada vez mais ágil, estratégico, orientado à dados e centrando
+            nas pessoas.
+          </p>
+          <form action="">
+            <FormGroup>
+              <Input label="Empresa*" />
+            </FormGroup>{" "}
+            <FormGroup>
+              <Input label="CNPJ*" />
+            </FormGroup>{" "}
+            <FormGroup>
+              <Input label="Nome*" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="Cargo*" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="E-mail*" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="Telefone*" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="Senha*" />
+            </FormGroup>
+          </form>
+          <p>
+            Os campos identificados com asteriscos (*) são de preenchimento
+            obrigatório.
+          </p>
+        </Container>
+      </SolicitacaoDemoModal>
+
       <Container className={styles.content}>
         <header className={styles.menu}>
           <Row>
@@ -18,7 +69,11 @@ const Home = () => {
             </Col>
             <Col md="8" xs="12" className={styles.buttonGroup}>
               <Button data-testid="btnEntrar" type="link" text="Entrar" />
-              <Button data-testid="btnAgendarDemo" text="Agendar uma Demo" />
+              <Button
+                onClick={toggle}
+                data-testid="btnAgendarDemo"
+                text="Agendar uma Demo"
+              />
             </Col>
           </Row>
         </header>
@@ -45,11 +100,7 @@ const Home = () => {
                 </h2>
               </section>
               <section className={styles.btnConhecaNossoProdutoGroup}>
-                <Button
-                  type="gray"
-                  className={styles.btnConhecaNossoProduto}
-                  text="Conheça nosso produto"
-                />
+                <Button type="gray" text="Conheça nosso produto" />
               </section>
             </Col>
             <Col md="8" className={styles.imgWrapper}>
