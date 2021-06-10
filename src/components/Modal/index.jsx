@@ -35,8 +35,8 @@ const Modal = ({
           <span style={{ float: "" }}>Ja possui cadastro?</span>
 
           <span>Acesse sua conta</span>
-          {firstBtnLabel && <Button type="light-yellow" text={firstBtnLabel} />}
-          <Button type="yellow" text={secondBtnLabel} />
+          {firstBtnLabel && <Button type="light-yellow" text={firstBtnLabel} data-testid="btnCancelar"/>}
+          <Button type="yellow" text={secondBtnLabel} data-testid="btnEnviar"/>
         </ModalFooter>
       </BootstrapModal>
     </>

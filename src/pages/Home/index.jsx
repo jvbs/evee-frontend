@@ -33,25 +33,25 @@ const Home = () => {
           </p>
           <form action="">
             <FormGroup>
-              <Input label="Empresa*" />
+              <Input label="Empresa*" testid="fieldEmpresa" />
             </FormGroup>{" "}
             <FormGroup>
-              <Input label="CNPJ*" />
+              <Input label="CNPJ*" testid="fieldCNPJ"/>
             </FormGroup>{" "}
             <FormGroup>
-              <Input label="Nome*" />
+              <Input label="Nome*" testid="fieldNomeSolicitante"/>
             </FormGroup>
             <FormGroup>
-              <Input label="Cargo*" />
+              <Input label="Cargo*" testid="fieldCargoSolicitante"/>
             </FormGroup>
             <FormGroup>
-              <Input label="E-mail*" />
+              <Input label="E-mail*" testid="fieldEmailSolicitante"/>
             </FormGroup>
             <FormGroup>
-              <Input label="Telefone*" />
+              <Input label="Telefone*" testid="fieldTelefoneSolicitante"/>
             </FormGroup>
             <FormGroup>
-              <Input label="Senha*" />
+              <Input label="Senha*" testid="fieldSenhaSolicitante"/>
             </FormGroup>
           </form>
           <p>

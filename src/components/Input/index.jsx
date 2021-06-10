@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-const Input = ({ label }) => {
+const Input = ({ label, testid}) => {
   return (
     <div class={styles.materialInput}>
       <input
@@ -8,6 +8,7 @@ const Input = ({ label }) => {
         required
         className={styles.input}
         onclick="bortop(0)"
+        data-testid={testid}
       />
       <label id="mla">{label}</label>
       <span className={styles.highlight}></span>
