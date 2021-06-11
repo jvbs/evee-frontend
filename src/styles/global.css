@@ -10,16 +10,16 @@
 }
 
 :root {
+  --background: #f9fafb;
   --white: #fff;
   --black: #000;
-  --background: #f9fafb;
   --gray: #495458;
   --text: #495458;
   --title: #2e384d;
   --yellow: #f5d872;
   --yellow-gold: #c19e22;
-  --light-yellow: #f8eecc;
   --light-brown: #a57948;
+  --light-yellow: #f8eecc;
 }
 
 body {
