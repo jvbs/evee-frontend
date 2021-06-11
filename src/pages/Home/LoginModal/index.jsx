@@ -1,4 +1,4 @@
-import { Col, Container, Form, FormGroup, Row } from "reactstrap";
+import { Container, FormGroup, Row } from "reactstrap";
 import Input from "../../../components/Input";
 import Modal from "../../../components/Modal";
 

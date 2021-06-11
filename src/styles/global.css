@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: "Comfortaa";
   src: url("../assets/fonts/Comfortaa-VariableFont_wght.ttf");
@@ -6,7 +12,7 @@
 :root {
   --white: #fff;
   --black: #000;
-  --background: #e5e5e5;
+  --background: #f9fafb;
   --gray: #495458;
   --text: #495458;
   --title: #2e384d;
