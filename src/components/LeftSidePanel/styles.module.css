@@ -27,7 +27,7 @@ nav ul {
 
 nav li {
   list-style: none;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .homeGroup {
@@ -40,16 +40,25 @@ nav li {
   color: var(--gray);
 }
 
+.homeGroup a:hover{
+  opacity: 80%;
+  color: var(--gray);
+}
+
 .otherGroup {
-  margin-top: -35%;
+  margin-top: -7.5vh;
   background-color: var(--gray);
   border-radius: 33px;
   padding: 24px 30px;
 }
 
+.otherGroup a:hover{
+  color: var(--yellow)
+}
+
 .otherGroup a {
   color: var(--white);
-  padding: 20px 0;
+  padding: 1vh 0;
 }
 
 .logoutButton {
