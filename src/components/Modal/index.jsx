@@ -35,7 +35,7 @@ const Modal = ({
           {title}
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
-        <ModalFooter>
+        <ModalFooter className={styles.modalFooter}>
           <Row>
             <Col xs="6">
               <span>{`${footerMsgOne}`}</span>

@@ -6,3 +6,8 @@
 .modal {
   padding: 0 1px;
 }
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+}
