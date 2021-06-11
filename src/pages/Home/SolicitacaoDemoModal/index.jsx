@@ -1,3 +1,5 @@
+import { Container, FormGroup } from "reactstrap";
+import Input from "../../../components/Input";
 import Modal from "../../../components/Modal";
 
 const SolicitacaoDemoModal = ({
@@ -6,7 +8,8 @@ const SolicitacaoDemoModal = ({
   title,
   firstBtnLabel,
   secondBtnLabel,
-  children,
+  footerMsgOne,
+  footerMsgTwo,
 }) => {
   return (
     <>
@@ -16,8 +19,42 @@ const SolicitacaoDemoModal = ({
         title={title}
         firstBtnLabel={firstBtnLabel}
         secondBtnLabel={secondBtnLabel}
+        footerMsgOne={footerMsgOne}
+        footerMsgTwo={footerMsgTwo}
       >
-        {children}
+        <Container fluid>
+          <p>
+            Um RH cada vez mais ágil, estratégico, orientado à dados e centrando
+            nas pessoas.
+          </p>
+          <form action="">
+            <FormGroup>
+              <Input label="Empresa*" testid="fieldEmpresa" />
+            </FormGroup>{" "}
+            <FormGroup>
+              <Input label="CNPJ*" testid="fieldCNPJ" />
+            </FormGroup>{" "}
+            <FormGroup>
+              <Input label="Nome*" testid="fieldNomeSolicitante" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="Cargo*" testid="fieldCargoSolicitante" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="E-mail*" testid="fieldEmailSolicitante" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="Telefone*" testid="fieldTelefoneSolicitante" />
+            </FormGroup>
+            <FormGroup>
+              <Input label="Senha*" testid="fieldSenhaSolicitante" />
+            </FormGroup>
+          </form>
+          <p>
+            Os campos identificados com asteriscos (*) são de preenchimento
+            obrigatório.
+          </p>
+        </Container>
       </Modal>
     </>
   );

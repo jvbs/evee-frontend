@@ -3,6 +3,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Col,
+  Row,
 } from "reactstrap";
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -17,6 +19,8 @@ const Modal = ({
   title,
   firstBtnLabel,
   secondBtnLabel,
+  footerMsgOne,
+  footerMsgTwo,
 }) => {
   const closeBtn = (
     <button className={styles.closeBtn} onClick={toggle}>
@@ -32,11 +36,27 @@ const Modal = ({
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
         <ModalFooter>
-          <span style={{ float: "" }}>Ja possui cadastro?</span>
+          <Row>
+            <Col xs="6">
+              <span>{`${footerMsgOne}`}</span>
 
-          <span>Acesse sua conta</span>
-          {firstBtnLabel && <Button type="light-yellow" text={firstBtnLabel} data-testid="btnCancelar"/>}
-          <Button type="yellow" text={secondBtnLabel} data-testid="btnEnviar"/>
+              <span>{footerMsgTwo}</span>
+            </Col>
+            <Col xs="6">
+              {firstBtnLabel && (
+                <Button
+                  type="light-yellow"
+                  text={firstBtnLabel}
+                  data-testid="btnCancelar"
+                />
+              )}
+              <Button
+                type="yellow"
+                text={secondBtnLabel}
+                data-testid="btnEnviar"
+              />
+            </Col>
+          </Row>
         </ModalFooter>
       </BootstrapModal>
     </>

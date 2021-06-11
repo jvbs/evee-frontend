@@ -1,65 +1,48 @@
-import { Row, Col, Container, FormGroup, Label } from "reactstrap";
+import { useState } from "react";
+import { Row, Col, Container } from "reactstrap";
 
 import Button from "../../components/Button";
-import Input from "../../components/Input";
 import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
+import LoginModal from "./LoginModal";
 
 import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
 import styles from "./styles.module.css";
-import { useState } from "react";
 
 const Home = () => {
-  const [modal, setModal] = useState(false);
+  const [demoModal, setDemoModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
-  const toggle = () => {
-    setModal(!modal);
+  const toggleDemoModal = () => {
+    setDemoModal(!demoModal);
+  };
+
+  const toggleLoginModal = () => {
+    setLoginModal(!loginModal);
   };
   return (
     <>
       <SolicitacaoDemoModal
-        modal={modal}
-        toggle={toggle}
+        modal={demoModal}
+        toggle={toggleDemoModal}
         title="Solicitar demonstração"
         // firstBtnLabel="Cancelar"
         secondBtnLabel="Enviar"
-      >
-        <Container fluid>
-          <p>
-            Um RH cada vez mais ágil, estratégico, orientado à dados e centrando
-            nas pessoas.
-          </p>
-          <form action="">
-            <FormGroup>
-              <Input label="Empresa*" testid="fieldEmpresa" />
-            </FormGroup>{" "}
-            <FormGroup>
-              <Input label="CNPJ*" testid="fieldCNPJ"/>
-            </FormGroup>{" "}
-            <FormGroup>
-              <Input label="Nome*" testid="fieldNomeSolicitante"/>
-            </FormGroup>
-            <FormGroup>
-              <Input label="Cargo*" testid="fieldCargoSolicitante"/>
-            </FormGroup>
-            <FormGroup>
-              <Input label="E-mail*" testid="fieldEmailSolicitante"/>
-            </FormGroup>
-            <FormGroup>
-              <Input label="Telefone*" testid="fieldTelefoneSolicitante"/>
-            </FormGroup>
-            <FormGroup>
-              <Input label="Senha*" testid="fieldSenhaSolicitante"/>
-            </FormGroup>
-          </form>
-          <p>
-            Os campos identificados com asteriscos (*) são de preenchimento
-            obrigatório.
-          </p>
-        </Container>
-      </SolicitacaoDemoModal>
+        footerMsgOne="Já possui cadastro?"
+        footerMsgTwo="Acesse sua conta"
+      />
+
+      <LoginModal
+        modal={loginModal}
+        toggle={toggleLoginModal}
+        title="Acesse sua conta"
+        // firstBtnLabel="Cancelar"
+        secondBtnLabel="Entrar"
+        footerMsgOne="Você não possui cadastro?"
+        footerMsgTwo="Crie sua conta"
+      />
 
       <Container className={styles.content}>
         <header className={styles.menu}>
@@ -68,9 +51,14 @@ const Home = () => {
               <img src={logo} className={styles.logo} alt="Logo" />
             </Col>
             <Col md="8" xs="12" className={styles.buttonGroup}>
-              <Button data-testid="btnEntrar" type="link" text="Entrar" />
               <Button
-                onClick={toggle}
+                data-testid="btnEntrar"
+                type="link"
+                text="Entrar"
+                onClick={toggleLoginModal}
+              />
+              <Button
+                onClick={toggleDemoModal}
                 data-testid="btnAgendarDemo"
                 text="Agendar uma Demo"
               />
@@ -104,10 +92,14 @@ const Home = () => {
               </section>
             </Col>
             <Col md="8" className={styles.imgWrapper}>
-              <img src={homeSystem} className={styles.homeSystem} />
+              <img
+                src={homeSystem}
+                className={styles.homeSystem}
+                alt="Home System"
+              />
               <img
                 src={baseHomeSystem}
-                alt="System"
+                alt="Base System"
                 className={styles.baseHomeSystem}
               />
             </Col>
