@@ -31,12 +31,12 @@ const Modal = ({
       <BootstrapModal
         isOpen={modal}
         toggle={toggle}
-        style={{ borderRadius: "33px", border: "0px" }}
+        style={{ borderRadius: "33px", border: "0px"}}
       >
         <ModalHeader
           toggle={toggle}
           close={closeBtn}
-          style={{ padding: " 1.5em 0.5em", border: "0px" }}
+          style={{ padding: " 1.5em 0.5em", border: "0px", borderRadius: "33px" }}
         >
           <div className={styles.modalHeader}>
             <div
@@ -54,8 +54,9 @@ const Modal = ({
         >
           <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
             <div className={styles.modalFooter}>
-              <span>{footerMsgOne}</span>
-              <span>{footerMsgTwo}</span>
+              <span style={{fontSize: "14px" }}><b>{footerMsgOne}</b></span>
+
+              <a href='#' style={{textDecoration: "none", color: "var(--yellow-gold)", fontSize: "14px" }}><b>{footerMsgTwo}</b></a>
 
               {firstBtnLabel && (
                 <Button
@@ -65,11 +66,14 @@ const Modal = ({
                 />
               )}
             </div>
-            <Button
+            <div className={styles.btnEndModal}>
+              <Button
               type="yellow"
               text={secondBtnLabel}
               data-testid="btnEnviar"
+              style={{padding: "2% 40%", color: "black", fontSize: "14px"}}
             />
+            </div>
           </div>
         </ModalFooter>
       </BootstrapModal>

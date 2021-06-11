@@ -4,7 +4,7 @@
 }
 
 .modal {
-  padding: 0 1px;
+  padding: 0 0;
 }
 
 .modalHeader {
@@ -31,4 +31,15 @@
 .btnModalEnviar {
   width: 20%;
   right: 0px;
+}
+
+.btnEndModal {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeBtn {
+  font-size: x-large;
+  margin-right: 8%;
 }

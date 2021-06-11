@@ -23,9 +23,13 @@ const SolicitacaoDemoModal = ({
         footerMsgTwo={footerMsgTwo}
       >
         <Container fluid>
-          <p>
-            Um RH cada vez mais ágil, estratégico, orientado à dados e centrando
-            nas pessoas.
+          <p
+            style={{ fontSize: "12px", color: "var(--gray)", marginLeft: "1%" }}
+          >
+            <b>
+              Um RH cada vez mais ágil, estratégico, orientado à dados e
+              centrando nas pessoas.
+            </b>
           </p>
           <form action="">
             <FormGroup>
@@ -50,7 +54,7 @@ const SolicitacaoDemoModal = ({
               <Input label="Senha*" testid="fieldSenhaSolicitante" />
             </FormGroup>
           </form>
-          <p>
+          <p style={{ fontSize: "12px", color: "var(--gray)" }}>
             Os campos identificados com asteriscos (*) são de preenchimento
             obrigatório.
           </p>
