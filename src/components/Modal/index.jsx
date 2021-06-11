@@ -17,6 +17,8 @@ const Modal = ({
   title,
   firstBtnLabel,
   secondBtnLabel,
+  footerMsgOne,
+  footerMsgTwo,
 }) => {
   const closeBtn = (
     <button className={styles.closeBtn} onClick={toggle}>
@@ -50,10 +52,10 @@ const Modal = ({
         <ModalFooter
           style={{ padding: " 1em 3em", justifyContent: "flex-start" }}
         >
-          <div style={{display: 'flex', flexDirection: "row", width: '100%'}}>
+          <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
             <div className={styles.modalFooter}>
-              <span>Ja possui cadastro?</span>
-              <span>Acesse sua conta</span>
+              <span>{footerMsgOne}</span>
+              <span>{footerMsgTwo}</span>
 
               {firstBtnLabel && (
                 <Button
@@ -67,7 +69,6 @@ const Modal = ({
               type="yellow"
               text={secondBtnLabel}
               data-testid="btnEnviar"
-              
             />
           </div>
         </ModalFooter>
