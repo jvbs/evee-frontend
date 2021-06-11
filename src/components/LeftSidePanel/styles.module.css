@@ -49,11 +49,17 @@ nav li {
   margin-top: -7.5vh;
   background-color: var(--gray);
   border-radius: 33px;
-  padding: 24px 30px;
+  padding: 25px 0px;
 }
 
 .otherGroup a:hover{
-  color: var(--yellow)
+  color: var(--yellow);
+  
+}
+
+.otherGroup a:hover{
+  border-left: solid 10px var(--light-yellow);
+  height: auto;
 }
 
 .otherGroup a {
