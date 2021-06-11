@@ -63,7 +63,16 @@ nav li {
 
 .logoutButton {
   position: absolute;
-  width: 70%;
-  margin: 0 auto;
   bottom: 0px;
+  width: 16.666vw;
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 0em;
+  align-items: center;
+}
+.logoutButton button{
+  position: static;
+  padding: 0.5em 0em;
+  width: 80%;
+  margin: 0 auto;
 }
