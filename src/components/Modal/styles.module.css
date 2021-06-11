@@ -7,7 +7,28 @@
   padding: 0 1px;
 }
 
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.circuloModal {
+  width: 25px;
+  height: 25px;
+
+  background-color: var(--yellow);
+  border-radius: 50px;
+}
+
 .modalFooter {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-flow: column nowrap;
+  text-align: left;
+  width: 80%;
+}
+
+.btnModalEnviar {
+  width: 20%;
+  right: 0px;
 }

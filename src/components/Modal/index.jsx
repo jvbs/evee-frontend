@@ -3,8 +3,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Col,
-  Row,
 } from "reactstrap";
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -19,8 +17,6 @@ const Modal = ({
   title,
   firstBtnLabel,
   secondBtnLabel,
-  footerMsgOne,
-  footerMsgTwo,
 }) => {
   const closeBtn = (
     <button className={styles.closeBtn} onClick={toggle}>
@@ -30,19 +26,35 @@ const Modal = ({
 
   return (
     <>
-      <BootstrapModal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle} close={closeBtn}>
-          {title}
+      <BootstrapModal
+        isOpen={modal}
+        toggle={toggle}
+        style={{ borderRadius: "33px", border: "0px" }}
+      >
+        <ModalHeader
+          toggle={toggle}
+          close={closeBtn}
+          style={{ padding: " 1.5em 0.5em", border: "0px" }}
+        >
+          <div className={styles.modalHeader}>
+            <div
+              className={styles.circuloModal}
+              style={{ marginLeft: "0.5em" }}
+            ></div>
+            <span style={{ paddingLeft: "1em", display: "block" }}>
+              {title}
+            </span>
+          </div>
         </ModalHeader>
-        <ModalBody>{children}</ModalBody>
-        <ModalFooter className={styles.modalFooter}>
-          <Row>
-            <Col xs="6">
-              <span>{`${footerMsgOne}`}</span>
+        <ModalBody style={{ padding: " 0em 3em" }}>{children}</ModalBody>
+        <ModalFooter
+          style={{ padding: " 1em 3em", justifyContent: "flex-start" }}
+        >
+          <div style={{display: 'flex', flexDirection: "row", width: '100%'}}>
+            <div className={styles.modalFooter}>
+              <span>Ja possui cadastro?</span>
+              <span>Acesse sua conta</span>
 
-              <span>{footerMsgTwo}</span>
-            </Col>
-            <Col xs="6">
               {firstBtnLabel && (
                 <Button
                   type="light-yellow"
@@ -50,13 +62,14 @@ const Modal = ({
                   data-testid="btnCancelar"
                 />
               )}
-              <Button
-                type="yellow"
-                text={secondBtnLabel}
-                data-testid="btnEnviar"
-              />
-            </Col>
-          </Row>
+            </div>
+            <Button
+              type="yellow"
+              text={secondBtnLabel}
+              data-testid="btnEnviar"
+              
+            />
+          </div>
         </ModalFooter>
       </BootstrapModal>
     </>
