@@ -1,0 +1,45 @@
+.closeBtn {
+  background: none;
+  border: none;
+}
+
+.modal {
+  padding: 0 0;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.circuloModal {
+  width: 25px;
+  height: 25px;
+
+  background-color: var(--yellow);
+  border-radius: 50px;
+}
+
+.modalFooter {
+  display: flex;
+  flex-direction: row;
+  flex-flow: column nowrap;
+  text-align: left;
+  width: 80%;
+}
+
+.btnModalEnviar {
+  width: 20%;
+  right: 0px;
+}
+
+.btnEndModal {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeBtn {
+  font-size: x-large;
+  margin-right: 8%;
+}

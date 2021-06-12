@@ -1,13 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../assets/fonts/Comfortaa-VariableFont_wght.ttf");
+}
+
+:root {
+  --background: #f9fafb;
+  --white: #fff;
+  --black: #000;
+  --gray: #495458;
+  --text: #495458;
+  --title: #2e384d;
+  --yellow: #f5d872;
+  --yellow-gold: #c19e22;
+  --light-brown: #a57948;
+  --light-yellow: #f8eecc;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Comfortaa" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.MuiInputBase-root {
+  color: var(--yellow) !important;
 }

@@ -1,0 +1,67 @@
+.btnGray {
+  border-radius: 40px;
+  background-color: var(--gray) !important;
+  border: none;
+  padding: 10px 7%;
+  color: var(--white);
+  text-align: center;
+  font-weight: bolder;
+  margin: 1% 0;
+
+  transition: 0.2s ease;
+}
+
+.btnGray:hover {
+  opacity: 0.9;
+}
+
+.btnYellow {
+  border-radius: 40px;
+  background-color: var(--yellow) !important;
+  border: none;
+  padding: 10px 7%;
+  color: var(--gray);
+  font-weight: bolder;
+  margin: 1% 0;
+  text-align: center;
+
+  transition: 0.2s ease;
+}
+
+.btnYellow:hover {
+  opacity: 0.9;
+  color: var(--gray);
+}
+
+.btnLightYellow {
+  border-radius: 40px;
+  background-color: var(--light-yellow) !important;
+  border: none;
+  padding: 10px 7%;
+  color: var(--gray);
+  text-align: center;
+  font-weight: bolder;
+  margin: 1% 0;
+
+  transition: 0.2s ease;
+}
+
+.btnLightYellow:hover {
+  opacity: 0.9;
+  color: var(--gray);
+}
+
+.link {
+  color: #000;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 10px 7%;
+  border: none;
+  background-color: transparent;
+
+  transition: 0.2s ease;
+}
+.link:hover {
+  color: var(--yellow-gold);
+  font-weight: bolder;
+}

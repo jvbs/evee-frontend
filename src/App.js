@@ -1,5 +1,8 @@
 import React from "react";
+import Home from "./pages/Admin/Home";
 
-const App = () => <h1>Olá mundo!</h1>;
+import "./styles/global.css";
+
+const App = () => <Home />;
 
 export default App;
