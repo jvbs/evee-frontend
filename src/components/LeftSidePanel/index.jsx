@@ -13,24 +13,24 @@ const LeftSidePanel = () => {
         <nav>
           <ul>
             <div className={styles.homeGroup}>
-              <a href="#">
+              <a>
                 <li>Home</li>
               </a>
             </div>
             <div className={styles.otherGroup}>
-              <a href="#">
+              <a>
                 <li>Colaboradores</li>
               </a>
-              <a href="#">
+              <a>
                 <li>Departamentos</li>
               </a>
-              <a href="#">
+              <a>
                 <li>Cadastrar Colaboradores</li>
               </a>
-              <a href="#">
+              <a>
                 <li>Mentores</li>
               </a>
-              <a href="#">
+              <a>
                 <li>Mentorados</li>
               </a>
             </div>
