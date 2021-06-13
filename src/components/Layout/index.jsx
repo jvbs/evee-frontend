@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <Container fluid className={styles.bg}>
       <Row>
-        <Col md="2" style={{padding: '0px'}}>
+        <Col md="2" style={{ padding: "0px" }}>
           <LeftSidePanel />
         </Col>
         <Col md="8" style={{ backgroundColor: "green" }}>
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
           </Row>
           <Row>{children}</Row>
         </Col>
-        <Col md="2" style={{ backgroundColor: "yellow" }}>
+        <Col md="2">
           <RightSidePanel />
         </Col>
       </Row>
