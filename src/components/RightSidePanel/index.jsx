@@ -12,7 +12,7 @@ const RightSidePanel = () => {
           <button type="button" data-testid="btnEditarUsuario">
             <FaPen
               fontSize="1.3vw"
-              style={{ color: "var(--gray)", opacity: "80%" }}
+              style={{ color: "var(--yellow-gold)", opacity: "80%" }}
             />
           </button>
         </div>

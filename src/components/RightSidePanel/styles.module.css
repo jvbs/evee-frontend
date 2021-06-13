@@ -21,7 +21,7 @@
 }
 
 .userPhotoWrapper button {
-  background-color: var(--light-yellow);
+  background-color: var(--white);
   border: 0px;
   border-radius: 33px;
   width: 3vw;
@@ -29,6 +29,13 @@
   position: absolute;
   margin-top: 8.4vw;
   margin-right: 1.8vw;
+}
+
+
+.userPhotoWrapper button:hover {
+  background-color: var(--background);
+  cursor: pointer;
+  border: 2px solid var(--yellow-gold);
 }
 
 .userInfoWrapper {
