@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 
+import BodyContent from "../BodyContent";
 import LeftSidePanel from "../LeftSidePanel";
 import RightSidePanel from "../RightSidePanel";
 
@@ -12,12 +13,7 @@ const Layout = ({ children }) => {
         <Col md="2" style={{ padding: "0px" }}>
           <LeftSidePanel />
         </Col>
-        <Col md="8" style={{ backgroundColor: "green" }}>
-          <Row>
-            <h1>Oi</h1>
-          </Row>
-          <Row>{children}</Row>
-        </Col>
+        <Col md="8">{children}</Col>
         <Col md="2">
           <RightSidePanel />
         </Col>
