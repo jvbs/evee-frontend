@@ -7,7 +7,7 @@ const Welcome = () => {
     <>
       <section className={styles.message}>
         <h2 className={styles.name}>
-          Olá, <span>Pillar Serrani</span>
+          Olá, <span>Diana Prince</span>
         </h2>
         <h3 className={styles.welcome}>
           Bem-vindo(a) ao <span>EVEE!</span>

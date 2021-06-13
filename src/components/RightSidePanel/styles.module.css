@@ -17,6 +17,7 @@ section {
   border-radius: 50%;
   border: 0px solid var(--gray);
   margin: 0 auto;
+  object-fit: cover;
 }
 
 .userPhotoWrapper button {
