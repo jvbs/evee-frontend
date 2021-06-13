@@ -9,7 +9,7 @@ const RightSidePanel = () => {
       <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
           <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-          <button type="button">
+          <button type="button" data-testid="btnEditarUsuario">
             <FaPen
               fontSize="1.3vw"
               style={{ color: "var(--gray)", opacity: "80%" }}
