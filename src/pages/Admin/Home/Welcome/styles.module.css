@@ -1,0 +1,30 @@
+.message {
+  background-color: var(--white);
+  color: var(--gray);
+}
+
+.message .name {
+  font-weight: bold;
+}
+
+.message .name span {
+  color: var(--yellow-gold);
+}
+
+.message .welcome span {
+  color: var(--light-brown);
+  font-weight: bold;
+}
+
+.message .paragraphs {
+  margin-top: 30px;
+  text-align: justify;
+}
+.message .paragraphs p {
+  font-size: 1.6rem;
+}
+
+.message .btnGroup {
+  display: flex;
+  justify-content: center;
+}

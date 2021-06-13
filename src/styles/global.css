@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Comfortaa";
-  src: url("../assets/fonts/Comfortaa-VariableFont_wght.ttf");
+  src: url("../assets/fonts/GothamRounded-Book.otf");
 }
 
 :root {
@@ -20,6 +20,31 @@
   --yellow-gold: #c19e22;
   --light-brown: #a57948;
   --light-yellow: #f8eecc;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: var(--gray);
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+  border-radius: 10px;
+
+  transition: 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yellow-gold);
 }
 
 body {

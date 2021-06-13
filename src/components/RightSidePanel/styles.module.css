@@ -1,0 +1,98 @@
+/* Gerais */
+
+section {
+  background-color: var(--background);
+}
+
+.userPhotoWrapper {
+  padding: 13% 0 8% 0;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.userPhotoWrapper .userFoto {
+  width: 11.5vw;
+  height: 11.5vw;
+  border-radius: 50%;
+  border: 0px solid var(--gray);
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.userPhotoWrapper button {
+  background-color: var(--light-yellow);
+  border: 0px;
+  border-radius: 33px;
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  margin-top: 8.4vw;
+  margin-right: 1.8vw;
+}
+
+.userInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.userInfoWrapper .userNome {
+  font-weight: bold;
+  color: var(--yellow-gold);
+  font-size: 24px;
+}
+
+.userInfoWrapper .userEmail {
+  font-size: 14px;
+  text-transform: lowercase;
+  color: var(--gray);
+  margin-bottom: 5%;
+}
+
+.userInfoWrapper .userCargo,
+.userDepartamento {
+  color: var(--gray);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.metricasWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.metricasWrapper .text {
+  font-weight: bold;
+  color: var(--yellow-gold);
+  font-size: 24px;
+  margin: 10% 0;
+}
+
+.aprendizes,
+.estagiarios,
+.efetivacoes {
+  font-size: 20px;
+  color: var(--gray);
+  margin-bottom: 10%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.aprendizes b,
+.estagiarios b,
+.efetivacoes b{
+  margin-right: 5%;
+  color: var(--light-brown);
+}
+
+.aprendizes strong,
+.estagiarios strong,
+.efetivacoes strong {
+  font-size: 24px;
+  /* font-weight: bold; */
+  color: var(--light-brown);
+}
