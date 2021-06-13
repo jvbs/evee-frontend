@@ -4,24 +4,23 @@
 
   align-items: center;
   display: flex;
-  vertical-align: middle;
-  
 }
 
 .header h1 {
   font-weight: bold;
   font-size: 26px;
   color: var(--gray);
+
+  margin-bottom: 0 !important;
 }
 
 .circuloModal {
   width: 25px;
   height: 25px;
-
+  margin-right: 1rem;
   background-color: var(--yellow);
   border-radius: 50px;
 }
-
 
 .body {
   background-color: var(--white);

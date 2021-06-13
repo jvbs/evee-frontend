@@ -5,6 +5,7 @@ const BodyContent = ({ header, breadcrumb, children }) => {
     <>
       <section>
         <div className={styles.header}>
+          <div className={styles.circuloModal}></div>
           <h1>{header}</h1>
         </div>
 
