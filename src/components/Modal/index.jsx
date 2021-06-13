@@ -5,12 +5,15 @@ import {
   ModalFooter,
 } from "reactstrap";
 import { AiOutlineClose } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
 import Button from "../Button";
 
 import styles from "./styles.module.css";
 
 const Modal = (props) => {
+  const history = useHistory();
+
   const closeBtn = (
     <button className={styles.closeBtn}>
       <AiOutlineClose />
@@ -80,6 +83,7 @@ const Modal = (props) => {
                 type="yellow"
                 text={props.modal?.secondBtnLabel}
                 data-testid="btnEnviar"
+                onClick={() => history.push("/admin")}
                 style={{ padding: "2% 40%", color: "black", fontSize: "14px" }}
               />
             </div>
