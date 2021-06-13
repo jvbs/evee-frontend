@@ -5,23 +5,17 @@ import {
   ModalFooter,
 } from "reactstrap";
 import { AiOutlineClose } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
 import Button from "../Button";
 
 import styles from "./styles.module.css";
 
-const Modal = ({
-  modal,
-  toggle,
-  children,
-  title,
-  firstBtnLabel,
-  secondBtnLabel,
-  footerMsgOne,
-  footerMsgTwo,
-}) => {
+const Modal = (props) => {
+  const history = useHistory();
+
   const closeBtn = (
-    <button className={styles.closeBtn} onClick={toggle}>
+    <button className={styles.closeBtn}>
       <AiOutlineClose />
     </button>
   );
@@ -29,14 +23,18 @@ const Modal = ({
   return (
     <>
       <BootstrapModal
-        isOpen={modal}
-        toggle={toggle}
-        style={{ borderRadius: "33px", border: "0px"}}
+        isOpen={props.modal?.isModalOpen}
+        toggle={() => props?.closeModal()}
+        style={{ borderRadius: "33px", border: "0px" }}
       >
         <ModalHeader
-          toggle={toggle}
+          toggle={() => props?.closeModal()}
           close={closeBtn}
-          style={{ padding: " 1.5em 0.5em", border: "0px", borderRadius: "33px" }}
+          style={{
+            padding: " 1.5em 0.5em",
+            border: "0px",
+            borderRadius: "33px",
+          }}
         >
           <div className={styles.modalHeader}>
             <div
@@ -44,35 +42,50 @@ const Modal = ({
               style={{ marginLeft: "0.5em" }}
             ></div>
             <span style={{ paddingLeft: "1em", display: "block" }}>
-              {title}
+              {props.modal?.title}
             </span>
           </div>
         </ModalHeader>
-        <ModalBody style={{ padding: " 0em 3em" }}>{children}</ModalBody>
+        <ModalBody style={{ padding: " 0em 3em" }}>
+          {props.modal?.type}
+        </ModalBody>
         <ModalFooter
           style={{ padding: " 1em 3em", justifyContent: "flex-start" }}
         >
           <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
             <div className={styles.modalFooter}>
-              <span style={{fontSize: "14px" }}><b>{footerMsgOne}</b></span>
+              <span style={{ fontSize: "14px" }}>
+                <b>{props.modal?.footerMsgOne}</b>
+              </span>
 
-              <a href='#' style={{textDecoration: "none", color: "var(--yellow-gold)", fontSize: "14px" }}><b>{footerMsgTwo}</b></a>
+              <a
+                href="#"
+                // onClick={handler}
+                style={{
+                  textDecoration: "none",
+                  color: "var(--yellow-gold)",
+                  fontSize: "14px",
+                }}
+              >
+                <b>{props.modal?.footerMsgTwo}</b>
+              </a>
 
-              {firstBtnLabel && (
+              {props.modal?.firstBtnLabel && (
                 <Button
                   type="light-yellow"
-                  text={firstBtnLabel}
+                  text={props.modal?.firstBtnLabel}
                   data-testid="btnCancelar"
                 />
               )}
             </div>
             <div className={styles.btnEndModal}>
               <Button
-              type="yellow"
-              text={secondBtnLabel}
-              data-testid="btnEnviar"
-              style={{padding: "2% 40%", color: "black", fontSize: "14px"}}
-            />
+                type="yellow"
+                text={props.modal?.secondBtnLabel}
+                data-testid="btnEnviar"
+                onClick={() => history.push("/admin")}
+                style={{ padding: "2% 40%", color: "black", fontSize: "14px" }}
+              />
             </div>
           </div>
         </ModalFooter>

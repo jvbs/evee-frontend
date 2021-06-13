@@ -13,31 +13,34 @@ const LeftSidePanel = () => {
         <nav>
           <ul>
             <div className={styles.homeGroup}>
-              <a href="#">
+              <a href="#" data-testid="btnMenuHome">
                 <li>Home</li>
               </a>
             </div>
             <div className={styles.otherGroup}>
-              <a href="#">
+              <a href="#" data-testid="btnMenuColaboradores">
                 <li>Colaboradores</li>
               </a>
-              <a href="#">
+              <a href="#" data-testid="btnMenuDepartamentos">
                 <li>Departamentos</li>
               </a>
-              <a href="#">
-                <li>Cadastrar Colaboradores</li>
+              <a href="#" data-testid="btnMenuCadastroColaboradores">
+                <li style={{ display: "flex", flexDirection: "column" }}>
+                  <span>Cadastrar</span>
+                  <span>Colaboradores</span>
+                </li>
               </a>
-              <a href="#">
+              <a href="#" data-testid="btnMenuMentores">
                 <li>Mentores</li>
               </a>
-              <a href="#">
+              <a href="#" data-testid="btnMenuMentorados">
                 <li>Mentorados</li>
               </a>
             </div>
           </ul>
         </nav>
         <section className={styles.logoutButton}>
-          <Button text="Sair" />
+          <Button text="Sair" data-testid="btnMenuSair"/>
         </section>
       </div>
     </>
