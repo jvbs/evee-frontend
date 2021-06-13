@@ -6,11 +6,15 @@ import styles from "./styles.module.css";
 const RightSidePanel = () => {
   return (
     <>
-      <section>
+      <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
           <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-          <button type='button'><FaPen fontSize='1.3vw' style={{color: "var(--gray)", opacity: "80%"}}/></button>
-  
+          <button type="button">
+            <FaPen
+              fontSize="1.3vw"
+              style={{ color: "var(--gray)", opacity: "80%" }}
+            />
+          </button>
         </div>
         <div className={styles.userInfoWrapper}>
           <span className={styles.userNome}>Diana Prince</span>

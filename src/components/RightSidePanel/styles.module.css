@@ -1,6 +1,6 @@
 /* Gerais */
 
-section {
+.sidePanel {
   background-color: var(--background);
 }
 
@@ -84,7 +84,7 @@ section {
 
 .aprendizes b,
 .estagiarios b,
-.efetivacoes b{
+.efetivacoes b {
   margin-right: 5%;
   color: var(--light-brown);
 }

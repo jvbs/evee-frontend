@@ -13,15 +13,15 @@ const LeftSidePanel = () => {
         <nav>
           <ul>
             <div className={styles.homeGroup}>
-              <a>
+              <a href="#">
                 <li>Home</li>
               </a>
             </div>
             <div className={styles.otherGroup}>
-              <a>
+              <a href="#">
                 <li>Colaboradores</li>
               </a>
-              <a>
+              <a href="#">
                 <li>Departamentos</li>
               </a>
               <a href="#">
@@ -30,10 +30,10 @@ const LeftSidePanel = () => {
                   <span>Colaboradores</span>
                 </li>
               </a>
-              <a>
+              <a href="#">
                 <li>Mentores</li>
               </a>
-              <a>
+              <a href="#">
                 <li>Mentorados</li>
               </a>
             </div>

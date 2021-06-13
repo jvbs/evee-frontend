@@ -43,6 +43,7 @@ nav li {
 .homeGroup a:hover {
   opacity: 80%;
   color: var(--gray);
+  cursor: pointer;
 }
 
 .otherGroup {
@@ -50,20 +51,20 @@ nav li {
   background-color: var(--gray);
   border-radius: 33px;
   padding: 25px 0px;
-}
-
-.otherGroup a:hover {
-  color: var(--yellow);
-}
-
-.otherGroup a:hover {
-  border-left: solid 10px var(--light-yellow);
-  height: auto;
+  color: var(--white);
 }
 
 .otherGroup a {
   color: var(--white);
   padding: 1vh 0;
+}
+
+.otherGroup a:hover {
+  color: var(--yellow);
+  cursor: pointer;
+
+  border-left: solid 10px var(--light-yellow);
+  /* height: auto; */
 }
 
 .logoutButton {
