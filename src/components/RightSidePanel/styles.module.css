@@ -5,16 +5,29 @@ section {
 }
 
 .userPhotoWrapper {
-  padding: 13% 0;
+  padding: 13% 0 8% 0;
   display: flex;
-  justify-content: center;
+  position: relative;
+  justify-content: flex-end;
 }
 
 .userPhotoWrapper .userFoto {
-  width: 150px;
-  height: 150px;
+  width: 11.5vw;
+  height: 11.5vw;
   border-radius: 50%;
-  border: 2px solid var(--gray);
+  border: 0px solid var(--gray);
+  margin: 0 auto;
+}
+
+.userPhotoWrapper button {
+  background-color: var(--light-yellow);
+  border: 0px;
+  border-radius: 33px;
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  margin-top: 8.4vw;
+  margin-right: 1.8vw;
 }
 
 .userInfoWrapper {
@@ -65,7 +78,14 @@ section {
   margin-bottom: 10%;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.aprendizes b,
+.estagiarios b,
+.efetivacoes b{
+  margin-right: 5%;
+  color: var(--light-brown);
 }
 
 .aprendizes strong,

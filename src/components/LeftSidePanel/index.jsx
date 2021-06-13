@@ -25,7 +25,10 @@ const LeftSidePanel = () => {
                 <li>Departamentos</li>
               </a>
               <a href="#">
-                <li>Cadastrar Colaboradores</li>
+                <li style={{ display: "flex", flexDirection: "column" }}>
+                  <span>Cadastrar</span>
+                  <span>Colaboradores</span>
+                </li>
               </a>
               <a href="#">
                 <li>Mentores</li>

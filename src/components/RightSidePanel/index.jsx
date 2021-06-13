@@ -1,4 +1,5 @@
 import userPhoto from "../../assets/images/homem-de-ferro.jpg";
+import { FaPen } from "react-icons/fa";
 
 import styles from "./styles.module.css";
 
@@ -8,6 +9,7 @@ const RightSidePanel = () => {
       <section>
         <div className={styles.userPhotoWrapper}>
           <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
+          <button type='button'><FaPen fontSize='1.3vw' style={{color: "var(--gray)", opacity: "80%"}}/></button>
         </div>
         <div className={styles.userInfoWrapper}>
           <span className={styles.userNome}>Pillar Serrani</span>
@@ -19,13 +21,13 @@ const RightSidePanel = () => {
         <div className={styles.metricasWrapper}>
           <span className={styles.text}>Métricas</span>
           <span className={styles.aprendizes}>
-            <strong>6 </strong>Aprendizes
+            <b>6 </b>Aprendizes
           </span>
           <span className={styles.estagiarios}>
-            <strong>6 </strong>Estagiários
+            <b>6 </b>Estagiários
           </span>
           <span className={styles.efetivacoes}>
-            <strong>6 </strong>Efetivações
+            <b>6 </b>Efetivações
           </span>
         </div>
       </section>
