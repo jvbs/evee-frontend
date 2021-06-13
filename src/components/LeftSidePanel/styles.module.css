@@ -27,8 +27,9 @@ nav ul {
 
 nav li {
   list-style: none;
-  margin-top: 0.9rem;
+  padding: 10px;
 }
+
 
 .homeGroup {
   background-color: var(--yellow);
@@ -41,9 +42,12 @@ nav li {
 }
 
 .homeGroup a:hover {
-  opacity: 80%;
-  color: var(--gray);
+  background-color: rgba(236, 236, 236, 0.925);
+  height: 105px;
+  border-radius: 33px;
+  color: var(--yellow-gold);
   cursor: pointer;
+  transition: 0.5s ease;
 }
 
 .otherGroup {
@@ -62,9 +66,10 @@ nav li {
 .otherGroup a:hover {
   color: var(--yellow);
   cursor: pointer;
-
-  border-left: solid 10px var(--light-yellow);
-  /* height: auto; */
+  transition: 0.5s ease;
+  background-color: rgba(255, 255, 255, 0.171);
+  border-radius: 5px;
+  border-left: solid 10px var(--yellow);
 }
 
 .logoutButton {
@@ -81,4 +86,12 @@ nav li {
   padding: 0.5em 0em;
   width: 80%;
   margin: 0 auto;
+}
+
+.logoutButton button:hover {
+  background-color: var(--gray) !important;
+  border-radius: 33px;
+  color: var(--yellow);
+  cursor: pointer;
+  transition: 0.5s ease;
 }
