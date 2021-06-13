@@ -10,39 +10,36 @@ import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
 import styles from "./styles.module.css";
+import Modal from "../../components/Modal";
 
 const Home = () => {
-  const [demoModal, setDemoModal] = useState(false);
-  const [loginModal, setLoginModal] = useState(false);
+  const [modal, setModal] = useState({
+    isModalOpen: false,
+    title: "",
+    secondBtnLabel: "",
+    footerMsgOne: "",
+    footerMsgTwo: "",
+    type: "",
+  });
 
-  const toggleDemoModal = () => {
-    setDemoModal(!demoModal);
+  const toggle = (title, type, secondBtnLabel, footerMsgOne, footerMsgTwo) => {
+    setModal({
+      isModalOpen: !modal.isModalOpen,
+      title,
+      secondBtnLabel,
+      footerMsgOne,
+      footerMsgTwo,
+      type: type === "Login" ? <LoginModal /> : <SolicitacaoDemoModal />,
+    });
   };
 
-  const toggleLoginModal = () => {
-    setLoginModal(!loginModal);
+  const closeModal = () => {
+    setModal({ ...modal, isModalOpen: false });
   };
+
   return (
     <>
-      <SolicitacaoDemoModal
-        modal={demoModal}
-        toggle={toggleDemoModal}
-        title="Solicitar demonstração"
-        // firstBtnLabel="Cancelar"
-        secondBtnLabel="Enviar"
-        footerMsgOne="Já possui cadastro?"
-        footerMsgTwo="Acesse sua conta"
-      />
-
-      <LoginModal
-        modal={loginModal}
-        toggle={toggleLoginModal}
-        title="Acesse sua conta"
-        // firstBtnLabel="Cancelar"
-        secondBtnLabel="Entrar"
-        footerMsgOne="Você não possui cadastro?"
-        footerMsgTwo="Crie sua conta"
-      />
+      <Modal modal={modal} closeModal={closeModal} />
 
       <Container className={styles.content}>
         <header className={styles.menu}>
@@ -55,10 +52,26 @@ const Home = () => {
                 data-testid="btnEntrar"
                 type="link"
                 text="Entrar"
-                onClick={toggleLoginModal}
+                onClick={() =>
+                  toggle(
+                    "Acesse sua conta",
+                    "Login",
+                    "Entrar",
+                    "Você não possui cadastro?",
+                    "Crie sua conta"
+                  )
+                }
               />
               <Button
-                onClick={toggleDemoModal}
+                onClick={() =>
+                  toggle(
+                    "Solicitar demonstração",
+                    "Demo",
+                    "Enviar",
+                    "Já possui cadastro?",
+                    "Acesse sua conta"
+                  )
+                }
                 data-testid="btnAgendarDemo"
                 text="Agendar uma Demo"
               />
