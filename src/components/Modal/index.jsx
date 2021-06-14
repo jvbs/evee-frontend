@@ -23,6 +23,7 @@ const Modal = (props) => {
   return (
     <>
       <BootstrapModal
+        className="border-0"
         isOpen={props.modal?.isModalOpen}
         toggle={() => props?.closeModal()}
         style={{ borderRadius: "33px", border: "0px" }}

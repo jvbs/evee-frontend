@@ -54,6 +54,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.modal-content {
+  border: none !important;
+  border-radius: 1.3rem !important;
+}
+
 .MuiInputBase-root {
   color: var(--yellow) !important;
 }
