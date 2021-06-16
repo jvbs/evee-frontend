@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Row, Col, Container } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import Button from "../../components/Button";
-import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
+import Modal from "../../components/Modal";
 import LoginModal from "./LoginModal";
+import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
 
 import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
+import { api } from "../../services/api";
+
 import styles from "./styles.module.css";
-import Modal from "../../components/Modal";
 
 const Home = () => {
   const [modal, setModal] = useState({
@@ -36,6 +39,15 @@ const Home = () => {
   const closeModal = () => {
     setModal({ ...modal, isModalOpen: false });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.get("/cargo");
+      console.log(response.data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -101,7 +113,9 @@ const Home = () => {
                 </h2>
               </section>
               <section className={styles.btnConhecaNossoProdutoGroup}>
-                <Button type="gray" text="Conheça nosso produto" />
+                <Link to="/user/account">
+                  <Button type="gray" text="Conheça nosso produto" />
+                </Link>
               </section>
             </Col>
             <Col md="8" className={styles.imgWrapper}>
