@@ -1,19 +1,8 @@
-import styles from "./styles.module.css";
+import { TextField } from "@material-ui/core";
 
-const Input = ({ label, testid}) => {
+const Input = ({ label, testid }) => {
   return (
-    <div class={styles.materialInput}>
-      <input
-        type="text"
-        required
-        className={styles.input}
-        onclick="bortop(0)"
-        data-testid={testid}
-      />
-      <label id="mla">{label}</label>
-      <span className={styles.highlight}></span>
-      <span className={styles.bar}></span>
-    </div>
+    <TextField style={{ marginBottom: "7%" }} testid={testid} label={label} />
   );
 };
 
