@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Row, Col, Container } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import Button from "../../components/Button";
-import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
+import Modal from "../../components/Modal";
 import LoginModal from "./LoginModal";
+import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
 
 import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
+import { api } from "../../services/api";
+
 import styles from "./styles.module.css";
-import Modal from "../../components/Modal";
+import UserAccountLogin from "../UserAccountLogin";
 
 const Home = () => {
   const [modal, setModal] = useState({
@@ -37,6 +41,15 @@ const Home = () => {
     setModal({ ...modal, isModalOpen: false });
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await api.get("/cargo");
+      console.log(response.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Modal modal={modal} closeModal={closeModal} />
@@ -48,33 +61,13 @@ const Home = () => {
               <img src={logo} className={styles.logo} alt="Logo" />
             </Col>
             <Col md="8" xs="12" className={styles.buttonGroup}>
-              <Button
-                data-testid="btnEntrar"
-                type="link"
-                text="Entrar"
-                onClick={() =>
-                  toggle(
-                    "Acesse sua conta",
-                    "Login",
-                    "Entrar",
-                    "Você não possui cadastro?",
-                    "Crie sua conta"
-                  )
-                }
-              />
-              <Button
-                onClick={() =>
-                  toggle(
-                    "Solicitar demonstração",
-                    "Demo",
-                    "Enviar",
-                    "Já possui cadastro?",
-                    "Acesse sua conta"
-                  )
-                }
-                data-testid="btnAgendarDemo"
-                text="Agendar uma Demo"
-              />
+              <Link to="/user/account/login">
+                 <Button data-testid="btnEntrar" type="link" text="Entrar"/>
+              </Link>
+              <Link to="/user/account/create">
+                <Button data-testid="btnAgendarDemo" text="Agendar uma Demo"/>
+              </Link>
+              
             </Col>
           </Row>
         </header>
@@ -101,7 +94,9 @@ const Home = () => {
                 </h2>
               </section>
               <section className={styles.btnConhecaNossoProdutoGroup}>
-                <Button type="gray" text="Conheça nosso produto" />
+                <Link to="/user/account">
+                  <Button type="gray" text="Conheça nosso produto" />
+                </Link>
               </section>
             </Col>
             <Col md="8" className={styles.imgWrapper}>
