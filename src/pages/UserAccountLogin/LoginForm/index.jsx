@@ -1,22 +1,26 @@
-import { Container, FormGroup, Row } from "reactstrap";
+import { Col, Container, FormGroup, Row } from "reactstrap";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
+import { Link } from "react-router-dom";
+import styles from "./styles.module.css";
 
 const LoginForm = () => {
   return (
-    <Container fluid>
+    <Container fluid className={styles.container}>
+      <Col lg="8" xs="12" className={styles.formsColumn}>
+        <h1>Acesse sua conta</h1>
       <form>
         <Row>
           <p
-            style={{
-              fontSize: "12px",
+            style={{ 
+              fontSize: "14px",
               color: "var(--gray)",
-              marginLeft: "1%",
+              marginTop: "1%",
+              marginBottom: "8%",
             }}
           >
-            <b>
-              Se você já possui cadastro, utilize os mesmos dados para entrar
-            </b>
+              Se você já possui cadastro, utilize seu e-mail e senha para entrar
+           
           </p>
           <FormGroup>
             <Input label="E-mail*" testid="fieldEmail" />
@@ -37,6 +41,13 @@ const LoginForm = () => {
           <Button text="Entrar" />
         </Row>
       </form>
+        <Row>
+        <p style={{ fontSize: "14px", color: "var(--gray)", marginTop: "3vh"}}>
+            Você não possui cadastro?
+            <Link to="/user/account/create"><span style={{color: "var(--yellow-gold)"}}> Crie sua conta</span></Link>
+          </p>
+        </Row>
+      </Col>
     </Container>
   );
 };

@@ -14,6 +14,7 @@ import homeSystem from "../../assets/images/home-system.svg";
 import { api } from "../../services/api";
 
 import styles from "./styles.module.css";
+import UserAccountLogin from "../UserAccountLogin";
 
 const Home = () => {
   const [modal, setModal] = useState({
@@ -60,33 +61,13 @@ const Home = () => {
               <img src={logo} className={styles.logo} alt="Logo" />
             </Col>
             <Col md="8" xs="12" className={styles.buttonGroup}>
-              <Button
-                data-testid="btnEntrar"
-                type="link"
-                text="Entrar"
-                onClick={() =>
-                  toggle(
-                    "Acesse sua conta",
-                    "Login",
-                    "Entrar",
-                    "Você não possui cadastro?",
-                    "Crie sua conta"
-                  )
-                }
-              />
-              <Button
-                onClick={() =>
-                  toggle(
-                    "Solicitar demonstração",
-                    "Demo",
-                    "Enviar",
-                    "Já possui cadastro?",
-                    "Acesse sua conta"
-                  )
-                }
-                data-testid="btnAgendarDemo"
-                text="Agendar uma Demo"
-              />
+              <Link to="/user/account/login">
+                 <Button data-testid="btnEntrar" type="link" text="Entrar"/>
+              </Link>
+              <Link to="/user/account/create">
+                <Button data-testid="btnAgendarDemo" text="Agendar uma Demo"/>
+              </Link>
+              
             </Col>
           </Row>
         </header>
