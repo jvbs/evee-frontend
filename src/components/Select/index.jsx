@@ -7,7 +7,7 @@ import {
 const Select = ({ label, testid, children }) => {
   return (
     <>
-      <FormControl style={{ marginBottom: "5%" }}>
+      <FormControl style={{  marginTop: "3%", marginBottom: "3%" }}>
         <InputLabel id={testid}>{label}</InputLabel>
         <MaterialSelect labelId={testid} testid={testid}>
           {children}
