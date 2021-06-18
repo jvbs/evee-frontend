@@ -13,27 +13,27 @@ const LeftSidePanel = () => {
         <nav>
           <ul>
             <div className={styles.homeGroup}>
-              <a href="/colaborador" data-testid="btnMenuHome">
+              <a href="/admin" data-testid="btnMenuHome">
                 <li>Home</li>
               </a>
             </div>
             <div className={styles.otherGroup}>
-              <a href="/colaborador" data-testid="btnMenuColaboradores">
+              <a href="/admin" data-testid="btnMenuColaboradores">
                 <li>Colaboradores</li>
               </a>
-              <a href="/colaborador" data-testid="btnMenuDepartamentos">
+              <a href="/admin" data-testid="btnMenuDepartamentos">
                 <li>Departamentos</li>
               </a>
-              <a href="/colaborador" data-testid="btnMenuCadastroColaboradores">
+              <a href="/admin/create-collaborator" data-testid="btnMenuCadastroColaboradores">
                 <li style={{ display: "flex", flexDirection: "column" }}>
                   <span>Cadastrar</span>
                   <span>Colaboradores</span>
                 </li>
               </a>
-              <a href="/colaborador" data-testid="btnMenuMentores">
+              <a href="/admin" data-testid="btnMenuMentores">
                 <li>Mentores</li>
               </a>
-              <a href="/colaborador" data-testid="btnMenuMentorados">
+              <a href="/admin" data-testid="btnMenuMentorados">
                 <li>Mentorados</li>
               </a>
             </div>

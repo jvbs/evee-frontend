@@ -38,7 +38,9 @@ const LoginForm = () => {
           </p>
         </Row>
         <Row>
-          <Button text="Entrar" />
+        <Link to="/admin">
+          <Button text="Entrar" style={{width: "100%"}} />
+        </Link>
         </Row>
       </form>
         <Row>

@@ -94,7 +94,7 @@ const Home = () => {
                 </h2>
               </section>
               <section className={styles.btnConhecaNossoProdutoGroup}>
-                <Link to="/user/account">
+                <Link to="/admin">
                   <Button type="gray" text="Conheça nosso produto" />
                 </Link>
               </section>
