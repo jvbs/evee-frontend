@@ -1,6 +1,5 @@
 import { Col, Container, Row } from "reactstrap";
 
-import BodyContent from "../BodyContent";
 import LeftSidePanel from "../LeftSidePanel";
 import RightSidePanel from "../RightSidePanel";
 

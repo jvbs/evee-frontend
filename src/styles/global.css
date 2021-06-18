@@ -59,6 +59,20 @@ body {
   border-radius: 1.3rem !important;
 }
 
-.MuiInputBase-root {
-  color: var(--yellow) !important;
+/* Material */
+
+.MuiFormLabel-root {
+  color: var(--gray) !important;
+}
+
+.MuiFormControl-root {
+  width: 100% !important;
+}
+
+.MuiInput-underline:before {
+  border-bottom: 2px solid var(--yellow) !important;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid var(--yellow-gold) !important;
 }

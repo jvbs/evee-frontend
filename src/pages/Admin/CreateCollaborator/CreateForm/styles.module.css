@@ -1,0 +1,47 @@
+.userPhotoWrapper {
+  padding: 0% 0 8% 0;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.userPhotoWrapper .userFoto {
+  width: 11.5vw;
+  height: 11.5vw;
+  border-radius: 50%;
+  border: 0px solid var(--gray);
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.userPhotoWrapper button {
+  background-color: var(--white);
+  border: 0px;
+  border-radius: 33px;
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  margin-top: 8.4vw;
+  margin-right: 7.8vw;
+}
+
+.userPhotoWrapper button:hover {
+  background-color: var(--background);
+  cursor: pointer;
+  border: 2px solid var(--yellow-gold);
+}
+
+.formSection > span {
+  color: var(--gray);
+  font-size: 15pt;
+  padding-top: 5px;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formButtons > button {
+  width: 45%;
+}
