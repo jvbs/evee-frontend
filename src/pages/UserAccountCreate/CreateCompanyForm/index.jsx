@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Col, Container, FormGroup, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Form } from "@unform/web";
+import { ToastContainer, toast } from "react-toastify";
+
 import * as Yup from "yup";
 
 import { api } from "../../../services/api";
@@ -9,12 +11,18 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 
 import styles from "./styles.module.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateCompanyForm = () => {
   const formRef = useRef(null);
 
   const resetErrors = () => {
     formRef.current.setErrors({});
+  };
+
+  const resetForm = () => {
+    formRef.current.setErrors({});
+    formRef.current.reset();
   };
 
   const handleSubmit = async (data) => {
@@ -37,8 +45,28 @@ const CreateCompanyForm = () => {
       try {
         const response = await api.post("/usuario", data);
         console.log(response.data);
+        toast.success("🦄 Wow so easy!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        resetForm();
       } catch (err) {
-        console.log(err.response);
+        console.log(err.request);
+        toast.error("🦄 Wow so easy!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
@@ -55,6 +83,7 @@ const CreateCompanyForm = () => {
 
   return (
     <Container fluid className={styles.container}>
+      <ToastContainer />
       <Col lg="8" xs="12" className={styles.formsColumn}>
         <h1>Solicitar demonstração</h1>
         <p
