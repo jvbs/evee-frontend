@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useField } from "@unform/core";
 import { TextField } from "@material-ui/core";
-
 const Input = ({ label, testid, name, ...rest }) => {
   const inputRef = useRef(null);
+  // eslint-disable-next-line
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
   // registrando alterações no input

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
-import LoginModal from "./LoginModal";
-import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
+// import LoginModal from "./LoginModal";
+// import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
 
 import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
@@ -14,7 +14,6 @@ import homeSystem from "../../assets/images/home-system.svg";
 import { api } from "../../services/api";
 
 import styles from "./styles.module.css";
-import UserAccountLogin from "../UserAccountLogin";
 
 const Home = () => {
   const [modal, setModal] = useState({
@@ -26,16 +25,16 @@ const Home = () => {
     type: "",
   });
 
-  const toggle = (title, type, secondBtnLabel, footerMsgOne, footerMsgTwo) => {
-    setModal({
-      isModalOpen: !modal.isModalOpen,
-      title,
-      secondBtnLabel,
-      footerMsgOne,
-      footerMsgTwo,
-      type: type === "Login" ? <LoginModal /> : <SolicitacaoDemoModal />,
-    });
-  };
+  // const toggle = (title, type, secondBtnLabel, footerMsgOne, footerMsgTwo) => {
+  //   setModal({
+  //     isModalOpen: !modal.isModalOpen,
+  //     title,
+  //     secondBtnLabel,
+  //     footerMsgOne,
+  //     footerMsgTwo,
+  //     type: type === "Login" ? <LoginModal /> : <SolicitacaoDemoModal />,
+  //   });
+  // };
 
   const closeModal = () => {
     setModal({ ...modal, isModalOpen: false });
@@ -62,12 +61,11 @@ const Home = () => {
             </Col>
             <Col md="8" xs="12" className={styles.buttonGroup}>
               <Link to="/user/account/login">
-                 <Button data-testid="btnEntrar" type="link" text="Entrar"/>
+                <Button data-testid="btnEntrar" type="link" text="Entrar" />
               </Link>
               <Link to="/user/account/create">
-                <Button data-testid="btnAgendarDemo" text="Agendar uma Demo"/>
+                <Button data-testid="btnAgendarDemo" text="Agendar uma Demo" />
               </Link>
-              
             </Col>
           </Row>
         </header>

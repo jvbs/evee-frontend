@@ -1,7 +1,7 @@
 import Layout from "../../../components/Layout";
 import BodyContent from "../../../components/BodyContent";
 
-import styles from "./styles.module.css";
+// import styles from "./styles.module.css";
 import CreateForm from "./CreateForm";
 
 const CreateCollaborator = () => {
