@@ -60,11 +60,19 @@ const Home = () => {
               <img src={logo} className={styles.logo} alt="Logo" />
             </Col>
             <Col md="8" xs="12" className={styles.buttonGroup}>
-              <Link to="/user/account/login">
-                <Button data-testid="btnEntrar" type="link" text="Entrar" />
+              <Link
+                to="/user/account/login"
+                data-testid="btnEntrar"
+                className={styles.buttonGroupLogin}
+              >
+                Entrar
               </Link>
-              <Link to="/user/account/create">
-                <Button data-testid="btnAgendarDemo" text="Agendar uma Demo" />
+              <Link
+                to="/user/account/create"
+                className={styles.buttonGroupCreate}
+                data-testid="btnAgendarDemo"
+              >
+                Agendar uma Demo
               </Link>
             </Col>
           </Row>

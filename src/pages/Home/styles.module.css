@@ -21,7 +21,34 @@
 .buttonGroup {
   display: flex;
   align-items: center;
+  padding-bottom: 3%;
   justify-content: flex-end;
+}
+
+.buttonGroupLogin {
+  font-size: 18px;
+  transition: 0.5s ease;
+  padding: 10px 30px;
+  color: var(--black);
+}
+
+.buttonGroupCreate {
+  font-size: 18px;
+  color: var(--black);
+  background-color: var(--yellow);
+  border-radius: 33px;
+  padding: 10px 30px;
+  transition: 0.5s ease;
+}
+
+.buttonGroupLogin:hover{
+  color: var(--yellow-gold);
+  
+}
+
+.buttonGroupCreate:hover{
+  color: var(--yellow-gold);
+  background-color: #f8f9fa;
 }
 
 .homeText h1 {
