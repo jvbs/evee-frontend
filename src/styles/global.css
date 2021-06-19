@@ -69,6 +69,10 @@ body {
   width: 100% !important;
 }
 
+.MuiInputBase-root {
+  font-family: "Comfortaa" !important;
+}
+
 .MuiInput-underline:before {
   border-bottom: 2px solid var(--yellow) !important;
 }
