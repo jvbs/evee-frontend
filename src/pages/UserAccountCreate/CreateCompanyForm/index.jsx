@@ -58,7 +58,7 @@ const CreateCompanyForm = () => {
           </FormGroup>
           </Col>
         </Row>
-        <p style={{ fontSize: "12px", color: "var(--gray)" }}>
+        <p style={{ fontSize: "12px", color: "var(--gray)", marginTop: "4vh", marginBottom: "4vh" }}>
           Os campos identificados com asteriscos (*) são de preenchimento
           obrigatório.
         </p>
