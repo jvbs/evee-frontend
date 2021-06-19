@@ -160,7 +160,7 @@ const CreateCompanyForm = () => {
           <p
             style={{ fontSize: "14px", color: "var(--gray)", marginTop: "2vh" }}
           >
-            Ja possui cadastro?
+            Já possui cadastro?
             <Link to="/user/account/login">
               <span
                 style={{ color: "var(--yellow-gold)", textDecoration: "none" }}
