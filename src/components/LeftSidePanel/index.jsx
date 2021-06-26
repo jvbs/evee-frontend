@@ -1,9 +1,13 @@
+import { useContext } from "react";
+
+import { AuthContext } from "../../contexts/AuthContext";
 import Button from "../Button";
 
 import logo from "../../assets/images/logo.png";
 import styles from "./styles.module.css";
 
 const LeftSidePanel = () => {
+  const { handleLogout } = useContext(AuthContext);
   return (
     <>
       <div className={styles.panel}>
@@ -24,7 +28,10 @@ const LeftSidePanel = () => {
               <a href="/admin" data-testid="btnMenuDepartamentos">
                 <li>Departamentos</li>
               </a>
-              <a href="/admin/create-collaborator" data-testid="btnMenuCadastroColaboradores">
+              <a
+                href="/admin/create-collaborator"
+                data-testid="btnMenuCadastroColaboradores"
+              >
                 <li style={{ display: "flex", flexDirection: "column" }}>
                   <span>Cadastrar</span>
                   <span>Colaboradores</span>
@@ -40,7 +47,11 @@ const LeftSidePanel = () => {
           </ul>
         </nav>
         <section className={styles.logoutButton}>
-          <Button text="Sair" data-testid="btnMenuSair" />
+          <Button
+            text="Sair"
+            data-testid="btnMenuSair"
+            onClick={handleLogout}
+          />
         </section>
       </div>
     </>
