@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import { Col, Container, FormGroup, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Form } from "@unform/web";
 import { ToastContainer, toast } from "react-toastify";
-
+import { Form } from "@unform/web";
 import * as Yup from "yup";
 
 import { api } from "../../../services/api";
@@ -11,7 +10,7 @@ import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 
 import styles from "./styles.module.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const CreateCompanyForm = () => {
   const formRef = useRef(null);
@@ -57,7 +56,7 @@ const CreateCompanyForm = () => {
 
         resetForm();
       } catch (err) {
-        console.log(err.request);
+        // console.log(err.request);
         toast.error("🦄 Wow so easy!", {
           position: "top-right",
           autoClose: 5000,
