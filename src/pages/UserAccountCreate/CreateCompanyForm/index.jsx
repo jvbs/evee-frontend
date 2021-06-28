@@ -95,6 +95,7 @@ const CreateCompanyForm = () => {
         >
           Tenha um RH cada vez mais ágil, estratégico, orientado à dados e
           centrando nas pessoas.
+          
         </p>
         <Form
           ref={formRef}
@@ -176,7 +177,7 @@ const CreateCompanyForm = () => {
               </FormGroup>
             </Col>
           </Row>
-          <p style={{ fontSize: "12px", color: "var(--gray)" }}>
+          <p style={{ fontSize: "12px", color: "var(--gray)", marginTop: "4vh", marginBottom: "4vh" }}>
             Os campos identificados com asteriscos (*) são de preenchimento
             obrigatório.
           </p>
