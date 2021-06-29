@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import Button from "../Button";
+import history from "../../utils/history";
 
 import logo from "../../assets/images/logo.png";
 import styles from "./styles.module.css";
@@ -17,7 +18,10 @@ const LeftSidePanel = () => {
         <nav>
           <ul>
             <div className={styles.homeGroup}>
-              <a href="/admin" data-testid="btnMenuHome">
+              <a
+                onClick={() => history.push("/admin")}
+                data-testid="btnMenuHome"
+              >
                 <li>Home</li>
               </a>
             </div>
@@ -29,7 +33,7 @@ const LeftSidePanel = () => {
                 <li>Departamentos</li>
               </a>
               <a
-                href="/admin/create-collaborator"
+                onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuCadastroColaboradores"
               >
                 <li style={{ display: "flex", flexDirection: "column" }}>
