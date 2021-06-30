@@ -5,6 +5,7 @@ import { api } from "../services/api";
 import history from "../utils/history";
 
 export default function useAuth() {
+  const [loggedUser, setLoggedUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -15,18 +16,19 @@ export default function useAuth() {
       api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
       setAuthenticated(true);
     }
-
     setLoading(false);
   }, []);
 
   const handleLogin = async (email, senha) => {
     try {
       const {
-        data: { token },
+        data: { token, user },
       } = await api.post("/auth", { email, senha });
 
       localStorage.setItem("token", JSON.stringify(token));
       api.defaults.headers.Authorization = `Bearer ${token}`;
+
+      setLoggedUser(user);
       setAuthenticated(true);
 
       history.push("/admin");
@@ -53,5 +55,5 @@ export default function useAuth() {
     history.push("/user/account/login");
   };
 
-  return { authenticated, loading, handleLogin, handleLogout };
+  return { authenticated, loading, handleLogin, handleLogout, loggedUser };
 }

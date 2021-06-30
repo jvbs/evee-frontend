@@ -1,13 +1,17 @@
-import styles from "./styles.module.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 import Button from "../../../../components/Button";
+import styles from "./styles.module.css";
 
 const Welcome = () => {
+  const { loggedUser } = useContext(AuthContext);
+
   return (
     <>
       <section className={styles.message}>
         <h2 className={styles.name}>
-          Olá, <span>Diana Prince</span>
+          Olá, <span>{loggedUser.nome}</span>
         </h2>
         <h3 className={styles.welcome}>
           Bem-vindo(a) ao <span>EVEE!</span>

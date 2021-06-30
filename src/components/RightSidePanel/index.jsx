@@ -1,9 +1,14 @@
-import userPhoto from "../../assets/images/mulher-maravilha.jpeg";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import { FaPen } from "react-icons/fa";
+import userPhoto from "../../assets/images/mulher-maravilha.jpeg";
 
 import styles from "./styles.module.css";
 
 const RightSidePanel = () => {
+  const { loggedUser } = useContext(AuthContext);
+
   return (
     <>
       <section className={styles.sidePanel}>
@@ -17,10 +22,13 @@ const RightSidePanel = () => {
           </button>
         </div>
         <div className={styles.userInfoWrapper}>
-          <span className={styles.userNome}>Diana Prince</span>
-          <span className={styles.userEmail}>diana.prince@evee.com.br</span>
-          <span className={styles.userCargo}>Gerente</span>
-          <span className={styles.userDepartamento}>Recursos Humanos</span>
+          <span className={styles.userNome}>{loggedUser.nome}</span>
+          <span className={styles.userEmail}>{loggedUser.email}</span>
+          <span className={styles.userCargo}>{loggedUser.cargo}</span>
+          <span className={styles.userCargo}>{loggedUser.nome_empresa}</span>
+          <span className={styles.userDepartamento}>
+            {loggedUser.departamento}
+          </span>
         </div>
 
         <div className={styles.metricasWrapper}>
