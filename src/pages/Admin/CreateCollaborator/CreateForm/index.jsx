@@ -1,18 +1,28 @@
-import { useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { MenuItem } from "@material-ui/core";
 import { Col, FormGroup, Row } from "reactstrap";
 import { FaCamera } from "react-icons/fa";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { api } from "../../../../services/api";
+
 import Input from "../../../../components/Input";
 import Select from "../../../../components/Select";
-
-import styles from "./styles.module.css";
-import userPhoto from "../../../../assets/images/evee.png";
 import Button from "../../../../components/Button";
 
+import userPhoto from "../../../../assets/images/evee.png";
+import styles from "./styles.module.css";
+
 const CreateForm = () => {
+  const [cargo, setCargo] = useState("");
+  const [departamento, setDepartamento] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [status, setStatus] = useState("");
+
+  const { loggedUser } = useContext(AuthContext);
+
   const formRef = useRef(null);
 
   const resetErrors = () => {
@@ -26,6 +36,12 @@ const CreateForm = () => {
 
   const handleSubmit = async (data) => {
     try {
+      data.cargo_id = Number(cargo);
+      data.departamento_id = Number(departamento);
+      data.tipo_usuario = tipo;
+      data.status = Number(status);
+      data.empresa_id = Number(loggedUser.empresa_id);
+
       const schema = Yup.object().shape({
         nome: Yup.string().required('O campo "Nome" é obrigatório.'),
         cpf: Yup.string().required('O campo "CPF" é obrigatório').length(11),
@@ -35,21 +51,32 @@ const CreateForm = () => {
         celular: Yup.string()
           .required('O campo "Celular" é obrigatório')
           .length(14),
-        departamento: Yup.string().required(
+        departamento_id: Yup.string().required(
           'O campo "Departamento" é obrigatório.'
         ),
-        cargo: Yup.string().required('O campo "Cargo" é obrigatório.'),
-        tipousuario: Yup.string().required(
-          'O campo "Tipo de Usúario" é obrigatório.'
+        cargo_id: Yup.number().required('O campo "Cargo" é obrigatório.'),
+        tipo_usuario: Yup.string().required(
+          'O campo "Tipo de Usuário" é obrigatório.'
         ),
-        senha: Yup.string().required('O campo "Departamento" é obrigatório.'),
-        confirmarsenha: Yup.string().oneOf(
+        senha: Yup.string().required('O campo "Senha" é obrigatório.'),
+        confirmar_senha: Yup.string().oneOf(
           [Yup.ref("senha"), null],
           "As senhas devem coincidir"
         ),
-        status: Yup.string().required('O campo "Departamento" é obrigatório.'),
+        status: Yup.number().required('O campo "Status" é obrigatório.'),
       });
+
       await schema.validate(data, { abortEarly: false });
+
+      resetErrors();
+
+      try {
+        const response = await api.post("/colaborador", data);
+
+        console.debug("OK", response);
+      } catch (err) {
+        console.debug("error", err.response);
+      }
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages = {};
@@ -80,7 +107,12 @@ const CreateForm = () => {
               </Col>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="CPF*" name="cpf" testid="fieldCPF" />
+                  <Input
+                    label="CPF*"
+                    name="cpf"
+                    testid="fieldCPF"
+                    type="text"
+                  />
                 </FormGroup>
               </Col>
               <Col lg="6">
@@ -125,19 +157,25 @@ const CreateForm = () => {
               <Col lg="4">
                 <FormGroup>
                   <Select
-                    name="departamento"
+                    name="departamento_id"
                     label="Departamento*"
                     testid="fieldDepartamento"
-                  ></Select>
+                    onChange={(e) => setDepartamento(e.target.value)}
+                  >
+                    <MenuItem value={5}>Teste</MenuItem>
+                  </Select>
                 </FormGroup>
               </Col>
               <Col lg="4">
                 <FormGroup>
                   <Select
                     label="Cargo*"
-                    name="cargo"
+                    name="cargo_id"
                     testid="fieldCargo"
-                  ></Select>
+                    onChange={(e) => setCargo(e.target.value)}
+                  >
+                    <MenuItem value={28}>Administrador</MenuItem>
+                  </Select>
                 </FormGroup>
               </Col>
             </Row>
@@ -146,8 +184,9 @@ const CreateForm = () => {
               <FormGroup>
                 <Select
                   label="Tipo Usuário*"
-                  name="tipousuario"
-                  testid="fieldTipoUsuario"
+                  name="tipo_usuario"
+                  testid="fieldtipo_usuario"
+                  onChange={(e) => setTipo(e.target.value)}
                 >
                   <MenuItem value={"Comum"}>Comum</MenuItem>
                   <MenuItem value={"Mentor"}>Mentor</MenuItem>
@@ -177,7 +216,7 @@ const CreateForm = () => {
                 <FormGroup>
                   <Input
                     type="password"
-                    name="confirmarsenha"
+                    name="confirmar_senha"
                     label="Confirmar senha*"
                     testid="fieldConfirmarSenha"
                   />
@@ -186,9 +225,14 @@ const CreateForm = () => {
             </Row>
             <Col lg="4">
               <FormGroup>
-                <Select label="Status*" name="status" testid="fieldStatus">
-                  <MenuItem value={"Ativo"}>Ativo</MenuItem>
-                  <MenuItem value={"Inativo"}>Inativo</MenuItem>
+                <Select
+                  label="Status*"
+                  name="status"
+                  testid="fieldStatus"
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <MenuItem value={1}>Ativo</MenuItem>
+                  <MenuItem value={0}>Inativo</MenuItem>
                 </Select>
               </FormGroup>
             </Col>
