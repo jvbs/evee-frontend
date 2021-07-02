@@ -22,12 +22,12 @@ const RightSidePanel = () => {
           </button>
         </div>
         <div className={styles.userInfoWrapper}>
-          <span className={styles.userNome}>{loggedUser.nome}</span>
-          <span className={styles.userEmail}>{loggedUser.email}</span>
-          <span className={styles.userCargo}>{loggedUser.cargo}</span>
-          <span className={styles.userCargo}>{loggedUser.nome_empresa}</span>
+          <span className={styles.userNome}>{loggedUser?.nome}</span>
+          <span className={styles.userEmail}>{loggedUser?.email}</span>
+          <span className={styles.userCargo}>{loggedUser?.cargo}</span>
+          <span className={styles.userCargo}>{loggedUser?.nome_empresa}</span>
           <span className={styles.userDepartamento}>
-            {loggedUser.departamento}
+            {loggedUser?.departamento}
           </span>
         </div>
 

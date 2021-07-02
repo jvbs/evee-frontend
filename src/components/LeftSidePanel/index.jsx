@@ -21,30 +21,48 @@ const LeftSidePanel = () => {
               <a
                 onClick={() => history.push("/admin")}
                 data-testid="btnMenuHome"
+                href="#/"
               >
                 <li>Home</li>
               </a>
             </div>
             <div className={styles.otherGroup}>
-              <a href="/admin" data-testid="btnMenuColaboradores">
+              <a
+                onClick={() => history.push("/admin/create-collaborator")}
+                data-testid="btnMenuColaboradores"
+                href="#/"
+              >
                 <li>Colaboradores</li>
               </a>
-              <a href="/admin" data-testid="btnMenuDepartamentos">
+              <a
+                onClick={() => history.push("/admin/create-collaborator")}
+                data-testid="btnMenuDepartamentos"
+                href="#/"
+              >
                 <li>Departamentos</li>
               </a>
               <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuCadastroColaboradores"
+                href="#/"
               >
                 <li style={{ display: "flex", flexDirection: "column" }}>
                   <span>Cadastrar</span>
                   <span>Colaboradores</span>
                 </li>
               </a>
-              <a href="/admin" data-testid="btnMenuMentores">
+              <a
+                onClick={() => history.push("/admin/create-collaborator")}
+                data-testid="btnMenuMentores"
+                href="#/"
+              >
                 <li>Mentores</li>
               </a>
-              <a href="/admin" data-testid="btnMenuMentorados">
+              <a
+                onClick={() => history.push("/admin/create-collaborator")}
+                data-testid="btnMenuMentorados"
+                href="#/"
+              >
                 <li>Mentorados</li>
               </a>
             </div>

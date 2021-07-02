@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
-import { api } from "../../services/api";
 
 import LeftSidePanel from "../LeftSidePanel";
 import RightSidePanel from "../RightSidePanel";

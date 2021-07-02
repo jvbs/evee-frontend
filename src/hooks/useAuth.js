@@ -10,11 +10,20 @@ export default function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const {
+        data: { user },
+      } = await api.get("/auth/check");
+
+      setLoggedUser(user);
+    };
+
     const token = localStorage.getItem("token");
 
     if (token) {
       api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
       setAuthenticated(true);
+      fetchUser();
     }
     setLoading(false);
   }, []);

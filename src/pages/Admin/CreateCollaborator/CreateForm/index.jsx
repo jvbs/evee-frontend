@@ -15,8 +15,57 @@ import Button from "../../../../components/Button";
 const CreateForm = () => {
   const formRef = useRef(null);
 
+  const resetErrors = () => {
+    formRef.current.setErrors({});
+  };
+
+  // const resetForm = () => {
+  //   formRef.current.setErrors({});
+  //   formRef.current.reset();
+  // };
+
+  const handleSubmit = async (data) => {
+    try {
+      console.log(data);
+      // const schema = Yup.object().shape({
+      //   nome: Yup.string().required('O campo "Nome" é obrigatório.'),
+      //   cpf: Yup.string().required('O campo "CPF" é obrigatório').length(11),
+      //   email: Yup.string()
+      //     .email("Digite um e-mail válido")
+      //     .required('O campo "E-mail" é obrigatório.'),
+      //   celular: Yup.string()
+      //     .required('O campo "Celular" é obrigatório')
+      //     .length(14),
+      //   departamento: Yup.string().required(
+      //     'O campo "Departamento" é obrigatório.'
+      //   ),
+      //   cargo: Yup.string().required('O campo "Cargo" é obrigatório.'),
+      //   tipousuario: Yup.string().required(
+      //     'O campo "Tipo de Usúario" é obrigatório.'
+      //   ),
+      //   senha: Yup.string().required('O campo "Departamento" é obrigatório.'),
+      //   confirmarsenha: Yup.string().oneOf(
+      //     [Yup.ref("senha"), null],
+      //     "As senhas devem coincidir"
+      //   ),
+      //   status: Yup.string().required('O campo "Departamento" é obrigatório.'),
+      // });
+      // await schema.validate(data, { abortEarly: false });
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errorMessages = {};
+
+        err.inner.forEach((error) => {
+          errorMessages[error.path] = error.message;
+        });
+
+        formRef.current.setErrors(errorMessages);
+      }
+    }
+  };
+
   return (
-    <Form ref={formRef}>
+    <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
       <Row>
         <Col lg="8">
           <section className={styles.formSection}>
@@ -155,6 +204,7 @@ const CreateForm = () => {
                 />
                 <Button
                   text="Salvar"
+                  onClick={handleSubmit}
                   style={{ margin: "1vh", opacity: "80%" }}
                 />
               </Col>
