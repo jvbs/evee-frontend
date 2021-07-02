@@ -56,7 +56,7 @@ const CreateCompanyForm = () => {
 
         resetForm();
       } catch (err) {
-        // console.log(err.request);
+        console.log(err.request);
         toast.error("🦄 Wow so easy!", {
           position: "top-right",
           autoClose: 5000,

@@ -28,7 +28,7 @@ const LeftSidePanel = () => {
             </div>
             <div className={styles.otherGroup}>
               <a
-                onClick={() => history.push("/admin/create-collaborator")}
+                onClick={() => history.push("/admin/collaborator")}
                 data-testid="btnMenuColaboradores"
                 href="#/"
               >
