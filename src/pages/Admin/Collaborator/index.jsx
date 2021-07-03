@@ -3,6 +3,7 @@ import BodyContent from "../../../components/BodyContent";
 
 import TopFilters from "./TopFilters";
 import ListCollaborators from "./ListCollaborators";
+import ContentSearchReturn from "../../../components/ContentSearchReturn";
 import ListMentors from "./ListMentors";
 import ListMentoreds from "./ListMentoreds";
 
@@ -16,7 +17,7 @@ const Collaborator = () => {
         breadcrumb="Home > Colaboradores"
       >
         <TopFilters />
-
+        <ContentSearchReturn />
         <ListCollaborators />
         {/* <ListMentors />
         <ListMentoreds /> */}

@@ -73,9 +73,9 @@ const CreateForm = () => {
       try {
         const response = await api.post("/colaborador", data);
 
-        console.debug("OK", response);
+        console.log("OK", response);
       } catch (err) {
-        console.debug("error", err.response);
+        console.log("error", err.response);
       }
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
@@ -162,7 +162,7 @@ const CreateForm = () => {
                     testid="fieldDepartamento"
                     onChange={(e) => setDepartamento(e.target.value)}
                   >
-                    <MenuItem value={5}>Teste</MenuItem>
+                    <MenuItem value={7}>Teste</MenuItem>
                   </Select>
                 </FormGroup>
               </Col>
@@ -174,7 +174,7 @@ const CreateForm = () => {
                     testid="fieldCargo"
                     onChange={(e) => setCargo(e.target.value)}
                   >
-                    <MenuItem value={28}>Administrador</MenuItem>
+                    <MenuItem value={1}>Administrador</MenuItem>
                   </Select>
                 </FormGroup>
               </Col>
