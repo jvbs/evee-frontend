@@ -18,26 +18,25 @@
   
   .teste{
     border-radius: 10px;
+    height: 10px;
     background-color: rgb(39, 187, 192);
     display: flex;
-    z-index: 1;
+    
   }
 
   .bloco{
     border-radius: 20px;
-    background-color: rgb(201, 21, 21);
-    width: 100%;
+    background-color: rgb(233, 233, 233);
     display: flex;
     justify-content: center;
-    flex-flow: row;
+    flex-direction: row;
   }
 
   .text{
     background-color: aqua;
     margin-left: 10px;
-    display: flex;
-    align-content: center;
-    flex-direction: column;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
   }
 
   .text p{

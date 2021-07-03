@@ -17,17 +17,16 @@ const ListCollaborators = () => {
   return (
     <Row>
   
-       <Col xl="4" md="6" sm="4" style={{ marginBottom: "2vh" }}>   
+       <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>   
       
           <div className={styles.bloco}>
 
-  
               <div className={styles.userPhotoWrapper}>
                 <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
               </div> 
   
-               <div className={styles.text}>
-              <div className={styles.teste}><p>Pedro</p></div>
+              <div className={styles.text}>
+              <p>Pedro</p>
                
                <p>Gerente</p>
                <p>Desenvolvimento</p>
@@ -37,42 +36,43 @@ const ListCollaborators = () => {
 
        </Col>
 
-       <Col xl="4" md="6"  sm="4" style={{ marginBottom: "2vh" }}>
-          <Row className={styles.bloco}>
-              <Col lg="5" style={{ backgroundColor: "" }}> 
-                <div className={styles.userPhotoWrapper}>
-                <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-                </div> 
-              </Col>
+       <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>   
+      
+        <div className={styles.bloco}>
 
-              <Col lg="7" style={{ backgroundColor: "" }}> 
-               <div className={styles.text}>
-               <p>Pedro</p>
-               <p>Gerente</p>
-               <p>Desenvolvimento</p>
-               </div>
-              </Col>
-          </Row> 
-       </Col>
+            <div className={styles.userPhotoWrapper}>
+              <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
+            </div> 
 
+            <div className={styles.text}>
+            <p>Pedro</p>
+            
+            <p>Gerente</p>
+            <p>Desenvolvimento</p>
+            </div>
+          
+        </div> 
 
-      <Col  xl="4" md="6"  sm="4" style={{ marginBottom: "2vh" }}>
-          <Row className={styles.bloco}>
-              <Col lg="5" style={{ backgroundColor: "" }}> 
-                <div className={styles.userPhotoWrapper}>
-                <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-                </div> 
-              </Col>
+      </Col>
 
-              <Col lg="7" style={{ backgroundColor: "" }}> 
-               <div className={styles.text}>
-               <p>Pedro</p>
-               <p>Gerente</p>
-               <p>Desenvolvimento</p>
-               </div>
-              </Col>
-          </Row> 
-       </Col>
+      <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>   
+      
+      <div className={styles.bloco}>
+
+          <div className={styles.userPhotoWrapper}>
+            <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
+          </div> 
+
+          <div className={styles.text}>
+          <p>Pedro</p>
+          
+          <p>Gerente</p>
+          <p>Desenvolvimento</p>
+          </div>
+        
+      </div> 
+
+    </Col>
 
 
 
