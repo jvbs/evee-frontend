@@ -1,84 +1,39 @@
-import { useRef } from "react";
-import { MenuItem } from "@material-ui/core";
-import { Col, FormGroup, Row } from "reactstrap";
-import { FaCamera } from "react-icons/fa";
-import { Form } from "@unform/web";
-import * as Yup from "yup";
-import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { Row } from "reactstrap";
 
-import Input from "../../../../components/Input";
-import Select from "../../../../components/Select";
+import { api } from "../../../../services/api";
 
-import styles from "./styles.module.css";
-import userPhoto from "../../../../assets/images/evee.png";
-import Button from "../../../../components/Button";
+import UserBox from "../../../../components/UserBox";
 
 const ListCollaborators = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data } = await api.get("/colaborador");
+
+      setUsers(data);
+    };
+
+    fetchUsers();
+  }, []);
+
   return (
     <Row>
-  
-       <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>   
-      
-          <div className={styles.bloco}>
-
-              <div className={styles.userPhotoWrapper}>
-                <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-              </div> 
-  
-              <div className={styles.text}>
-              <p>Pedro</p>
-               
-               <p>Gerente</p>
-               <p>Desenvolvimento</p>
-               </div>
-            
-          </div> 
-
-       </Col>
-
-       <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>   
-      
-        <div className={styles.bloco}>
-
-            <div className={styles.userPhotoWrapper}>
-              <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-            </div> 
-
-            <div className={styles.text}>
-            <p>Pedro</p>
-            
-            <p>Gerente</p>
-            <p>Desenvolvimento</p>
-            </div>
-          
-        </div> 
-
-      </Col>
-
-      <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>   
-      
-      <div className={styles.bloco}>
-
-          <div className={styles.userPhotoWrapper}>
-            <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-          </div> 
-
-          <div className={styles.text}>
-          <p>Pedro</p>
-          
-          <p>Gerente</p>
-          <p>Desenvolvimento</p>
-          </div>
-        
-      </div> 
-
-    </Col>
-
-
-
-
-     
-
+      {users.length > 0 ? (
+        users.map((user, index) => {
+          return (
+            <UserBox
+              key={index}
+              nome={user.nome}
+              cargo={user.nome_cargo}
+              departamento={user.nome_departamento}
+            />
+          );
+        })
+      ) : (
+        <h1>Sem usuários</h1>
+      )}
     </Row>
   );
 };
