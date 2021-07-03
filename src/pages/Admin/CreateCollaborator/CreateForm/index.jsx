@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { MenuItem } from "@material-ui/core";
 import { Col, FormGroup, Row } from "reactstrap";
+import { ToastContainer, toast } from "react-toastify";
 import { FaCamera } from "react-icons/fa";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
@@ -14,8 +15,10 @@ import Button from "../../../../components/Button";
 
 import userPhoto from "../../../../assets/images/evee.png";
 import styles from "./styles.module.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const CreateForm = () => {
+  const formRef = useRef(null);
   const [cargo, setCargo] = useState("");
   const [departamento, setDepartamento] = useState("");
   const [tipo, setTipo] = useState("");
@@ -23,16 +26,19 @@ const CreateForm = () => {
 
   const { loggedUser } = useContext(AuthContext);
 
-  const formRef = useRef(null);
-
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
 
-  // const resetForm = () => {
-  //   formRef.current.setErrors({});
-  //   formRef.current.reset();
-  // };
+  const resetForm = () => {
+    formRef.current.setErrors({});
+    formRef.current.reset();
+
+    setCargo("");
+    setDepartamento("");
+    setStatus("");
+    setTipo("");
+  };
 
   const handleSubmit = async (data) => {
     try {
@@ -73,9 +79,33 @@ const CreateForm = () => {
       try {
         const response = await api.post("/colaborador", data);
 
-        console.debug("OK", response);
+        if (response.status === 201) {
+          resetForm();
+          toast.success("🎉 Colaborador cadastrado com sucesso!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       } catch (err) {
-        console.debug("error", err.response);
+        let message = err.response.data.error;
+        if (message === "Bad Request") {
+          message =
+            "Ocorreu um erro interno, verifique seus dados e tente novamente.";
+        }
+        toast.error(`😭 ${message}`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
@@ -92,6 +122,7 @@ const CreateForm = () => {
 
   return (
     <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
+      <ToastContainer />
       <Row>
         <Col lg="8">
           <section className={styles.formSection}>
@@ -112,6 +143,7 @@ const CreateForm = () => {
                     name="cpf"
                     testid="fieldCPF"
                     type="text"
+                    inputProps={{ maxLength: 11 }}
                   />
                 </FormGroup>
               </Col>
@@ -126,6 +158,7 @@ const CreateForm = () => {
                     label="Celular*"
                     name="celular"
                     testid="fieldCelular"
+                    inputProps={{ maxLength: 14 }}
                   />
                 </FormGroup>
               </Col>
@@ -161,6 +194,7 @@ const CreateForm = () => {
                     label="Departamento*"
                     testid="fieldDepartamento"
                     onChange={(e) => setDepartamento(e.target.value)}
+                    value={departamento}
                   >
                     <MenuItem value={5}>Teste</MenuItem>
                   </Select>
@@ -171,6 +205,7 @@ const CreateForm = () => {
                   <Select
                     label="Cargo*"
                     name="cargo_id"
+                    value={cargo}
                     testid="fieldCargo"
                     onChange={(e) => setCargo(e.target.value)}
                   >
@@ -186,6 +221,7 @@ const CreateForm = () => {
                   label="Tipo Usuário*"
                   name="tipo_usuario"
                   testid="fieldtipo_usuario"
+                  value={tipo}
                   onChange={(e) => setTipo(e.target.value)}
                 >
                   <MenuItem value={"Comum"}>Comum</MenuItem>
@@ -229,6 +265,7 @@ const CreateForm = () => {
                   label="Status*"
                   name="status"
                   testid="fieldStatus"
+                  value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <MenuItem value={1}>Ativo</MenuItem>
