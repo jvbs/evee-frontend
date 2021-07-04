@@ -5,6 +5,10 @@ import styles from "./styles.module.css";
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
+function SplitName(text) {
+  return text.split(' ').slice(0, 3).join(' ')
+}
+
 const ListMentors = ({ users, filter }) => {
   return (
     <>
@@ -22,7 +26,7 @@ const ListMentors = ({ users, filter }) => {
               return (
                 <UserBox
                   key={index}
-                  nome={user.nome}
+                  nome={SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                 />

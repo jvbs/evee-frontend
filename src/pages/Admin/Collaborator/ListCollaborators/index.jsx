@@ -6,7 +6,7 @@ import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
 function SplitName(text) {
-  return text.split(' ').slice(0, 2).join(' ')
+  return text.split(' ').slice(0, 3).join(' ')
 }
 
 const ListCollaborators = ({ users, filter }) => {
