@@ -5,14 +5,8 @@ import styles from "./styles.module.css";
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
-function titleizeName(text) {
-  let name_lastname = text.split(' ').slice(0, 2).join(' ')
-  let words = name_lastname.toLowerCase().split(" ");
-  for (let a = 0; a < words.length; a++) {
-      let w = words[a];
-      words[a] = w[0].toUpperCase() + w.slice(1);
-  }
-  return words.join(" ");
+function SplitName(text) {
+  return text.split(' ').slice(0, 2).join(' ')
 }
 
 const ListCollaborators = ({ users, filter }) => {
@@ -32,7 +26,7 @@ const ListCollaborators = ({ users, filter }) => {
               return ( 
                 <UserBox
                   key={index}
-                  nome = {titleizeName(user.nome)}
+                  nome = {SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                 />
