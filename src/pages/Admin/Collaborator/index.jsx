@@ -11,7 +11,7 @@ import Button from "../../../components/Button";
 import history from "../../../utils/history";
 import ListCollaborators from "./ListCollaborators";
 import ContentSearchReturn from "../../../components/ContentSearchReturn";
-import ListMentoreds from "./ListMentoreds";
+
 
 const Collaborator = () => {
   const formRef = useRef(null);
