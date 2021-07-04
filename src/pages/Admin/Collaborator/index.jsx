@@ -17,7 +17,6 @@ const Collaborator = () => {
         breadcrumb="Home > Colaboradores"
       >
         <TopFilters />
-        <ContentSearchReturn />
         <ListCollaborators />
         {/* <ListMentors />
         <ListMentoreds /> */}

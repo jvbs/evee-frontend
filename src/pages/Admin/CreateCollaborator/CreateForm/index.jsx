@@ -12,6 +12,7 @@ import Input from "../../../../components/Input";
 import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
+import history from "../../../../utils/history";
 import userPhoto from "../../../../assets/images/evee.png";
 import styles from "./styles.module.css";
 
@@ -244,6 +245,7 @@ const CreateForm = () => {
                   type="light-yellow"
                   text="Cancelar"
                   style={{ margin: "1vh", opacity: "80%" }}
+                  onClick={() => history.push("/admin")}
                 />
                 <Button
                   text="Salvar"

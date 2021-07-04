@@ -1,17 +1,12 @@
 import { useRef } from "react";
-import { MenuItem } from "@material-ui/core";
 import { Col, FormGroup, Row } from "reactstrap";
-import { FaCamera } from "react-icons/fa";
 import { Form } from "@unform/web";
-import * as Yup from "yup";
 import { FaSearch } from "react-icons/fa";
+import history from "../../../../utils/history";
 
 import Input from "../../../../components/Input";
-import Select from "../../../../components/Select";
-import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 import styles from "./styles.module.css";
 
-import userPhoto from "../../../../assets/images/evee.png";
 import Button from "../../../../components/Button";
 
 
@@ -40,7 +35,7 @@ const TopFilters = () => {
        <Col lg="3" style={{ backgroundColor: "" }} >
         <Button
                     text="Cadastrar"
-                    onClick="  "
+                    onClick={() => history.push("/admin/create-collaborator")}
                     style={{ width: "100%"}}
           />
        </Col>
