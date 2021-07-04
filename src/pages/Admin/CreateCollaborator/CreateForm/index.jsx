@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { MenuItem } from "@material-ui/core";
 import { Col, FormGroup, Row } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
@@ -21,12 +21,13 @@ import "react-toastify/dist/ReactToastify.min.css";
 const CreateForm = () => {
   const formRef = useRef(null);
   const [cargo, setCargo] = useState("");
+  const [cargos, setCargos] = useState([]);
   const [departamento, setDepartamento] = useState("");
+  const [departamentos, setDepartamentos] = useState([]);
   const [tipo, setTipo] = useState("");
   const [status, setStatus] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
-  console.log(loggedUser);
 
   const resetErrors = () => {
     formRef.current.setErrors({});
@@ -42,13 +43,25 @@ const CreateForm = () => {
     setTipo("");
   };
 
+  useEffect(() => {
+    const fetchFormFields = async () => {
+      const { data: cargos } = await api.get("/cargo");
+      const { data: departamentos } = await api.get("/departamento");
+
+      setCargos(cargos);
+      setDepartamentos(departamentos);
+    };
+
+    fetchFormFields();
+  }, []);
+
   const handleSubmit = async (data) => {
     try {
       data.cargo_id = Number(cargo);
       data.departamento_id = Number(departamento);
       data.tipo_usuario = tipo;
       data.status = Number(status);
-      data.empresa_id = Number(loggedUser.empresa_id);
+      data.empresa_id = Number(loggedUser?.empresa_id);
 
       const schema = Yup.object().shape({
         nome: Yup.string().required('O campo "Nome" é obrigatório.'),
@@ -199,7 +212,11 @@ const CreateForm = () => {
                     onChange={(e) => setDepartamento(e.target.value)}
                     value={departamento}
                   >
-                    <MenuItem value={7}>Teste</MenuItem>
+                    {departamentos.map((departamento) => (
+                      <MenuItem key={departamento.id} value={departamento.id}>
+                        {departamento.nome_departamento}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormGroup>
               </Col>
@@ -212,7 +229,11 @@ const CreateForm = () => {
                     testid="fieldCargo"
                     onChange={(e) => setCargo(e.target.value)}
                   >
-                    <MenuItem value={1}>Administrador</MenuItem>
+                    {cargos.map((cargo) => (
+                      <MenuItem key={cargo.id} value={cargo.id}>
+                        {cargo.nome_cargo}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormGroup>
               </Col>
