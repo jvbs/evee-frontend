@@ -15,12 +15,19 @@ const UserBox = ({ nome, cargo, departamento, userPhoto }) => {
           />
         </div>
 
-        <div className={styles.text}>
+        <div className={styles.BoxTextCollaborator}>
+
+          <div className={styles.BoxTextCollaboratorName}>
           <p>{nome}</p>
+          </div>
+          
+          <div className={styles.BoxTextCollaboratorInformation}>
           <p>{cargo}</p>
           <p>{departamento}</p>
-        </div>
+          </div>
       </div>
+      </div>
+
     </Col>
   );
 };

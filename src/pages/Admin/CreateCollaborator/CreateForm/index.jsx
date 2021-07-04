@@ -13,6 +13,7 @@ import Input from "../../../../components/Input";
 import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
+import history from "../../../../utils/history";
 import userPhoto from "../../../../assets/images/evee.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -196,7 +197,7 @@ const CreateForm = () => {
                     onChange={(e) => setDepartamento(e.target.value)}
                     value={departamento}
                   >
-                    <MenuItem value={5}>Teste</MenuItem>
+                    <MenuItem value={7}>Teste</MenuItem>
                   </Select>
                 </FormGroup>
               </Col>
@@ -209,7 +210,7 @@ const CreateForm = () => {
                     testid="fieldCargo"
                     onChange={(e) => setCargo(e.target.value)}
                   >
-                    <MenuItem value={28}>Administrador</MenuItem>
+                    <MenuItem value={1}>Administrador</MenuItem>
                   </Select>
                 </FormGroup>
               </Col>
@@ -281,6 +282,7 @@ const CreateForm = () => {
                   type="light-yellow"
                   text="Cancelar"
                   style={{ margin: "1vh", opacity: "80%" }}
+                  onClick={() => history.push("/admin")}
                 />
                 <Button
                   text="Salvar"

@@ -1,0 +1,15 @@
+.BoxText h1 {
+ font-size: 22px;
+ font-weight: bold;
+ color: var(--gray);
+}
+
+.BoxText h2 {
+  font-size:16px;
+  margin-top: 2vh;
+}
+
+.BoxText{
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
