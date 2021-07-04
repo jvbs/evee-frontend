@@ -12,8 +12,8 @@
 }
 
 .userPhotoWrapper .userFoto {
-  width: 11.5vw;
-  height: 11.5vw;
+  width: 22vw;
+  height: 22vw;
   border-radius: 50%;
   border: 0px solid var(--gray);
   margin: 0 auto;
@@ -114,10 +114,21 @@
   margin-bottom: 5%;
 }
 
+
 }
 
 @media only screen and (min-width: 768px) {
 
+  .userPhotoWrapper .userFoto {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  
   .userInfoWrapper .userEmail {
     font-size: 1vw;
     text-transform: lowercase;
@@ -138,12 +149,23 @@
 
 @media only screen and (min-width: 1024px) {
 
+  .userPhotoWrapper .userFoto {
+    width: 11.5vw;
+    height: 11.5vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  
   .userInfoWrapper .userEmail {
     font-size: 1vw;
     text-transform: lowercase;
     color: var(--gray);
     margin-bottom: 5%;
   }
+
   .aprendizes,
   .estagiarios,
   .efetivacoes {
