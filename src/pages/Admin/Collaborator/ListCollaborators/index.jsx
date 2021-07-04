@@ -5,6 +5,16 @@ import styles from "./styles.module.css";
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
+function titleizeName(text) {
+  let name_lastname = text.split(' ').slice(0, 2).join(' ')
+  let words = name_lastname.toLowerCase().split(" ");
+  for (let a = 0; a < words.length; a++) {
+      let w = words[a];
+      words[a] = w[0].toUpperCase() + w.slice(1);
+  }
+  return words.join(" ");
+}
+
 const ListCollaborators = ({ users, filter }) => {
   return (
     <>
@@ -19,10 +29,10 @@ const ListCollaborators = ({ users, filter }) => {
               }
             })
             .map((user, index) => {
-              return (
+              return ( 
                 <UserBox
                   key={index}
-                  nome={user.nome}
+                  nome = {titleizeName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                 />
@@ -43,5 +53,6 @@ const ListCollaborators = ({ users, filter }) => {
     </>
   );
 };
+
 
 export default ListCollaborators;
