@@ -24,20 +24,6 @@ const TopFilters = () => {
             />
           </FormGroup>
         </Col>
-
-        {/* <Col lg="2" style={{ backgroundColor: "" }}>
-          <button
-            type="button"
-            data-testid="btnPesquisar"
-            className={styles.btnSearch}
-          >
-            <FaSearch
-              fontSize="1.3vw"
-              style={{ color: "var(--yellow-gold)", opacity: "80%" }}
-            />
-          </button>
-        </Col> */}
-
         <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
           <Button
             text="Cadastrar"

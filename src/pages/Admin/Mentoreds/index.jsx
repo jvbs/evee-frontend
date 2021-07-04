@@ -20,6 +20,7 @@ const Mentoreds = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await api.get("/colaborador/mentorados");
+      console.log(data);
 
       setUsers(data);
       // setFilteredUsers(data);
