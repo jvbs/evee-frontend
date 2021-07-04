@@ -1,8 +1,12 @@
-import { useState } from "react";
 import { Row } from "reactstrap";
+import styles from "./styles.module.css";
 
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
+
+function SplitName(text) {
+  return text.split(' ').slice(0, 3).join(' ')
+}
 
 const ListCollaborators = ({ users, filter }) => {
   return (
@@ -18,29 +22,27 @@ const ListCollaborators = ({ users, filter }) => {
               }
             })
             .map((user, index) => {
-              return (
+              return ( 
                 <UserBox
                   key={index}
-                  nome={user.nome}
+                  nome = {SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                 />
               );
             })
         ) : (
-          <div>
-            <h1>Ops! nenhum resultado encontrado...</h1>
-            <h2>O que eu faço?</h2>
-            <h3>Verifique se possui colaboradores cadastrados.</h3>
-            <h3>
-              Verifique os termos digitados ou os filtros selecionados. Utilize
-              termos genéricos na busca.
-            </h3>
-          </div>
+          <div className={styles.BoxTextGroup}>
+          <p className={styles.BoxTextOne}>Ops! nenhum resultado encontrado...</p>
+          <p className={styles.BoxTextTwo}>O que eu faço?</p>
+          <p className={styles.BoxTexList}>Verifique se possui colaboradores cadastrados.</p>
+          <p className={styles.BoxTextList}>Verifique os termos digitados ou os filtros selecionados.</p>
+        </div>
         )}
       </Row>
     </>
   );
 };
+
 
 export default ListCollaborators;

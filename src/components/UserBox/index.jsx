@@ -5,7 +5,7 @@ import defaultPhoto from "../../assets/images/evee.png";
 
 const UserBox = ({ nome, cargo, departamento, userPhoto }) => {
   return (
-    <Col xl="4" md="6" sm="12" style={{ marginBottom: "2vh" }}>
+    <Col xl="4" md="6" sm="6" style={{ marginBottom: "2vh" }}>
       <div className={styles.bloco}>
         <div className={styles.userPhotoWrapper}>
           <img

@@ -8,10 +8,10 @@ function SplitName(text) {
   return text.split(' ').slice(0, 3).join(' ')
 }
 
-const ListMentors = ({ users, filter }) => {
+const ListMentoreds = ({ users, filter }) => {
   return (
     <>
-      <ContentSearchReturn section="Mentores" qtdUsers={users.length} />
+      <ContentSearchReturn section="Mentorados" qtdUsers={users.length} />
       <Row>
         {users.length > 0 ? (
           users
@@ -44,4 +44,4 @@ const ListMentors = ({ users, filter }) => {
   );
 };
 
-export default ListMentors;
+export default ListMentoreds;

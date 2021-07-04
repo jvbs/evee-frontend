@@ -34,13 +34,13 @@ const LeftSidePanel = () => {
               >
                 <li>Colaboradores</li>
               </a>
-              <a
+              {/* <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuDepartamentos"
                 href="#/"
               >
                 <li>Departamentos</li>
-              </a>
+              </a> */}
               <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuCadastroColaboradores"
@@ -59,7 +59,7 @@ const LeftSidePanel = () => {
                 <li>Mentores</li>
               </a>
               <a
-                onClick={() => history.push("/admin/create-collaborator")}
+                onClick={() => history.push("/admin/mentoreds")}
                 data-testid="btnMenuMentorados"
                 href="#/"
               >
