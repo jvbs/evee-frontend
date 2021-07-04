@@ -5,10 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
-import { AuthContext } from "../../../contexts/AuthContext";
-import { api } from "../../../services/api";
-import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { api } from "../../../../services/api";
+import Button from "../../../../components/Button";
+import Input from "../../../../components/Input";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";

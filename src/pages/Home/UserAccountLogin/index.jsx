@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
-import LoginForm from "../UserAccountLogin/LoginForm";
-import userPhoto from "../../assets/images/fundo-login1.svg";
+import LoginForm from "./LoginForm";
+import userPhoto from "../../../assets/images/fundo-login1.svg";
 import styles from "./styles.module.css";
 
 const UserAccountLogin = () => (

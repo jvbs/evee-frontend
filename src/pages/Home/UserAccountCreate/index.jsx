@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 import CreateCompanyForm from "../UserAccountCreate/CreateCompanyForm";
-import userPhoto from "../../assets/images/fundo-create-branco.svg";
+import userPhoto from "../../../assets/images/fundo-create-branco.svg";
 import styles from "./styles.module.css";
 
 const UserAccountCreate = () => (

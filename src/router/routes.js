@@ -5,8 +5,8 @@ import { AuthContext } from "../contexts/AuthContext";
 
 // non-authenticated pages
 import Home from "../pages/Home";
-import UserAccountLogin from "../pages/UserAccountLogin";
-import UserAccountCreate from "../pages/UserAccountCreate";
+import UserAccountLogin from "../pages/Home/UserAccountLogin";
+import UserAccountCreate from "../pages/Home/UserAccountCreate";
 // authenticated pages
 import AdminHome from "../pages/Admin/Home";
 import CreateCollaborator from "../pages/Admin/CreateCollaborator";
