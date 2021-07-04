@@ -52,7 +52,7 @@ const LeftSidePanel = () => {
                 </li>
               </a>
               <a
-                onClick={() => history.push("/admin/create-collaborator")}
+                onClick={() => history.push("/admin/mentors")}
                 data-testid="btnMenuMentores"
                 href="#/"
               >

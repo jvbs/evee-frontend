@@ -9,11 +9,9 @@ import BodyContent from "../../../components/BodyContent";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import history from "../../../utils/history";
-import ListCollaborators from "./ListCollaborators";
-import ContentSearchReturn from "../../../components/ContentSearchReturn";
-import ListMentoreds from "./ListMentoreds";
+import ListMentors from "./ListMentors";
 
-const Collaborator = () => {
+const Mentors = () => {
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
   // const [filteredUsers, setFilteredUsers] = useState([]);
@@ -21,7 +19,7 @@ const Collaborator = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await api.get("/colaborador");
+      const { data } = await api.get("/colaborador/mentores");
 
       setUsers(data);
       // setFilteredUsers(data);
@@ -33,8 +31,8 @@ const Collaborator = () => {
   return (
     <Layout>
       <BodyContent
-        header="Gerenciamento de Colaboradores"
-        breadcrumb="Home > Colaboradores"
+        header="Gerenciamento de Mentores"
+        breadcrumb="Home > Mentores"
       >
         {/* <TopFilters /> */}
         <Form ref={formRef} style={{ marginBottom: "3vh" }}>
@@ -42,7 +40,7 @@ const Collaborator = () => {
             <Col lg="8" style={{ backgroundColor: "" }}>
               <FormGroup>
                 <Input
-                  label="Informe o nome ou e-mail do colaborador"
+                  label="Informe o nome ou e-mail do mentor"
                   name="pesquisa"
                   testid="fieldPesquisarColaborador"
                   style={{ marginTop: "0", marginBottom: "0" }}
@@ -60,12 +58,10 @@ const Collaborator = () => {
             </Col>
           </Row>
         </Form>
-        <ListCollaborators users={users} filter={filter} />
-        {/* <ListMentors /> */}
-        {/* <ListMentoreds /> */}
+        <ListMentors users={users} filter={filter} />
       </BodyContent>
     </Layout>
   );
 };
 
-export default Collaborator;
+export default Mentors;

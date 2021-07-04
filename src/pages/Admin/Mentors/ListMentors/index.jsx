@@ -4,10 +4,10 @@ import { Row } from "reactstrap";
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
-const ListCollaborators = ({ users, filter }) => {
+const ListMentors = ({ users, filter }) => {
   return (
     <>
-      <ContentSearchReturn section="Colaboradores" qtdUsers={users.length} />
+      <ContentSearchReturn section="Mentores" qtdUsers={users.length} />
       <Row>
         {users.length > 0 ? (
           users
@@ -43,4 +43,4 @@ const ListCollaborators = ({ users, filter }) => {
   );
 };
 
-export default ListCollaborators;
+export default ListMentors;

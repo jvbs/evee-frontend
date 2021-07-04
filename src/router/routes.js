@@ -11,6 +11,7 @@ import UserAccountCreate from "../pages/UserAccountCreate";
 import AdminHome from "../pages/Admin/Home";
 import CreateCollaborator from "../pages/Admin/CreateCollaborator";
 import Collaborator from "../pages/Admin/Collaborator";
+import Mentors from "../pages/Admin/Mentors";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -46,6 +47,9 @@ const Routes = () => {
       </ProtectedRoute>
       <ProtectedRoute path="/admin/collaborator" exact isPrivate>
         <Collaborator />
+      </ProtectedRoute>
+      <ProtectedRoute path="/admin/mentors" exact isPrivate>
+        <Mentors />
       </ProtectedRoute>
     </Switch>
   );
