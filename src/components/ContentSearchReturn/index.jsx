@@ -1,4 +1,4 @@
-import { Col, Row } from "reactstrap";
+import { Row } from "reactstrap";
 import styles from "./styles.module.css";
 
 const ContentSearchReturn = ({ section, qtdUsers }) => {

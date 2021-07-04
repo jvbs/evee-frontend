@@ -10,7 +10,6 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import history from "../../../utils/history";
 import ListCollaborators from "./ListCollaborators";
-import ContentSearchReturn from "../../../components/ContentSearchReturn";
 
 
 const Collaborator = () => {
