@@ -14,7 +14,6 @@ import ListMentors from "./ListMentors";
 const Mentors = () => {
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
-  // const [filteredUsers, setFilteredUsers] = useState([]);
   const [filter, setFilter] = useState(null);
 
   useEffect(() => {
@@ -22,7 +21,6 @@ const Mentors = () => {
       const { data } = await api.get("/colaborador/mentores");
 
       setUsers(data);
-      // setFilteredUsers(data);
     };
 
     fetchUsers();
@@ -34,7 +32,6 @@ const Mentors = () => {
         header="Gerenciamento de Mentores"
         breadcrumb="Home > Mentores"
       >
-        {/* <TopFilters /> */}
         <Form ref={formRef} style={{ marginBottom: "3vh" }}>
           <Row>
             <Col lg="8" style={{ backgroundColor: "" }}>
