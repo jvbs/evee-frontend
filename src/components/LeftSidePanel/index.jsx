@@ -34,13 +34,13 @@ const LeftSidePanel = () => {
               >
                 <li>Colaboradores</li>
               </a>
-              <a
+              {/* <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuDepartamentos"
                 href="#/"
               >
                 <li>Departamentos</li>
-              </a>
+              </a> */}
               <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuCadastroColaboradores"
