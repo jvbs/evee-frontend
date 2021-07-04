@@ -8,12 +8,10 @@ import Input from "../../../../components/Input";
 
 import styles from "./styles.module.css";
 import Button from "../../../../components/Button";
-import history from "../../../../utils/history";
 
 const TopFilters = () => {
   const formRef = useRef(null);
   return (
-
     <Form ref={formRef} style={{ marginBottom: "3vh" }}>
       <Row>
         <Col lg="8" style={{ backgroundColor: "" }}>
