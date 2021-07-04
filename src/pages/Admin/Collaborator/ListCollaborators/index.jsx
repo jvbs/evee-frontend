@@ -1,23 +1,8 @@
-import { useEffect, useState } from "react";
 import { Row } from "reactstrap";
-
-import { api } from "../../../../services/api";
 
 import UserBox from "../../../../components/UserBox";
 
-const ListCollaborators = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data } = await api.get("/colaborador");
-
-      setUsers(data);
-    };
-
-    fetchUsers();
-  }, []);
-
+const ListCollaborators = ({ users, filter }) => {
   return (
     <Row>
       {users.length > 0 ? (
@@ -34,6 +19,19 @@ const ListCollaborators = () => {
       ) : (
         <h1>Sem usuários</h1>
       )}
+      {users
+        .filter((user) => {
+          if (!filter) return true;
+          if (user.nome.includes(filter) || user.email.includes(filter)) {
+            return true;
+          }
+        })
+        .map((user) => (
+          <ul>
+            <li>{user.nome}</li>
+            <li>{user.email}</li>
+          </ul>
+        ))}
     </Row>
   );
 };

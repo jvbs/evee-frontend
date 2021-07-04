@@ -25,6 +25,7 @@ const CreateForm = () => {
   const [status, setStatus] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
+  console.log(loggedUser);
 
   const resetErrors = () => {
     formRef.current.setErrors({});
@@ -92,6 +93,7 @@ const CreateForm = () => {
           });
         }
       } catch (err) {
+        console.log(err.response);
         let message = err.response.data.error;
         if (message === "Bad Request") {
           message =
