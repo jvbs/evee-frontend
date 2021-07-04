@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react";
 import { Row } from "reactstrap";
-
-import { api } from "../../../../services/api";
 
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
-const ListCollaborators = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data } = await api.get("/colaborador");
-
-      setUsers(data);
-    };
-
-    fetchUsers();
-  }, []);
-
+const ListCollaborators = ({ users, filter }) => {
   return (
     <>
       <ContentSearchReturn qtdUsers={users.length} />
