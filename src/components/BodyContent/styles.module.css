@@ -40,3 +40,47 @@
 .body main {
   margin-top: 2rem;
 }
+
+@media only screen and (min-width: 375px) {
+
+  .header {
+    height: 10vh;
+    background-color: var(--background);
+  
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header h1 {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--gray);
+    margin-bottom: 0 !important;
+  }
+  
+
+  
+  }
+  
+  @media only screen and (min-width: 768px) {
+
+    .header {
+      height: 10vh;
+      background-color: var(--background);
+    
+      align-items: center;
+      display: flex;
+      justify-content:left;
+    }
+  
+    .header h1 {
+      font-weight: bold;
+      font-size: 20px;
+      color: var(--gray);
+      margin-bottom: 0 !important;
+    }
+    
+  
+  }
+ 

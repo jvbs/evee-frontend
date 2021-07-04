@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Row, Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -8,21 +7,11 @@ import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
-import { api } from "../../services/api";
 import history from "../../utils/history";
 
 import styles from "./styles.module.css";
 
 const Home = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await api.get("/cargo");
-      console.log(response.data);
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <>
       <Container className={styles.content}>

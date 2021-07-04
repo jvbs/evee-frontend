@@ -1,19 +1,22 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Col, Container, FormGroup, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
-import { api } from "../../../services/api";
-import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { api } from "../../../../services/api";
+import Button from "../../../../components/Button";
+import Input from "../../../../components/Input";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
 const CreateCompanyForm = () => {
   const formRef = useRef(null);
+
+  const { handleLogin } = useContext(AuthContext);
 
   const resetErrors = () => {
     formRef.current.setErrors({});
@@ -43,23 +46,32 @@ const CreateCompanyForm = () => {
 
       try {
         const response = await api.post("/usuario", data);
-        console.log(response.data);
-        toast.success("🦄 Wow so easy!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        if (response.status === 201) {
+          toast.success("🎉 Demonstração solicitada com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
 
         resetForm();
+        handleLogin(data.email, data.senha);
       } catch (err) {
-        // console.log(err.request);
-        toast.error("🦄 Wow so easy!", {
+        if (!err) {
+          console.log("connection refused");
+        }
+        let message = err.response.data.error;
+        if (message === "Bad Request") {
+          message =
+            "Ocorreu um erro interno, verifique seus dados e tente novamente.";
+        }
+        toast.error(`😭 ${message}`, {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -95,7 +107,6 @@ const CreateCompanyForm = () => {
         >
           Tenha um RH cada vez mais ágil, estratégico, orientado à dados e
           centrando nas pessoas.
-          
         </p>
         <Form
           ref={formRef}
@@ -122,7 +133,12 @@ const CreateCompanyForm = () => {
             </Col>
             <Col lg="6">
               <FormGroup>
-                <Input label="CNPJ*" name="cnpj" testid="fieldCNPJ" />
+                <Input
+                  label="CNPJ*"
+                  name="cnpj"
+                  testid="fieldCNPJ"
+                  inputProps={{ maxLength: 14 }}
+                />
               </FormGroup>{" "}
             </Col>
           </Row>
@@ -177,7 +193,14 @@ const CreateCompanyForm = () => {
               </FormGroup>
             </Col>
           </Row>
-          <p style={{ fontSize: "12px", color: "var(--gray)", marginTop: "4vh", marginBottom: "4vh" }}>
+          <p
+            style={{
+              fontSize: "12px",
+              color: "var(--gray)",
+              marginTop: "4vh",
+              marginBottom: "4vh",
+            }}
+          >
             Os campos identificados com asteriscos (*) são de preenchimento
             obrigatório.
           </p>

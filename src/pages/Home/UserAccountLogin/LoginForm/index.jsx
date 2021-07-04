@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
-import Button from "../../../components/Button";
-import Input from "../../../components/Input";
-import { AuthContext } from "../../../contexts/AuthContext";
+import Button from "../../../../components/Button";
+import Input from "../../../../components/Input";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";

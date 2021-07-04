@@ -1,16 +1,11 @@
 import { useMemo } from "react";
 import { Row } from "reactstrap";
+import styles from "./styles.module.css";
 
 import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
-import styles from "./styles.module.css";
-
-function SplitName(text) {
-  return text.split(" ").slice(0, 3).join(" ");
-}
-
-const ListCollaborators = ({ users, filter }) => {
+const ListMentors = ({ users, filter }) => {
   const filteredUsers = useMemo(() => {
     return users.filter((user) => {
       if (!filter) return true;
@@ -19,12 +14,14 @@ const ListCollaborators = ({ users, filter }) => {
       }
     });
   }, [users, filter]);
+
+  const splitName = (text) => {
+    return text.split(" ").slice(0, 3).join(" ");
+  };
+
   return (
     <>
-      <ContentSearchReturn
-        section="Colaboradores"
-        qtdUsers={filteredUsers.length}
-      />
+      <ContentSearchReturn section="Mentores" qtdUsers={filteredUsers.length} />
       <Row>
         {filteredUsers.length > 0 ? (
           filteredUsers
@@ -38,7 +35,7 @@ const ListCollaborators = ({ users, filter }) => {
               return (
                 <UserBox
                   key={index}
-                  nome={SplitName(user.nome)}
+                  nome={splitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                 />
@@ -50,8 +47,8 @@ const ListCollaborators = ({ users, filter }) => {
               Ops! nenhum resultado encontrado...
             </p>
             <p className={styles.BoxTextTwo}>O que eu faço?</p>
-            <p className={styles.BoxTexList}>
-              Verifique se possui colaboradores cadastrados.
+            <p className={styles.BoxTextList}>
+              Verifique se possui mentores cadastrados.
             </p>
             <p className={styles.BoxTextList}>
               Verifique os termos digitados ou os filtros selecionados.
@@ -63,4 +60,4 @@ const ListCollaborators = ({ users, filter }) => {
   );
 };
 
-export default ListCollaborators;
+export default ListMentors;

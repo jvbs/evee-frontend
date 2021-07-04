@@ -28,19 +28,19 @@ const LeftSidePanel = () => {
             </div>
             <div className={styles.otherGroup}>
               <a
-                onClick={() => history.push("/admin/create-collaborator")}
+                onClick={() => history.push("/admin/collaborator")}
                 data-testid="btnMenuColaboradores"
                 href="#/"
               >
                 <li>Colaboradores</li>
               </a>
-              <a
+              {/* <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuDepartamentos"
                 href="#/"
               >
                 <li>Departamentos</li>
-              </a>
+              </a> */}
               <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuCadastroColaboradores"
@@ -52,14 +52,14 @@ const LeftSidePanel = () => {
                 </li>
               </a>
               <a
-                onClick={() => history.push("/admin/create-collaborator")}
+                onClick={() => history.push("/admin/mentors")}
                 data-testid="btnMenuMentores"
                 href="#/"
               >
                 <li>Mentores</li>
               </a>
               <a
-                onClick={() => history.push("/admin/create-collaborator")}
+                onClick={() => history.push("/admin/mentoreds")}
                 data-testid="btnMenuMentorados"
                 href="#/"
               >
