@@ -17,7 +17,7 @@ const TopFilters = () => {
         <Col lg="8" style={{ backgroundColor: "" }}>
           <FormGroup>
             <Input
-              label="Informe o nome ou e-mail do colaborador"
+              label="Informe o nome ou e-mail do mentor"
               name="pesquisa"
               testid="fieldPesquisarColaborador"
               style={{ marginTop: "0", marginBottom: "0" }}
