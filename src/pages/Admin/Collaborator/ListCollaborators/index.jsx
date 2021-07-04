@@ -37,10 +37,7 @@ const ListCollaborators = ({ users, filter }) => {
           <p className={styles.BoxTextOne}>Ops! nenhum resultado encontrado...</p>
           <p className={styles.BoxTextTwo}>O que eu faço?</p>
           <p className={styles.BoxTexList}>Verifique se possui colaboradores cadastrados.</p>
-          <p className={styles.BoxTextList}>
-            Verifique os termos digitados ou os filtros selecionados. Utilize
-            termos genéricos na busca.
-          </p>
+          <p className={styles.BoxTextList}>Verifique os termos digitados ou os filtros selecionados.</p>
         </div>
         )}
       </Row>
