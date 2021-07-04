@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthContext";
+import history from "../../../../utils/history";
 
 import Button from "../../../../components/Button";
 import styles from "./styles.module.css";
@@ -29,7 +30,7 @@ const Welcome = () => {
           </p>
         </div>
         <div className={styles.btnGroup}>
-          <Button text="Gerenciar Colaboradores" />
+          <Button text="Gerenciar Colaboradores" onClick={() => history.push("/admin/collaborator")}/>
         </div>
       </section>
     </>
