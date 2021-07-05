@@ -32,9 +32,13 @@ const Mentors = () => {
         header="Gerenciamento de Mentores"
         breadcrumb="Home > Mentores"
       >
-        <Form ref={formRef} style={{ marginBottom: "3vh" }}>
-          <Row>
-            <Col lg="8" style={{ backgroundColor: "" }}>
+        <Row>
+          <Col lg="8" style={{ backgroundColor: "" }}>
+            <Form
+              ref={formRef}
+              style={{ marginBottom: "3vh" }}
+              onSubmit={() => {}}
+            >
               <FormGroup>
                 <Input
                   label="Informe o nome ou e-mail do mentor"
@@ -44,17 +48,17 @@ const Mentors = () => {
                   onChange={(e) => setFilter(e.target.value)}
                 />
               </FormGroup>
-            </Col>
+            </Form>
+          </Col>
 
-            <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
-              <Button
-                text="Cadastrar"
-                onClick={() => history.push("/admin/create-collaborator")}
-                style={{ width: "100%" }}
-              />
-            </Col>
-          </Row>
-        </Form>
+          <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
+            <Button
+              text="Cadastrar"
+              onClick={() => history.push("/admin/create-collaborator")}
+              style={{ width: "100%" }}
+            />
+          </Col>
+        </Row>
         <ListMentors users={users} filter={filter} />
       </BodyContent>
     </Layout>

@@ -11,7 +11,6 @@ import Button from "../../../components/Button";
 import history from "../../../utils/history";
 import ListCollaborators from "./ListCollaborators";
 
-
 const Collaborator = () => {
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
@@ -36,9 +35,13 @@ const Collaborator = () => {
         breadcrumb="Home > Colaboradores"
       >
         {/* <TopFilters /> */}
-        <Form ref={formRef} style={{ marginBottom: "3vh" }}>
-          <Row>
-            <Col lg="8" style={{ backgroundColor: "" }}>
+        <Row>
+          <Col lg="8" style={{ backgroundColor: "" }}>
+            <Form
+              ref={formRef}
+              style={{ marginBottom: "3vh" }}
+              onSubmit={() => {}}
+            >
               <FormGroup>
                 <Input
                   label="Informe o nome ou e-mail do colaborador"
@@ -48,17 +51,16 @@ const Collaborator = () => {
                   onChange={(e) => setFilter(e.target.value)}
                 />
               </FormGroup>
-            </Col>
-
-            <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
-              <Button
-                text="Cadastrar"
-                onClick={() => history.push("/admin/create-collaborator")}
-                style={{ width: "100%" }}
-              />
-            </Col>
-          </Row>
-        </Form>
+            </Form>
+          </Col>
+          <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
+            <Button
+              text="Cadastrar"
+              onClick={() => history.push("/admin/create-collaborator")}
+              style={{ width: "100%" }}
+            />
+          </Col>
+        </Row>
         <ListCollaborators users={users} filter={filter} />
         {/* <ListMentors /> */}
         {/* <ListMentoreds /> */}

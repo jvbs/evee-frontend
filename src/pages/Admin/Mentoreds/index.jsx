@@ -20,7 +20,6 @@ const Mentoreds = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await api.get("/colaborador/mentorados");
-      console.log(data);
 
       setUsers(data);
       // setFilteredUsers(data);
@@ -35,10 +34,13 @@ const Mentoreds = () => {
         header="Gerenciamento de Mentorados"
         breadcrumb="Home > Mentorados"
       >
-        {/* <TopFilters /> */}
-        <Form ref={formRef} style={{ marginBottom: "3vh" }}>
-          <Row>
-            <Col lg="8" style={{ backgroundColor: "" }}>
+        <Row>
+          <Col lg="8" style={{ backgroundColor: "" }}>
+            <Form
+              ref={formRef}
+              style={{ marginBottom: "3vh" }}
+              onSubmit={() => {}}
+            >
               <FormGroup>
                 <Input
                   label="Informe o nome ou e-mail do mentorado"
@@ -48,17 +50,17 @@ const Mentoreds = () => {
                   onChange={(e) => setFilter(e.target.value)}
                 />
               </FormGroup>
-            </Col>
+            </Form>
+          </Col>
 
-            <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
-              <Button
-                text="Cadastrar"
-                onClick={() => history.push("/admin/create-collaborator")}
-                style={{ width: "100%" }}
-              />
-            </Col>
-          </Row>
-        </Form>
+          <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
+            <Button
+              text="Cadastrar"
+              onClick={() => history.push("/admin/create-collaborator")}
+              style={{ width: "100%" }}
+            />
+          </Col>
+        </Row>
         <ListMentoreds users={users} filter={filter} />
       </BodyContent>
     </Layout>
