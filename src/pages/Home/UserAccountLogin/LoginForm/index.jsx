@@ -84,7 +84,14 @@ const LoginForm = () => {
             </FormGroup>
           </Row>
           <Row>
-            <p style={{ fontSize: "12px", color: "var(--gray)", marginTop: "4vh", marginBottom: "4vh" }}>
+            <p
+              style={{
+                fontSize: "12px",
+                color: "var(--gray)",
+                marginTop: "4vh",
+                marginBottom: "4vh",
+              }}
+            >
               Os campos identificados com asteriscos (*) são de preenchimento
               obrigatório.
             </p>
@@ -92,7 +99,7 @@ const LoginForm = () => {
           <Row>
             <Button
               type="submit"
-              OnClick={handleSubmit}
+              onClick={handleSubmit}
               text="Entrar"
               style={{ width: "100%" }}
             />
