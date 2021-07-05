@@ -1,0 +1,18 @@
+.BoxTextOne{
+    font-size: 28px !important;
+    color: var(--light-brown) !important;
+}
+
+.BoxTextTwo{
+    font-size: 28px !important;
+}
+
+.BoxTextList{
+    font-size: 22px !important;
+    color: var(--gray) !important;
+}
+
+.BoxTextGroup{
+    text-align: left;
+    margin-bottom: 2vh !important;
+}
