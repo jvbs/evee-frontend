@@ -3,7 +3,7 @@ import { Form } from "@unform/web";
 import { useEffect, useRef, useState } from "react";
 
 import BodyContent from "../../../../components/BodyContent";
-import Layout from "../../../../components/Layout";
+import LayoutMentor from "../../../../components/LayoutMentor";
 import Input from "../../../../components/Input";
 import Button from "../../../../components/Button";
 import history from "../../../../utils/history";
@@ -27,7 +27,7 @@ const MentorDetails = () => {
     fetchUsers();
   }, []);
   return (
-  <Layout>
+  <LayoutMentor>
     <BodyContent
       header="Painel do Colaborador: Celso Donato"
       breadcrumb="Home > Mentores > Mentor"
@@ -54,7 +54,7 @@ const MentorDetails = () => {
         </Row>
         <ListMentoreds users={users} filter={filter} />
     </BodyContent>
-  </Layout>
+  </LayoutMentor>
 );
 };
 
