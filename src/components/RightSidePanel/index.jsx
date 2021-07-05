@@ -26,9 +26,13 @@ const RightSidePanel = () => {
           <span className={styles.userEmail}>{loggedUser?.email}</span>
           <span className={styles.userCargo}>{loggedUser?.cargo}</span>
           <span className={styles.userCargo}>{loggedUser?.nome_empresa}</span>
-          <span className={styles.userDepartamento}>
-            {loggedUser?.departamento}
-          </span>
+          {loggedUser?.userType !== "Admin" ? (
+            <span className={styles.userDepartamento}>
+              {loggedUser?.departamentologgedUser?.departamento}
+            </span>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className={styles.metricasWrapper}>
