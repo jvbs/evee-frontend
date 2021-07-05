@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { Row } from "reactstrap";
 import styles from "./styles.module.css";
 
-import UserBox from "../../../../components/UserBox";
-import ContentSearchReturn from "../../../../components/ContentSearchReturn";
+import UserBox from "../../../../../components/UserBox";
+import ContentSearchReturn from "../../../../../components/ContentSearchReturn";
 
 const ListMentors = ({ users, filter }) => {
   const filteredUsers = useMemo(() => {

@@ -11,7 +11,8 @@ import UserAccountCreate from "../pages/Home/UserAccountCreate";
 import AdminHome from "../pages/Admin/Home";
 import CreateCollaborator from "../pages/Admin/CreateCollaborator";
 import Collaborator from "../pages/Admin/Collaborator";
-import Mentors from "../pages/Admin/Mentors";
+import Mentors from "../pages/Admin/Mentors/Home";
+import MentorDetails from "../pages/Admin/Mentors/MentorDetails";
 import Mentoreds from "../pages/Admin/Mentoreds";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
@@ -51,6 +52,9 @@ const Routes = () => {
       </ProtectedRoute>
       <ProtectedRoute path="/admin/mentors" exact isPrivate>
         <Mentors />
+      </ProtectedRoute>
+      <ProtectedRoute path="/admin/mentors/mentor-details" exact isPrivate>
+        <MentorDetails />
       </ProtectedRoute>
       <ProtectedRoute path="/admin/mentoreds" exact isPrivate>
         <Mentoreds />

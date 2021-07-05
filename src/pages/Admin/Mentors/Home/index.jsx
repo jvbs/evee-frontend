@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { Col, FormGroup, Row } from "reactstrap";
 import { Form } from "@unform/web";
 
-import { api } from "../../../services/api";
+import { api } from "../../../../services/api";
 
-import Layout from "../../../components/Layout";
-import BodyContent from "../../../components/BodyContent";
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
-import history from "../../../utils/history";
+import Layout from "../../../../components/Layout";
+import BodyContent from "../../../../components/BodyContent";
+import Input from "../../../../components/Input";
+import Button from "../../../../components/Button";
+import history from "../../../../utils/history";
 import ListMentors from "./ListMentors";
 
 const Mentors = () => {
