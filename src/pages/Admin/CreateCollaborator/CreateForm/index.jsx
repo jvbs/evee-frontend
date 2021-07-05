@@ -29,6 +29,17 @@ const CreateForm = () => {
 
   const { loggedUser } = useContext(AuthContext);
 
+  useEffect(() => {
+    const fetchFormFields = async () => {
+      const { data: cargos } = await api.get("/cargo");
+      const { data: departamentos } = await api.get("/departamento");
+
+      setCargos(cargos);
+      setDepartamentos(departamentos);
+    };
+
+    fetchFormFields();
+  }, []);
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
@@ -43,25 +54,15 @@ const CreateForm = () => {
     setTipo("");
   };
 
-  useEffect(() => {
-    const fetchFormFields = async () => {
-      const { data: cargos } = await api.get("/cargo");
-      const { data: departamentos } = await api.get("/departamento");
-
-      setCargos(cargos);
-      setDepartamentos(departamentos);
-    };
-
-    fetchFormFields();
-  }, []);
-
   const handleSubmit = async (data) => {
     try {
       data.cargo_id = Number(cargo);
       data.departamento_id = Number(departamento);
       data.tipo_usuario = tipo;
-      data.status = Number(status);
-      data.empresa_id = Number(loggedUser?.empresa_id);
+      data.status = status;
+      data.empresa_id = loggedUser?.empresa_id;
+
+      console.log(data);
 
       const schema = Yup.object().shape({
         nome: Yup.string().required('O campo "Nome" é obrigatório.'),
@@ -72,10 +73,12 @@ const CreateForm = () => {
         celular: Yup.string()
           .required('O campo "Celular" é obrigatório')
           .length(14),
-        departamento_id: Yup.string().required(
-          'O campo "Departamento" é obrigatório.'
-        ),
-        cargo_id: Yup.number().required('O campo "Cargo" é obrigatório.'),
+        departamento_id: Yup.number()
+          .moreThan(0, 'O campo "Departamento" é obrigatório.')
+          .required('O campo "Departamento" é obrigatório.'),
+        cargo_id: Yup.number()
+          .moreThan(0, 'O campo "Cargo" é obrigatório.')
+          .required('O campo "Cargo" é obrigatório.'),
         tipo_usuario: Yup.string().required(
           'O campo "Tipo de Usuário" é obrigatório.'
         ),
@@ -84,7 +87,7 @@ const CreateForm = () => {
           [Yup.ref("senha"), null],
           "As senhas devem coincidir"
         ),
-        status: Yup.number().required('O campo "Status" é obrigatório.'),
+        status: Yup.string().required('O campo "Status" é obrigatório.'),
       });
 
       await schema.validate(data, { abortEarly: false });
@@ -212,9 +215,9 @@ const CreateForm = () => {
                     onChange={(e) => setDepartamento(e.target.value)}
                     value={departamento}
                   >
-                    {departamentos.map((departamento) => (
-                      <MenuItem key={departamento.id} value={departamento.id}>
-                        {departamento.nome_departamento}
+                    {departamentos.map((dpto) => (
+                      <MenuItem key={dpto.id} value={dpto.id}>
+                        {dpto.nome_departamento}
                       </MenuItem>
                     ))}
                   </Select>
@@ -292,8 +295,8 @@ const CreateForm = () => {
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <MenuItem value={1}>Ativo</MenuItem>
-                  <MenuItem value={0}>Inativo</MenuItem>
+                  <MenuItem value={"0"}>Inativo</MenuItem>
+                  <MenuItem value={"1"}>Ativo</MenuItem>
                 </Select>
               </FormGroup>
             </Col>
