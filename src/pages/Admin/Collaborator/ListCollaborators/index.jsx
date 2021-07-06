@@ -5,6 +5,7 @@ import UserBox from "../../../../components/UserBox";
 import ContentSearchReturn from "../../../../components/ContentSearchReturn";
 
 import styles from "./styles.module.css";
+import history from "../../../../utils/history";
 
 function SplitName(text) {
   return text.split(" ").slice(0, 3).join(" ");
@@ -41,6 +42,7 @@ const ListCollaborators = ({ users, filter }) => {
                   nome={SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
+                  onClick={() => history.push(`/admin/${user.id}`)}
                 />
               );
             })

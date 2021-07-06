@@ -8,7 +8,8 @@ import logo from "../../assets/images/logo.png";
 import styles from "./styles.module.css";
 
 const LeftSidePanel = () => {
-  const { handleLogout } = useContext(AuthContext);
+  const { handleLogout, loggedUser } = useContext(AuthContext);
+
   return (
     <>
       <div className={styles.panel}>
@@ -26,6 +27,7 @@ const LeftSidePanel = () => {
                 <li>Home</li>
               </a>
             </div>
+
             <div className={styles.otherGroup}>
               <a
                 onClick={() => history.push("/admin/collaborator")}
@@ -34,13 +36,6 @@ const LeftSidePanel = () => {
               >
                 <li>Colaboradores</li>
               </a>
-              {/* <a
-                onClick={() => history.push("/admin/create-collaborator")}
-                data-testid="btnMenuDepartamentos"
-                href="#/"
-              >
-                <li>Departamentos</li>
-              </a> */}
               <a
                 onClick={() => history.push("/admin/create-collaborator")}
                 data-testid="btnMenuCadastroColaboradores"
@@ -65,6 +60,18 @@ const LeftSidePanel = () => {
               >
                 <li>Mentorados</li>
               </a>
+              {loggedUser?.userType !== "Admin" &&
+              loggedUser?.cargo === "Líder" ? (
+                <a
+                  onClick={() => history.push("/admin/pdi")}
+                  data-testid="btnMenuPdi"
+                  href="#/"
+                >
+                  <li>PDI</li>
+                </a>
+              ) : (
+                ""
+              )}
             </div>
           </ul>
         </nav>
