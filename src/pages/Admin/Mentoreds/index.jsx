@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Col, FormGroup, Row } from "reactstrap";
 import { Form } from "@unform/web";
 
@@ -10,23 +10,30 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import history from "../../../utils/history";
 import ListMentoreds from "./ListMentoreds";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const Mentoreds = () => {
+  const { loggedUser } = useContext(AuthContext);
+  const empresaId = loggedUser?.empresa_id;
+
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
   // const [filteredUsers, setFilteredUsers] = useState([]);
   const [filter, setFilter] = useState(null);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      const { data } = await api.get("/colaborador/mentorados");
+    const fetchUsers = async (empresaId) => {
+      if (empresaId) {
+        const { data } = await api.get(
+          `/colaborador/mentorados?empresa_id=${empresaId}`
+        );
 
-      setUsers(data);
-      // setFilteredUsers(data);
+        setUsers(data);
+      }
     };
 
-    fetchUsers();
-  }, []);
+    fetchUsers(empresaId);
+  }, [empresaId]);
 
   return (
     <Layout>

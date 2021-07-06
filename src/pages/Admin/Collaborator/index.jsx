@@ -22,13 +22,15 @@ const Collaborator = () => {
 
   useEffect(() => {
     const fetchUsers = async (empresaId) => {
-      const { data } = await api.get(`/colaborador?empresa_id=${empresaId}`);
+      if (empresaId) {
+        const { data } = await api.get(`/colaborador?empresa_id=${empresaId}`);
 
-      setUsers(data);
+        setUsers(data);
+      }
     };
 
     fetchUsers(empresaId);
-  }, []);
+  }, [empresaId]);
 
   return (
     <Layout>
