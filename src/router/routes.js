@@ -13,7 +13,8 @@ import CreateCollaborator from "../pages/Admin/CreateCollaborator";
 import Collaborator from "../pages/Admin/Collaborator";
 import Mentors from "../pages/Admin/Mentors/Home";
 import MentorDetails from "../pages/Admin/Mentors/MentorDetails";
-import Mentoreds from "../pages/Admin/Mentoreds";
+import Mentoreds from "../pages/Admin/Mentoreds/Home";
+import MentoredDetails from "../pages/Admin/Mentoreds/MentoredDetails";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -53,11 +54,14 @@ const Routes = () => {
       <ProtectedRoute path="/admin/mentors" exact isPrivate>
         <Mentors />
       </ProtectedRoute>
-      <ProtectedRoute path="/admin/mentors/mentor-details/:id" exact isPrivate>
+      <ProtectedRoute path="/admin/mentors/details/:id" exact isPrivate>
         <MentorDetails />
       </ProtectedRoute>
       <ProtectedRoute path="/admin/mentoreds" exact isPrivate>
         <Mentoreds />
+      </ProtectedRoute>
+      <ProtectedRoute path="/admin/mentoreds/details/:id" exact isPrivate>
+        <MentoredDetails />
       </ProtectedRoute>
     </Switch>
   );

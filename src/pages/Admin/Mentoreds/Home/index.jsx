@@ -2,15 +2,15 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Col, FormGroup, Row } from "reactstrap";
 import { Form } from "@unform/web";
 
-import { api } from "../../../services/api";
+import { api } from "../../../../services/api";
+import history from "../../../../utils/history";
 
-import Layout from "../../../components/Layout";
-import BodyContent from "../../../components/BodyContent";
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
-import history from "../../../utils/history";
+import Layout from "../../../../components/Layout";
+import BodyContent from "../../../../components/BodyContent";
+import Input from "../../../../components/Input";
+import Button from "../../../../components/Button";
 import ListMentoreds from "./ListMentoreds";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 const Mentoreds = () => {
   const { loggedUser } = useContext(AuthContext);
@@ -18,7 +18,6 @@ const Mentoreds = () => {
 
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
-  // const [filteredUsers, setFilteredUsers] = useState([]);
   const [filter, setFilter] = useState(null);
 
   useEffect(() => {

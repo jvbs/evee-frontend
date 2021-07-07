@@ -9,35 +9,35 @@ import Layout from "../../../../components/Layout";
 
 import styles from "./styles.module.css";
 
-const MentorDetails = () => {
-  const [mentor, setMentor] = useState([]);
-  const { id: mentorId } = useParams();
+const MentoredDetails = () => {
+  const [mentored, setMentored] = useState([]);
+  const { id: mentoredId } = useParams();
   const { loggedUser } = useContext(AuthContext);
   const empresaId = loggedUser?.empresa_id;
 
   useEffect(() => {
-    const fetchMentors = async (empresaId) => {
-      if (empresaId && mentorId) {
+    const fetchMentoreds = async (empresaId) => {
+      if (empresaId && mentoredId) {
         const { data } = await api.get(
-          `/colaborador/mentor?empresa_id=${empresaId}&mentor_id=${mentorId}`
+          `/colaborador/mentorado?empresa_id=${empresaId}&mentor_id=${mentoredId}`
         );
-        setMentor(data);
+        setMentored(data);
       }
     };
 
-    fetchMentors(empresaId);
-  }, [empresaId, mentorId]);
+    fetchMentoreds(empresaId);
+  }, [empresaId, mentoredId]);
 
   return (
-    <Layout panel="mentor" data={mentor}>
+    <Layout panel="mentored" data={mentored}>
       <BodyContent
-        header={`Painel do Mentor: ${mentor.user?.nome}`}
-        breadcrumb={`Home > Mentores > ${mentor.user?.nome}`}
+        header={`Painel do Mentorado: ${mentored.user?.nome}`}
+        breadcrumb={`Home > Mentorados > ${mentored.user?.nome}`}
       >
-        <p>Mentor details {mentorId}</p>
+        <p>Mentored details {mentoredId}</p>
       </BodyContent>
     </Layout>
   );
 };
 
-export default MentorDetails;
+export default MentoredDetails;

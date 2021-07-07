@@ -40,7 +40,7 @@ const ListMentors = ({ users, filter }) => {
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                   onClick={() =>
-                    history.push(`/admin/mentors/mentor-details/${user.id}`)
+                    history.push(`/admin/mentors/details/${user.id}`)
                   }
                 />
               );

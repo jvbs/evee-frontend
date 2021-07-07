@@ -42,7 +42,19 @@ const ListCollaborators = ({ users, filter }) => {
                   nome={SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
-                  onClick={() => history.push(`/admin/${user.id}`)}
+                  onClick={() => {
+                    switch (user.tipo_usuario) {
+                      case "Comum":
+                        history.push(`/admin/${user.id}`);
+                        break;
+                      case "Mentor":
+                        history.push(`/admin/mentors/details/${user.id}`);
+                        break;
+                      case "Mentorado":
+                        history.push(`/admin/mentoreds/details/${user.id}`);
+                        break;
+                    }
+                  }}
                 />
               );
             })
