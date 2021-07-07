@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 
 import UserBox from "../../../../../components/UserBox";
 import ContentSearchReturn from "../../../../../components/ContentSearchReturn";
+import history from "../../../../../utils/history";
 
 const ListMentors = ({ users, filter }) => {
   const filteredUsers = useMemo(() => {
@@ -38,6 +39,9 @@ const ListMentors = ({ users, filter }) => {
                   nome={splitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
+                  onClick={() =>
+                    history.push(`/admin/mentors/mentor-details/${user.id}`)
+                  }
                 />
               );
             })

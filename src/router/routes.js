@@ -53,7 +53,7 @@ const Routes = () => {
       <ProtectedRoute path="/admin/mentors" exact isPrivate>
         <Mentors />
       </ProtectedRoute>
-      <ProtectedRoute path="/admin/mentors/mentor-details" exact isPrivate>
+      <ProtectedRoute path="/admin/mentors/mentor-details/:id" exact isPrivate>
         <MentorDetails />
       </ProtectedRoute>
       <ProtectedRoute path="/admin/mentoreds" exact isPrivate>

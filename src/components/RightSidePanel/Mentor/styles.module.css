@@ -1,0 +1,189 @@
+/* Gerais */
+
+.sidePanel {
+  background-color: var(--background);
+  height: auto;
+}
+
+.userPhotoWrapper {
+  padding: 13% 0 8% 0;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.userPhotoWrapper .userFoto {
+  width: 22vw;
+  height: 22vw;
+  border-radius: 50%;
+  border: 0px solid var(--gray);
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.userPhotoWrapper button {
+  background-color: var(--white);
+  border: 0px;
+  border-radius: 33px;
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  margin-top: 8.4vw;
+  margin-right: 1.8vw;
+}
+
+.userPhotoWrapper button:hover {
+  background-color: var(--background);
+  cursor: pointer;
+  border: 2px solid var(--yellow-gold);
+}
+
+.userInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.userInfoWrapper .userNome {
+  font-weight: bold;
+  color: var(--yellow-gold);
+  font-size: 1.4em;
+}
+
+.userInfoWrapper .userEmail {
+  font-size: 1vw;
+  text-transform: lowercase;
+  color: var(--gray);
+  margin-bottom: 5%;
+}
+
+.userInfoWrapper .userCargo,
+.userDepartamento {
+  color: var(--gray);
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.metricasWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.metricasWrapper .text {
+  font-weight: bold;
+  color: var(--yellow-gold);
+  font-size: 1.2em;
+}
+
+.metricasWrapper .textDepartamento {
+  font-weight: bold;
+  color: var(--gray);
+  font-size: 1em;
+  margin-top: 3%;
+  margin-bottom: 7%;
+}
+
+.aprendizes,
+.estagiarios,
+.efetivacoes,
+.mentoreds {
+  font-size: 18px;
+  color: var(--gray);
+  margin-bottom: 10%;
+
+  display: flex;
+  justify-content: center;
+}
+.aprendizes b,
+.estagiarios b,
+.efetivacoes b {
+  margin-right: 5%;
+  color: var(--light-brown);
+}
+
+.mentoreds b {
+  color: var(--light-brown);
+  margin-top: 5%;
+}
+
+.aprendizes strong,
+.estagiarios strong,
+.efetivacoes strong {
+  font-size: 24px;
+  /* font-weight: bold; */
+  color: var(--light-brown);
+}
+
+.groupMentoreds {
+  margin-top: 10%;
+}
+
+@media only screen and (min-width: 375px) {
+  .userInfoWrapper .userEmail {
+    font-size: 100%;
+    text-transform: lowercase;
+    color: var(--gray);
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .userPhotoWrapper .userFoto {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .userInfoWrapper .userEmail {
+    font-size: 1vw;
+    text-transform: lowercase;
+    color: var(--gray);
+    margin-bottom: 5%;
+  }
+  .aprendizes,
+  .estagiarios,
+  .efetivacoes,
+  .mentoreds {
+    font-size: 100%;
+    color: var(--gray);
+    margin-bottom: 10%;
+
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .userPhotoWrapper .userFoto {
+    width: 11.5vw;
+    height: 11.5vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .userInfoWrapper .userEmail {
+    font-size: 1vw;
+    text-transform: lowercase;
+    color: var(--gray);
+    margin-bottom: 5%;
+  }
+
+  .aprendizes,
+  .estagiarios,
+  .efetivacoes,
+  .mentoreds {
+    font-size: 100%;
+    color: var(--gray);
+    margin-bottom: 10%;
+
+    display: flex;
+    justify-content: center;
+  }
+}
