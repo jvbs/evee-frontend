@@ -83,23 +83,25 @@ const EditForm = () => {
 
       await schema.validate(data, { abortEarly: false });
 
+      console.log(data);
+
       resetErrors();
 
       try {
-        const response = await api.post("/colaborador", data);
-
-        if (response.status === 201) {
-          resetForm();
-          toast.success("🎉 Colaborador cadastrado com sucesso!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
+        // const response = await api.post("/colaborador", data);
+        console.log("passou");
+        // if (response.status === 201) {
+        //   resetForm();
+        //   toast.success("🎉 Colaborador cadastrado com sucesso!", {
+        //     position: "top-right",
+        //     autoClose: 3000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //   });
+        // }
       } catch (err) {
         console.log(err.response);
         let message = err.response.data.error;

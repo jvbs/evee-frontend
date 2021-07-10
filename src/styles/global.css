@@ -82,6 +82,10 @@ body {
 }
 
 .MuiInputBase-input.Mui-disabled {
-  opacity: 0.1 !important;
-  background-color: var(--gray) !important;
+  opacity: 0.4 !important;
+}
+
+.MuiInputBase-input.Mui-disabled {
+  background-color: #edeeef !important;
+  color: var(--gray) !important;
 }
