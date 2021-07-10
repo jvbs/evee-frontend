@@ -54,6 +54,13 @@ const EditForm = () => {
       setCpf(loggedUser?.cpf);
       setEmail(loggedUser?.email);
       setCelular(loggedUser?.celular);
+
+      if (loggedUser?.userType !== "Admin") {
+        setDepartamento(loggedUser?.departamento_id);
+        setCargo(loggedUser?.cargo_id);
+        setTipo(loggedUser?.userType);
+        setStatus(loggedUser?.status);
+      }
     }
   }, [loggedUser]);
 
@@ -224,8 +231,8 @@ const EditForm = () => {
                     name="departamento_id"
                     label="Departamento*"
                     testid="fieldDepartamento"
-                    // onChange={(e) => setDepartamento(e.target.value)}
-                    // value={departamento}
+                    onChange={(e) => setDepartamento(e.target.value)}
+                    value={departamento}
                     disabled
                   >
                     {departamentos.map((dpto) => (
@@ -241,10 +248,10 @@ const EditForm = () => {
                   <Select
                     label="Cargo*"
                     name="cargo_id"
-                    // value={cargo}
+                    value={cargo}
+                    onChange={(e) => setCargo(e.target.value)}
                     testid="fieldCargo"
                     disabled
-                    // onChange={(e) => setCargo(e.target.value)}
                   >
                     {cargos.map((cargo) => (
                       <MenuItem key={cargo.id} value={cargo.id}>
@@ -262,9 +269,9 @@ const EditForm = () => {
                   label="Tipo Usuário*"
                   name="tipo_usuario"
                   testid="fieldtipo_usuario"
-                  // value={tipo}
+                  value={tipo}
+                  onChange={(e) => setTipo(e.target.value)}
                   disabled
-                  // onChange={(e) => setTipo(e.target.value)}
                 >
                   <MenuItem value={"Comum"}>Comum</MenuItem>
                   <MenuItem value={"Mentor"}>Mentor</MenuItem>
@@ -295,7 +302,7 @@ const EditForm = () => {
                   <Input
                     type="password"
                     name="confirmar_senha"
-                    label="Confirmar  senha*"
+                    label="Confirmar senha*"
                     testid="fieldConfirmarSenha"
                   />
                 </FormGroup>
@@ -308,11 +315,11 @@ const EditForm = () => {
                   name="status"
                   testid="fieldStatus"
                   value={status}
-                  disabled
                   onChange={(e) => setStatus(e.target.value)}
+                  disabled
                 >
-                  <MenuItem value={"0"}>Inativo</MenuItem>
-                  <MenuItem value={"1"}>Ativo</MenuItem>
+                  <MenuItem value={0}>Inativo</MenuItem>
+                  <MenuItem value={1}>Ativo</MenuItem>
                 </Select>
               </FormGroup>
             </Col>
