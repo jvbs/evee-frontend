@@ -3,10 +3,10 @@ import styles from "./styles.module.css";
 
 import defaultPhoto from "../../assets/images/evee.png";
 
-const UserBox = ({ nome, cargo, departamento, userPhoto }) => {
+const UserBox = ({ nome, cargo, departamento, userPhoto, ...rest }) => {
   return (
     <Col xl="4" md="6" sm="6" style={{ marginBottom: "2vh" }}>
-      <div className={styles.bloco}>
+      <div className={styles.bloco} {...rest}>
         <div className={styles.userPhotoWrapper}>
           <img
             src={userPhoto ? userPhoto : defaultPhoto}
@@ -16,18 +16,16 @@ const UserBox = ({ nome, cargo, departamento, userPhoto }) => {
         </div>
 
         <div className={styles.BoxTextCollaborator}>
-
           <div className={styles.BoxTextCollaboratorName}>
-          <p>{nome}</p>
+            <p>{nome}</p>
           </div>
-          
-          <div className={styles.BoxTextCollaboratorInformation}>
-          <p>{cargo}</p>
-          <p>{departamento}</p>
-          </div>
-      </div>
-      </div>
 
+          <div className={styles.BoxTextCollaboratorInformation}>
+            <p>{cargo}</p>
+            <p>{departamento}</p>
+          </div>
+        </div>
+      </div>
     </Col>
   );
 };

@@ -2,17 +2,17 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Col, FormGroup, Row } from "reactstrap";
 import { Form } from "@unform/web";
 
-import { AuthContext } from "../../../contexts/AuthContext";
-import { api } from "../../../services/api";
+import { AuthContext } from "../../../../contexts/AuthContext";
+import { api } from "../../../../services/api";
 
-import Layout from "../../../components/Layout";
-import BodyContent from "../../../components/BodyContent";
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
-import history from "../../../utils/history";
-import ListCollaborators from "./ListCollaborators";
+import Layout from "../../../../components/Layout";
+import BodyContent from "../../../../components/BodyContent";
+import Input from "../../../../components/Input";
+import Button from "../../../../components/Button";
+import history from "../../../../utils/history";
+import ListMentors from "./ListMentors";
 
-const Collaborator = () => {
+const Mentors = () => {
   const { loggedUser } = useContext(AuthContext);
   const empresaId = loggedUser?.empresa_id;
 
@@ -23,7 +23,9 @@ const Collaborator = () => {
   useEffect(() => {
     const fetchUsers = async (empresaId) => {
       if (empresaId) {
-        const { data } = await api.get(`/colaborador?empresa_id=${empresaId}`);
+        const { data } = await api.get(
+          `/colaborador/mentores?empresa_id=${empresaId}`
+        );
 
         setUsers(data);
       }
@@ -35,10 +37,9 @@ const Collaborator = () => {
   return (
     <Layout>
       <BodyContent
-        header="Gerenciamento de Colaboradores"
-        breadcrumb="Home > Colaboradores"
+        header="Gerenciamento de Mentores"
+        breadcrumb="Home > Mentores"
       >
-        {/* <TopFilters /> */}
         <Row>
           <Col lg="8" style={{ backgroundColor: "" }}>
             <Form
@@ -48,7 +49,7 @@ const Collaborator = () => {
             >
               <FormGroup>
                 <Input
-                  label="Informe o nome ou e-mail do colaborador"
+                  label="Informe o nome ou e-mail do mentor"
                   name="pesquisa"
                   testid="fieldPesquisarColaborador"
                   style={{ marginTop: "0", marginBottom: "0" }}
@@ -57,6 +58,7 @@ const Collaborator = () => {
               </FormGroup>
             </Form>
           </Col>
+
           <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
             <Button
               text="Cadastrar"
@@ -65,12 +67,10 @@ const Collaborator = () => {
             />
           </Col>
         </Row>
-        <ListCollaborators users={users} filter={filter} />
-        {/* <ListMentors /> */}
-        {/* <ListMentoreds /> */}
+        <ListMentors users={users} filter={filter} />
       </BodyContent>
     </Layout>
   );
 };
 
-export default Collaborator;
+export default Mentors;

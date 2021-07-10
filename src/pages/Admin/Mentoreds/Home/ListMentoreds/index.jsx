@@ -2,8 +2,9 @@ import { useMemo } from "react";
 import { Row } from "reactstrap";
 import styles from "./styles.module.css";
 
-import UserBox from "../../../../components/UserBox";
-import ContentSearchReturn from "../../../../components/ContentSearchReturn";
+import UserBox from "../../../../../components/UserBox";
+import ContentSearchReturn from "../../../../../components/ContentSearchReturn";
+import history from "../../../../../utils/history";
 
 function SplitName(text) {
   return text.split(" ").slice(0, 3).join(" ");
@@ -41,6 +42,9 @@ const ListMentoreds = ({ users, filter }) => {
                   nome={SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
+                  onClick={() =>
+                    history.push(`/admin/mentoreds/details/${user.id}`)
+                  }
                 />
               );
             })

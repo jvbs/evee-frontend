@@ -14,20 +14,27 @@ import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
+import { adminValidationSchema } from "../../../../helpers/UnformSchemas";
 import userPhoto from "../../../../assets/images/evee.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const CreateForm = () => {
+const EditForm = () => {
+  const { loggedUser } = useContext(AuthContext);
+
   const formRef = useRef(null);
+
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [celular, setCelular] = useState("");
+  const [cpf, setCpf] = useState("");
   const [cargo, setCargo] = useState("");
-  const [cargos, setCargos] = useState([]);
   const [departamento, setDepartamento] = useState("");
-  const [departamentos, setDepartamentos] = useState([]);
   const [tipo, setTipo] = useState("");
   const [status, setStatus] = useState("");
 
-  const { loggedUser } = useContext(AuthContext);
+  const [cargos, setCargos] = useState([]);
+  const [departamentos, setDepartamentos] = useState([]);
 
   useEffect(() => {
     const fetchFormFields = async () => {
@@ -40,6 +47,16 @@ const CreateForm = () => {
 
     fetchFormFields();
   }, []);
+
+  useEffect(() => {
+    if (loggedUser) {
+      setNome(loggedUser?.nome);
+      setCpf(loggedUser?.cpf);
+      setEmail(loggedUser?.email);
+      setCelular(loggedUser?.celular);
+    }
+  }, [loggedUser]);
+
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
@@ -62,53 +79,29 @@ const CreateForm = () => {
       data.status = status;
       data.empresa_id = loggedUser?.empresa_id;
 
-      console.log(data);
-
-      const schema = Yup.object().shape({
-        nome: Yup.string().required('O campo "Nome" é obrigatório.'),
-        cpf: Yup.string().required('O campo "CPF" é obrigatório').length(11),
-        email: Yup.string()
-          .email("Digite um e-mail válido")
-          .required('O campo "E-mail" é obrigatório.'),
-        celular: Yup.string()
-          .required('O campo "Celular" é obrigatório')
-          .length(14),
-        departamento_id: Yup.number()
-          .moreThan(0, 'O campo "Departamento" é obrigatório.')
-          .required('O campo "Departamento" é obrigatório.'),
-        cargo_id: Yup.number()
-          .moreThan(0, 'O campo "Cargo" é obrigatório.')
-          .required('O campo "Cargo" é obrigatório.'),
-        tipo_usuario: Yup.string().required(
-          'O campo "Tipo de Usuário" é obrigatório.'
-        ),
-        senha: Yup.string().required('O campo "Senha" é obrigatório.'),
-        confirmar_senha: Yup.string().oneOf(
-          [Yup.ref("senha"), null],
-          "As senhas devem coincidir"
-        ),
-        status: Yup.string().required('O campo "Status" é obrigatório.'),
-      });
+      const schema = adminValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
+
+      console.log(data);
 
       resetErrors();
 
       try {
-        const response = await api.post("/colaborador", data);
-
-        if (response.status === 201) {
-          resetForm();
-          toast.success("🎉 Colaborador cadastrado com sucesso!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
+        // const response = await api.post("/colaborador", data);
+        console.log("passou");
+        // if (response.status === 201) {
+        //   resetForm();
+        //   toast.success("🎉 Colaborador cadastrado com sucesso!", {
+        //     position: "top-right",
+        //     autoClose: 3000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //   });
+        // }
       } catch (err) {
         console.log(err.response);
         let message = err.response.data.error;
@@ -139,6 +132,10 @@ const CreateForm = () => {
     }
   };
 
+  if (!loggedUser) {
+    return <span>Loading...</span>;
+  }
+
   return (
     <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
       <ToastContainer />
@@ -152,7 +149,13 @@ const CreateForm = () => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="Nome*" name="nome" testid="fieldNome" />
+                  <Input
+                    label="Nome*"
+                    name="nome"
+                    testid="fieldNome"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                  />
                 </FormGroup>
               </Col>
               <Col lg="6">
@@ -163,12 +166,21 @@ const CreateForm = () => {
                     testid="fieldCPF"
                     type="text"
                     inputProps={{ maxLength: 11 }}
+                    value={cpf}
+                    onChange={(e) => setCpf(e.target.value)}
+                    disabled
                   />
                 </FormGroup>
               </Col>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="E-mail*" name="email" testid="fieldEmail" />
+                  <Input
+                    label="E-mail*"
+                    name="email"
+                    testid="fieldEmail"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </FormGroup>
               </Col>
               <Col lg="6">
@@ -178,6 +190,7 @@ const CreateForm = () => {
                     name="celular"
                     testid="fieldCelular"
                     inputProps={{ maxLength: 14 }}
+                    defaultValue={loggedUser?.celular}
                   />
                 </FormGroup>
               </Col>
@@ -197,7 +210,6 @@ const CreateForm = () => {
           </div>
         </Col>
       </Row>
-
       <Row>
         <Col lg="12">
           <section className={styles.formSection}>
@@ -212,8 +224,9 @@ const CreateForm = () => {
                     name="departamento_id"
                     label="Departamento*"
                     testid="fieldDepartamento"
-                    onChange={(e) => setDepartamento(e.target.value)}
-                    value={departamento}
+                    // onChange={(e) => setDepartamento(e.target.value)}
+                    // value={departamento}
+                    disabled
                   >
                     {departamentos.map((dpto) => (
                       <MenuItem key={dpto.id} value={dpto.id}>
@@ -228,9 +241,10 @@ const CreateForm = () => {
                   <Select
                     label="Cargo*"
                     name="cargo_id"
-                    value={cargo}
+                    // value={cargo}
                     testid="fieldCargo"
-                    onChange={(e) => setCargo(e.target.value)}
+                    disabled
+                    // onChange={(e) => setCargo(e.target.value)}
                   >
                     {cargos.map((cargo) => (
                       <MenuItem key={cargo.id} value={cargo.id}>
@@ -248,8 +262,9 @@ const CreateForm = () => {
                   label="Tipo Usuário*"
                   name="tipo_usuario"
                   testid="fieldtipo_usuario"
-                  value={tipo}
-                  onChange={(e) => setTipo(e.target.value)}
+                  // value={tipo}
+                  disabled
+                  // onChange={(e) => setTipo(e.target.value)}
                 >
                   <MenuItem value={"Comum"}>Comum</MenuItem>
                   <MenuItem value={"Mentor"}>Mentor</MenuItem>
@@ -269,7 +284,7 @@ const CreateForm = () => {
                 <FormGroup>
                   <Input
                     type="password"
-                    label="Senha*"
+                    label="Nova senha*"
                     name="senha"
                     testid="fieldSenha"
                   />
@@ -280,7 +295,7 @@ const CreateForm = () => {
                   <Input
                     type="password"
                     name="confirmar_senha"
-                    label="Confirmar senha*"
+                    label="Confirmar  senha*"
                     testid="fieldConfirmarSenha"
                   />
                 </FormGroup>
@@ -293,6 +308,7 @@ const CreateForm = () => {
                   name="status"
                   testid="fieldStatus"
                   value={status}
+                  disabled
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <MenuItem value={"0"}>Inativo</MenuItem>
@@ -324,4 +340,4 @@ const CreateForm = () => {
   );
 };
 
-export default CreateForm;
+export default EditForm;

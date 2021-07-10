@@ -39,6 +39,7 @@ export default function useAuth() {
 
       setLoggedUser(user);
       setAuthenticated(true);
+      console.log(user);
 
       history.push("/admin");
     } catch (err) {

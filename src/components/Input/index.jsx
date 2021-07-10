@@ -4,7 +4,12 @@ import { TextField } from "@material-ui/core";
 const Input = ({ label, testid, name, ...rest }) => {
   const inputRef = useRef(null);
   // eslint-disable-next-line
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const {
+    fieldName,
+    defaultValue: unformDefaultValue,
+    registerField,
+    error,
+  } = useField(name);
 
   // registrando alterações no input
   useEffect(() => {
@@ -23,6 +28,7 @@ const Input = ({ label, testid, name, ...rest }) => {
         label={label}
         name={name}
         inputRef={inputRef}
+        defaultValue={unformDefaultValue}
         {...rest}
       />
 
