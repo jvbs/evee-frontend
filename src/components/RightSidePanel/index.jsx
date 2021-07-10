@@ -5,6 +5,7 @@ import { FaPen } from "react-icons/fa";
 import userPhoto from "../../assets/images/mulher-maravilha.jpeg";
 
 import styles from "./styles.module.css";
+import history from "../../utils/history";
 
 const RightSidePanel = () => {
   const { loggedUser } = useContext(AuthContext);
@@ -14,7 +15,11 @@ const RightSidePanel = () => {
       <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
           <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-          <button type="button" data-testid="btnEditarUsuario">
+          <button
+            type="button"
+            data-testid="btnEditarUsuario"
+            onClick={() => history.push("/admin/edit-user")}
+          >
             <FaPen
               fontSize="1.3vw"
               style={{ color: "var(--yellow-gold)", opacity: "80%" }}

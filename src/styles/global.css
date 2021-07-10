@@ -80,3 +80,8 @@ body {
 .MuiInput-underline:after {
   border-bottom: 2px solid var(--yellow-gold) !important;
 }
+
+.MuiInputBase-input.Mui-disabled {
+  opacity: 0.1 !important;
+  background-color: var(--gray) !important;
+}
