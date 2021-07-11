@@ -16,6 +16,7 @@ import Mentors from "../pages/Admin/Mentors/Home";
 import MentorDetails from "../pages/Admin/Mentors/MentorDetails";
 import Mentoreds from "../pages/Admin/Mentoreds/Home";
 import MentoredDetails from "../pages/Admin/Mentoreds/MentoredDetails";
+import EditCollaborator from "../pages/Admin/EditCollaborator";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -75,6 +76,12 @@ const Routes = () => {
         exact
         isPrivate
         component={MentorDetails}
+      />
+      <ProtectedRoute
+        path="/admin/mentors/edit/:id"
+        exact
+        isPrivate
+        component={EditCollaborator}
       />
       <ProtectedRoute
         path="/admin/mentoreds"
