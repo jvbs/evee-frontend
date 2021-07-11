@@ -112,8 +112,6 @@ const EditForm = () => {
 
       await schema.validate(data, { abortEarly: false });
 
-      console.log("Dados", data);
-
       resetErrors();
 
       try {
