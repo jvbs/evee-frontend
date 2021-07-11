@@ -24,7 +24,7 @@ import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
-import { adminValidationSchema } from "../../../../helpers/UnformSchemas";
+import { collaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
 import userPhoto from "../../../../assets/images/evee.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -43,8 +43,8 @@ const EditForm = ({ collaborator }) => {
   const [tipo, setTipo] = useState("");
   const [status, setStatus] = useState("");
 
-  const [cargos, setCargos] = useState([]);
-  const [departamentos, setDepartamentos] = useState([]);
+  const [cargos, setCargos] = useState("");
+  const [departamentos, setDepartamentos] = useState("");
 
   const [activeTab, setActiveTab] = useState("1");
 
@@ -66,18 +66,14 @@ const EditForm = ({ collaborator }) => {
     };
 
     fetchFormFields();
+    if (collaborator) {
+      refreshFormFields(collaborator);
+    }
   }, []);
 
   useEffect(() => {
     if (collaborator) {
-      setNome(collaborator.user?.nome);
-      setCpf(collaborator.user?.cpf);
-      setEmail(collaborator.user?.email);
-      setCelular(collaborator.user?.celular);
-      setDepartamento(collaborator.departamento?.id);
-      setCargo(collaborator.cargo?.id);
-      setTipo(collaborator.user?.tipo_usuario);
-      setStatus(collaborator.user?.status);
+      refreshFormFields(collaborator);
     }
   }, [collaborator]);
 
@@ -95,26 +91,35 @@ const EditForm = ({ collaborator }) => {
     setTipo("");
   };
 
+  const refreshFormFields = (collaborator) => {
+    console.log(collaborator);
+    setNome(collaborator.user?.nome);
+    setCpf(collaborator.user?.cpf);
+    setEmail(collaborator.user?.email);
+    setCelular(collaborator.user?.celular);
+    setDepartamento(collaborator.departamento?.id);
+    setCargo(collaborator.cargo?.id);
+    setTipo(collaborator.user?.tipo_usuario);
+    setStatus(collaborator.user?.status);
+  };
+
   const handleSubmit = async (data) => {
     try {
-      delete data.cargo_id;
-      delete data.cpf;
-      delete data.departamento_id;
-      delete data.status;
-      delete data.tipo_usuario;
+      data.cargo_id = Number(cargo);
+      data.departamento_id = Number(departamento);
+      data.tipo_usuario = tipo;
+      data.status = status;
 
-      data.id = loggedUser?.id;
-      const schema = adminValidationSchema;
+      const schema = collaboratorValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
+
+      data.id = collaborator.user?.id;
 
       resetErrors();
 
       try {
-        const response = await api.put(
-          loggedUser?.userType === "Admin" ? "/usuario" : "/colaborador",
-          data
-        );
+        const response = await api.put("/colaborador/admin", data);
 
         if (response.status === 200) {
           toast.success("🎉 Usuário atualizado com sucesso!", {
@@ -160,7 +165,7 @@ const EditForm = ({ collaborator }) => {
     }
   };
 
-  if (!loggedUser) {
+  if (!collaborator || !loggedUser || !departamentos || !cargos) {
     return <span>Loading...</span>;
   }
 
@@ -243,7 +248,8 @@ const EditForm = ({ collaborator }) => {
                           name="celular"
                           testid="fieldCelular"
                           inputProps={{ maxLength: 14 }}
-                          defaultValue={loggedUser?.celular}
+                          value={celular}
+                          onChange={(e) => setCelular(e.target.value)}
                         />
                       </FormGroup>
                     </Col>
@@ -373,7 +379,7 @@ const EditForm = ({ collaborator }) => {
             </Row>
           </Form>
         </TabPane>
-        <TabPane tabId="2">
+        {/* <TabPane tabId="2">
           <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
             <ToastContainer />
 
@@ -423,7 +429,7 @@ const EditForm = ({ collaborator }) => {
               </Row>
             </section>
           </Form>
-        </TabPane>
+        </TabPane> */}
       </TabContent>
     </>
   );

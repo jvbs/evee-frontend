@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 
 import defaultPhoto from "../../assets/images/evee.png";
 
-const UserBox = ({ nome, cargo, departamento, userPhoto, ...rest }) => {
+const UserBox = ({ nome, cargo, departamento, userPhoto, tipo, ...rest }) => {
   return (
     <Col xl="4" md="6" sm="6" style={{ marginBottom: "2vh" }}>
       <div className={styles.bloco} {...rest}>
@@ -21,6 +21,7 @@ const UserBox = ({ nome, cargo, departamento, userPhoto, ...rest }) => {
           </div>
 
           <div className={styles.BoxTextCollaboratorInformation}>
+            <p>{tipo}</p>
             <p>{cargo}</p>
             <p>{departamento}</p>
           </div>

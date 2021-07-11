@@ -12,6 +12,7 @@ import AdminHome from "../pages/Admin/Home";
 import CreateCollaborator from "../pages/Admin/CreateCollaborator";
 import EditUser from "../pages/Admin/EditUser";
 import Collaborator from "../pages/Admin/Collaborator";
+import CollaboratorDetails from "../pages/Admin/Collaborator/Details";
 import Mentors from "../pages/Admin/Mentors/Home";
 import MentorDetails from "../pages/Admin/Mentors/MentorDetails";
 import Mentoreds from "../pages/Admin/Mentoreds/Home";
@@ -76,6 +77,18 @@ const Routes = () => {
         exact
         isPrivate
         component={MentorDetails}
+      />
+      <ProtectedRoute
+        path="/admin/default/details/:id"
+        exact
+        isPrivate
+        component={CollaboratorDetails}
+      />
+      <ProtectedRoute
+        path="/admin/default/edit/:id"
+        exact
+        isPrivate
+        component={EditCollaborator}
       />
       <ProtectedRoute
         path="/admin/mentors/edit/:id"

@@ -6,7 +6,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import history from "../../../utils/history";
 import styles from "./styles.module.css";
 
-const RightSidePanelMentored = ({ data }) => {
+const RightSidePanelMentor = ({ data }) => {
   const { loggedUser } = useContext(AuthContext);
 
   return (
@@ -14,24 +14,16 @@ const RightSidePanelMentored = ({ data }) => {
       <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
           <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-          {loggedUser?.userType !== "Mentor" ||
-          (loggedUser?.userType === "Mentor" &&
-            loggedUser?.departamento === "RH") ? (
-            <button
-              type="button"
-              data-testid="btnEditarUsuario"
-              onClick={() =>
-                history.push(`/admin/mentors/edit/${data.user?.id}`)
-              }
-            >
-              <FaPen
-                fontSize="1.3vw"
-                style={{ color: "var(--yellow-gold)", opacity: "80%" }}
-              />
-            </button>
-          ) : (
-            ""
-          )}
+          <button
+            type="button"
+            data-testid="btnEditarUsuario"
+            onClick={() => history.push(`/admin/default/edit/${data.user?.id}`)}
+          >
+            <FaPen
+              fontSize="1.3vw"
+              style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+            />
+          </button>
         </div>
         <div className={styles.userInfoWrapper}>
           <span className={styles.userNome}>{data.user?.nome}</span>
@@ -46,7 +38,6 @@ const RightSidePanelMentored = ({ data }) => {
             ""
           )}
         </div>
-
         {loggedUser?.userType !== "Admin" ? (
           <div className={styles.metricasWrapper}>
             <span className={styles.text}>Meus Mentorados</span>
@@ -91,4 +82,4 @@ const RightSidePanelMentored = ({ data }) => {
   );
 };
 
-export default RightSidePanelMentored;
+export default RightSidePanelMentor;
