@@ -78,7 +78,7 @@ const LeftSidePanel = () => {
 
               {loggedUser?.userType !== "Admin" ? (
                 <a
-                  onClick={() => history.push("/admin/pdi")}
+                  onClick={() => history.push("/admin/mentors/pdi")}
                   data-testid="btnMenuPdi"
                   href="#/"
                 >
