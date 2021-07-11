@@ -2,6 +2,7 @@ import { Col, Container, Row } from "reactstrap";
 
 import LeftSidePanel from "../LeftSidePanel";
 import RightSidePanel from "../RightSidePanel";
+import RightSideDefaultPanel from "../RightSidePanel/Default";
 import RightSideMentorPanel from "../RightSidePanel/Mentor";
 import RightSideMentoredPanel from "../RightSidePanel/Mentored";
 
@@ -17,6 +18,7 @@ const Layout = ({ children, panel, data }) => {
         <Col md="8">{children}</Col>
         <Col md="2">
           {!panel && <RightSidePanel />}
+          {panel === "comum" && data && <RightSideDefaultPanel data={data} />}
           {panel === "mentor" && data && <RightSideMentorPanel data={data} />}
           {panel === "mentored" && data && (
             <RightSideMentoredPanel data={data} />

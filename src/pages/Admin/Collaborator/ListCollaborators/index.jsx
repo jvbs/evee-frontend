@@ -42,10 +42,11 @@ const ListCollaborators = ({ users, filter }) => {
                   nome={SplitName(user.nome)}
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
+                  tipo={user.tipo_usuario}
                   onClick={() => {
                     switch (user.tipo_usuario) {
                       case "Comum":
-                        history.push(`/admin/${user.id}`);
+                        history.push(`/admin/default/details/${user.id}`);
                         break;
                       case "Mentor":
                         history.push(`/admin/mentors/details/${user.id}`);

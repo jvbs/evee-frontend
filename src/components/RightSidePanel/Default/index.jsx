@@ -17,7 +17,7 @@ const RightSidePanelMentor = ({ data }) => {
           <button
             type="button"
             data-testid="btnEditarUsuario"
-            onClick={() => history.push(`/admin/mentors/edit/${data.user?.id}`)}
+            onClick={() => history.push(`/admin/default/edit/${data.user?.id}`)}
           >
             <FaPen
               fontSize="1.3vw"
@@ -38,7 +38,6 @@ const RightSidePanelMentor = ({ data }) => {
             ""
           )}
         </div>
-
         {loggedUser?.userType !== "Admin" ? (
           <div className={styles.metricasWrapper}>
             <span className={styles.text}>Meus Mentorados</span>

@@ -3,6 +3,7 @@ import { FaPen } from "react-icons/fa";
 
 import userPhoto from "../../../assets/images/aquaman.jpg";
 import { AuthContext } from "../../../contexts/AuthContext";
+import history from "../../../utils/history";
 import styles from "./styles.module.css";
 
 const RightSidePanelMentored = ({ data }) => {
@@ -13,12 +14,24 @@ const RightSidePanelMentored = ({ data }) => {
       <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
           <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-          <button type="button" data-testid="btnEditarUsuario">
-            <FaPen
-              fontSize="1.3vw"
-              style={{ color: "var(--yellow-gold)", opacity: "80%" }}
-            />
-          </button>
+          {loggedUser?.userType !== "Mentor" ||
+          (loggedUser?.userType === "Mentor" &&
+            loggedUser?.departamento === "RH") ? (
+            <button
+              type="button"
+              data-testid="btnEditarUsuario"
+              onClick={() =>
+                history.push(`/admin/mentors/edit/${data.user?.id}`)
+              }
+            >
+              <FaPen
+                fontSize="1.3vw"
+                style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+              />
+            </button>
+          ) : (
+            ""
+          )}
         </div>
         <div className={styles.userInfoWrapper}>
           <span className={styles.userNome}>{data.user?.nome}</span>

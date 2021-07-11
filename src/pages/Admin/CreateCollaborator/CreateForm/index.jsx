@@ -8,6 +8,7 @@ import * as Yup from "yup";
 
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { api } from "../../../../services/api";
+import { createCollaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
 
 import Input from "../../../../components/Input";
 import Select from "../../../../components/Select";
@@ -64,31 +65,7 @@ const CreateForm = () => {
 
       console.log(data);
 
-      const schema = Yup.object().shape({
-        nome: Yup.string().required('O campo "Nome" é obrigatório.'),
-        cpf: Yup.string().required('O campo "CPF" é obrigatório').length(11),
-        email: Yup.string()
-          .email("Digite um e-mail válido")
-          .required('O campo "E-mail" é obrigatório.'),
-        celular: Yup.string()
-          .required('O campo "Celular" é obrigatório')
-          .length(14),
-        departamento_id: Yup.number()
-          .moreThan(0, 'O campo "Departamento" é obrigatório.')
-          .required('O campo "Departamento" é obrigatório.'),
-        cargo_id: Yup.number()
-          .moreThan(0, 'O campo "Cargo" é obrigatório.')
-          .required('O campo "Cargo" é obrigatório.'),
-        tipo_usuario: Yup.string().required(
-          'O campo "Tipo de Usuário" é obrigatório.'
-        ),
-        senha: Yup.string().required('O campo "Senha" é obrigatório.'),
-        confirmar_senha: Yup.string().oneOf(
-          [Yup.ref("senha"), null],
-          "As senhas devem coincidir"
-        ),
-        status: Yup.string().required('O campo "Status" é obrigatório.'),
-      });
+      const schema = createCollaboratorValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
 

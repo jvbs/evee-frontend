@@ -24,12 +24,12 @@ import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
-import { adminValidationSchema } from "../../../../helpers/UnformSchemas";
+import { collaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
 import userPhoto from "../../../../assets/images/evee.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const EditForm = () => {
+const EditForm = ({ collaborator }) => {
   const { loggedUser } = useContext(AuthContext);
 
   const formRef = useRef(null);
@@ -43,8 +43,8 @@ const EditForm = () => {
   const [tipo, setTipo] = useState("");
   const [status, setStatus] = useState("");
 
-  const [cargos, setCargos] = useState([]);
-  const [departamentos, setDepartamentos] = useState([]);
+  const [cargos, setCargos] = useState("");
+  const [departamentos, setDepartamentos] = useState("");
 
   const [activeTab, setActiveTab] = useState("1");
 
@@ -53,7 +53,6 @@ const EditForm = () => {
   };
 
   const refreshPage = () => {
-    console.log("refreshing...");
     window.location.reload();
   };
 
@@ -67,23 +66,16 @@ const EditForm = () => {
     };
 
     fetchFormFields();
+    if (collaborator) {
+      refreshFormFields(collaborator);
+    }
   }, []);
 
   useEffect(() => {
-    if (loggedUser) {
-      setNome(loggedUser?.nome);
-      setCpf(loggedUser?.cpf);
-      setEmail(loggedUser?.email);
-      setCelular(loggedUser?.celular);
-
-      if (loggedUser?.userType !== "Admin") {
-        setDepartamento(loggedUser?.departamento_id);
-        setCargo(loggedUser?.cargo_id);
-        setTipo(loggedUser?.userType);
-        setStatus(loggedUser?.status);
-      }
+    if (collaborator) {
+      refreshFormFields(collaborator);
     }
-  }, [loggedUser]);
+  }, [collaborator]);
 
   const resetErrors = () => {
     formRef.current.setErrors({});
@@ -99,26 +91,35 @@ const EditForm = () => {
     setTipo("");
   };
 
+  const refreshFormFields = (collaborator) => {
+    console.log(collaborator);
+    setNome(collaborator.user?.nome);
+    setCpf(collaborator.user?.cpf);
+    setEmail(collaborator.user?.email);
+    setCelular(collaborator.user?.celular);
+    setDepartamento(collaborator.departamento?.id);
+    setCargo(collaborator.cargo?.id);
+    setTipo(collaborator.user?.tipo_usuario);
+    setStatus(collaborator.user?.status);
+  };
+
   const handleSubmit = async (data) => {
     try {
-      delete data.cargo_id;
-      delete data.cpf;
-      delete data.departamento_id;
-      delete data.status;
-      delete data.tipo_usuario;
+      data.cargo_id = Number(cargo);
+      data.departamento_id = Number(departamento);
+      data.tipo_usuario = tipo;
+      data.status = status;
 
-      data.id = loggedUser?.id;
-      const schema = adminValidationSchema;
+      const schema = collaboratorValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
+
+      data.id = collaborator.user?.id;
 
       resetErrors();
 
       try {
-        const response = await api.put(
-          loggedUser?.userType === "Admin" ? "/usuario" : "/colaborador",
-          data
-        );
+        const response = await api.put("/colaborador/admin", data);
 
         if (response.status === 200) {
           toast.success("🎉 Usuário atualizado com sucesso!", {
@@ -164,7 +165,7 @@ const EditForm = () => {
     }
   };
 
-  if (!loggedUser) {
+  if (!collaborator || !loggedUser || !departamentos || !cargos) {
     return <span>Loading...</span>;
   }
 
@@ -225,7 +226,7 @@ const EditForm = () => {
                           inputProps={{ maxLength: 11 }}
                           value={cpf}
                           onChange={(e) => setCpf(e.target.value)}
-                          disabled
+                          // disabled
                         />
                       </FormGroup>
                     </Col>
@@ -247,7 +248,8 @@ const EditForm = () => {
                           name="celular"
                           testid="fieldCelular"
                           inputProps={{ maxLength: 14 }}
-                          defaultValue={loggedUser?.celular}
+                          value={celular}
+                          onChange={(e) => setCelular(e.target.value)}
                         />
                       </FormGroup>
                     </Col>
@@ -287,7 +289,7 @@ const EditForm = () => {
                           testid="fieldDepartamento"
                           onChange={(e) => setDepartamento(e.target.value)}
                           value={departamento}
-                          disabled
+                          // disabled
                         >
                           {departamentos.map((dpto) => (
                             <MenuItem key={dpto.id} value={dpto.id}>
@@ -305,7 +307,7 @@ const EditForm = () => {
                           value={cargo}
                           onChange={(e) => setCargo(e.target.value)}
                           testid="fieldCargo"
-                          disabled
+                          // disabled
                         >
                           {cargos.map((cargo) => (
                             <MenuItem key={cargo.id} value={cargo.id}>
@@ -325,7 +327,7 @@ const EditForm = () => {
                         testid="fieldtipo_usuario"
                         value={tipo}
                         onChange={(e) => setTipo(e.target.value)}
-                        disabled
+                        // disabled
                       >
                         <MenuItem value={"Comum"}>Comum</MenuItem>
                         <MenuItem value={"Mentor"}>Mentor</MenuItem>
@@ -348,7 +350,7 @@ const EditForm = () => {
                         testid="fieldStatus"
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}
-                        disabled
+                        // disabled
                       >
                         <MenuItem value={0}>Inativo</MenuItem>
                         <MenuItem value={1}>Ativo</MenuItem>
@@ -377,7 +379,7 @@ const EditForm = () => {
             </Row>
           </Form>
         </TabPane>
-        <TabPane tabId="2">
+        {/* <TabPane tabId="2">
           <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
             <ToastContainer />
 
@@ -427,7 +429,7 @@ const EditForm = () => {
               </Row>
             </section>
           </Form>
-        </TabPane>
+        </TabPane> */}
       </TabContent>
     </>
   );
