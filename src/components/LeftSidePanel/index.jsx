@@ -54,9 +54,11 @@ const LeftSidePanel = () => {
               ) : (
                 ""
               )}
-              {loggedUser?.userType !== "Mentorado" ? (
+              {(loggedUser?.userType === "Comum" &&
+                loggedUser?.departamento === "RH") ||
+              loggedUser?.userType === "Admin" ||
+              loggedUser?.userType === "Mentor" ? (
                 <>
-                  {" "}
                   <a
                     onClick={() => history.push("/admin/mentors")}
                     data-testid="btnMenuMentores"
