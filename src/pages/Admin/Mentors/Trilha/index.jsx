@@ -1,17 +1,17 @@
 import BodyContent from "../../../../components/BodyContent";
 import Layout from "../../../../components/Layout";
 
-const Pdi = () => {
+const Trilha = () => {
   return (
     <Layout>
       <BodyContent
-        header={`PDI - Plano de Desenvolvimento Individual`}
-        breadcrumb={`Home > PDI`}
+        header={`Trilhas - Escopo de Capacitação Interna`}
+        breadcrumb={`Home > Trilha`}
       >
-        <p>PDI</p>
+        <p>Trilha</p>
       </BodyContent>
     </Layout>
   );
 };
 
-export default Pdi;
+export default Trilha;
