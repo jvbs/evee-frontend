@@ -170,244 +170,167 @@ const EditForm = () => {
 
   return (
     <>
-      <Nav tabs>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "1" })}
-            onClick={() => {
-              toggle("1");
-            }}
-          >
-            Dados Cadastrais
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === "2" })}
-            onClick={() => {
-              toggle("2");
-            }}
-          >
-            Alterar senha
-          </NavLink>
-        </NavItem>
-      </Nav>
-      <TabContent activeTab={activeTab}>
-        <TabPane tabId="1">
-          <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
-            <ToastContainer />
-            <Row>
-              <Col lg="8">
-                <section className={styles.formSection}>
-                  <div className={styles.header}>
-                    <div className={styles.circuloModal}></div>
-                    <p>Informações pessoais</p>
-                  </div>
-                  <Row>
-                    <Col lg="6">
-                      <FormGroup>
-                        <Input
-                          label="Nome*"
-                          name="nome"
-                          testid="fieldNome"
-                          value={nome}
-                          onChange={(e) => setNome(e.target.value)}
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col lg="6">
-                      <FormGroup>
-                        <Input
-                          label="CPF*"
-                          name="cpf"
-                          testid="fieldCPF"
-                          type="text"
-                          inputProps={{ maxLength: 11 }}
-                          value={cpf}
-                          onChange={(e) => setCpf(e.target.value)}
-                          disabled
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col lg="6">
-                      <FormGroup>
-                        <Input
-                          label="E-mail*"
-                          name="email"
-                          testid="fieldEmail"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col lg="6">
-                      <FormGroup>
-                        <Input
-                          label="Celular*"
-                          name="celular"
-                          testid="fieldCelular"
-                          inputProps={{ maxLength: 14 }}
-                          defaultValue={loggedUser?.celular}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                </section>
-              </Col>
+      <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
+        <ToastContainer />
+        <Row>
+          <Col lg="8">
+            <section className={styles.formSection}>
+              <div className={styles.header}>
+                <div className={styles.circuloModal}></div>
+                <p>Informações pessoais</p>
+              </div>
+              <Row>
+                <Col lg="6">
+                  <FormGroup>
+                    <Input
+                      label="Nome*"
+                      name="nome"
+                      testid="fieldNome"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col lg="6">
+                  <FormGroup>
+                    <Input
+                      label="CPF*"
+                      name="cpf"
+                      testid="fieldCPF"
+                      type="text"
+                      inputProps={{ maxLength: 11 }}
+                      value={cpf}
+                      onChange={(e) => setCpf(e.target.value)}
+                      disabled
+                    />
+                  </FormGroup>
+                </Col>
+                <Col lg="6">
+                  <FormGroup>
+                    <Input
+                      label="E-mail*"
+                      name="email"
+                      testid="fieldEmail"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col lg="6">
+                  <FormGroup>
+                    <Input
+                      label="Celular*"
+                      name="celular"
+                      testid="fieldCelular"
+                      inputProps={{ maxLength: 14 }}
+                      defaultValue={loggedUser?.celular}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+            </section>
+          </Col>
+
+          <Col lg="4">
+            <div className={styles.userPhotoWrapper}>
+              <img
+                src={userPhoto}
+                alt="userPhoto"
+                className={styles.userFoto}
+              />
+              <button type="button" data-testid="btnEditarUsuario">
+                <FaCamera
+                  fontSize="1.3vw"
+                  style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+                />
+              </button>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg="12">
+            <section className={styles.formSection}>
+              <div className={styles.header}>
+                <div className={styles.circuloModal}></div>
+                <p>Informações adicionais</p>
+              </div>
+              <Row>
+                <Col lg="4">
+                  <FormGroup>
+                    <Select
+                      name="departamento_id"
+                      label="Departamento*"
+                      testid="fieldDepartamento"
+                      onChange={(e) => setDepartamento(e.target.value)}
+                      value={departamento}
+                      disabled
+                    >
+                      {departamentos.map((dpto) => (
+                        <MenuItem key={dpto.id} value={dpto.id}>
+                          {dpto.nome_departamento}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormGroup>
+                </Col>
+                <Col lg="4">
+                  <FormGroup>
+                    <Select
+                      label="Cargo*"
+                      name="cargo_id"
+                      value={cargo}
+                      onChange={(e) => setCargo(e.target.value)}
+                      testid="fieldCargo"
+                      disabled
+                    >
+                      {cargos.map((cargo) => (
+                        <MenuItem key={cargo.id} value={cargo.id}>
+                          {cargo.nome_cargo}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormGroup>
+                </Col>
+              </Row>
 
               <Col lg="4">
-                <div className={styles.userPhotoWrapper}>
-                  <img
-                    src={userPhoto}
-                    alt="userPhoto"
-                    className={styles.userFoto}
-                  />
-                  <button type="button" data-testid="btnEditarUsuario">
-                    <FaCamera
-                      fontSize="1.3vw"
-                      style={{ color: "var(--yellow-gold)", opacity: "80%" }}
-                    />
-                  </button>
-                </div>
+                <FormGroup>
+                  <Select
+                    label="Tipo Usuário*"
+                    name="tipo_usuario"
+                    testid="fieldtipo_usuario"
+                    value={tipo}
+                    onChange={(e) => setTipo(e.target.value)}
+                    disabled
+                  >
+                    <MenuItem value={"Comum"}>Comum</MenuItem>
+                    <MenuItem value={"Mentor"}>Mentor</MenuItem>
+                    <MenuItem value={"Mentorado"}>Mentorado</MenuItem>
+                  </Select>
+                </FormGroup>
               </Col>
-            </Row>
-            <Row>
-              <Col lg="12">
-                <section className={styles.formSection}>
-                  <div className={styles.header}>
-                    <div className={styles.circuloModal}></div>
-                    <p>Informações adicionais</p>
-                  </div>
-                  <Row>
-                    <Col lg="4">
-                      <FormGroup>
-                        <Select
-                          name="departamento_id"
-                          label="Departamento*"
-                          testid="fieldDepartamento"
-                          onChange={(e) => setDepartamento(e.target.value)}
-                          value={departamento}
-                          disabled
-                        >
-                          {departamentos.map((dpto) => (
-                            <MenuItem key={dpto.id} value={dpto.id}>
-                              {dpto.nome_departamento}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormGroup>
-                    </Col>
-                    <Col lg="4">
-                      <FormGroup>
-                        <Select
-                          label="Cargo*"
-                          name="cargo_id"
-                          value={cargo}
-                          onChange={(e) => setCargo(e.target.value)}
-                          testid="fieldCargo"
-                          disabled
-                        >
-                          {cargos.map((cargo) => (
-                            <MenuItem key={cargo.id} value={cargo.id}>
-                              {cargo.nome_cargo}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormGroup>
-                    </Col>
-                  </Row>
-
-                  <Col lg="4">
-                    <FormGroup>
-                      <Select
-                        label="Tipo Usuário*"
-                        name="tipo_usuario"
-                        testid="fieldtipo_usuario"
-                        value={tipo}
-                        onChange={(e) => setTipo(e.target.value)}
-                        disabled
-                      >
-                        <MenuItem value={"Comum"}>Comum</MenuItem>
-                        <MenuItem value={"Mentor"}>Mentor</MenuItem>
-                        <MenuItem value={"Mentorado"}>Mentorado</MenuItem>
-                      </Select>
-                    </FormGroup>
-                  </Col>
-                </section>
-
-                <section className={styles.formSection}>
-                  <div className={styles.header}>
-                    <div className={styles.circuloModal}></div>
-                    <p>Informações de acesso</p>
-                  </div>
-                  <Col lg="4">
-                    <FormGroup>
-                      <Select
-                        label="Status*"
-                        name="status"
-                        testid="fieldStatus"
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                        disabled
-                      >
-                        <MenuItem value={0}>Inativo</MenuItem>
-                        <MenuItem value={1}>Ativo</MenuItem>
-                      </Select>
-                    </FormGroup>
-                  </Col>
-                </section>
-                <section>
-                  <Row>
-                    <Col lg="12" className={styles.formButtons}>
-                      <Button
-                        type="light-yellow"
-                        text="Cancelar"
-                        style={{ margin: "1vh", opacity: "80%" }}
-                        onClick={() => history.push("/admin")}
-                      />
-                      <Button
-                        text="Salvar"
-                        onClick={handleSubmit}
-                        style={{ margin: "1vh", opacity: "80%" }}
-                      />
-                    </Col>
-                  </Row>
-                </section>
-              </Col>
-            </Row>
-          </Form>
-        </TabPane>
-        <TabPane tabId="2">
-          <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
-            <ToastContainer />
+            </section>
 
             <section className={styles.formSection}>
               <div className={styles.header}>
                 <div className={styles.circuloModal}></div>
                 <p>Informações de acesso</p>
               </div>
-              <Row>
-                <Col lg="4">
-                  <FormGroup>
-                    <Input
-                      type="password"
-                      label="Nova senha*"
-                      name="senha"
-                      testid="fieldSenha"
-                    />
-                  </FormGroup>
-                </Col>
-                <Col lg="4">
-                  <FormGroup>
-                    <Input
-                      type="password"
-                      name="confirmar_senha"
-                      label="Confirmar senha*"
-                      testid="fieldConfirmarSenha"
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+              <Col lg="4">
+                <FormGroup>
+                  <Select
+                    label="Status*"
+                    name="status"
+                    testid="fieldStatus"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    disabled
+                  >
+                    <MenuItem value={0}>Inativo</MenuItem>
+                    <MenuItem value={1}>Ativo</MenuItem>
+                  </Select>
+                </FormGroup>
+              </Col>
             </section>
             <section>
               <Row>
@@ -426,9 +349,9 @@ const EditForm = () => {
                 </Col>
               </Row>
             </section>
-          </Form>
-        </TabPane>
-      </TabContent>
+          </Col>
+        </Row>
+      </Form>
     </>
   );
 };
