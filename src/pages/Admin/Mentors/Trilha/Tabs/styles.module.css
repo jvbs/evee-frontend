@@ -1,0 +1,70 @@
+.tabs{
+    justify-content: center !important;
+}
+
+.tabs a:hover{
+    color: var(--yellow-gold) !important;
+}
+
+.btnCreateTrilha{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5vw;
+}
+
+.message {
+    background-color: var(--white);
+    color: var(--gray);
+    margin-top: 3vh;
+  }
+  
+  .message .name {
+    font-weight: bold;
+  }
+  
+  .message .name span {
+    color: var(--yellow-gold);
+  }
+  
+  .message .welcome span {
+    color: var(--light-brown);
+    font-weight: bold;
+  }
+  
+  .message .paragraphs {
+    margin-top: 30px;
+    text-align: justify;
+  }
+  .message .paragraphs p {
+    font-size: 1.6rem;
+  }
+  
+  .message .btnGroup {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  @media only screen and (min-width: 375px) {
+  
+    .message .paragraphs p {
+      font-size: 1.2rem;
+    }
+  
+  }
+  
+  @media only screen and (min-width: 768px) {
+  
+    .message .paragraphs p {
+      font-size: 1.4rem;
+    }
+  
+  }
+  
+  @media only screen and (min-width: 1024px) {
+  
+    .message .paragraphs p {
+      font-size: 1.6rem;
+    }
+  
+  }

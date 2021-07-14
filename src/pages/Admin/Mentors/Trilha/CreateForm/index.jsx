@@ -245,7 +245,7 @@ const CreateFormTrilha = () => {
                 type="light-yellow"
                 text="Cancelar"
                 style={{ margin: "1vh", opacity: "80%" }}
-                onClick={() => history.push("/admin")}
+                onClick={() => history.push("/admin/mentors/trilha")}
               />
               <Button
                 text="Salvar"
