@@ -42,6 +42,7 @@ const EditForm = () => {
   const [departamento, setDepartamento] = useState("");
   const [tipo, setTipo] = useState("");
   const [status, setStatus] = useState("");
+  const [img, setImg] = useState("");
 
   const [cargos, setCargos] = useState([]);
   const [departamentos, setDepartamentos] = useState([]);
@@ -99,6 +100,32 @@ const EditForm = () => {
     setTipo("");
   };
 
+  const handleImg = (e) => {
+    setImg(e.target.files[0]);
+    console.log("imagem definida", e.target.files[0]);
+  };
+
+  const handleImgUpload = async () => {
+    const formData = new FormData();
+    formData.append("id", loggedUser?.id);
+    // formData.append("img", img);
+    formData.append("img", img);
+
+    try {
+      const response = await api.post(
+        "/usuario/upload-profile-picture",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response.data);
+    } catch (err) {}
+  };
+
   const handleSubmit = async (data) => {
     try {
       delete data.cargo_id;
@@ -106,8 +133,10 @@ const EditForm = () => {
       delete data.departamento_id;
       delete data.status;
       delete data.tipo_usuario;
+      delete data.img;
 
       data.id = loggedUser?.id;
+
       const schema = adminValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
@@ -130,9 +159,15 @@ const EditForm = () => {
             draggable: true,
             progress: undefined,
           });
-          setTimeout(() => {
-            refreshPage();
-          }, 2000);
+
+          if (img !== "") {
+            console.log("tem img");
+            handleImgUpload();
+          }
+
+          // setTimeout(() => {
+          //   refreshPage();
+          // }, 2000);
         }
       } catch (err) {
         console.log(err.response);
@@ -171,6 +206,13 @@ const EditForm = () => {
   return (
     <>
       <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
+        <Input
+          label="Imagem*"
+          name="img"
+          type="file"
+          testid="fieldCelular"
+          onChange={handleImg}
+        />
         <ToastContainer />
         <Row>
           <Col lg="8">
