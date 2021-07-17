@@ -80,11 +80,11 @@ const LeftSidePanel = () => {
 
               {loggedUser?.userType !== "Admin" ? (
                 <a
-                  onClick={() => history.push("/admin/pdi")}
-                  data-testid="btnMenuPdi"
+                  onClick={() => history.push("/admin/mentors/trilha")}
+                  data-testid="btnMenuTrilha"
                   href="#/"
                 >
-                  <li>PDI</li>
+                  <li>Trilhas do Departamento</li>
                 </a>
               ) : (
                 ""
