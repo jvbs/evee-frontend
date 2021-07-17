@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useField } from "@unform/core";
 import { TextField } from "@material-ui/core";
 import ReactInputMask from "react-input-mask";
+
 const Input = ({ label, testid, name, ...rest }) => {
   const inputRef = useRef(null);
   // eslint-disable-next-line
