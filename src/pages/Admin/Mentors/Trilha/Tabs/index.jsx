@@ -68,26 +68,29 @@ const TrilhaTabs = () => {
     </Row>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="0">
-        <section className={styles.message}>
-        <h2 className={styles.name}>
-          Olá, <span>TESTE</span>
-        </h2>
-        <h3 className={styles.welcome}>
-          Bem-vindo(a) ao <span>EVEE!</span>
-        </h3>
-            <div className={styles.paragraphs}>
-              <p>
-                Para mantermos tudo <strong>organizado</strong> e{" "}
-                <strong>caprichado</strong>, do jeitinho que a gente gosta, essa
-                é a plataforma que iremos usar para todos os acompanhamento e
-                desenvolvimento de aprendiz(es) e estagiário(s)!
-              </p>
-              <p>
-                Você pode gerenciar colaboradores e acompanhar mentores e
-                mentorados.
-              </p>
-            </div>
-            </section>
+        <Row>
+          <Col md="12"> 
+          <div className={styles.bloco}>
+            <h1>1. Crie Trilhas</h1>
+            <p>Cadastre trilhas para o seu departamento e crie módulos para o programa de aprendizagem ou estágio!</p>
+            <span>Obs: Cada departamento possui suas proprias trilhas</span>
+          </div>
+          </Col>
+          <Col md="12"> 
+          <div className={styles.bloco}>
+            <h1>2. Vincule Trilhas aos Aprendizes/Estagiários</h1>
+            <p>Após o departamento possuir trilhas cadastradas, o mentor poderá acessar o perfil do mentorado e incluir um trilha para iniciar o processo de acompanhamento e desenvolvimento.</p>
+            <span>Obs: Só é possivel vincular trilhas aos mentorados cadastrados no departamento do mentor</span>
+          </div>
+          </Col>
+          <Col md="12"> 
+          <div className={styles.bloco}>
+          <h1>3. Acompanhe o progresso dos mentorados</h1>
+          <p>O mentor deverá acompanhar o progresso de seu mentorado e vincular as trilhas de forma gradual, por exemplo, módulo basico, intermediário e avancado!</p>
+          <span>Obs: Sempre que o mentorado concluir um módulo da trilha, o mentor deverá incluir um proximo módulo ao mentorado</span>
+          </div>
+          </Col>
+        </Row>
           </TabPane>
       </TabContent>
 

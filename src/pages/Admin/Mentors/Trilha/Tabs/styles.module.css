@@ -12,6 +12,41 @@
     padding-right: 1.5vw;
 }
 
+.bloco {
+  border-radius: 20px;
+  background-color: var(--background);
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 3%;
+  padding: 3%;
+}
+
+.bloco:hover{
+  transition: all 0.5s;
+  background-color: var(--light-yellow) !important;
+  cursor: pointer;
+}
+
+.bloco h1{
+  font-weight: bold;
+  font-size: 1.2rem !important;
+  color: var(--yellow-gold);
+}
+
+.bloco p{
+  font-weight: bold;
+  font-size: 1rem !important;
+  color: var(--gray);
+  margin-top: 2%;
+}
+
+.bloco span{
+  font-size: 0.8rem !important;
+  color: var(--gray);
+}
+
+
 .message {
     background-color: var(--white);
     color: var(--gray);
@@ -20,6 +55,7 @@
   
   .message .name {
     font-weight: bold;
+    font-size: 1.2rem !important;
   }
   
   .message .name span {
@@ -36,7 +72,7 @@
     text-align: justify;
   }
   .message .paragraphs p {
-    font-size: 1.6rem;
+    font-size: 1.2rem !important;
   }
   
   .message .btnGroup {
