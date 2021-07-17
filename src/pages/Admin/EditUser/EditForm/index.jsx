@@ -206,13 +206,6 @@ const EditForm = () => {
   return (
     <>
       <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
-        <Input
-          label="Imagem*"
-          name="img"
-          type="file"
-          testid="fieldCelular"
-          onChange={handleImg}
-        />
         <ToastContainer />
         <Row>
           <Col lg="8">
@@ -274,19 +267,33 @@ const EditForm = () => {
           </Col>
 
           <Col lg="4">
+            <Row>
             <div className={styles.userPhotoWrapper}>
               <img
                 src={userPhoto}
                 alt="userPhoto"
                 className={styles.userFoto}
-              />
-              <button type="button" data-testid="btnEditarUsuario">
-                <FaCamera
-                  fontSize="1.3vw"
-                  style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+              /> 
+              <div className={styles.blocoUploadImg}>
+               <label for="file-upload" class="custom-file-upload">
+
+                <div className={styles.uploadImg} data-testid="btnUploadImg">
+                       <FaCamera
+                        fontSize="1.3vw"
+                        style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+                        />                    
+                 <input
+                  name="img"
+                  type="file"
+                  testid="fieldCelular"
+                  id="file-upload"
+                  onChange={handleImg}
                 />
-              </button>
+                </div>
+              </label>
+              </div>
             </div>
+            </Row>
           </Col>
         </Row>
         <Row>
