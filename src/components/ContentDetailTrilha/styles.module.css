@@ -1,0 +1,74 @@
+.BoxText h1 {
+ font-size: 22px;
+ font-weight: bold;
+ color: var(--gray);
+}
+
+.BoxText h2 {
+  font-size:16px;
+  margin-top: 2vh;
+}
+
+.BoxText{
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.box {
+  border-radius: 20px;
+  background-color: var(--background);
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 3vh;
+}
+
+.boxText {
+  padding-top: 5vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.boxText h1 {
+  font-size: 22px;
+  font-weight: bold;
+  padding-top: 1%;
+  color: var(--gray);
+}
+
+.boxText h2 {
+  font-size: 18px;
+  margin-bottom: 2%;
+  color: var(--yellow-gold);
+}
+
+.btnEdit{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.5vw;
+  padding-bottom: 2vh;
+}
+
+.btnGroup{
+  display: flex;
+  justify-items: ease-in-out ;
+  padding-top: 2vh;
+}
+
+.circuloModal {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  background-color: var(--yellow);
+  border-radius: 50px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 2vh;
+}
+
+p{
+  color: var(--gray);
+}
