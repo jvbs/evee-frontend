@@ -7,7 +7,7 @@ const CreateTrilha = () => {
     <Layout>
       <BodyContent
         header={`Cadastro de Trilhas`}
-        breadcrumb={`Home > Trilhas do Departamento > Cadastar Trilha`}
+        breadcrumb={`Home > Trilhas do Departamento > Cadastrar Trilha`}
       >
         <CreateFormTrilha />
       </BodyContent>
