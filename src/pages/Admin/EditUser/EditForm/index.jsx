@@ -1,16 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { MenuItem } from "@material-ui/core";
-import classnames from "classnames";
-import {
-  Col,
-  FormGroup,
-  Nav,
-  NavItem,
-  NavLink,
-  Row,
-  TabContent,
-  TabPane,
-} from "reactstrap";
+import { Col, FormGroup, Row } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import { FaCamera } from "react-icons/fa";
 import { Form } from "@unform/web";
@@ -265,7 +255,8 @@ const EditForm = () => {
                       name="celular"
                       testid="fieldCelular"
                       inputProps={{ maxLength: 14 }}
-                      defaultValue={loggedUser?.celular}
+                      value={celular}
+                      onChange={(e) => setCelular(e.target.value)}
                     />
                   </FormGroup>
                 </Col>

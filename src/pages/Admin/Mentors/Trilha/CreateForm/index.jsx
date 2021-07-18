@@ -28,8 +28,7 @@ const CreateFormTrilha = () => {
   const [prazo, setPrazo] = useState("");
   const [prazos, setPrazos] = useState([]);
 
-  const [tipo, setTipo] = useState("");
-  const [status, setStatus] = useState("");
+  const [programa, setPrograma] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
 
@@ -40,12 +39,18 @@ const CreateFormTrilha = () => {
       const { data: prazo } = await api.get("/prazo");
 
       setDepartamentos(departamentos);
+
       setTiposTrilhas(tipo_trilha);
       setPrazos(prazo);
     };
 
     fetchFormFields();
   }, []);
+
+  useEffect(() => {
+    setDepartamento(loggedUser?.departamento_id);
+  }, [loggedUser]);
+
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
@@ -54,7 +59,7 @@ const CreateFormTrilha = () => {
     formRef.current.setErrors({});
     formRef.current.reset();
 
-    setDepartamento("");
+    // setDepartamento("");
     setTipoTrilha("");
     setPrazo("");
   };
@@ -63,10 +68,9 @@ const CreateFormTrilha = () => {
     try {
       data.trilha_id = Number(tipoTrilha);
       data.departamento_id = Number(departamento);
-      data.prazo = Number(prazo);
+      data.prazo_id = Number(prazo);
+      data.programa = String(programa);
       data.empresa_id = loggedUser?.empresa_id;
-
-      console.log(data);
 
       const schema = trailValidationSchema;
 
@@ -74,38 +78,39 @@ const CreateFormTrilha = () => {
 
       resetErrors();
 
-      // try {
-      //   const response = await api.post("/colaborador", data);
+      try {
+        console.log("tentando enviar.");
+        const response = await api.post("/trilha/create", data);
 
-      //   if (response.status === 201) {
-      //     resetForm();
-      //     toast.success("🎉 Colaborador cadastrado com sucesso!", {
-      //       position: "top-right",
-      //       autoClose: 3000,
-      //       hideProgressBar: false,
-      //       closeOnClick: true,
-      //       pauseOnHover: true,
-      //       draggable: true,
-      //       progress: undefined,
-      //     });
-      //   }
-      // } catch (err) {
-      //   console.log(err.response);
-      //   let message = err.response.data.error;
-      //   if (message === "Bad Request") {
-      //     message =
-      //       "Ocorreu um erro interno, verifique seus dados e tente novamente.";
-      //   }
-      //   toast.error(`😭 ${message}`, {
-      //     position: "top-right",
-      //     autoClose: 3000,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: true,
-      //     draggable: true,
-      //     progress: undefined,
-      //   });
-      // }
+        if (response.status === 201) {
+          resetForm();
+          toast.success("🎉 Trilha cadastrada com sucesso!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      } catch (err) {
+        console.log(err.response);
+        let message = err.response.data.error;
+        if (message === "Bad Request") {
+          message =
+            "Ocorreu um erro interno, verifique seus dados e tente novamente.";
+        }
+        toast.error(`😭 ${message}`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages = {};
@@ -118,6 +123,10 @@ const CreateFormTrilha = () => {
       }
     }
   };
+
+  if (!loggedUser) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
@@ -134,7 +143,7 @@ const CreateFormTrilha = () => {
                 <FormGroup>
                   <Select
                     label="Trilha*"
-                    name="trilha"
+                    name="trilha_id"
                     testid="fieldTrilhaNivel"
                     value={tipoTrilha}
                     onChange={(e) => setTipoTrilha(e.target.value)}
@@ -153,11 +162,11 @@ const CreateFormTrilha = () => {
                     label="Programa*"
                     name="programa"
                     testid="fieldNomePrograma"
-                    value={tipo}
-                    onChange={(e) => setTipo(e.target.value)}
+                    value={programa}
+                    onChange={(e) => setPrograma(e.target.value)}
                   >
-                    <MenuItem value={"1"}>Aprendizagem</MenuItem>
-                    <MenuItem value={"2"}>Estágio</MenuItem>
+                    <MenuItem value="Aprendizagem">Aprendizagem</MenuItem>
+                    <MenuItem value="Estágio">Estágio</MenuItem>
                   </Select>
                 </FormGroup>
               </Col>
@@ -170,8 +179,9 @@ const CreateFormTrilha = () => {
                     name="departamento_id"
                     label="Departamento*"
                     testid="fieldDepartamento"
-                    onChange={(e) => setDepartamento(e.target.value)}
                     value={departamento}
+                    onChange={(e) => setDepartamento(e.target.value)}
+                    disabled
                   >
                     {departamentos.map((dpto) => (
                       <MenuItem key={dpto.id} value={dpto.id}>
@@ -196,11 +206,7 @@ const CreateFormTrilha = () => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input
-                    label="Nome*"
-                    name="nome_trilha"
-                    testid="fieldNomeTrilha"
-                  />
+                  <Input label="Nome*" name="nome" testid="fieldNomeTrilha" />
                 </FormGroup>
               </Col>
             </Row>
@@ -222,7 +228,7 @@ const CreateFormTrilha = () => {
                 <FormGroup>
                   <Select
                     label="Prazo*"
-                    name="prazo"
+                    name="prazo_id"
                     testid="fieldPrazoTrilha"
                     value={prazo}
                     onChange={(e) => setPrazo(e.target.value)}

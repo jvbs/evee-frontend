@@ -33,18 +33,16 @@ const adminValidationSchema = Yup.object().shape({
 });
 
 const trailValidationSchema = Yup.object().shape({
-  nome: Yup.string().required('O campo "Nome" é obrigatório.'),
-  descricao: Yup.string().required('O campo "Descrição" é obrigatório'),
+  trilha_id: Yup.number()
+    .moreThan(0, 'O campo "Trilha" é obrigatório.')
+    .required('O campo "Trilha" é obrigatório.'),
+  programa: Yup.string().required('O campo "Programa" é obrigatório.'),
   departamento_id: Yup.number()
     .moreThan(0, 'O campo "Departamento" é obrigatório.')
     .required('O campo "Departamento" é obrigatório.'),
-  trilha_id: Yup.number()
-    .moreThan(0, 'O campo "Cargo" é obrigatório.')
-    .required('O campo "Cargo" é obrigatório.'),
-  tipo_usuario: Yup.string().required(
-    'O campo "Tipo de Usuário" é obrigatório.'
-  ),
-  status: Yup.string().required('O campo "Status" é obrigatório.'),
+  nome: Yup.string().required('O campo "Nome" é obrigatório.'),
+  descricao: Yup.string().required('O campo "Descrição" é obrigatório'),
+  prazo_id: Yup.string().required('O campo "Prazo" é obrigatório.'),
 });
 
 const collaboratorValidationSchema = Yup.object().shape({
