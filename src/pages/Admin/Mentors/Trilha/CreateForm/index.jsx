@@ -1,9 +1,7 @@
-
 import { useContext, useEffect, useRef, useState } from "react";
 import { MenuItem } from "@material-ui/core";
 import { Col, FormGroup, Row } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
-import { FaCamera } from "react-icons/fa";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
@@ -118,51 +116,50 @@ const CreateFormTrilha = () => {
 
   return (
     <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
-    <ToastContainer />
-    <Row>
-      <Col lg="12">
-        <section className={styles.formSection}>
-          <div className={styles.header}>
-            <div className={styles.circuloModal}></div>
-            <p>Informações Gerais</p>
-          </div>
-          <Row>
-            <Col lg="6">
-            <FormGroup>
-              <Select
-                label="Trilha*"
-                name="trilha"
-                testid="fieldTrilhaNivel"
-                value={tipo}
-                onChange={(e) => setTipo(e.target.value)}
-              >
-                <MenuItem value={"1"}>Trilha - Básico I</MenuItem>
-                <MenuItem value={"2"}>Trilha - Básico II</MenuItem>
-                <MenuItem value={"3"}>Trilha - Intermediario I</MenuItem>
-                <MenuItem value={"4"}>Trilha - Intermediario II</MenuItem>
-                <MenuItem value={"5"}>Trilha - Avancado I</MenuItem>
-                <MenuItem value={"6"}>Trilha - Avancado II</MenuItem>
-              </Select>
-            </FormGroup>
-            </Col>
-            <Col lg="6">
-            <FormGroup>
-              <Select
-                label="Programa*"
-                name="programa"
-                testid="fieldNomePrograma"
-                value={tipo}
-                onChange={(e) => setTipo(e.target.value)}
-              >
-                <MenuItem value={"1"}>Aprendizagem</MenuItem>
-                <MenuItem value={"2"}>Estágio</MenuItem>
-              </Select>
-            </FormGroup>
-            </Col>
-            
-          </Row>
+      <ToastContainer />
+      <Row>
+        <Col lg="12">
+          <section className={styles.formSection}>
+            <div className={styles.header}>
+              <div className={styles.circuloModal}></div>
+              <p>Informações Gerais</p>
+            </div>
+            <Row>
+              <Col lg="6">
+                <FormGroup>
+                  <Select
+                    label="Trilha*"
+                    name="trilha"
+                    testid="fieldTrilhaNivel"
+                    value={tipo}
+                    onChange={(e) => setTipo(e.target.value)}
+                  >
+                    <MenuItem value={"1"}>Trilha - Básico I</MenuItem>
+                    <MenuItem value={"2"}>Trilha - Básico II</MenuItem>
+                    <MenuItem value={"3"}>Trilha - Intermediario I</MenuItem>
+                    <MenuItem value={"4"}>Trilha - Intermediario II</MenuItem>
+                    <MenuItem value={"5"}>Trilha - Avancado I</MenuItem>
+                    <MenuItem value={"6"}>Trilha - Avancado II</MenuItem>
+                  </Select>
+                </FormGroup>
+              </Col>
+              <Col lg="6">
+                <FormGroup>
+                  <Select
+                    label="Programa*"
+                    name="programa"
+                    testid="fieldNomePrograma"
+                    value={tipo}
+                    onChange={(e) => setTipo(e.target.value)}
+                  >
+                    <MenuItem value={"1"}>Aprendizagem</MenuItem>
+                    <MenuItem value={"2"}>Estágio</MenuItem>
+                  </Select>
+                </FormGroup>
+              </Col>
+            </Row>
 
-          <Row>
+            <Row>
               <Col lg="6">
                 <FormGroup>
                   <Select
@@ -181,20 +178,19 @@ const CreateFormTrilha = () => {
                 </FormGroup>
               </Col>
             </Row>
-        </section>
-      </Col>
+          </section>
+        </Col>
+      </Row>
 
-    </Row>
-
-    <Row>
-      <Col lg="12">
-        <section className={styles.formSection}>
-          <div className={styles.header}>
-            <div className={styles.circuloModal}></div>
-            <p>Descrição da Trilha</p>
-          </div>
-          <Row>
-            <Col lg="6">
+      <Row>
+        <Col lg="12">
+          <section className={styles.formSection}>
+            <div className={styles.header}>
+              <div className={styles.circuloModal}></div>
+              <p>Descrição da Trilha</p>
+            </div>
+            <Row>
+              <Col lg="6">
                 <FormGroup>
                   <Input
                     label="Nome*"
@@ -203,9 +199,9 @@ const CreateFormTrilha = () => {
                   />
                 </FormGroup>
               </Col>
-          </Row>
+            </Row>
 
-          <Row>
+            <Row>
               <Col lg="12">
                 <FormGroup>
                   <Input
@@ -215,49 +211,48 @@ const CreateFormTrilha = () => {
                   />
                 </FormGroup>
               </Col>
-           </Row>
+            </Row>
 
-           <Row>
-            <Col lg="6">
-            <FormGroup>
-              <Select
-                label="Prazo*"
-                name="prazo"
-                testid="fieldPrazoTrilha"
-                value={tipo}
-                onChange={(e) => setTipo(e.target.value)}
-              >
-                <MenuItem value={"1"}>30 dias</MenuItem>
-                <MenuItem value={"2"}>1 - 3 meses</MenuItem>
-                <MenuItem value={"3"}>3 - 6 meses</MenuItem>
-                <MenuItem value={"4"}>6 - 12 meses</MenuItem>
-              </Select>
-            </FormGroup>
+            <Row>
+              <Col lg="6">
+                <FormGroup>
+                  <Select
+                    label="Prazo*"
+                    name="prazo"
+                    testid="fieldPrazoTrilha"
+                    value={tipo}
+                    onChange={(e) => setTipo(e.target.value)}
+                  >
+                    <MenuItem value={"1"}>30 dias</MenuItem>
+                    <MenuItem value={"2"}>1 - 3 meses</MenuItem>
+                    <MenuItem value={"3"}>3 - 6 meses</MenuItem>
+                    <MenuItem value={"4"}>6 - 12 meses</MenuItem>
+                  </Select>
+                </FormGroup>
               </Col>
-          </Row>
-        </section>
+            </Row>
+          </section>
 
-
-        <section>
-          <Row>
-            <Col lg="12" className={styles.formButtons}>
-              <Button
-                type="light-yellow"
-                text="Cancelar"
-                style={{ margin: "1vh", opacity: "80%" }}
-                onClick={() => history.push("/admin/mentors/trilha")}
-              />
-              <Button
-                text="Salvar"
-                onClick={handleSubmit}
-                style={{ margin: "1vh", opacity: "80%" }}
-              />
-            </Col>
-          </Row>
-        </section>
-      </Col>
-    </Row>
-  </Form>
+          <section>
+            <Row>
+              <Col lg="12" className={styles.formButtons}>
+                <Button
+                  type="light-yellow"
+                  text="Cancelar"
+                  style={{ margin: "1vh", opacity: "80%" }}
+                  onClick={() => history.push("/admin/mentors/trilha")}
+                />
+                <Button
+                  text="Salvar"
+                  onClick={handleSubmit}
+                  style={{ margin: "1vh", opacity: "80%" }}
+                />
+              </Col>
+            </Row>
+          </section>
+        </Col>
+      </Row>
+    </Form>
   );
 };
 

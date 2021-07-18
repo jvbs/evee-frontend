@@ -10,8 +10,6 @@ import BodyContent from "../../../components/BodyContent";
 import ChangePasswordForm from "./ChangePasswordForm";
 import EditForm from "./EditForm";
 
-import styles from "./styles.module.css";
-
 const EditCollaborator = () => {
   const { id: idUser } = useParams();
   const [collaborator, setCollaborator] = useState([{}]);

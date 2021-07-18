@@ -24,6 +24,7 @@ const EditForm = ({ collaborator }) => {
 
   const formRef = useRef(null);
 
+  const [img, setImg] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [celular, setCelular] = useState("");
@@ -76,7 +77,6 @@ const EditForm = ({ collaborator }) => {
   };
 
   const refreshFormFields = (collaborator) => {
-    console.log(collaborator);
     setNome(collaborator.user?.nome);
     setCpf(collaborator.user?.cpf);
     setEmail(collaborator.user?.email);
@@ -85,6 +85,40 @@ const EditForm = ({ collaborator }) => {
     setCargo(collaborator.cargo?.id);
     setTipo(collaborator.user?.tipo_usuario);
     setStatus(collaborator.user?.status);
+  };
+
+  const handleImg = (e) => {
+    setImg(e.target.files[0]);
+  };
+
+  const handleImgUpload = async (id) => {
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("img", img);
+
+    try {
+      const response = await api.post(
+        "/colaborador/upload-profile-picture",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("🎉 Imagem enviada com sucesso!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (err) {}
   };
 
   const handleSubmit = async (data) => {
@@ -115,9 +149,12 @@ const EditForm = ({ collaborator }) => {
             draggable: true,
             progress: undefined,
           });
+
+          handleImgUpload(collaborator.user?.id);
+
           setTimeout(() => {
             refreshPage();
-          }, 2000);
+          }, 3000);
         }
       } catch (err) {
         console.log(err.response);
@@ -216,21 +253,40 @@ const EditForm = ({ collaborator }) => {
               </Row>
             </section>
           </Col>
-
           <Col lg="4">
-            <div className={styles.userPhotoWrapper}>
-              <img
-                src={userPhoto}
-                alt="userPhoto"
-                className={styles.userFoto}
-              />
-              <button type="button" data-testid="btnEditarUsuario">
-                <FaCamera
-                  fontSize="1.3vw"
-                  style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+            <Row>
+              <div className={styles.userPhotoWrapper}>
+                <img
+                  src={
+                    collaborator?.user.foto
+                      ? collaborator?.user.foto
+                      : userPhoto
+                  }
+                  alt="userPhoto"
+                  className={styles.userFoto}
                 />
-              </button>
-            </div>
+                <div className={styles.blocoUploadImg}>
+                  <label for="file-upload" class="custom-file-upload">
+                    <div
+                      className={styles.uploadImg}
+                      data-testid="btnUploadImg"
+                    >
+                      <FaCamera
+                        fontSize="1.3vw"
+                        style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+                      />
+                      <input
+                        name="img"
+                        type="file"
+                        testid="fieldCelular"
+                        id="file-upload"
+                        onChange={handleImg}
+                      />
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </Row>
           </Col>
         </Row>
         <Row>
