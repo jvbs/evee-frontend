@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { MenuItem } from "@material-ui/core";
 import classnames from "classnames";
 import {
   Col,
-  FormGroup,
   Nav,
   NavItem,
   NavLink,

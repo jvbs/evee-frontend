@@ -41,6 +41,7 @@ const ListMentoreds = ({ users, filter }) => {
                   key={index}
                   nome={SplitName(user.nome)}
                   cargo={user.nome_cargo}
+                  foto={user.foto}
                   departamento={user.nome_departamento}
                   onClick={() =>
                     history.push(`/admin/mentoreds/details/${user.id}`)

@@ -43,6 +43,7 @@ const ListCollaborators = ({ users, filter }) => {
                   cargo={user.nome_cargo}
                   departamento={user.nome_departamento}
                   tipo={user.tipo_usuario}
+                  foto={user.foto}
                   onClick={() => {
                     switch (user.tipo_usuario) {
                       case "Comum":

@@ -7,7 +7,7 @@ import { api } from "../../../../services/api";
 import BodyContent from "../../../../components/BodyContent";
 import Layout from "../../../../components/Layout";
 
-import styles from "./styles.module.css";
+// import styles from "./styles.module.css";
 
 const MentorDetails = () => {
   const [mentor, setMentor] = useState([]);

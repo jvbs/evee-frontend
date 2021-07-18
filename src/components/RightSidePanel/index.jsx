@@ -14,7 +14,11 @@ const RightSidePanel = () => {
     <>
       <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
-          <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
+          <img
+            src={loggedUser?.foto ? loggedUser?.foto : userPhoto}
+            alt="userPhoto"
+            className={styles.userFoto}
+          />
           <button
             type="button"
             data-testid="btnEditarUsuario"

@@ -3,13 +3,21 @@ import styles from "./styles.module.css";
 
 import defaultPhoto from "../../assets/images/evee.png";
 
-const UserBox = ({ nome, cargo, departamento, userPhoto, tipo, ...rest }) => {
+const UserBox = ({
+  nome,
+  cargo,
+  departamento,
+  userPhoto,
+  tipo,
+  foto,
+  ...rest
+}) => {
   return (
     <Col xl="4" md="6" sm="6" style={{ marginBottom: "2vh" }}>
       <div className={styles.bloco} {...rest}>
         <div className={styles.userPhotoWrapper}>
           <img
-            src={userPhoto ? userPhoto : defaultPhoto}
+            src={foto ? foto : defaultPhoto}
             alt="userPhoto"
             className={styles.userFoto}
           />

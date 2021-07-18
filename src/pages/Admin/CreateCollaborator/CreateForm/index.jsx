@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 const CreateForm = () => {
   const formRef = useRef(null);
+  const [img, setImg] = useState("");
   const [cargo, setCargo] = useState("");
   const [cargos, setCargos] = useState([]);
   const [departamento, setDepartamento] = useState("");
@@ -41,6 +42,7 @@ const CreateForm = () => {
 
     fetchFormFields();
   }, []);
+
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
@@ -53,6 +55,41 @@ const CreateForm = () => {
     setDepartamento("");
     setStatus("");
     setTipo("");
+    setImg("");
+  };
+
+  const handleImg = (e) => {
+    setImg(e.target.files[0]);
+  };
+
+  const handleImgUpload = async (id) => {
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("img", img);
+
+    try {
+      const response = await api.post(
+        "/colaborador/upload-profile-picture",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success("🎉 Imagem enviada com sucesso!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (err) {}
   };
 
   const handleSubmit = async (data) => {
@@ -85,6 +122,12 @@ const CreateForm = () => {
             draggable: true,
             progress: undefined,
           });
+
+          console.log(img);
+
+          if (img !== "") {
+            handleImgUpload(response.data.id);
+          }
         }
       } catch (err) {
         console.log(err.response);
@@ -163,15 +206,32 @@ const CreateForm = () => {
         </Col>
 
         <Col lg="4">
-          <div className={styles.userPhotoWrapper}>
-            <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
-            <button type="button" data-testid="btnEditarUsuario">
-              <FaCamera
-                fontSize="1.3vw"
-                style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+          <Row>
+            <div className={styles.userPhotoWrapper}>
+              <img
+                src={userPhoto}
+                alt="userPhoto"
+                className={styles.userFoto}
               />
-            </button>
-          </div>
+              <div className={styles.blocoUploadImg}>
+                <label for="file-upload" class="custom-file-upload">
+                  <div className={styles.uploadImg} data-testid="btnUploadImg">
+                    <FaCamera
+                      fontSize="1.3vw"
+                      style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+                    />
+                    <input
+                      name="img"
+                      type="file"
+                      testid="fieldCelular"
+                      id="file-upload"
+                      onChange={handleImg}
+                    />
+                  </div>
+                </label>
+              </div>
+            </div>
+          </Row>
         </Col>
       </Row>
 

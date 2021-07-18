@@ -13,7 +13,11 @@ const RightSidePanelMentor = ({ data }) => {
     <>
       <section className={styles.sidePanel}>
         <div className={styles.userPhotoWrapper}>
-          <img src={userPhoto} alt="userPhoto" className={styles.userFoto} />
+          <img
+            src={data.user?.foto ? data.user?.foto : userPhoto}
+            alt="userPhoto"
+            className={styles.userFoto}
+          />
           <button
             type="button"
             data-testid="btnEditarUsuario"

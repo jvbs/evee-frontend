@@ -37,14 +37,7 @@ const EditForm = () => {
   const [cargos, setCargos] = useState([]);
   const [departamentos, setDepartamentos] = useState([]);
 
-  const [activeTab, setActiveTab] = useState("1");
-
-  const toggle = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
-
   const refreshPage = () => {
-    console.log("refreshing...");
     window.location.reload();
   };
 
@@ -92,7 +85,6 @@ const EditForm = () => {
 
   const handleImg = (e) => {
     setImg(e.target.files[0]);
-    console.log("imagem definida", e.target.files[0]);
   };
 
   const handleImgUpload = async () => {
@@ -151,13 +143,12 @@ const EditForm = () => {
           });
 
           if (img !== "") {
-            console.log("tem img");
             handleImgUpload();
           }
 
-          // setTimeout(() => {
-          //   refreshPage();
-          // }, 2000);
+          setTimeout(() => {
+            refreshPage();
+          }, 3000);
         }
       } catch (err) {
         console.log(err.response);
@@ -196,13 +187,6 @@ const EditForm = () => {
   return (
     <>
       <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
-        <Input
-          label="Imagem*"
-          name="img"
-          type="file"
-          testid="fieldCelular"
-          onChange={handleImg}
-        />
         <ToastContainer />
         <Row>
           <Col lg="8">
@@ -265,19 +249,35 @@ const EditForm = () => {
           </Col>
 
           <Col lg="4">
-            <div className={styles.userPhotoWrapper}>
-              <img
-                src={userPhoto}
-                alt="userPhoto"
-                className={styles.userFoto}
-              />
-              <button type="button" data-testid="btnEditarUsuario">
-                <FaCamera
-                  fontSize="1.3vw"
-                  style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+            <Row>
+              <div className={styles.userPhotoWrapper}>
+                <img
+                  src={loggedUser?.foto ? loggedUser?.foto : userPhoto}
+                  alt="userPhoto"
+                  className={styles.userFoto}
                 />
-              </button>
-            </div>
+                <div className={styles.blocoUploadImg}>
+                  <label for="file-upload" class="custom-file-upload">
+                    <div
+                      className={styles.uploadImg}
+                      data-testid="btnUploadImg"
+                    >
+                      <FaCamera
+                        fontSize="1.3vw"
+                        style={{ color: "var(--yellow-gold)", opacity: "80%" }}
+                      />
+                      <input
+                        name="img"
+                        type="file"
+                        testid="fieldCelular"
+                        id="file-upload"
+                        onChange={handleImg}
+                      />
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </Row>
           </Col>
         </Row>
         <Row>
