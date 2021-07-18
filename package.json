@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "classnames": "^2.3.1",
+    "faker": "^5.5.3",
     "history": "^4.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -48,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^2.2.0"
   }
 }
