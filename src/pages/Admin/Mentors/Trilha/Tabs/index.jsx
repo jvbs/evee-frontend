@@ -10,9 +10,6 @@ import {
   TabPane,
 } from "reactstrap";
 
-import { api } from "../../../../../services/api";
-import { AuthContext } from "../../../../../contexts/AuthContext";
-
 import Button from "../../../../../components/Button";
 import history from "../../../../../utils/history";
 import ContentDetailTrilha from "../../../../../components/ContentDetailTrilha";
@@ -20,26 +17,12 @@ import ContentDetailTrilha from "../../../../../components/ContentDetailTrilha";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const TrilhaTabs = () => {
+const TrilhaTabs = ({ aprendizagem, estagio }) => {
   const [activeTab, setActiveTab] = useState("0");
-  const { loggedUser } = useContext(AuthContext);
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-
-  useEffect(() => {
-    const fetchTrails = async (id) => {
-      if (loggedUser) {
-        const { data: aprendizagem } = await api.get("/trilha/aprendizagem", {
-          empresa_id: id,
-        });
-        // const { data: estagio } = await api.get("/departamento");
-      }
-    };
-
-    fetchTrails(loggedUser?.empresa_id);
-  }, [loggedUser]);
 
   return (
     <>
@@ -125,13 +108,13 @@ const TrilhaTabs = () => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <ContentDetailTrilha />
+          <ContentDetailTrilha data={aprendizagem} />
         </TabPane>
       </TabContent>
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="2">
-          <ContentDetailTrilha />
+          <ContentDetailTrilha data={estagio} />
         </TabPane>
       </TabContent>
     </>

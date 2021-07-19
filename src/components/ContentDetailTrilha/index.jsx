@@ -3,47 +3,51 @@ import styles from "./styles.module.css";
 import Button from "../Button";
 import history from "../../utils/history";
 
-const ContentDetailTrilha = () => {
+const ContentDetailTrilha = ({ data }) => {
+  if (!data) {
+    <h1>Loading...</h1>;
+  }
+
+  console.log(data);
+
   return (
     <>
       <Row>
         <div className={styles.btnGroup}>
-          <Button
-            text="Trilha - Basic"
-            type="gray"
-            onClick={() => history.push("/admin/mentors/trilha/create")}
-          />
+          {data.map((dados) => {
+            return <Button text={dados.nome_trilha} type="gray" />;
+          })}
         </div>
       </Row>
 
       <Row>
-        <Col lg="12">
-          <div className={styles.box}>
-            <div className={styles.boxText}>
-              <div className={styles.header}>
-                <div className={styles.circuloModal}></div>
-                <h1>Trilha - Basico I</h1>
+        {data.map((dados) => {
+          return (
+            <Col lg="12">
+              <div className={styles.box}>
+                <div className={styles.boxText}>
+                  <div className={styles.header}>
+                    <div className={styles.circuloModal}></div>
+                    <h1>{dados.nome_trilha}</h1>
+                  </div>
+                  <h2>
+                    <strong>{dados.nome}</strong>
+                  </h2>
+                  <p>{dados.descricao}</p>
+                  <p>
+                    <strong>Prazo: {dados.nome_prazo}</strong>
+                  </p>
+                </div>
+                <div className={styles.btnEdit}>
+                  <Button
+                    text="Editar"
+                    onClick={() => history.push("/admin/mentors/trilha/create")}
+                  />
+                </div>
               </div>
-              <h2>
-                <strong>Fundamentos da Programacao</strong>
-              </h2>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s,
-              </p>
-              <p>
-                <strong>Prazo: 30 dias</strong>
-              </p>
-            </div>
-            <div className={styles.btnEdit}>
-              <Button
-                text="Editar"
-                onClick={() => history.push("/admin/mentors/trilha/create")}
-              />
-            </div>
-          </div>
-        </Col>
+            </Col>
+          );
+        })}
       </Row>
     </>
   );
