@@ -41,7 +41,9 @@ const trailValidationSchema = Yup.object().shape({
     .moreThan(0, 'O campo "Departamento" é obrigatório.')
     .required('O campo "Departamento" é obrigatório.'),
   nome: Yup.string().required('O campo "Nome" é obrigatório.'),
-  descricao: Yup.string().required('O campo "Descrição" é obrigatório'),
+  descricao: Yup.string()
+    .max(255, 'A "Descrição" deve ter no máximo 255 caracteres.')
+    .required('O campo "Descrição" é obrigatório.'),
   prazo_id: Yup.string().required('O campo "Prazo" é obrigatório.'),
 });
 

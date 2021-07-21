@@ -10,6 +10,7 @@ import { api } from "../../../../../services/api";
 import { trailValidationSchema } from "../../../../../helpers/UnformSchemas";
 
 import Input from "../../../../../components/Input";
+import TextArea from "../../../../../components/TextArea";
 import Select from "../../../../../components/Select";
 import Button from "../../../../../components/Button";
 
@@ -214,10 +215,12 @@ const CreateFormTrilha = () => {
             <Row>
               <Col lg="12">
                 <FormGroup>
-                  <Input
-                    label="Descricao*"
+                  <TextArea
+                    label="Descrição*"
                     name="descricao"
                     testid="fieldDescricaoTrilha"
+                    rows={4}
+                    inputProps={{ maxLength: 255 }}
                   />
                 </FormGroup>
               </Col>
