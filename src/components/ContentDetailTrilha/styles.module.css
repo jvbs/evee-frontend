@@ -72,3 +72,32 @@
 p{
   color: var(--gray);
 }
+
+.teste{
+  border-radius: 20px;
+  background-color: var(--gray);
+  padding: 1%;
+  width: 35%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  margin-top: 2%;
+}
+
+.teste:hover{
+  background-color: #495458c4;
+  color: var(--yellow);
+}
+
+.menuTabText{
+ color: var(--background);
+ font-weight: bold;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+}
+
+
+.tab-content{
+  background-color: #495458c4 !important;
+}

@@ -23,10 +23,12 @@ const ContentDetailTrilha = ({ data }) => {
     <>
       {data.map((dados) => {
         return (
-          <Card>
-            <CardHeader onClick={() => setToggequestion(dados.id)}>
-              <span className="font-weight-bold">{dados.nome_trilha}</span>
-            </CardHeader>
+          <div>
+            <div onClick={() => setToggequestion(dados.id)}>
+              <div className={styles.teste}>
+                   <span className={styles.menuTabText}>{dados.nome_trilha}</span>
+              </div>
+            </div>
             <Collapse isOpen={toggleQuestion === dados.id ? true : false}>
               <Col lg="12">
                 <div className={styles.box}>
@@ -54,7 +56,7 @@ const ContentDetailTrilha = ({ data }) => {
                 </div>
               </Col>
             </Collapse>
-          </Card>
+          </div>
         );
       })}
 
