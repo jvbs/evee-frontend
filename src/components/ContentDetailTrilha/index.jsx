@@ -25,8 +25,14 @@ const ContentDetailTrilha = ({ data }) => {
         return (
           <div>
             <div onClick={() => setToggequestion(dados.id)}>
-              <div className={styles.teste}>
-                   <span className={styles.menuTabText}>{dados.nome_trilha}</span>
+              <div
+                className={
+                  toggleQuestion === dados.id
+                    ? styles.activedBlocoTrilha
+                    : styles.blocoTrilha
+                }
+              >
+                <span>{dados.nome_trilha}</span>
               </div>
             </div>
             <Collapse isOpen={toggleQuestion === dados.id ? true : false}>
