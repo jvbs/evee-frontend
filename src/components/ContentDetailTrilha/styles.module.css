@@ -86,42 +86,38 @@ p {
   padding: 1%;
   cursor: pointer;
   transition: 0.5s ease-in-out;
-  width: 35%;
+  width: 50%;
   margin-top: 2%;
-  border-bottom: 2px solid var(--yellow);
+  border-left: 15px solid var(--yellow);
 }
 
 .blocoTrilha:hover {
   background-color: var(--light-yellow);
-  border-bottom: 2px solid var(--yellow-gold);
 }
 
 .blocoTrilha > span {
   color: var(--gray);
   font-weight: bold;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+ 
 }
 
 .activedBlocoTrilha {
   padding: 1%;
   cursor: pointer;
   transition: 0.5s ease-in-out;
-  width: 35%;
   margin-top: 2%;
-  border-bottom: 2px solid var(--yellow);
-  background-color: #495458c4;
+  background-color: var(--light-yellow);
+  border-radius: 33px;
 }
 
 .activedBlocoTrilha:hover {
   background-color: var(--light-yellow);
-  border-bottom: 2px solid var(--yellow-gold);
+  border-radius: 33px;
 }
 
 .activedBlocoTrilha > span {
-  color: var(--yellow);
+  color: var(--gray);
   font-weight: bold;
   display: flex;
   justify-content: center;
