@@ -20,6 +20,8 @@ import MentoredDetails from "../pages/Admin/Mentoreds/MentoredDetails";
 import EditCollaborator from "../pages/Admin/EditCollaborator";
 import Trilha from "../pages/Admin/Mentors/Trilha";
 import CreateTrilha from "../pages/Admin/Mentors/Trilha/CreateTrilha";
+// import PDI from "../pages/Admin/Mentoreds/MentoredDetails/PDI";
+import CreatePDI from "../pages/Admin/Mentoreds/MentoredDetails/CreatePDI";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -111,7 +113,7 @@ const Routes = () => {
         component={MentoredDetails}
       />
 
-      {/* PDI */}
+      {/* Trilha */}
       <ProtectedRoute
         path="/admin/mentors/trilha"
         exact
@@ -124,6 +126,17 @@ const Routes = () => {
         isPrivate
         component={CreateTrilha}
       />
+
+
+      {/* PDI */}
+  
+      <ProtectedRoute
+        path="/admin/mentoreds/pdi/create"
+        exact
+        isPrivate
+        component={CreatePDI}
+      />
+
     </Switch>
   );
 };
