@@ -61,6 +61,7 @@ const CreateCompanyForm = () => {
         resetForm();
         handleLogin(data.email, data.senha);
       } catch (err) {
+        console.log(err.response)
         if (!err) {
           console.log("connection refused");
         }

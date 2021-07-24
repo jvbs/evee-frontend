@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useField } from "@unform/core";
 import { TextField } from "@material-ui/core";
-import ReactInputMask from "react-input-mask";
 
-const Input = ({ label, testid, name, ...rest }) => {
+const TextArea = ({ label, testid, name, rows, ...rest }) => {
   const inputRef = useRef(null);
   // eslint-disable-next-line
   const {
@@ -24,19 +23,17 @@ const Input = ({ label, testid, name, ...rest }) => {
 
   return (
     <>
-      <ReactInputMask maskChar="_" {...rest}>
-        {() => (
-          <TextField
-            style={{ marginTop: "3%", marginBottom: "3%" }}
-            testid={testid}
-            label={label}
-            name={name}
-            inputRef={inputRef}
-            defaultValue={unformDefaultValue}
-            {...rest}
-          />
-        )}
-      </ReactInputMask>
+      <TextField
+        style={{ marginTop: "3%", marginBottom: "3%" }}
+        testid={testid}
+        label={label}
+        name={name}
+        inputRef={inputRef}
+        defaultValue={unformDefaultValue}
+        multiline
+        rows={rows}
+        {...rest}
+      />
 
       {error && (
         <span style={{ color: "#f00", fontSize: "10pt" }}>{error}</span>
@@ -45,4 +42,4 @@ const Input = ({ label, testid, name, ...rest }) => {
   );
 };
 
-export default Input;
+export default TextArea;

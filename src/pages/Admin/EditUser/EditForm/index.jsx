@@ -239,7 +239,8 @@ const EditForm = () => {
                       name="celular"
                       testid="fieldCelular"
                       inputProps={{ maxLength: 14 }}
-                      defaultValue={loggedUser?.celular}
+                      value={celular}
+                      onChange={(e) => setCelular(e.target.value)}
                     />
                   </FormGroup>
                 </Col>

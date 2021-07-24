@@ -7,9 +7,10 @@ import * as Yup from "yup";
 
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { api } from "../../../../../services/api";
-import { createCollaboratorValidationSchema } from "../../../../../helpers/UnformSchemas";
+import { trailValidationSchema } from "../../../../../helpers/UnformSchemas";
 
 import Input from "../../../../../components/Input";
+import TextArea from "../../../../../components/TextArea";
 import Select from "../../../../../components/Select";
 import Button from "../../../../../components/Button";
 
@@ -19,26 +20,38 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 const CreateFormTrilha = () => {
   const formRef = useRef(null);
-  const [cargo, setCargo] = useState("");
-  const [cargos, setCargos] = useState([]);
+  const [tipoTrilha, setTipoTrilha] = useState("");
+  const [tiposTrilhas, setTiposTrilhas] = useState([]);
+
   const [departamento, setDepartamento] = useState("");
   const [departamentos, setDepartamentos] = useState([]);
-  const [tipo, setTipo] = useState("");
-  const [status, setStatus] = useState("");
+
+  const [prazo, setPrazo] = useState("");
+  const [prazos, setPrazos] = useState([]);
+
+  const [programa, setPrograma] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchFormFields = async () => {
-      const { data: cargos } = await api.get("/cargo");
       const { data: departamentos } = await api.get("/departamento");
+      const { data: tipo_trilha } = await api.get("/tipo-trilha");
+      const { data: prazo } = await api.get("/prazo");
 
-      setCargos(cargos);
       setDepartamentos(departamentos);
+
+      setTiposTrilhas(tipo_trilha);
+      setPrazos(prazo);
     };
 
     fetchFormFields();
   }, []);
+
+  useEffect(() => {
+    setDepartamento(loggedUser?.departamento_id);
+  }, [loggedUser]);
+
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
@@ -47,34 +60,32 @@ const CreateFormTrilha = () => {
     formRef.current.setErrors({});
     formRef.current.reset();
 
-    setCargo("");
-    setDepartamento("");
-    setStatus("");
-    setTipo("");
+    // setDepartamento("");
+    setTipoTrilha("");
+    setPrazo("");
   };
 
   const handleSubmit = async (data) => {
     try {
-      data.cargo_id = Number(cargo);
+      data.trilha_id = Number(tipoTrilha);
       data.departamento_id = Number(departamento);
-      data.tipo_usuario = tipo;
-      data.status = status;
+      data.prazo_id = Number(prazo);
+      data.programa = String(programa);
       data.empresa_id = loggedUser?.empresa_id;
 
-      console.log(data);
-
-      const schema = createCollaboratorValidationSchema;
+      const schema = trailValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
 
       resetErrors();
 
       try {
-        const response = await api.post("/colaborador", data);
+        console.log("tentando enviar.");
+        const response = await api.post("/trilha/create", data);
 
         if (response.status === 201) {
           resetForm();
-          toast.success("🎉 Colaborador cadastrado com sucesso!", {
+          toast.success("🎉 Trilha cadastrada com sucesso!", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -114,6 +125,10 @@ const CreateFormTrilha = () => {
     }
   };
 
+  if (!loggedUser) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <Form ref={formRef} onSubmit={handleSubmit} onChange={resetErrors}>
       <ToastContainer />
@@ -129,17 +144,16 @@ const CreateFormTrilha = () => {
                 <FormGroup>
                   <Select
                     label="Trilha*"
-                    name="trilha"
+                    name="trilha_id"
                     testid="fieldTrilhaNivel"
-                    value={tipo}
-                    onChange={(e) => setTipo(e.target.value)}
+                    value={tipoTrilha}
+                    onChange={(e) => setTipoTrilha(e.target.value)}
                   >
-                    <MenuItem value={"1"}>Trilha - Básico I</MenuItem>
-                    <MenuItem value={"2"}>Trilha - Básico II</MenuItem>
-                    <MenuItem value={"3"}>Trilha - Intermediario I</MenuItem>
-                    <MenuItem value={"4"}>Trilha - Intermediario II</MenuItem>
-                    <MenuItem value={"5"}>Trilha - Avancado I</MenuItem>
-                    <MenuItem value={"6"}>Trilha - Avancado II</MenuItem>
+                    {tiposTrilhas.map((tipoTrilha) => (
+                      <MenuItem key={tipoTrilha.id} value={tipoTrilha.id}>
+                        {tipoTrilha.nome_trilha}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormGroup>
               </Col>
@@ -149,11 +163,11 @@ const CreateFormTrilha = () => {
                     label="Programa*"
                     name="programa"
                     testid="fieldNomePrograma"
-                    value={tipo}
-                    onChange={(e) => setTipo(e.target.value)}
+                    value={programa}
+                    onChange={(e) => setPrograma(e.target.value)}
                   >
-                    <MenuItem value={"1"}>Aprendizagem</MenuItem>
-                    <MenuItem value={"2"}>Estágio</MenuItem>
+                    <MenuItem value="Aprendizagem">Aprendizagem</MenuItem>
+                    <MenuItem value="Estágio">Estágio</MenuItem>
                   </Select>
                 </FormGroup>
               </Col>
@@ -166,8 +180,9 @@ const CreateFormTrilha = () => {
                     name="departamento_id"
                     label="Departamento*"
                     testid="fieldDepartamento"
-                    onChange={(e) => setDepartamento(e.target.value)}
                     value={departamento}
+                    onChange={(e) => setDepartamento(e.target.value)}
+                    disabled
                   >
                     {departamentos.map((dpto) => (
                       <MenuItem key={dpto.id} value={dpto.id}>
@@ -192,11 +207,7 @@ const CreateFormTrilha = () => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input
-                    label="Nome*"
-                    name="nome_trilha"
-                    testid="fieldNomeTrilha"
-                  />
+                  <Input label="Nome*" name="nome" testid="fieldNomeTrilha" />
                 </FormGroup>
               </Col>
             </Row>
@@ -204,10 +215,12 @@ const CreateFormTrilha = () => {
             <Row>
               <Col lg="12">
                 <FormGroup>
-                  <Input
-                    label="Descricao*"
+                  <TextArea
+                    label="Descrição*"
                     name="descricao"
                     testid="fieldDescricaoTrilha"
+                    rows={4}
+                    inputProps={{ maxLength: 255 }}
                   />
                 </FormGroup>
               </Col>
@@ -218,15 +231,16 @@ const CreateFormTrilha = () => {
                 <FormGroup>
                   <Select
                     label="Prazo*"
-                    name="prazo"
+                    name="prazo_id"
                     testid="fieldPrazoTrilha"
-                    value={tipo}
-                    onChange={(e) => setTipo(e.target.value)}
+                    value={prazo}
+                    onChange={(e) => setPrazo(e.target.value)}
                   >
-                    <MenuItem value={"1"}>30 dias</MenuItem>
-                    <MenuItem value={"2"}>1 - 3 meses</MenuItem>
-                    <MenuItem value={"3"}>3 - 6 meses</MenuItem>
-                    <MenuItem value={"4"}>6 - 12 meses</MenuItem>
+                    {prazos.map((prazo) => (
+                      <MenuItem key={prazo.id} value={prazo.id}>
+                        {prazo.nome_prazo}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormGroup>
               </Col>
