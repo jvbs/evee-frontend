@@ -182,6 +182,7 @@ const CreateForm = () => {
                     name="cpf"
                     testid="fieldCPF"
                     type="text"
+                    // mask="999.999.999-99"
                     inputProps={{ maxLength: 11 }}
                   />
                 </FormGroup>

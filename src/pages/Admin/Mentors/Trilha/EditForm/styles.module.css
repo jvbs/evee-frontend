@@ -1,0 +1,28 @@
+
+  .formSection p {
+    color: var(--gray);
+    font-weight:600;
+    font-size: 16px; 
+    margin-bottom: 1px;
+  }
+  
+  .formButtons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .circuloModal {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    background-color: var(--yellow);
+    border-radius: 50px;
+  }
+  
+  .header {
+    height: 3vh;
+    margin-top: 3%;
+    align-items: center;
+    display: flex;
+  }
+  
