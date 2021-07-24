@@ -55,7 +55,7 @@ const ContentDetailTrilha = ({ data }) => {
                     <Button
                       text="Editar"
                       onClick={() =>
-                        history.push("/admin/mentors/trilha/create")
+                        history.push(`/admin/mentors/trilha/edit/${dados.id}`)
                       }
                     />
                   </div>
