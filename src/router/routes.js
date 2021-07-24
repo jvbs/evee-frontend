@@ -20,6 +20,7 @@ import MentoredDetails from "../pages/Admin/Mentoreds/MentoredDetails";
 import EditCollaborator from "../pages/Admin/EditCollaborator";
 import Trilha from "../pages/Admin/Mentors/Trilha";
 import CreateTrilha from "../pages/Admin/Mentors/Trilha/CreateTrilha";
+import EditTrilha from "../pages/Admin/Mentors/Trilha/EditTrilha";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -123,6 +124,12 @@ const Routes = () => {
         exact
         isPrivate
         component={CreateTrilha}
+      />
+      <ProtectedRoute
+        path="/admin/mentors/trilha/edit/:id"
+        exact
+        isPrivate
+        component={EditTrilha}
       />
     </Switch>
   );
