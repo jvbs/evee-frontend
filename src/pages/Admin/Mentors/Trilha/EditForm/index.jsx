@@ -179,6 +179,7 @@ const EditFormTrilha = () => {
                     testid="fieldNomePrograma"
                     value={programa}
                     onChange={(e) => setPrograma(e.target.value)}
+                    disabled
                   >
                     <MenuItem value="Aprendizagem">Aprendizagem</MenuItem>
                     <MenuItem value="Estágio">Estágio</MenuItem>
