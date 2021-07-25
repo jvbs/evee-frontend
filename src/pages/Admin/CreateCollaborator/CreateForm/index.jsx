@@ -224,6 +224,7 @@ const CreateForm = () => {
                     <input
                       name="img"
                       type="file"
+                      accept=".png,.jpeg,.jpg"
                       testid="fieldCelular"
                       id="file-upload"
                       onChange={handleImg}

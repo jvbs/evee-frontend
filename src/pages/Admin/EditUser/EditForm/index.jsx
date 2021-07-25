@@ -291,6 +291,7 @@ const EditForm = () => {
                         type="file"
                         testid="fieldCelular"
                         id="file-upload"
+                        accept=".png,.jpeg,.jpg"
                         onChange={handleImg}
                       />
                     </div>
