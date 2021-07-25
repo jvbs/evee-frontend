@@ -8,7 +8,6 @@ import BodyContent from "../../../../components/BodyContent";
 import Layout from "../../../../components/Layout";
 import TabsPDI from "../MentoredDetails/Tabs";
 
-
 import styles from "./styles.module.css";
 
 const MentoredDetails = () => {

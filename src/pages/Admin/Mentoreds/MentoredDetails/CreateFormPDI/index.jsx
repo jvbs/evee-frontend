@@ -18,39 +18,50 @@ import history from "../../../../../utils/history";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const CreateFormTrilha = () => {
+const CreateFormTrilha = ({ mentored }) => {
   const formRef = useRef(null);
   const [tipoTrilha, setTipoTrilha] = useState("");
   const [tiposTrilhas, setTiposTrilhas] = useState([]);
-
-  const [departamento, setDepartamento] = useState("");
-  const [departamentos, setDepartamentos] = useState([]);
-
-  const [prazo, setPrazo] = useState("");
-  const [prazos, setPrazos] = useState([]);
 
   const [programa, setPrograma] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    const fetchFormFields = async () => {
-      const { data: departamentos } = await api.get("/departamento");
-      const { data: tipo_trilha } = await api.get("/tipo-trilha");
-      const { data: prazo } = await api.get("/prazo");
+  // useEffect(() => {
+  //   const fetchFormFields = async () => {
+  //     const { data: departamentos } = await api.get("/departamento");
+  //     const { data: prazo } = await api.get("/prazo");
 
-      setDepartamentos(departamentos);
+  //     setDepartamentos(departamentos);
 
-      setTiposTrilhas(tipo_trilha);
-      setPrazos(prazo);
-    };
+  //     setPrazos(prazo);
+  //   };
 
-    fetchFormFields();
-  }, []);
+  //   fetchFormFields();
+  // }, []);
 
   useEffect(() => {
-    setDepartamento(loggedUser?.departamento_id);
-  }, [loggedUser]);
+    if (mentored) {
+      if (mentored.cargo?.nome_cargo === "Aprendiz") {
+        setPrograma("Aprendizagem");
+      } else {
+        setPrograma("Estágio");
+      }
+
+      const fetchFormFields = async (dpto, programa) => {
+        const { data: tipo_trilha } = await api.get(
+          `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${programa}`
+        );
+
+        // setTiposTrilhas(tipo_trilha);
+      };
+      fetchFormFields(mentored.departamento?.id, programa);
+    }
+  }, [mentored]);
+
+  // useEffect(() => {
+  //   setDepartamento(loggedUser?.departamento_id);
+  // }, [loggedUser]);
 
   const resetErrors = () => {
     formRef.current.setErrors({});
@@ -137,7 +148,7 @@ const CreateFormTrilha = () => {
           <section className={styles.formSection}>
             <div className={styles.header}>
               <div className={styles.circuloModal}></div>
-              <p>Qual trilha voce deseja incluir ao mentorado?</p>
+              <p>Qual trilha você deseja incluir ao mentorado?</p>
             </div>
             <Row>
               <Col lg="6">
@@ -165,6 +176,7 @@ const CreateFormTrilha = () => {
                     testid="fieldNomePrograma"
                     value={programa}
                     onChange={(e) => setPrograma(e.target.value)}
+                    disabled
                   >
                     <MenuItem value="Aprendizagem">Aprendizagem</MenuItem>
                     <MenuItem value="Estágio">Estágio</MenuItem>
@@ -176,7 +188,12 @@ const CreateFormTrilha = () => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="Nome*" name="nome" testid="fieldNomeTrilha" />
+                  <Input
+                    label="Nome*"
+                    name="nome"
+                    testid="fieldNomeTrilha"
+                    disabled
+                  />
                 </FormGroup>
               </Col>
             </Row>
@@ -189,34 +206,41 @@ const CreateFormTrilha = () => {
           <section className={styles.formSection}>
             <div className={styles.header}>
               <div className={styles.circuloModal}></div>
-              <p>Quem será o Mentor responsavel pelo acompanhamento do Mentorado na Trilha?</p>
+              <p>
+                Quem será o Mentor responsável pelo acompanhamento do Mentorado
+                na Trilha?
+              </p>
             </div>
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="Mentor/Responsavel*" name="mentor" testid="fieldMentorTrilha" />
+                  <Input
+                    label="Mentor/Responsavel*"
+                    name="mentor"
+                    testid="fieldMentorTrilha"
+                  />
                 </FormGroup>
               </Col>
             </Row>
-
           </section>
 
           <section className={styles.formSection}>
             <div className={styles.header}>
               <div className={styles.circuloModal}></div>
-              <p>Quais competencias o mentorado deverá desenvolver?</p>
+              <p>Quais competências o mentorado deverá desenvolver?</p>
             </div>
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="Competencia" name="mentor" testid="fieldMentorTrilha" />
+                  <Input
+                    label="Competencia"
+                    name="mentor"
+                    testid="fieldMentorTrilha"
+                  />
                 </FormGroup>
               </Col>
             </Row>
-
           </section>
-          
-          
 
           <section>
             <Row>

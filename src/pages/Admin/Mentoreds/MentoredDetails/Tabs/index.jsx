@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import classnames from "classnames";
 import {
   Col,
@@ -9,6 +9,7 @@ import {
   TabContent,
   TabPane,
 } from "reactstrap";
+import { useParams } from "react-router-dom";
 
 import Button from "../../../../../components/Button";
 import history from "../../../../../utils/history";
@@ -19,6 +20,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 const TabsPDI = ({ aprendizagem, estagio }) => {
   const [activeTab, setActiveTab] = useState("1");
+  const { id } = useParams();
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -56,21 +58,21 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
             <Button
               text="Adicionar PDI"
               style={{ width: "90%" }}
-              onClick={() => history.push("/admin/mentoreds/pdi/create")}
+              onClick={() => history.push(`/admin/mentoreds/pdi/create/${id}`)}
             />
           </div>
         </Col>
       </Row>
-     
+
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-       <h1>teste</h1>
+          <h1>teste</h1>
         </TabPane>
       </TabContent>
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="2">
-        <h1>teste2</h1>
+          <h1>teste2</h1>
         </TabPane>
       </TabContent>
     </>

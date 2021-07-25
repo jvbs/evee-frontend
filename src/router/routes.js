@@ -127,21 +127,19 @@ const Routes = () => {
         isPrivate
         component={CreateTrilha}
       />
-
-      {/* PDI */}
-
-      <ProtectedRoute
-        path="/admin/mentoreds/pdi/create"
-        exact
-        isPrivate
-        component={CreatePDI}
-      />
-
       <ProtectedRoute
         path="/admin/mentors/trilha/edit/:id"
         exact
         isPrivate
         component={EditTrilha}
+      />
+
+      {/* PDI */}
+      <ProtectedRoute
+        path="/admin/mentoreds/pdi/create/:id"
+        exact
+        isPrivate
+        component={CreatePDI}
       />
     </Switch>
   );
