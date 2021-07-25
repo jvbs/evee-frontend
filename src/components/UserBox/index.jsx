@@ -28,8 +28,9 @@ const UserBox = ({
             <p>{nome}</p>
           </div>
 
+
           <div className={styles.BoxTextCollaboratorInformation}>
-            <p>{tipo}</p>
+            <p style={{ color: "gray" }}>{tipo}</p>
             <p>{cargo}</p>
             <p>{departamento}</p>
           </div>

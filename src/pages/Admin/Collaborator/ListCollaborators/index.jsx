@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import history from "../../../../utils/history";
 
 function SplitName(text) {
-  return text.split(" ").slice(0, 3).join(" ");
+  return text.split(" ").slice(0, 1).join(" ");
 }
 
 const ListCollaborators = ({ users, filter }) => {

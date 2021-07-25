@@ -32,14 +32,7 @@ const LeftSidePanel = () => {
               {loggedUser?.userType === "Admin" ||
               (loggedUser?.userType === "Mentor" &&
                 loggedUser?.cargo === "RH") ? (
-                <>
-                  <a
-                    onClick={() => history.push("/admin/collaborator")}
-                    data-testid="btnMenuColaboradores"
-                    href="#/"
-                  >
-                    <li>Colaboradores</li>
-                  </a>
+                <> 
                   <a
                     onClick={() => history.push("/admin/create-collaborator")}
                     data-testid="btnMenuCadastroColaboradores"
@@ -50,6 +43,14 @@ const LeftSidePanel = () => {
                       <span>Colaboradores</span>
                     </li>
                   </a>
+                  <a
+                    onClick={() => history.push("/admin/collaborator")}
+                    data-testid="btnMenuColaboradores"
+                    href="#/"
+                  >
+                    <li>Colaboradores</li>
+                  </a>
+                 
                 </>
               ) : (
                 ""
