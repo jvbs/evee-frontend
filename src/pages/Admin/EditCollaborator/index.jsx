@@ -31,10 +31,10 @@ const EditCollaborator = () => {
   }, []);
 
   return (
-    <Layout panel="mentor" data={collaborator}>
+    <Layout panel="" data={collaborator}>
       <BodyContent
         header="Dados do Usuário"
-        breadcrumb="Home > Dados do Usuário"
+        breadcrumb={`Home > Colaboradores > Dados do Usuário > ${collaborator.user?.nome}`}
       >
         <Nav tabs>
           <NavItem>
