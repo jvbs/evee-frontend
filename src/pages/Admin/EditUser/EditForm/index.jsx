@@ -94,8 +94,10 @@ const EditForm = () => {
     formData.append("img", img);
 
     try {
+      const routePrefix =
+        loggedUser?.userType === "Admin" ? "/usuario" : "/colaborador";
       const response = await api.post(
-        "/usuario/upload-profile-picture",
+        `${routePrefix}/upload-profile-picture`,
         formData,
         {
           headers: {
@@ -104,8 +106,26 @@ const EditForm = () => {
         }
       );
 
-      console.log(response.data);
-    } catch (err) {}
+      toast.success("🎉 Imagem atualizada com sucesso!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (err) {
+      toast.error("🎉 Ocorreu um erro ao enviar a imagem!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const handleSubmit = async (data) => {
