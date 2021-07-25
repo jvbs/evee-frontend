@@ -6,6 +6,7 @@ import { api } from "../../../../services/api";
 
 import BodyContent from "../../../../components/BodyContent";
 import Layout from "../../../../components/Layout";
+import TabsPDI from "../MentoredDetails/Tabs";
 
 import styles from "./styles.module.css";
 
@@ -14,6 +15,8 @@ const MentoredDetails = () => {
   const { id: mentoredId } = useParams();
   const { loggedUser } = useContext(AuthContext);
   const empresaId = loggedUser?.empresa_id;
+  const [aprendizagem, setAprendizagem] = useState([]);
+  const [estagio, setEstagio] = useState([]);
 
   useEffect(() => {
     const fetchMentoreds = async (empresaId) => {
@@ -35,6 +38,7 @@ const MentoredDetails = () => {
         breadcrumb={`Home > Mentorados > ${mentored.user?.nome}`}
       >
         <p>Mentored details {mentoredId}</p>
+        <TabsPDI aprendizagem={aprendizagem} estagio={estagio} />
       </BodyContent>
     </Layout>
   );
