@@ -23,6 +23,7 @@ const CreateFormTrilha = ({ mentored }) => {
   const [tipoTrilha, setTipoTrilha] = useState("");
   const [tiposTrilhas, setTiposTrilhas] = useState([]);
 
+  const [nome, setNome] = useState("");
   const [programa, setPrograma] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
@@ -49,11 +50,13 @@ const CreateFormTrilha = ({ mentored }) => {
       }
 
       const fetchFormFields = async (dpto, programa) => {
-        const { data: tipo_trilha } = await api.get(
-          `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${programa}`
-        );
-
-        // setTiposTrilhas(tipo_trilha);
+        if (dpto && programa) {
+          const { data: tipo_trilha } = await api.get(
+            `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${programa}`
+          );
+          setTiposTrilhas(tipo_trilha);
+          console.log(tipo_trilha);
+        }
       };
       fetchFormFields(mentored.departamento?.id, programa);
     }
@@ -62,6 +65,16 @@ const CreateFormTrilha = ({ mentored }) => {
   // useEffect(() => {
   //   setDepartamento(loggedUser?.departamento_id);
   // }, [loggedUser]);
+
+  const handleTrailSelect = (e) => {
+    const id = e.target.value;
+    setTipoTrilha(id);
+    const obj = tiposTrilhas.filter((el) => {
+      return el.id === id;
+    });
+
+    setNome(obj[0]["nome"]);
+  };
 
   const resetErrors = () => {
     formRef.current.setErrors({});
@@ -158,7 +171,7 @@ const CreateFormTrilha = ({ mentored }) => {
                     name="trilha_id"
                     testid="fieldTrilhaNivel"
                     value={tipoTrilha}
-                    onChange={(e) => setTipoTrilha(e.target.value)}
+                    onChange={(e) => handleTrailSelect(e)}
                   >
                     {tiposTrilhas.map((tipoTrilha) => (
                       <MenuItem key={tipoTrilha.id} value={tipoTrilha.id}>
@@ -192,6 +205,7 @@ const CreateFormTrilha = ({ mentored }) => {
                     label="Nome*"
                     name="nome"
                     testid="fieldNomeTrilha"
+                    value={nome}
                     disabled
                   />
                 </FormGroup>
