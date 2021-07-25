@@ -8,7 +8,7 @@ import * as Yup from "yup";
 
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { api } from "../../../../../services/api";
-import { trailValidationSchema } from "../../../../../helpers/UnformSchemas";
+import { pdiValidationSchema } from "../../../../../helpers/UnformSchemas";
 import history from "../../../../../utils/history";
 
 import Input from "../../../../../components/Input";
@@ -96,32 +96,35 @@ const CreateFormTrilha = ({ mentored }) => {
     formRef.current.setErrors({});
     formRef.current.reset();
 
-    // setDepartamento("");
-    // setTipoTrilha("");
-    // setPrazo("");
+    setTipoTrilha("");
+    setNome("");
+    setMentor("");
+    setTags([]);
   };
 
   const handleSubmit = async (data) => {
     try {
       data.trilha_id = Number(tipoTrilha);
-      data.departamento_id = Number(departamento);
-      data.prazo_id = Number(prazo);
-      data.programa = String(programa);
-      data.empresa_id = loggedUser?.empresa_id;
+      data.mentor_responsavel_id = Number(mentor);
+      data.nome_programa = programa;
+      data.mentorado_id = mentored.user?.id;
 
-      const schema = trailValidationSchema;
+      const schema = pdiValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
+
+      if (tags.length > 0) {
+        data.competencias_tags = JSON.stringify(tags);
+      }
 
       resetErrors();
 
       try {
-        console.log("tentando enviar.");
-        const response = await api.post("/trilha/create", data);
+        const response = await api.post("/pdi/create", data);
 
         if (response.status === 201) {
           resetForm();
-          toast.success("🎉 Trilha cadastrada com sucesso!", {
+          toast.success("🎉 PDI cadastrado com sucesso!", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -197,7 +200,7 @@ const CreateFormTrilha = ({ mentored }) => {
                 <FormGroup>
                   <Select
                     label="Programa*"
-                    name="programa"
+                    name="nome_programa"
                     testid="fieldNomePrograma"
                     value={programa}
                     onChange={(e) => setPrograma(e.target.value)}
@@ -215,7 +218,7 @@ const CreateFormTrilha = ({ mentored }) => {
                 <FormGroup>
                   <Input
                     label="Nome*"
-                    name="nome"
+                    name="nome_trilha"
                     testid="fieldNomeTrilha"
                     value={nome}
                     disabled
@@ -242,7 +245,7 @@ const CreateFormTrilha = ({ mentored }) => {
                 <FormGroup>
                   <Select
                     label="Mentor/Responsável*"
-                    name="mentor"
+                    name="mentor_responsavel_id"
                     testid="fieldMentorTrilha"
                     value={mentor}
                     onChange={(e) => setMentor(e.target.value)}
