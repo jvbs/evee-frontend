@@ -34,7 +34,6 @@ const RightSidePanel = () => {
           <span className={styles.userNome}>{loggedUser?.nome}</span>
           <span className={styles.userEmail}>{loggedUser?.email}</span>
           <span className={styles.userCargo}>{loggedUser?.cargo}</span>
-          <span className={styles.userCargo}>{loggedUser?.nome_empresa}</span>
           {loggedUser?.userType !== "Admin" ? (
             <span className={styles.userDepartamento}>
               {loggedUser?.departamentologgedUser?.departamento}
@@ -42,6 +41,7 @@ const RightSidePanel = () => {
           ) : (
             ""
           )}
+          <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
         </div>
 
         <div className={styles.metricasWrapper}>

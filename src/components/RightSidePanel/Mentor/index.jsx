@@ -33,7 +33,6 @@ const RightSidePanelMentor = ({ data }) => {
           <span className={styles.userNome}>{data.user?.nome}</span>
           <span className={styles.userEmail}>{data.user?.email}</span>
           <span className={styles.userCargo}>{data.cargo?.nome_cargo}</span>
-          <span className={styles.userCargo}>{data.empresa?.nome_empresa}</span>
           {loggedUser?.userType !== "Admin" ? (
             <span className={styles.userDepartamento}>
               {loggedUser?.nome_departamento}
@@ -41,6 +40,7 @@ const RightSidePanelMentor = ({ data }) => {
           ) : (
             ""
           )}
+           <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
         </div>
 
         {loggedUser?.userType !== "Admin" ? (
