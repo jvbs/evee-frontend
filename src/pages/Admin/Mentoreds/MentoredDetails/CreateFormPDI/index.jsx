@@ -1,20 +1,20 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { MenuItem } from "@material-ui/core";
-import { Col, FormGroup, Row } from "reactstrap";
+import { Badge, Col, FormGroup, Row } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
+import { FaTimes } from "react-icons/fa";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
 import { AuthContext } from "../../../../../contexts/AuthContext";
 import { api } from "../../../../../services/api";
 import { trailValidationSchema } from "../../../../../helpers/UnformSchemas";
+import history from "../../../../../utils/history";
 
 import Input from "../../../../../components/Input";
-import TextArea from "../../../../../components/TextArea";
 import Select from "../../../../../components/Select";
 import Button from "../../../../../components/Button";
 
-import history from "../../../../../utils/history";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -22,24 +22,15 @@ const CreateFormTrilha = ({ mentored }) => {
   const formRef = useRef(null);
   const [tipoTrilha, setTipoTrilha] = useState("");
   const [tiposTrilhas, setTiposTrilhas] = useState([]);
+  const [mentor, setMentor] = useState("");
+  const [mentores, setMentores] = useState([]);
+  const [competencia, setCompetencia] = useState("");
+  const [tags, setTags] = useState([]);
 
   const [nome, setNome] = useState("");
   const [programa, setPrograma] = useState("");
 
   const { loggedUser } = useContext(AuthContext);
-
-  // useEffect(() => {
-  //   const fetchFormFields = async () => {
-  //     const { data: departamentos } = await api.get("/departamento");
-  //     const { data: prazo } = await api.get("/prazo");
-
-  //     setDepartamentos(departamentos);
-
-  //     setPrazos(prazo);
-  //   };
-
-  //   fetchFormFields();
-  // }, []);
 
   useEffect(() => {
     if (mentored) {
@@ -49,22 +40,25 @@ const CreateFormTrilha = ({ mentored }) => {
         setPrograma("Estágio");
       }
 
-      const fetchFormFields = async (dpto, programa) => {
-        if (dpto && programa) {
+      const fetchFormFields = async (dpto, programa, empresa) => {
+        if (dpto && programa && empresa) {
           const { data: tipo_trilha } = await api.get(
-            `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${programa}`
+            `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${programa}&empresa=${empresa}`
+          );
+          const { data: mentores } = await api.get(
+            `/trilha/mentores-trilha-pdi?dpto=${dpto}&empresa=${empresa}`
           );
           setTiposTrilhas(tipo_trilha);
-          console.log(tipo_trilha);
+          setMentores(mentores);
         }
       };
-      fetchFormFields(mentored.departamento?.id, programa);
+      fetchFormFields(
+        mentored.departamento?.id,
+        programa,
+        mentored.empresa?.id
+      );
     }
   }, [mentored]);
-
-  // useEffect(() => {
-  //   setDepartamento(loggedUser?.departamento_id);
-  // }, [loggedUser]);
 
   const handleTrailSelect = (e) => {
     const id = e.target.value;
@@ -76,6 +70,24 @@ const CreateFormTrilha = ({ mentored }) => {
     setNome(obj[0]["nome"]);
   };
 
+  const addTag = () => {
+    const newTag = {
+      id: tags.length + 1,
+      name: competencia,
+    };
+
+    setTags((tags) => [...tags, newTag]);
+    setCompetencia("");
+  };
+
+  const removeTag = (id) => {
+    const filteredTags = tags.filter((el) => {
+      return el.id !== id;
+    });
+
+    setTags(filteredTags);
+  };
+
   const resetErrors = () => {
     formRef.current.setErrors({});
   };
@@ -85,8 +97,8 @@ const CreateFormTrilha = ({ mentored }) => {
     formRef.current.reset();
 
     // setDepartamento("");
-    setTipoTrilha("");
-    setPrazo("");
+    // setTipoTrilha("");
+    // setPrazo("");
   };
 
   const handleSubmit = async (data) => {
@@ -228,11 +240,19 @@ const CreateFormTrilha = ({ mentored }) => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input
-                    label="Mentor/Responsavel*"
+                  <Select
+                    label="Mentor/Responsável*"
                     name="mentor"
                     testid="fieldMentorTrilha"
-                  />
+                    value={mentor}
+                    onChange={(e) => setMentor(e.target.value)}
+                  >
+                    {mentores.map((mentor) => (
+                      <MenuItem key={mentor.id} value={mentor.id}>
+                        {mentor.nome}
+                      </MenuItem>
+                    ))}
+                  </Select>
                 </FormGroup>
               </Col>
             </Row>
@@ -247,12 +267,44 @@ const CreateFormTrilha = ({ mentored }) => {
               <Col lg="6">
                 <FormGroup>
                   <Input
-                    label="Competencia"
-                    name="mentor"
+                    label="Competências"
+                    name="competencias_tags"
                     testid="fieldMentorTrilha"
+                    value={competencia}
+                    onChange={(e) => setCompetencia(e.target.value)}
                   />
                 </FormGroup>
               </Col>
+              <Col lg="6">
+                <FormGroup>
+                  <Button
+                    type="light-yellow"
+                    text="Incluir"
+                    onClick={() => addTag()}
+                    style={{ marginTop: "3vh", opacity: "80%" }}
+                    disabled={competencia.length === 0 ? true : false}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+              <div>
+                {tags.map((tag) => {
+                  return (
+                    <Badge className={styles.tag}>
+                      <div className={styles.text}>
+                        {tag.name}{" "}
+                        <span
+                          className={styles.tagCloseBtn}
+                          onClick={() => removeTag(tag.id)}
+                        >
+                          <FaTimes />
+                        </span>
+                      </div>
+                    </Badge>
+                  );
+                })}
+              </div>
             </Row>
           </section>
 
