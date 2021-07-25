@@ -36,7 +36,7 @@ const RightSidePanel = () => {
           <span className={styles.userCargo}>{loggedUser?.cargo}</span>
           {loggedUser?.userType !== "Admin" ? (
             <span className={styles.userDepartamento}>
-              {loggedUser?.departamentologgedUser?.departamento}
+              {loggedUser?.departamento}
             </span>
           ) : (
             ""
@@ -44,18 +44,54 @@ const RightSidePanel = () => {
           <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
         </div>
 
-        <div className={styles.metricasWrapper}>
-          <span className={styles.text}>Métricas</span>
-          <span className={styles.aprendizes}>
-            <b>6 </b>Aprendizes
-          </span>
-          <span className={styles.estagiarios}>
-            <b>6 </b>Estagiários
-          </span>
-          <span className={styles.efetivacoes}>
-            <b>6 </b>Efetivações
-          </span>
-        </div>
+
+        {loggedUser?.userType === "Mentor" ? (
+          <div className={styles.metricasWrapper}>
+            <span className={styles.text}>Meus Mentorados</span>
+            <span className={styles.mentoreds}>
+              <b>6</b>
+            </span>
+
+            <span className={styles.text}>Métricas do Departamento</span>
+            <div className={styles.groupMentoreds}>
+              <span className={styles.aprendizes}>
+                <b>6 </b>Aprendizes
+              </span>
+              <span className={styles.estagiarios}>
+                <b>6 </b>Estagiários
+              </span>
+              <hr></hr>
+              <span className={styles.estagiarios}>
+                <b>2 </b>Mentores
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.metricasWrapper}>
+          
+          </div>
+        )}
+
+          {loggedUser?.userType === "Admin" ||
+              (loggedUser?.userType === "Comum") ? (
+           <div className={styles.metricasWrapper}>
+            <span className={styles.text}>Métricas</span>
+            <span className={styles.aprendizes}>
+              <b>6 </b>Aprendizes
+            </span>
+            <span className={styles.estagiarios}>
+              <b>6 </b>Estagiários
+            </span>
+            <span className={styles.efetivacoes}>
+              <b>6 </b>Efetivações
+            </span>
+          </div>
+        ) : (
+          <div className={styles.metricasWrapper}>
+        
+          </div>
+        )}
+          
       </section>
     </>
   );

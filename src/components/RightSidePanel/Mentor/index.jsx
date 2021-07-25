@@ -43,7 +43,8 @@ const RightSidePanelMentor = ({ data }) => {
            <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
         </div>
 
-        {loggedUser?.userType !== "Admin" ? (
+        {loggedUser?.userType !== "Admin" &&
+          (loggedUser?.userType !== "Comum") ? (
           <div className={styles.metricasWrapper}>
             <span className={styles.text}>Meus Mentorados</span>
             <span className={styles.mentoreds}>

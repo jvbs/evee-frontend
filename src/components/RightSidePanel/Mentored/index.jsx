@@ -51,28 +51,6 @@ const RightSidePanelMentored = ({ data }) => {
            <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
         </div>
 
-        {loggedUser?.userType !== "Admin" ? (
-          <div className={styles.metricasWrapper}>
-            <span className={styles.text}>Meus Mentorados</span>
-            <span className={styles.mentoreds}>
-              <b>6</b>
-            </span>
-
-            <span className={styles.text}>Métricas do Departamento</span>
-            <div className={styles.groupMentoreds}>
-              <span className={styles.aprendizes}>
-                <b>6 </b>Aprendizes
-              </span>
-              <span className={styles.estagiarios}>
-                <b>6 </b>Estagiários
-              </span>
-              <hr></hr>
-              <span className={styles.estagiarios}>
-                <b>2 </b>Mentores
-              </span>
-            </div>
-          </div>
-        ) : (
           <div className={styles.metricasWrapper}>
             <span className={styles.text}>Departamento</span>
             <span className={styles.textDepartamento}>
@@ -80,7 +58,7 @@ const RightSidePanelMentored = ({ data }) => {
             </span>
 
           </div>
-        )}
+          
       </section>
     </>
   );

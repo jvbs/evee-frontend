@@ -70,15 +70,6 @@ const RightSidePanelMentor = ({ data }) => {
               {data.departamento?.nome_departamento}
             </span>
 
-            <span className={styles.text}>Mentorados</span>
-            <div className={styles.groupMentoreds}>
-              <span className={styles.aprendizes}>
-                <b>6 </b>Aprendizes
-              </span>
-              <span className={styles.estagiarios}>
-                <b>6 </b>Estagiários
-              </span>
-            </div>
           </div>
         )}
       </section>
