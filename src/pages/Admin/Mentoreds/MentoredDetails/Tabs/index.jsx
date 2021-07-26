@@ -48,7 +48,7 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
                   toggle("2");
                 }}
               >
-               Histórico
+                Histórico
               </NavLink>
             </NavItem>
           </Nav>
@@ -58,7 +58,7 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
             <Button
               text="Adicionar PDI"
               style={{ width: "90%" }}
-              onClick={() => history.push(`/admin/mentoreds/pdi/create/${id}`)}
+              onClick={() => history.push(`/admin/mentoreds/${id}/pdi/create`)}
             />
           </div>
         </Col>
@@ -66,7 +66,10 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-        <ContentDetailPDI />
+          <ContentDetailPDI />
+          <Button
+            onClick={() => history.push("/admin/mentoreds/12/pdi/edit/4")}
+          />
         </TabPane>
       </TabContent>
 

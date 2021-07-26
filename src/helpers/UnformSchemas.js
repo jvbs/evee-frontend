@@ -62,6 +62,23 @@ const pdiValidationSchema = Yup.object().shape({
   competencias_tags: Yup.string(),
 });
 
+const pdiUpdateValidationSchema = Yup.object().shape({
+  trilha_id: Yup.number()
+    .moreThan(0, 'O campo "Trilha" é obrigatório.')
+    .required('O campo "Trilha" é obrigatório.'),
+  mentorado_id: Yup.number()
+    .moreThan(0, 'O campo "Trilha" é obrigatório.')
+    .required('O campo "Trilha" é obrigatório.'),
+  nome_programa: Yup.string().required('O campo "Programa" é obrigatório.'),
+  nome_trilha: Yup.string().required('O campo "Nome" é obrigatório.'),
+  status: Yup.string().required('O campo "Status" é obrigatório.'),
+  avaliacao: Yup.string().required('O campo "Avaliação" é obrigatório.'),
+  mentor_responsavel_id: Yup.number()
+    .moreThan(0, 'O campo "Mentor Responsável" é obrigatório.')
+    .required('O campo "Mentor Responsável" é obrigatório.'),
+  competencias_tags: Yup.string(),
+});
+
 const collaboratorValidationSchema = Yup.object().shape({
   nome: Yup.string().required('O campo "Nome" é obrigatório.'),
   cpf: Yup.string().required('O campo "CPF" é obrigatório').length(11),
@@ -96,4 +113,5 @@ export {
   passwordsValidationSchema,
   trailValidationSchema,
   pdiValidationSchema,
+  pdiUpdateValidationSchema,
 };

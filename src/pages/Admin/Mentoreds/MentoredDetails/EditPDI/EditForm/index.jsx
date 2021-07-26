@@ -6,25 +6,28 @@ import { FaTimes } from "react-icons/fa";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 
-import { AuthContext } from "../../../../../contexts/AuthContext";
-import { api } from "../../../../../services/api";
-import { pdiValidationSchema } from "../../../../../helpers/UnformSchemas";
-import history from "../../../../../utils/history";
+import { AuthContext } from "../../../../../../contexts/AuthContext";
+import { api } from "../../../../../../services/api";
+import { pdiUpdateValidationSchema } from "../../../../../../helpers/UnformSchemas";
+import history from "../../../../../../utils/history";
 
-import Input from "../../../../../components/Input";
-import Select from "../../../../../components/Select";
-import Button from "../../../../../components/Button";
+import Input from "../../../../../../components/Input";
+import Select from "../../../../../../components/Select";
+import Button from "../../../../../../components/Button";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const CreateFormTrilha = ({ mentored }) => {
+const EditForm = ({ mentored, pdi }) => {
   const formRef = useRef(null);
+
   const [tipoTrilha, setTipoTrilha] = useState("");
   const [tiposTrilhas, setTiposTrilhas] = useState([]);
   const [mentor, setMentor] = useState("");
   const [mentores, setMentores] = useState([]);
   const [competencia, setCompetencia] = useState("");
+  const [status, setStatus] = useState("");
+  const [avaliacao, setAvaliacao] = useState("");
   const [tags, setTags] = useState([]);
 
   const [nome, setNome] = useState("");
@@ -34,20 +37,10 @@ const CreateFormTrilha = ({ mentored }) => {
 
   useEffect(() => {
     if (mentored) {
-      if (mentored.cargo?.nome_cargo === "Aprendiz") {
-        setPrograma("Aprendizagem");
-      } else {
-        setPrograma("Estágio");
-      }
-
       const fetchFormFields = async (dpto, programa, empresa) => {
         if (dpto && programa && empresa) {
           const { data: tipo_trilha } = await api.get(
-            `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${
-              mentored.cargo?.nome_cargo === "Aprendiz"
-                ? "Aprendizagem"
-                : "Estágio"
-            }&empresa=${empresa}`
+            `/trilha/tipo-trilha-pdi?dpto=${dpto}&programa=${programa}&empresa=${empresa}`
           );
           const { data: mentores } = await api.get(
             `/trilha/mentores-trilha-pdi?dpto=${dpto}&empresa=${empresa}`
@@ -58,11 +51,25 @@ const CreateFormTrilha = ({ mentored }) => {
       };
       fetchFormFields(
         mentored.departamento?.id,
-        programa,
+        pdi?.nome_programa,
         mentored.empresa?.id
       );
     }
   }, [mentored]);
+
+  useEffect(() => {
+    if (pdi) {
+      setTipoTrilha(pdi.trilha_id);
+      setPrograma(pdi.nome_programa);
+      setMentor(pdi.mentor_responsavel_id);
+      setNome(pdi.nome_trilha);
+      pdi?.competencias_tags !== ""
+        ? setTags(JSON.parse(pdi?.competencias_tags))
+        : setTags([]);
+      setStatus(pdi.status);
+      setAvaliacao(pdi.avaliacao);
+    }
+  }, [pdi]);
 
   const handleTrailSelect = (e) => {
     const id = e.target.value;
@@ -100,10 +107,11 @@ const CreateFormTrilha = ({ mentored }) => {
     formRef.current.setErrors({});
     formRef.current.reset();
 
-    setTipoTrilha("");
-    setNome("");
-    setMentor("");
-    setTags([]);
+    // setTipoTrilha("");
+    // setNome("");
+    // setMentor("");
+    // setTags([]);
+    // set
   };
 
   const handleSubmit = async (data) => {
@@ -112,8 +120,10 @@ const CreateFormTrilha = ({ mentored }) => {
       data.mentor_responsavel_id = Number(mentor);
       data.nome_programa = programa;
       data.mentorado_id = mentored.user?.id;
+      data.status = status;
+      data.avaliacao = avaliacao;
 
-      const schema = pdiValidationSchema;
+      const schema = pdiUpdateValidationSchema;
 
       await schema.validate(data, { abortEarly: false });
 
@@ -124,11 +134,11 @@ const CreateFormTrilha = ({ mentored }) => {
       resetErrors();
 
       try {
-        const response = await api.post("/pdi/create", data);
+        const response = await api.put(`/pdi/edit/${pdi.id}`, data);
 
-        if (response.status === 201) {
+        if (response.status === 200) {
           resetForm();
-          toast.success("🎉 PDI cadastrado com sucesso!", {
+          toast.success("🎉 PDI atualizado com sucesso!", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -313,6 +323,44 @@ const CreateFormTrilha = ({ mentored }) => {
                 })}
               </div>
             </Row>
+            <Row>
+              <Col lg="6">
+                <FormGroup>
+                  <Select
+                    label="Status*"
+                    name="status"
+                    testid="fieldStatusPdi"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                  >
+                    <MenuItem value="Ativo">Ativo</MenuItem>
+                    <MenuItem value="Inativo">Inativo</MenuItem>
+                    <MenuItem value="Concluído">Concluído</MenuItem>
+                    <MenuItem value="Não concluído">Não concluído</MenuItem>
+                    <MenuItem value="Bloqueado">Bloqueado</MenuItem>
+                  </Select>
+                </FormGroup>
+              </Col>
+              <Col lg="6">
+                <FormGroup>
+                  <Select
+                    label="Avaliação*"
+                    name="avaliacao"
+                    testid="fieldStatusPdi"
+                    value={avaliacao}
+                    onChange={(e) => setAvaliacao(e.target.value)}
+                  >
+                    <MenuItem value="Não iniciado">Não iniciado</MenuItem>
+                    <MenuItem value="Insatisfatório">Insatisfatório</MenuItem>
+                    <MenuItem value="Parcialmente insatisfatório">
+                      Parcialmente insatisfatório
+                    </MenuItem>
+                    <MenuItem value="Satisfatório">Satisfatório</MenuItem>
+                    <MenuItem value="Excelente">Excelente</MenuItem>
+                  </Select>
+                </FormGroup>
+              </Col>
+            </Row>
           </section>
 
           <section>
@@ -338,4 +386,4 @@ const CreateFormTrilha = ({ mentored }) => {
   );
 };
 
-export default CreateFormTrilha;
+export default EditForm;

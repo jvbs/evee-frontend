@@ -20,9 +20,9 @@ import MentoredDetails from "../pages/Admin/Mentoreds/MentoredDetails";
 import EditCollaborator from "../pages/Admin/EditCollaborator";
 import Trilha from "../pages/Admin/Mentors/Trilha";
 import CreateTrilha from "../pages/Admin/Mentors/Trilha/CreateTrilha";
-// import PDI from "../pages/Admin/Mentoreds/MentoredDetails/PDI";
-import CreatePDI from "../pages/Admin/Mentoreds/MentoredDetails/CreatePDI";
 import EditTrilha from "../pages/Admin/Mentors/Trilha/EditTrilha";
+import CreatePDI from "../pages/Admin/Mentoreds/MentoredDetails/CreatePDI";
+import EditPDI from "../pages/Admin/Mentoreds/MentoredDetails/EditPDI";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
@@ -136,10 +136,16 @@ const Routes = () => {
 
       {/* PDI */}
       <ProtectedRoute
-        path="/admin/mentoreds/pdi/create/:id"
+        path="/admin/mentoreds/:id/pdi/create"
         exact
         isPrivate
         component={CreatePDI}
+      />
+      <ProtectedRoute
+        path="/admin/mentoreds/:id/pdi/edit/:pdi"
+        exact
+        isPrivate
+        component={EditPDI}
       />
     </Switch>
   );
