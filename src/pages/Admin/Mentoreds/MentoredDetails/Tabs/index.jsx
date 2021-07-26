@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 
 import Button from "../../../../../components/Button";
 import history from "../../../../../utils/history";
-import ContentDetailTrilha from "../../../../../components/ContentDetailTrilha";
+import ContentDetailPDI from "../../../../../components/ContentDetailPDI";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -38,7 +38,7 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
                   toggle("1");
                 }}
               >
-                PDI
+                Plano de Desenvolvimento Individual - PDI
               </NavLink>
             </NavItem>
             <NavItem>
@@ -48,7 +48,7 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
                   toggle("2");
                 }}
               >
-                PDI Finalizados
+               Histórico
               </NavLink>
             </NavItem>
           </Nav>
@@ -66,7 +66,7 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <h1>teste</h1>
+        <ContentDetailPDI />
         </TabPane>
       </TabContent>
 

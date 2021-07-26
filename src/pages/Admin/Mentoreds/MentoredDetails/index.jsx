@@ -37,7 +37,7 @@ const MentoredDetails = () => {
         header={`Painel do Mentorado: ${mentored.user?.nome}`}
         breadcrumb={`Home > Mentorados > ${mentored.user?.nome}`}
       >
-        <p>Mentored details {mentoredId}</p>
+        {/* <p>Mentored details {mentoredId}</p> */}
         <TabsPDI aprendizagem={aprendizagem} estagio={estagio} />
       </BodyContent>
     </Layout>
