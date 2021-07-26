@@ -111,7 +111,6 @@ const EditForm = ({ mentored, pdi }) => {
     // setNome("");
     // setMentor("");
     // setTags([]);
-    // set
   };
 
   const handleSubmit = async (data) => {
