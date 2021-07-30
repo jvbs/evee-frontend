@@ -18,13 +18,17 @@ import ContentDetailPDI from "../../../../../components/ContentDetailPDI";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const TabsPDI = ({ aprendizagem, estagio }) => {
+const TabsPDI = ({ pdiHistory, activePdi }) => {
   const [activeTab, setActiveTab] = useState("1");
   const { id } = useParams();
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  if (!pdiHistory || !activePdi) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <>
@@ -66,10 +70,7 @@ const TabsPDI = ({ aprendizagem, estagio }) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <ContentDetailPDI />
-          <Button
-            onClick={() => history.push("/admin/mentoreds/12/pdi/edit/4")}
-          />
+          <ContentDetailPDI pdi={activePdi} />
         </TabPane>
       </TabContent>
 
