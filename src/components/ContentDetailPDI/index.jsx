@@ -1,17 +1,32 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { Row, Col, Badge } from "reactstrap";
-import styles from "./styles.module.css";
-import Button from "../Button";
+
+import { AuthContext } from "../../contexts/AuthContext";
 import history from "../../utils/history";
+import Button from "../Button";
+
 import defaultPhoto from "../../assets/images/evee.png";
-import { FaTimes } from "react-icons/fa";
+import styles from "./styles.module.css";
 
 const ContentDetailPDI = ({ pdi }) => {
-  const [tags, setTags] = useState();
+  const [tags, setTags] = useState([]);
+
+  const { loggedUser } = useContext(AuthContext);
 
   useEffect(() => {
-    setTags(JSON.parse(JSON.parse(JSON.stringify(pdi.competencias_tags))));
+    if (pdi && pdi?.competencias_tags !== undefined) {
+      pdi?.competencias_tags !== ""
+        ? setTags(
+            JSON.parse(JSON.parse(JSON.stringify(pdi?.competencias_tags)))
+          )
+        : setTags([]);
+    }
   }, [pdi]);
+
+  if (pdi?.competencias_tags === undefined || !loggedUser) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <Row>
@@ -90,14 +105,16 @@ const ContentDetailPDI = ({ pdi }) => {
           </div>
         </div>
         <div className={styles.btnEdit}>
-          <Button
-            text="Editar"
-            onClick={() =>
-              history.push(
-                `/admin/mentoreds/${pdi?.mentorado_id}/pdi/edit/${pdi?.id}`
-              )
-            }
-          />
+          {loggedUser?.userType === "Mentor" && (
+            <Button
+              text="Editar"
+              onClick={() =>
+                history.push(
+                  `/admin/mentoreds/${pdi?.mentorado_id}/pdi/edit/${pdi?.id}`
+                )
+              }
+            />
+          )}
         </div>
         {/* {tags.map((tag) => {
           return (

@@ -26,10 +26,6 @@ const TabsPDI = ({ pdiHistory, activePdi }) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  if (!pdiHistory || !activePdi) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
     <>
       <Row>
@@ -70,13 +66,22 @@ const TabsPDI = ({ pdiHistory, activePdi }) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <ContentDetailPDI pdi={activePdi} />
+          {activePdi !== "" ? (
+            <ContentDetailPDI pdi={activePdi} />
+          ) : (
+            <h2>test</h2>
+          )}
         </TabPane>
       </TabContent>
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="2">
-          <h1>teste2</h1>
+          historico
+          {/* {pdiHistory !== "" ? (
+            <ContentDetailPDI pdi={pdiHistory} />
+          ) : (
+            <h2>test</h2>
+          )} */}
         </TabPane>
       </TabContent>
     </>
