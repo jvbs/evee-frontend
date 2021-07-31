@@ -295,16 +295,16 @@ const EditForm = ({ mentored, pdi }) => {
                 <FormGroup>
                   <Button
                     type="light-yellow"
-                    text="Incluir"
+                    text="adicionar"
                     onClick={() => addTag()}
-                    style={{ marginTop: "3vh", opacity: "80%" }}
+                    style={{ marginTop: "3vh", opacity: "80%"}}
                     disabled={competencia.length === 0 ? true : false}
                   />
                 </FormGroup>
               </Col>
             </Row>
             <Row>
-              <div>
+              <div style={{ marginTop: "3vh" }} >
                 {tags.map((tag) => {
                   return (
                     <Badge className={styles.tag}>
@@ -369,7 +369,7 @@ const EditForm = ({ mentored, pdi }) => {
                   type="light-yellow"
                   text="Cancelar"
                   style={{ margin: "1vh", opacity: "80%" }}
-                  onClick={() => history.push("/admin/mentors/trilha")}
+                  onClick={() => history.push("/admin/mentoreds")}
                 />
                 <Button
                   text="Salvar"

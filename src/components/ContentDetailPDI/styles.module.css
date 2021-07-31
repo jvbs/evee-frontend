@@ -48,7 +48,7 @@
 .boxTextCompetencias h1 {
   font-size: 22px;
   font-weight: bold;
-  padding-top: 1%;
+  padding-top: 2%;
   color: var(--gray);
 }
 
@@ -241,7 +241,20 @@ p {
   padding: 1% 3% !important;
   margin-right: 5px;
   border-radius: 33px !important;
-  background-color: var(--gray);
-  color: var(--background);
+  background-color: var(--light-yellow);
+  color: var(--title) !important;
   font-weight: bold;
+  margin-bottom: 1.5%;
+  cursor: pointer;
+}
+
+
+.tag:hover{
+  padding: 1% 3% !important;
+  margin-right: 5px;
+  border-radius: 33px !important;
+  background-color: var(--gray);
+  color: var(--background) !important;
+  font-weight: bold;
+  margin-bottom: 1.5%;
 }
