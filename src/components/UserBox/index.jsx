@@ -1,7 +1,7 @@
 import { Col } from "reactstrap";
 import styles from "./styles.module.css";
 
-import defaultPhoto from "../../assets/images/evee.png";
+import defaultPhoto from "../../assets/images/evee.gif";
 
 const UserBox = ({
   nome,
