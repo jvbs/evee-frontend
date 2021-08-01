@@ -2,6 +2,7 @@
     "baseUrl": "http://localhost:3000/",
     "baseUrlStaging": "https://evee-frontend-staging.herokuapp.com/",
     "email": "caique@teste.com",
+    "email_mentor": "natasha@teste.com",
     "senha": "123",
     "reporter": "mochawesome",
     "reporterOptions": {

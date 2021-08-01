@@ -17,3 +17,4 @@
 import './custom_commands/loginCommands'
 import './custom_commands/cadastroEmpresaCommands'
 import './custom_commands/cadastroColaboradorCommands'
+import './custom_commands/cadastroTrilhaCommands'
