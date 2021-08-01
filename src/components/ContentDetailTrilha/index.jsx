@@ -1,13 +1,5 @@
-import { useEffect, useState } from "react";
-import {
-  Row,
-  Col,
-  Collapse,
-  UncontrolledCollapse,
-  Card,
-  CardHeader,
-  CardBody,
-} from "reactstrap";
+import { useState } from "react";
+import { Col, Collapse } from "reactstrap";
 import styles from "./styles.module.css";
 import Button from "../Button";
 import history from "../../utils/history";

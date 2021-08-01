@@ -65,6 +65,12 @@ const ContentDetailPDI = ({ pdi }) => {
                 Avaliacao:{" "}
                 <strong style={{ color: "gray" }}>{pdi?.avaliacao}</strong>{" "}
               </span>
+              <span style={{ fontWeight: "bold", color: "#495458" }}>
+                Departamento:{" "}
+                <strong style={{ color: "gray" }}>
+                  {pdi?.nome_departamento}
+                </strong>{" "}
+              </span>
             </div>
           </div>
         </Col>
@@ -74,7 +80,9 @@ const ContentDetailPDI = ({ pdi }) => {
           <div className={styles.boxText}>
             <div className={styles.header}>
               <div className={styles.circuloModal}></div>
-              <h1>{pdi?.tipo_trilha}</h1>
+              <h1>
+                {pdi?.tipo_trilha} - {pdi?.nome_programa}
+              </h1>
             </div>
 
             <h2>
@@ -105,16 +113,18 @@ const ContentDetailPDI = ({ pdi }) => {
           </div>
         </div>
         <div className={styles.btnEdit}>
-          {loggedUser?.userType === "Mentor" && (
-            <Button
-              text="Editar"
-              onClick={() =>
-                history.push(
-                  `/admin/mentoreds/${pdi?.mentorado_id}/pdi/edit/${pdi?.id}`
-                )
-              }
-            />
-          )}
+          {loggedUser?.userType === "Mentor" &&
+            pdi?.status !== "Concluído" &&
+            pdi?.status !== "Não concluído" && (
+              <Button
+                text="Editar"
+                onClick={() =>
+                  history.push(
+                    `/admin/mentoreds/${pdi?.mentorado_id}/pdi/edit/${pdi?.id}`
+                  )
+                }
+              />
+            )}
         </div>
         {/* {tags.map((tag) => {
           return (

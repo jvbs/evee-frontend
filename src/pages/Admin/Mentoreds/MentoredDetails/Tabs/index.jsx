@@ -8,6 +8,7 @@ import {
   Row,
   TabContent,
   TabPane,
+  Collapse,
 } from "reactstrap";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../../../contexts/AuthContext";
@@ -21,6 +22,8 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 const TabsPDI = ({ pdiHistory, activePdi }) => {
   const [activeTab, setActiveTab] = useState("1");
+  const [toggleCollapse, setToggleCollapse] = useState();
+
   const { id } = useParams();
   const { loggedUser } = useContext(AuthContext);
 
@@ -116,35 +119,53 @@ const TabsPDI = ({ pdiHistory, activePdi }) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="2">
-          <>
-            <div className={styles.boxOneInfomation}>
-              <h1>
-                Ops! O{" "}
-                <strong style={{ color: "var(--yellow-gold)" }}>
-                  Mentorado
-                </strong>{" "}
-                não possui nenhum PDI arquivado{" "}
-              </h1>
-              <h2>O que eu faço? </h2>
-              <p>- Verifique se o Mentorado possui algum PDI em andamento</p>
-              <p>
-                - Caso não encontre nenhum PDI, é possível que o Mentor ainda
-                não tenha vinculado ao Mentorado
-              </p>
-            </div>
-            <div className={styles.boxTwoInfomation}>
-              <h3>Ainda com dúvidas?</h3>
-              <h4>
-                Solicite suporte ao time de RH ou procure o responsável do
-                Departamento
-              </h4>
-            </div>
-          </>
-          {/* {pdiHistory !== "" ? (
-            <ContentDetailPDI pdi={pdiHistory} />
+          {pdiHistory !== "" ? (
+            pdiHistory.map((pdi) => (
+              <>
+                <div onClick={() => setToggleCollapse(pdi.id)}>
+                  <div
+                    className={
+                      toggleCollapse === pdi.id
+                        ? styles.activedBlocoTrilha
+                        : styles.blocoTrilha
+                    }
+                  >
+                    <span>
+                      {pdi?.nome_programa} | {pdi?.nome_trilha} | {pdi?.status}
+                    </span>
+                  </div>
+                </div>
+                <Collapse isOpen={toggleCollapse === pdi.id ? true : false}>
+                  <ContentDetailPDI pdi={pdi} />
+                </Collapse>
+              </>
+            ))
           ) : (
-            <h2>test</h2>
-          )} */}
+            <>
+              <div className={styles.boxOneInfomation}>
+                <h1>
+                  Ops! O{" "}
+                  <strong style={{ color: "var(--yellow-gold)" }}>
+                    Mentorado
+                  </strong>{" "}
+                  não possui nenhum PDI arquivado{" "}
+                </h1>
+                <h2>O que eu faço? </h2>
+                <p>- Verifique se o Mentorado possui algum PDI em andamento</p>
+                <p>
+                  - Caso não encontre nenhum PDI, é possível que o Mentor ainda
+                  não tenha vinculado ao Mentorado
+                </p>
+              </div>
+              <div className={styles.boxTwoInfomation}>
+                <h3>Ainda com dúvidas?</h3>
+                <h4>
+                  Solicite suporte ao time de RH ou procure o responsável do
+                  Departamento
+                </h4>
+              </div>
+            </>
+          )}
         </TabPane>
       </TabContent>
     </>
