@@ -39,7 +39,7 @@ class elements {
     trilha_campo_nivel = "[data-testid='fieldTrilhaNivel']"
     trilha_campo_programa = "[data-testid='fieldNomePrograma']"
     trilha_campo_nome = "[data-testid='fieldNomeTrilha']"
-    trilha_campo_descricao = "[data-testid=fieldDescricaoTrilha]"
+    trilha_campo_descricao = "[data-testid='fieldDescricaoTrilha']"
     trilha_campo_prazo = "#mui-component-select-prazo_id"
 
 }
