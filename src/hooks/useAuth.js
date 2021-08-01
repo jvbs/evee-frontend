@@ -62,7 +62,8 @@ export default function useAuth() {
     api.defaults.headers.Authorization = undefined;
     setAuthenticated(false);
 
-    history.push("/user/account/login");
+    history.push("/");
+    // history.push("/user/account/login");
   };
 
   return {

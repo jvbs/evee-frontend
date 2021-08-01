@@ -245,7 +245,7 @@ const EditForm = ({ collaborator }) => {
                       label="Celular*"
                       name="celular"
                       data-testid="fieldCelular"
-                      inputProps={{ maxLength: 14 }}
+                      inputProps={{ maxLength: 11 }}
                       value={celular}
                       onChange={(e) => setCelular(e.target.value)}
                     />

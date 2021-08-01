@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FaPen } from "react-icons/fa";
 
-import userPhoto from "../../../assets/images/evee.gif";
+import userPhoto from "../../../assets/images/avatar2.png";
 import { AuthContext } from "../../../contexts/AuthContext";
 import history from "../../../utils/history";
 import styles from "./styles.module.css";
@@ -48,17 +48,17 @@ const RightSidePanelMentored = ({ data }) => {
           ) : (
             ""
           )}
-           <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
+          <span className={styles.groupNameTitle}>
+            {loggedUser?.nome_empresa}
+          </span>
         </div>
 
-          <div className={styles.metricasWrapper}>
-            <span className={styles.text}>Departamento</span>
-            <span className={styles.textDepartamento}>
-              {data.departamento?.nome_departamento}
-            </span>
-
-          </div>
-          
+        <div className={styles.metricasWrapper}>
+          <span className={styles.text}>Departamento</span>
+          <span className={styles.textDepartamento}>
+            {data.departamento?.nome_departamento}
+          </span>
+        </div>
       </section>
     </>
   );
