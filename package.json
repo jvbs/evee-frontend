@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^8.1.0",
     "cypress-mochawesome-reporter": "^2.2.0"
   }
 }
