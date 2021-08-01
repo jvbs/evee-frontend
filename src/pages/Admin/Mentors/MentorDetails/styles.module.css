@@ -1,0 +1,49 @@
+.BoxText h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--gray);
+   }
+   
+   .BoxText h2 {
+     font-size:16px;
+     margin-top: 2vh;
+   }
+   
+   .BoxText{
+     margin-top: 2vh;
+     margin-bottom: 1vh;
+   }
+
+
+   .circuloModal {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    background-color: var(--yellow);
+    border-radius: 50px;
+  }
+  
+  .header {
+    align-items: center;
+    display: flex;
+    margin-bottom: 2vh;
+  }
+
+.BoxTextOne{
+    font-size: 28px !important;
+    color: var(--title) !important;
+}
+
+.BoxTextTwo{
+    font-size: 26px !important;
+}
+
+.BoxTextList{
+    font-size: 20px !important;
+    color: var(--gray) !important;
+}
+
+.BoxTextGroup{
+    text-align: left;
+    margin-bottom: 2vh !important;
+}

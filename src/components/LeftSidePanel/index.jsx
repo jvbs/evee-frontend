@@ -79,7 +79,7 @@ const LeftSidePanel = () => {
                 ""
               )}
 
-              {loggedUser?.userType !== "Admin" ? (
+              {loggedUser?.userType === "Mentor" ? (
                 <a
                   onClick={() => history.push("/admin/mentors/trilha")}
                   data-testid="btnMenuTrilha"
@@ -90,6 +90,20 @@ const LeftSidePanel = () => {
               ) : (
                 ""
               )}
+
+
+              {loggedUser?.userType === "Mentorado" ? (
+                <a
+                  onClick={() => history.push("/admin/mentors/trilha")}
+                  data-testid="btnMenuTrilha"
+                  href="#/"
+                >
+                  <li>PDI</li>
+                </a>
+              ) : (
+                ""
+              )}
+
             </div>
           </ul>
         </nav>

@@ -286,7 +286,7 @@ const CreateFormTrilha = ({ mentored }) => {
                 <FormGroup>
                   <Button
                     type="light-yellow"
-                    text="Incluir"
+                    text="adicionar"
                     onClick={() => addTag()}
                     style={{ marginTop: "3vh", opacity: "80%" }}
                     disabled={competencia.length === 0 ? true : false}
@@ -295,7 +295,7 @@ const CreateFormTrilha = ({ mentored }) => {
               </Col>
             </Row>
             <Row>
-              <div>
+              <div style={{ marginTop: "3vh" }}>
                 {tags.map((tag) => {
                   return (
                     <Badge className={styles.tag}>
@@ -315,7 +315,7 @@ const CreateFormTrilha = ({ mentored }) => {
             </Row>
           </section>
 
-          <section>
+          <section style={{ marginTop: "3vh"}}>
             <Row>
               <Col lg="12" className={styles.formButtons}>
                 <Button

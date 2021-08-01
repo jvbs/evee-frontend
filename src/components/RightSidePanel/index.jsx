@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import { FaPen } from "react-icons/fa";
-import userPhoto from "../../assets/images/mulher-maravilha.jpeg";
+import userPhoto from "../../assets/images/evee.gif";
 
 import styles from "./styles.module.css";
 import history from "../../utils/history";

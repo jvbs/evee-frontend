@@ -66,7 +66,7 @@ const ListCollaborators = ({ users, filter }) => {
               Ops! nenhum resultado encontrado...
             </p>
             <p className={styles.BoxTextTwo}>O que eu faço?</p>
-            <p className={styles.BoxTexList}>
+            <p className={styles.BoxTextList}>
               Verifique se possui colaboradores cadastrados.
             </p>
             <p className={styles.BoxTextList}>

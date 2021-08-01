@@ -8,6 +8,7 @@ import history from "../../../../utils/history";
 import BodyContent from "../../../../components/BodyContent";
 import Layout from "../../../../components/Layout";
 import UserBox from "../../../../components/UserBox";
+import styles from "./styles.module.css";
 
 // import styles from "./styles.module.css";
 
@@ -43,9 +44,21 @@ const MentorDetails = () => {
         header={`Painel do Mentor: ${mentor.user?.nome}`}
         breadcrumb={`Home > Mentores > ${mentor.user?.nome}`}
       >
-        <h1>Aprendiz</h1>
+        <div className={styles.header}>
+            <div className={styles.circuloModal}></div> 
+            <div className={styles.BoxText}>
+              <h1>Aprendiz</h1> 
+            </div>
+        </div>
+       
         {mentorados.filter((el) => el.nome_cargo === "Aprendiz").length ===
-          0 && <span>sem aprendizes</span>}
+          0 &&  
+          <div className={styles.BoxTextGroup}>
+          <p className={styles.BoxTextOne}>
+          Ops! Nenhum <strong>Aprendiz</strong> encontrado...
+          </p>
+          </div>
+          }
 
         {mentorados
           .filter((el) => el.nome_cargo === "Aprendiz")
@@ -64,9 +77,21 @@ const MentorDetails = () => {
             );
           })}
 
-        <h1>Estagiario</h1>
+         <div className={styles.header}>
+            <div className={styles.circuloModal}></div> 
+            <div className={styles.BoxText}>
+              <h1>Estagiário</h1> 
+            </div>
+        </div>
+
         {mentorados.filter((el) => el.nome_cargo === "Estagiário").length ===
-          0 && <span>sem estagiarios</span>}
+          0 && 
+          <div className={styles.BoxTextGroup}>
+          <p className={styles.BoxTextOne}>
+          Ops! Nenhum <strong>Estagiário</strong> encontrado...
+          </p>
+          </div>
+          }
 
         {mentorados
           .filter((el) => el.nome_cargo === "Estagiário")

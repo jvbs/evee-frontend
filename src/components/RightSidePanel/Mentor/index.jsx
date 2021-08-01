@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 
-import userPhoto from "../../../assets/images/aquaman.jpg";
+import userPhoto from "../../../assets/images/evee.gif";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { api } from "../../../services/api";
 import history from "../../../utils/history";

@@ -23,7 +23,7 @@ const Welcome = () => {
               <p>
                 Para mantermos tudo <strong>organizado</strong> e{" "}
                 <strong>caprichado</strong>, do jeitinho que a gente gosta, essa
-                é a plataforma que iremos usar para todos os acompanhamento e
+                é a plataforma que iremos usar para todos os acompanhamentos e
                 desenvolvimento de aprendiz(es) e estagiário(s)!
               </p>
               <p>
@@ -39,18 +39,33 @@ const Welcome = () => {
             </div>
           </>
         )}
+        {loggedUser?.userType === "Comum" && (
+          <>
+            <div className={styles.paragraphs}>
+              <p>
+                Para mantermos tudo <strong>organizado</strong> e{" "}
+                <strong>caprichado</strong>, do jeitinho que a gente gosta, essa
+                é a plataforma que iremos usar para todos os acompanhamentos e
+                desenvolvimento de aprendiz(es) e estagiário(s)!
+              </p>
+              <p>
+                Você pode acompanhar os mentores e mentorados da empresa
+              </p>
+            </div>
+          </>
+        )}
         {loggedUser?.userType === "Mentor" && (
           <>
             <div className={styles.paragraphs}>
               <p>
                 Para mantermos tudo <strong>organizado</strong> e{" "}
                 <strong>caprichado</strong>, do jeitinho que a gente gosta, essa
-                é a plataforma que iremos usar para todos os acompanhamento e
+                é a plataforma que iremos usar para todos os acompanhamentos e
                 desenvolvimento de aprendiz(es) e estagiário(s)!
               </p>
               <p>
                 Você pode acompanhar os colaboradores do departamento, verificar
-                mentores e mentorados e gerenciar PDIs.
+                mentores e mentorados e gerenciar <strong>Trilhas e PDIs</strong>
               </p>
             </div>
             <div className={styles.btnGroup}>
@@ -67,8 +82,7 @@ const Welcome = () => {
               <p>
                 Para mantermos tudo <strong>organizado</strong> e{" "}
                 <strong>caprichado</strong>, do jeitinho que a gente gosta, essa
-                é a plataforma que iremos usar para voce acompanhamento suas
-                metas e desenvolvimento durante seu periodo contratual.
+                é a plataforma que iremos usar para você acompanhar seu desenvolvimento e metas durante seu período contratual.
               </p>
               <p>Qualquer coisa é só chamar o RH!</p>
             </div>

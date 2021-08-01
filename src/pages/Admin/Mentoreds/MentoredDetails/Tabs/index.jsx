@@ -69,14 +69,36 @@ const TabsPDI = ({ pdiHistory, activePdi }) => {
           {activePdi !== "" ? (
             <ContentDetailPDI pdi={activePdi} />
           ) : (
-            <h2>test</h2>
+            <>
+            <div className={styles.boxOneInfomation}>
+            <h1>Ops! O <strong style={{ color: "var(--yellow-gold)"}}>Mentorado</strong> não possui nenhum PDI ativo </h1>
+            <h2>O que eu faço? </h2>
+            <p>- Verifique o histórico do mentorado e visualize os PDI(s) <span style={{ color: "green", fontWeight: "bolder" }}> Concluídos </span>e <span style={{ color: "red", fontWeight: "bolder" }}> Não Concluídos</span></p>
+            <p>- Caso não encontre nenhum PDI é possível que o Mentor ainda não tenha vinculado nenhum PDI ao Mentorado!</p>
+            </div>
+            <div className={styles.boxTwoInfomation}>
+            <h3>Ainda com dúvidas?</h3>
+            <h4>Solicite suporte ao time de RH ou procure o responsável do Departamento</h4>
+            </div>
+            </>
           )}
         </TabPane>
       </TabContent>
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="2">
-          historico
+          <>
+            <div className={styles.boxOneInfomation}>
+            <h1>Ops! O <strong style={{ color: "var(--yellow-gold)"}}>Mentorado</strong> não possui nenhum PDI arquivado </h1>
+            <h2>O que eu faço? </h2> 
+            <p>- Verifique se o Mentorado possui algum PDI em andamento</p>
+            <p>- Caso não encontre nenhum PDI, é possível que o Mentor ainda não tenha vinculado ao Mentorado</p>
+            </div>
+            <div className={styles.boxTwoInfomation}>
+            <h3>Ainda com dúvidas?</h3>
+            <h4>Solicite suporte ao time de RH ou procure o responsável do Departamento</h4>
+            </div>
+          </>
           {/* {pdiHistory !== "" ? (
             <ContentDetailPDI pdi={pdiHistory} />
           ) : (
