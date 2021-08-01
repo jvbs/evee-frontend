@@ -184,7 +184,7 @@ const CreateCompanyForm = () => {
                   label="Celular*"
                   name="celular"
                   data-testid="fieldCelularSolicitante"
-                  inputProps={{ maxLength: 14 }}
+                  inputProps={{ maxLength: 11 }}
                 />
               </FormGroup>
             </Col>

@@ -189,7 +189,11 @@ const CreateForm = () => {
               </Col>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="E-mail*" name="email" data-testid="fieldEmail" />
+                  <Input
+                    label="E-mail*"
+                    name="email"
+                    data-testid="fieldEmail"
+                  />
                 </FormGroup>
               </Col>
               <Col lg="6">
@@ -198,7 +202,7 @@ const CreateForm = () => {
                     label="Celular*"
                     name="celular"
                     data-testid="fieldCelular"
-                    inputProps={{ maxLength: 14 }}
+                    inputProps={{ maxLength: 11 }}
                   />
                 </FormGroup>
               </Col>
