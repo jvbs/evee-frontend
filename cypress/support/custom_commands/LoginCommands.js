@@ -12,7 +12,7 @@ let tela_login = "Acesse sua conta"
 
 
 Cypress.Commands.add("acessar_aplicacao", () => {
-    const url = Cypress.config('baseUrlStaging');
+    const url = Cypress.config('baseUrl');
     cy.visit(url);
 })
 
