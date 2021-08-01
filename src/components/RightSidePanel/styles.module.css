@@ -12,8 +12,8 @@
 }
 
 .userPhotoWrapper .userFoto {
-  width: 11.5vw;
-  height: 11.5vw;
+  width: 22vw;
+  height: 22vw;
   border-radius: 50%;
   border: 0px solid var(--gray);
   margin: 0 auto;
@@ -42,17 +42,17 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 .userInfoWrapper .userNome {
   font-weight: bold;
   color: var(--yellow-gold);
-  font-size: 24px;
+  font-size: 1.4em;
 }
 
 .userInfoWrapper .userEmail {
-  font-size: 14px;
+  font-size: 1vw;
   text-transform: lowercase;
   color: var(--gray);
   margin-bottom: 5%;
@@ -62,7 +62,15 @@
 .userDepartamento {
   color: var(--gray);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.9em;
+}
+
+.groupNameTitle{
+  color: var(--yellow-gold);
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+  margin: 5% 0;
 }
 
 .metricasWrapper {
@@ -74,8 +82,8 @@
 .metricasWrapper .text {
   font-weight: bold;
   color: var(--yellow-gold);
-  font-size: 24px;
-  margin: 10% 0;
+  font-size: 1.2em;
+  margin: 5% 0;
 }
 
 .aprendizes,
@@ -102,4 +110,79 @@
   font-size: 24px;
   /* font-weight: bold; */
   color: var(--light-brown);
+}
+
+@media only screen and (min-width: 375px) {
+
+
+.userInfoWrapper .userEmail {
+  font-size: 100%;
+  text-transform: lowercase;
+  color: var(--gray);
+  margin-bottom: 5%;
+}
+
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .userPhotoWrapper .userFoto {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  
+  .userInfoWrapper .userEmail {
+    font-size: 1vw;
+    text-transform: lowercase;
+    color: var(--gray);
+    margin-bottom: 5%;
+  }
+  .aprendizes,
+  .estagiarios,
+  .efetivacoes {
+  font-size: 100%;
+  color: var(--gray);
+  margin-bottom: 10%;
+
+  display: flex;
+  justify-content: center;
+}
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .userPhotoWrapper .userFoto {
+    width: 11.5vw;
+    height: 11.5vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  
+  .userInfoWrapper .userEmail {
+    font-size: 1vw;
+    text-transform: lowercase;
+    color: var(--gray);
+    margin-bottom: 5%;
+  }
+
+  .aprendizes,
+  .estagiarios,
+  .efetivacoes {
+    font-size: 100%;
+    color: var(--gray);
+    margin-bottom: 10%;
+  
+    display: flex;
+    justify-content: center;
+  }
+  
 }

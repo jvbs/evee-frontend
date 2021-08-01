@@ -1,0 +1,130 @@
+.tabs{
+    justify-content: center !important;
+}
+
+.tabs a:hover{
+    color: var(--yellow-gold) !important;
+}
+
+.btnCreateTrilha{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5vw;
+}
+
+.bloco {
+  border-radius: 20px;
+  background-color: var(--background);
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 3%;
+  padding: 3%;
+}
+
+.bloco_img {
+  border-radius: 20px;
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 6%;
+  padding: 3%;
+}
+
+
+.bloco:hover{
+  transition: all 0.5s;
+  background-color: var(--light-yellow) !important;
+  cursor: pointer;
+}
+
+.bloco h1{
+  font-weight: bold;
+  font-size: 1.2rem !important;
+  color: var(--yellow-gold);
+}
+
+.bloco p{
+  font-weight: bold;
+  font-size: 1rem !important;
+  color: var(--gray);
+  margin-top: 2%;
+}
+
+.bloco span{
+  font-size: 0.8rem !important;
+  color: var(--gray);
+}
+
+
+.message {
+    background-color: var(--white);
+    color: var(--gray);
+    margin-top: 3vh;
+  }
+  
+  .message .name {
+    font-weight: bold;
+    font-size: 1.2rem !important;
+  }
+  
+  .message .name span {
+    color: var(--yellow-gold);
+  }
+  
+  .message .welcome span {
+    color: var(--light-brown);
+    font-weight: bold;
+  }
+  
+  .message .paragraphs {
+    margin-top: 30px;
+    text-align: justify;
+  }
+  .message .paragraphs p {
+    font-size: 1.2rem !important;
+  }
+  
+  .message .btnGroup {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .userPhotoWrapper {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+  }
+  
+  .userPhotoWrapper .userFoto {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+  
+  @media only screen and (min-width: 375px) {
+  
+    .message .paragraphs p {
+      font-size: 1.2rem;
+    }
+  
+  }
+  
+  @media only screen and (min-width: 768px) {
+  
+    .message .paragraphs p {
+      font-size: 1.4rem;
+    }
+  
+  }
+  
+  @media only screen and (min-width: 1024px) {
+  
+    .message .paragraphs p {
+      font-size: 1.6rem;
+    }
+  
+  }

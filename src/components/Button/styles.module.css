@@ -20,7 +20,6 @@
   background-color: var(--yellow) !important;
   border: none;
   padding: 10px 7%;
-  color: var(--gray);
   font-weight: bolder;
   margin: 1% 0;
   text-align: center;
@@ -38,7 +37,6 @@
   background-color: var(--light-yellow) !important;
   border: none;
   padding: 10px 7%;
-  color: var(--gray);
   text-align: center;
   font-weight: bolder;
   margin: 1% 0;

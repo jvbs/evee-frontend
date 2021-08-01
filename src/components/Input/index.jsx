@@ -1,19 +1,47 @@
-import styles from "./styles.module.css";
+import { useEffect, useRef } from "react";
+import { useField } from "@unform/core";
+import { TextField } from "@material-ui/core";
+import ReactInputMask from "react-input-mask";
 
-const Input = ({ label, testid}) => {
+const Input = ({ label, testid, name, ...rest }) => {
+  const inputRef = useRef(null);
+  // eslint-disable-next-line
+  const {
+    fieldName,
+    defaultValue: unformDefaultValue,
+    registerField,
+    error,
+  } = useField(name);
+
+  // registrando alterações no input
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef.current,
+      path: "value",
+    });
+  }, [fieldName, registerField]);
+
   return (
-    <div class={styles.materialInput}>
-      <input
-        type="text"
-        required
-        className={styles.input}
-        onclick="bortop(0)"
-        data-testid={testid}
-      />
-      <label id="mla">{label}</label>
-      <span className={styles.highlight}></span>
-      <span className={styles.bar}></span>
-    </div>
+    <>
+      <ReactInputMask maskChar="_" {...rest}>
+        {() => (
+          <TextField
+            style={{ marginTop: "3%", marginBottom: "3%" }}
+            testid={testid}
+            label={label}
+            name={name}
+            inputRef={inputRef}
+            defaultValue={unformDefaultValue}
+            {...rest}
+          />
+        )}
+      </ReactInputMask>
+
+      {error && (
+        <span style={{ color: "#f00", fontSize: "10pt" }}>{error}</span>
+      )}
+    </>
   );
 };
 

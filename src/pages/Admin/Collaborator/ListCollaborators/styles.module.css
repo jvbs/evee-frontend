@@ -1,0 +1,19 @@
+.BoxTextOne{
+    font-size: 32px !important;
+    color: var(--light-brown) !important;
+    margin-top: 2vh !important;
+}
+
+.BoxTextTwo{
+    font-size: 28px !important;
+    margin-top: 2vh !important;
+}
+
+.BoxTextList{
+    font-size: 22px !important;
+    color: var(--gray) !important;
+}
+
+.BoxTextGroup{
+    text-align: center;
+}

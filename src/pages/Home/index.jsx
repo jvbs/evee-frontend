@@ -1,46 +1,19 @@
-import { useState } from "react";
 import { Row, Col, Container } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import Button from "../../components/Button";
-import SolicitacaoDemoModal from "./SolicitacaoDemoModal";
-import LoginModal from "./LoginModal";
 
 import logo from "../../assets/images/logo.png";
 import baseHomeSystem from "../../assets/images/base-home-system.svg";
 import homeSystem from "../../assets/images/home-system.svg";
 
+import history from "../../utils/history";
+
 import styles from "./styles.module.css";
-import Modal from "../../components/Modal";
 
 const Home = () => {
-  const [modal, setModal] = useState({
-    isModalOpen: false,
-    title: "",
-    secondBtnLabel: "",
-    footerMsgOne: "",
-    footerMsgTwo: "",
-    type: "",
-  });
-
-  const toggle = (title, type, secondBtnLabel, footerMsgOne, footerMsgTwo) => {
-    setModal({
-      isModalOpen: !modal.isModalOpen,
-      title,
-      secondBtnLabel,
-      footerMsgOne,
-      footerMsgTwo,
-      type: type === "Login" ? <LoginModal /> : <SolicitacaoDemoModal />,
-    });
-  };
-
-  const closeModal = () => {
-    setModal({ ...modal, isModalOpen: false });
-  };
-
   return (
     <>
-      <Modal modal={modal} closeModal={closeModal} />
-
       <Container className={styles.content}>
         <header className={styles.menu}>
           <Row>
@@ -50,28 +23,12 @@ const Home = () => {
             <Col md="8" xs="12" className={styles.buttonGroup}>
               <Button
                 data-testid="btnEntrar"
+                onClick={() => history.push("/user/account/login")}
                 type="link"
                 text="Entrar"
-                onClick={() =>
-                  toggle(
-                    "Acesse sua conta",
-                    "Login",
-                    "Entrar",
-                    "Você não possui cadastro?",
-                    "Crie sua conta"
-                  )
-                }
               />
               <Button
-                onClick={() =>
-                  toggle(
-                    "Solicitar demonstração",
-                    "Demo",
-                    "Enviar",
-                    "Já possui cadastro?",
-                    "Acesse sua conta"
-                  )
-                }
+                onClick={() => history.push("/user/account/create")}
                 data-testid="btnAgendarDemo"
                 text="Agendar uma Demo"
               />
@@ -101,7 +58,9 @@ const Home = () => {
                 </h2>
               </section>
               <section className={styles.btnConhecaNossoProdutoGroup}>
-                <Button type="gray" text="Conheça nosso produto" />
+                <Link to="/admin">
+                  <Button type="gray" text="Conheça nosso produto" />
+                </Link>
               </section>
             </Col>
             <Col md="8" className={styles.imgWrapper}>

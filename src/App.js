@@ -1,22 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import Home from "./pages/Home";
-import AdminHome from "./pages/Admin/Home";
+import { AuthProvider } from "./contexts/AuthContext";
+
+import Routes from "./router/routes";
+import history from "./utils/history";
 
 import "./styles/global.css";
 
-const App = () => (
-  <Router>
-    <Switch>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-      <Route path="/admin" exact>
-        <AdminHome />
-      </Route>
-    </Switch>
-  </Router>
-);
+const App = () => {
+  return (
+    <AuthProvider>
+      <ToastContainer />
+      <Router history={history}>
+        <Routes />
+      </Router>
+    </AuthProvider>
+  );
+};
 
 export default App;

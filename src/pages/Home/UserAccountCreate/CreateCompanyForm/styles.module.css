@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.formsColumn {
+    margin-top: 5vh;
+}
+
+.circuloModal {
+    width: 25px;
+    height: 25px;
+    margin-right: 1rem;
+    background-color: var(--yellow);
+    border-radius: 50px;
+  }
+  
+  .header {
+    height: 10vh;
+    align-items: center;
+    display: flex;
+    margin-bottom: -1vh;
+  }
+
+  a{
+      text-decoration: none !important;
+      font-weight:bolder;
+  }

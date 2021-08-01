@@ -1,12 +1,7 @@
 .panel {
-  height: 100vh;
+  height: auto;
 }
 
-.logo {
-  width: 80%;
-  height: auto;
-  padding: 10% 0;
-}
 nav {
   width: 80%;
   margin: 0 auto;
@@ -18,7 +13,7 @@ nav a {
   font-weight: bold;
   display: flex;
   justify-content: center;
-  /* font-size: 1vw; */
+  font-size: 100%;
 }
 
 nav ul {
@@ -35,19 +30,24 @@ nav li {
   background-color: var(--yellow);
   height: 105px;
   border-radius: 33px;
+  transition: 0.5s ease;
 }
 
 .homeGroup a {
   color: var(--gray);
+  border-radius: 33px;
+  transition: 0.5s ease;
 }
 
 .homeGroup a:hover {
+  color: var(--yellow-gold);
+}
+
+.homeGroup:hover {
   background-color: rgba(236, 236, 236, 0.925);
   height: 105px;
-  border-radius: 33px;
   color: var(--yellow-gold);
   cursor: pointer;
-  transition: 0.5s ease;
 }
 
 .otherGroup {
@@ -55,18 +55,19 @@ nav li {
   background-color: var(--gray);
   border-radius: 33px;
   padding: 25px 0px;
+  transition: 0.5s ease-in-out;
   color: var(--white);
 }
 
 .otherGroup a {
   color: var(--white);
   padding: 1vh 0;
+  transition: 0.5s ease-in-out;
 }
 
 .otherGroup a:hover {
   color: var(--yellow);
   cursor: pointer;
-  transition: 0.5s ease;
   background-color: rgba(255, 255, 255, 0.171);
   border-radius: 5px;
   border-left: solid 10px var(--yellow);
@@ -86,12 +87,74 @@ nav li {
   padding: 0.5em 0em;
   width: 80%;
   margin: 0 auto;
+  transition: 0.5s ease;
 }
 
 .logoutButton button:hover {
-  background-color: var(--gray) !important;
+  background-color: rgba(236, 236, 236, 0.925) !important;
   border-radius: 33px;
-  color: var(--yellow);
+  color: var(--yellow-gold);
   cursor: pointer;
-  transition: 0.5s ease;
+}
+
+
+@media only screen and (min-width: 375px) {
+
+  .logo {
+    width: 35%;
+    height: auto;
+    padding: 3% 0;
+  }
+
+  nav {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  nav a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-size: 90%;
+  }
+  
+}
+
+@media only screen and (min-width: 768px) {
+
+  .logo {
+    width: 80%;
+    height: auto;
+    padding: 10% 0;
+  }
+
+  nav {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  nav a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-size: 70%;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+  nav a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-size: 100%;
+  }
+
 }

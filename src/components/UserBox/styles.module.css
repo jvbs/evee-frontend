@@ -1,0 +1,139 @@
+.bloco {
+  border-radius: 20px;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+}
+
+.bloco:hover{
+  transition: all 0.5s;
+  background-color: var(--light-yellow) !important;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.userPhotoWrapper {
+  padding: 13% 0 8% 0;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+
+/* .teste {
+  border-radius: 10px;
+  height: 10px;
+  background-color: rgb(39, 187, 192);
+  display: flex;
+} */
+
+.BoxTextCollaborator {
+  /* background-color: aqua; */
+  margin-left: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+
+.BoxTextCollaborator p {
+  padding: 0px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 375px) {
+
+  .userPhotoWrapper .userFoto {
+    width: 9vh;
+    height: 9vh;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .BoxTextCollaboratorName p {
+    font-size: 13px;
+    color: var(--title) !important
+  }
+  
+  .BoxTextCollaboratorInformation p {
+    font-size: 12px;
+    color: #a4861e;
+  }
+}
+
+
+@media only screen and (min-width: 768px)  {
+
+  .userPhotoWrapper .userFoto {
+    width: 9vh;
+    height: 9vh;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .BoxTextCollaboratorName p {
+    font-size: 12px;
+    color: var(--title) !important
+  }
+  
+  .BoxTextCollaboratorInformation p {
+    font-size: 12px;
+    color: #a4861e;
+  }
+}
+
+@media only screen and (min-width: 1024px)  {
+
+
+  .userPhotoWrapper .userFoto {
+    width: 12vh;
+    height: 12vh;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .BoxTextCollaboratorName p {
+    font-size: 14px;
+    color: var(--title) !important
+  }
+  
+  .BoxTextCollaboratorInformation p {
+    font-size: 12px;
+    color: #a4861e;
+  }
+}
+
+@media only screen and (min-width: 1680px) {
+
+  .userPhotoWrapper .userFoto {
+    width: 12vh;
+    height: 12vh;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .BoxTextCollaboratorName p {
+    font-size: 18px;
+    color: var(--title) !important
+  }
+  
+  .BoxTextCollaboratorInformation p {
+    font-size: 14px;
+    color: #a4861e;
+  }
+}

@@ -1,0 +1,79 @@
+.userPhotoWrapper {
+  padding: 5%;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  border-radius: 33px;
+}
+
+.userPhotoWrapper .userFoto {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  border: 0px solid var(--gray);
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.userPhotoWrapper .blocoUploadImg {
+  background-color: var(--white);
+  border: 0px;
+  border-radius: 33px;
+  width: 3vw;
+  height: 3vw;
+  position: absolute;
+  margin-top: 7.2vw;
+  margin-right: 3.4vw;
+}
+
+.uploadImg {
+  background-color: var(--white);
+  border: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 33px;
+  width: 3vw;
+  height: 3vw;
+}
+
+.uploadImg:hover {
+  background-color: var(--background);
+  cursor: pointer;
+  border: 2px solid var(--yellow-gold);
+}
+
+.formSection p {
+  color: var(--gray);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 1px;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.circuloModal {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  background-color: var(--yellow);
+  border-radius: 50px;
+}
+
+.header {
+  height: 3vh;
+  margin-top: 3%;
+  align-items: center;
+  display: flex;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  cursor: pointer;
+}

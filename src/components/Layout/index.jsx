@@ -1,12 +1,14 @@
 import { Col, Container, Row } from "reactstrap";
 
-import BodyContent from "../BodyContent";
 import LeftSidePanel from "../LeftSidePanel";
 import RightSidePanel from "../RightSidePanel";
+import RightSideDefaultPanel from "../RightSidePanel/Default";
+import RightSideMentorPanel from "../RightSidePanel/Mentor";
+import RightSideMentoredPanel from "../RightSidePanel/Mentored";
 
 import styles from "./styles.module.css";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, panel, data }) => {
   return (
     <Container fluid className={styles.bg}>
       <Row>
@@ -15,7 +17,12 @@ const Layout = ({ children }) => {
         </Col>
         <Col md="8">{children}</Col>
         <Col md="2">
-          <RightSidePanel />
+          {!panel && <RightSidePanel />}
+          {panel === "comum" && data && <RightSideDefaultPanel data={data} />}
+          {panel === "mentor" && data && <RightSideMentorPanel data={data} />}
+          {panel === "mentored" && data && (
+            <RightSideMentoredPanel data={data} />
+          )}
         </Col>
       </Row>
     </Container>
