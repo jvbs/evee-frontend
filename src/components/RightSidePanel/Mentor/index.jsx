@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { FaPen } from "react-icons/fa";
 
-import userPhoto from "../../../assets/images/evee.gif";
+import userPhoto from "../../../assets/images/avatar2.png";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { api } from "../../../services/api";
 import history from "../../../utils/history";
@@ -11,22 +12,23 @@ import styles from "./styles.module.css";
 const RightSidePanelMentor = ({ data }) => {
   const { loggedUser } = useContext(AuthContext);
   const [metricas, setMetricas] = useState([]);
+  const { id: mentorId } = useParams();
+
+  console.log(data);
 
   useEffect(() => {
-    const fetchMetricas = async (loggedUser) => {
-      const query =
-        loggedUser?.userType === "Mentor"
-          ? `/metrica/mentor?empresa_id=${loggedUser?.empresa_id}&departamento_id=${loggedUser?.departamento_id}`
-          : `/metrica/admin-comum?empresa_id=${loggedUser?.empresa_id}`;
+    const fetchMetricas = async (loggedUser, dpto) => {
+      const query = `/metrica/visualizar-mentor?empresa_id=${loggedUser?.empresa_id}&departamento_id=${dpto}&id=${mentorId}`;
+
       const { data } = await api.get(query);
+      console.log(query, data);
       setMetricas(data);
-      console.log(data);
     };
 
-    if (loggedUser) {
-      fetchMetricas(loggedUser);
+    if (loggedUser && data.departamento?.id) {
+      fetchMetricas(loggedUser, data.departamento?.id);
     }
-  }, [loggedUser]);
+  }, [loggedUser, data]);
 
   if (!loggedUser) {
     return <Loader />;
@@ -97,13 +99,22 @@ const RightSidePanelMentor = ({ data }) => {
               {data.departamento?.nome_departamento}
             </span>
 
-            <span className={styles.text}>Mentorados</span>
+            <span className={styles.text}>Métricas do Mentor</span>
             <div className={styles.groupMentoreds}>
               <span className={styles.aprendizes}>
-                <b>6 </b>Aprendizes
+                <b>{metricas.metricasMentor?.aprendizes || 0} </b>Aprendizes
               </span>
               <span className={styles.estagiarios}>
-                <b>6 </b>Estagiários
+                <b>{metricas.metricasMentor?.estagio || 0} </b>Estagiários
+              </span>
+            </div>
+            <span className={styles.text}>Métricas do Departamento</span>
+            <div className={styles.groupMentoreds}>
+              <span className={styles.aprendizes}>
+                <b>{metricas.metricasDpto?.aprendizes || 0} </b>Aprendizes
+              </span>
+              <span className={styles.estagiarios}>
+                <b>{metricas.metricasDpto?.estagiarios || 0} </b>Estagiários
               </span>
             </div>
           </div>

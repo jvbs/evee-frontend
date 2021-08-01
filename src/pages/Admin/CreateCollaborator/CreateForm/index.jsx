@@ -53,7 +53,7 @@ const CreateForm = () => {
 
     setCargo("");
     setDepartamento("");
-    setStatus("");
+    // setStatus("");
     setTipo("");
     setImg("");
   };
