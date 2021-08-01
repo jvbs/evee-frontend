@@ -207,7 +207,7 @@ const EditForm = ({ collaborator }) => {
                     <Input
                       label="Nome*"
                       name="nome"
-                      testid="fieldNome"
+                      data-testid="fieldNome"
                       value={nome}
                       onChange={(e) => setNome(e.target.value)}
                     />
@@ -218,7 +218,7 @@ const EditForm = ({ collaborator }) => {
                     <Input
                       label="CPF*"
                       name="cpf"
-                      testid="fieldCPF"
+                      data-testid="fieldCPF"
                       type="text"
                       inputProps={{ maxLength: 11 }}
                       value={cpf}
@@ -232,7 +232,7 @@ const EditForm = ({ collaborator }) => {
                     <Input
                       label="E-mail*"
                       name="email"
-                      testid="fieldEmail"
+                      data-testid="fieldEmail"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -243,7 +243,7 @@ const EditForm = ({ collaborator }) => {
                     <Input
                       label="Celular*"
                       name="celular"
-                      testid="fieldCelular"
+                      data-testid="fieldCelular"
                       inputProps={{ maxLength: 14 }}
                       value={celular}
                       onChange={(e) => setCelular(e.target.value)}
@@ -278,7 +278,7 @@ const EditForm = ({ collaborator }) => {
                       <input
                         name="img"
                         type="file"
-                        testid="fieldCelular"
+                        data-testid="fieldCelular"
                         id="file-upload"
                         accept=".png,.jpeg,.jpg"
                         onChange={handleImg}
@@ -303,7 +303,7 @@ const EditForm = ({ collaborator }) => {
                     <Select
                       name="departamento_id"
                       label="Departamento*"
-                      testid="fieldDepartamento"
+                      data-testid="fieldDepartamento"
                       onChange={(e) => setDepartamento(e.target.value)}
                       value={departamento}
                       // disabled
@@ -323,7 +323,7 @@ const EditForm = ({ collaborator }) => {
                       name="cargo_id"
                       value={cargo}
                       onChange={(e) => setCargo(e.target.value)}
-                      testid="fieldCargo"
+                      data-testid="fieldCargo"
                       // disabled
                     >
                       {cargos.map((cargo) => (
@@ -341,7 +341,7 @@ const EditForm = ({ collaborator }) => {
                   <Select
                     label="Tipo Usuário*"
                     name="tipo_usuario"
-                    testid="fieldtipo_usuario"
+                    data-testid="fieldtipo_usuario"
                     value={tipo}
                     onChange={(e) => setTipo(e.target.value)}
                     // disabled
@@ -364,7 +364,7 @@ const EditForm = ({ collaborator }) => {
                   <Select
                     label="Status*"
                     name="status"
-                    testid="fieldStatus"
+                    data-testid="fieldStatus"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                     // disabled

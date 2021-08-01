@@ -28,7 +28,7 @@ const Input = ({ label, testid, name, ...rest }) => {
         {() => (
           <TextField
             style={{ marginTop: "3%", marginBottom: "3%" }}
-            testid={testid}
+            data-testid={testid}
             label={label}
             name={name}
             inputRef={inputRef}

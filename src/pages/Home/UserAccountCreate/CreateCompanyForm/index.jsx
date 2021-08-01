@@ -129,7 +129,7 @@ const CreateCompanyForm = () => {
           <Row>
             <Col lg="6">
               <FormGroup>
-                <Input label="Empresa*" name="empresa" testid="fieldEmpresa" />
+                <Input label="Empresa*" name="empresa" data-testid="fieldEmpresa" />
               </FormGroup>{" "}
             </Col>
             <Col lg="6">
@@ -137,7 +137,7 @@ const CreateCompanyForm = () => {
                 <Input
                   label="CNPJ*"
                   name="cnpj"
-                  testid="fieldCNPJ"
+                  data-testid="fieldCNPJ"
                   inputProps={{ maxLength: 14 }}
                 />
               </FormGroup>{" "}
@@ -161,7 +161,7 @@ const CreateCompanyForm = () => {
                 <Input
                   label="Nome*"
                   name="nome"
-                  testid="fieldNomeSolicitante"
+                  data-testid="fieldNomeSolicitante"
                 />
               </FormGroup>
             </Col>
@@ -170,7 +170,7 @@ const CreateCompanyForm = () => {
                 <Input
                   label="E-mail*"
                   name="email"
-                  testid="fieldEmailSolicitante"
+                  data-testid="fieldEmailSolicitante"
                 />
               </FormGroup>
             </Col>
@@ -179,7 +179,7 @@ const CreateCompanyForm = () => {
                 <Input
                   label="Celular*"
                   name="celular"
-                  testid="fieldCelularSolicitante"
+                  data-testid="fieldCelularSolicitante"
                 />
               </FormGroup>
             </Col>
@@ -189,7 +189,7 @@ const CreateCompanyForm = () => {
                   type="password"
                   label="Senha*"
                   name="senha"
-                  testid="fieldSenhaSolicitante"
+                  data-testid="fieldSenhaSolicitante"
                 />
               </FormGroup>
             </Col>

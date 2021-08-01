@@ -145,7 +145,7 @@ const CreateFormTrilha = () => {
                   <Select
                     label="Trilha*"
                     name="trilha_id"
-                    testid="fieldTrilhaNivel"
+                    data-testid="fieldTrilhaNivel"
                     value={tipoTrilha}
                     onChange={(e) => setTipoTrilha(e.target.value)}
                   >
@@ -162,7 +162,7 @@ const CreateFormTrilha = () => {
                   <Select
                     label="Programa*"
                     name="programa"
-                    testid="fieldNomePrograma"
+                    data-testid="fieldNomePrograma"
                     value={programa}
                     onChange={(e) => setPrograma(e.target.value)}
                   >
@@ -179,7 +179,7 @@ const CreateFormTrilha = () => {
                   <Select
                     name="departamento_id"
                     label="Departamento*"
-                    testid="fieldDepartamento"
+                    data-testid="fieldDepartamento"
                     value={departamento}
                     onChange={(e) => setDepartamento(e.target.value)}
                     disabled
@@ -207,7 +207,7 @@ const CreateFormTrilha = () => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="Nome*" name="nome" testid="fieldNomeTrilha" />
+                  <Input label="Nome*" name="nome" data-testid="fieldNomeTrilha" />
                 </FormGroup>
               </Col>
             </Row>
@@ -218,7 +218,7 @@ const CreateFormTrilha = () => {
                   <TextArea
                     label="Descrição*"
                     name="descricao"
-                    testid="fieldDescricaoTrilha"
+                    data-testid="fieldDescricaoTrilha"
                     rows={4}
                     inputProps={{ maxLength: 255 }}
                   />
@@ -232,7 +232,7 @@ const CreateFormTrilha = () => {
                   <Select
                     label="Prazo*"
                     name="prazo_id"
-                    testid="fieldPrazoTrilha"
+                    data-testid="fieldPrazoTrilha"
                     value={prazo}
                     onChange={(e) => setPrazo(e.target.value)}
                   >

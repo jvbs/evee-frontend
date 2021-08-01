@@ -116,7 +116,7 @@ const ChangePassword = () => {
                   type="password"
                   label="Nova senha*"
                   name="senha"
-                  testid="fieldSenha"
+                  data-testid="fieldSenha"
                 />
               </FormGroup>
             </Col>
@@ -126,7 +126,7 @@ const ChangePassword = () => {
                   type="password"
                   name="confirmar_senha"
                   label="Confirmar senha*"
-                  testid="fieldConfirmarSenha"
+                  data-testid="fieldConfirmarSenha"
                 />
               </FormGroup>
             </Col>

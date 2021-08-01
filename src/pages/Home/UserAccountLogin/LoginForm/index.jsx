@@ -70,7 +70,7 @@ const LoginForm = () => {
               Se você já possui cadastro, utilize seu e-mail e senha para entrar
             </p>
             <FormGroup>
-              <Input label="E-mail*" name="email" testid="fieldEmail" />
+              <Input label="E-mail*" name="email" data-testid="fieldEmail" />
             </FormGroup>
           </Row>
           <Row>
@@ -79,7 +79,7 @@ const LoginForm = () => {
                 type="password"
                 label="Senha*"
                 name="senha"
-                testid="fieldSenha"
+                data-testid="fieldSenha"
               />
             </FormGroup>
           </Row>
