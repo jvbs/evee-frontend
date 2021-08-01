@@ -78,13 +78,13 @@ const RightSidePanel = () => {
             <span className={styles.text}>Métricas do Departamento</span>
             <div className={styles.groupMentoreds}>
               <span className={styles.aprendizes}>
-                <b>{metricas?.aprendizes} </b>Aprendizes
+                <b>{metricas?.aprendizes || 0} </b>Aprendizes
               </span>
               <span className={styles.estagiarios}>
-                <b>{metricas?.estagiarios} </b>Estagiários
+                <b>{metricas?.estagiarios || 0} </b>Estagiários
               </span>
               <span className={styles.estagiarios}>
-                <b>{metricas?.mentores} </b>Mentores
+                <b>{metricas?.mentores || 0} </b>Mentores
               </span>
             </div>
           </div>
@@ -99,13 +99,13 @@ const RightSidePanel = () => {
               Métricas <br></br> Organizacionais
             </span>
             <span className={styles.aprendizes}>
-              <b>{metricas[0]?.aprendizes} </b>Aprendizes
+              <b>{metricas[0]?.aprendizes || 0} </b>Aprendizes
             </span>
             <span className={styles.estagiarios}>
-              <b>{metricas[0]?.estagiarios} </b>Estagiários
+              <b>{metricas[0]?.estagiarios || 0} </b>Estagiários
             </span>
             <span className={styles.efetivacoes}>
-              <b>{metricas[0]?.mentores} </b>Mentores
+              <b>{metricas[0]?.mentores || 0} </b>Mentores
             </span>
           </div>
         ) : (

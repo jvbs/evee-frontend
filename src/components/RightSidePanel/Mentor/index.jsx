@@ -116,6 +116,9 @@ const RightSidePanelMentor = ({ data }) => {
               <span className={styles.estagiarios}>
                 <b>{metricas.metricasDpto?.estagiarios || 0} </b>Estagiários
               </span>
+              <span className={styles.estagiarios}>
+                <b>{metricas.metricasDpto?.mentores || 0} </b>Mentores
+              </span>
             </div>
           </div>
         )}
