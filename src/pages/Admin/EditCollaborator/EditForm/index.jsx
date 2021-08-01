@@ -18,6 +18,7 @@ import Button from "../../../../components/Button";
 import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../components/Loader";
 
 const EditForm = ({ collaborator }) => {
   const { loggedUser } = useContext(AuthContext);
@@ -187,7 +188,7 @@ const EditForm = ({ collaborator }) => {
   };
 
   if (!collaborator || !loggedUser || !departamentos || !cargos) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (

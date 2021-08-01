@@ -23,12 +23,13 @@ import CreateTrilha from "../pages/Admin/Mentors/Trilha/CreateTrilha";
 import EditTrilha from "../pages/Admin/Mentors/Trilha/EditTrilha";
 import CreatePDI from "../pages/Admin/Mentoreds/MentoredDetails/CreatePDI";
 import EditPDI from "../pages/Admin/Mentoreds/MentoredDetails/EditPDI";
+import Loader from "../components/Loader";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   if (isPrivate && !authenticated) {

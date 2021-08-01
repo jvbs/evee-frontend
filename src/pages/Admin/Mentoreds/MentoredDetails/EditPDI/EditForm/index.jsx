@@ -17,6 +17,7 @@ import Button from "../../../../../../components/Button";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../../../components/Loader";
 
 const EditForm = ({ mentored, pdi }) => {
   const formRef = useRef(null);
@@ -178,7 +179,7 @@ const EditForm = ({ mentored, pdi }) => {
   };
 
   if (!loggedUser) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (
@@ -297,14 +298,14 @@ const EditForm = ({ mentored, pdi }) => {
                     type="light-yellow"
                     text="adicionar"
                     onClick={() => addTag()}
-                    style={{ marginTop: "3vh", opacity: "80%"}}
+                    style={{ marginTop: "3vh", opacity: "80%" }}
                     disabled={competencia.length === 0 ? true : false}
                   />
                 </FormGroup>
               </Col>
             </Row>
             <Row>
-              <div style={{ marginTop: "3vh" }} >
+              <div style={{ marginTop: "3vh" }}>
                 {tags.map((tag) => {
                   return (
                     <Badge className={styles.tag}>

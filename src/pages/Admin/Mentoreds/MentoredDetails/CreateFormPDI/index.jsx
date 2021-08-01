@@ -17,6 +17,7 @@ import Button from "../../../../../components/Button";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../../components/Loader";
 
 const CreateFormTrilha = ({ mentored }) => {
   const formRef = useRef(null);
@@ -169,7 +170,7 @@ const CreateFormTrilha = ({ mentored }) => {
   };
 
   if (!loggedUser) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (
@@ -315,7 +316,7 @@ const CreateFormTrilha = ({ mentored }) => {
             </Row>
           </section>
 
-          <section style={{ marginTop: "3vh"}}>
+          <section style={{ marginTop: "3vh" }}>
             <Row>
               <Col lg="12" className={styles.formButtons}>
                 <Button

@@ -5,6 +5,7 @@ import userPhoto from "../../../assets/images/evee.gif";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { api } from "../../../services/api";
 import history from "../../../utils/history";
+import Loader from "../../Loader";
 import styles from "./styles.module.css";
 
 const RightSidePanelMentor = ({ data }) => {
@@ -28,7 +29,7 @@ const RightSidePanelMentor = ({ data }) => {
   }, [loggedUser]);
 
   if (!loggedUser) {
-    <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (

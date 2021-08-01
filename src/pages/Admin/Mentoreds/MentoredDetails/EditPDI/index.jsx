@@ -7,6 +7,7 @@ import { api } from "../../../../../services/api";
 import BodyContent from "../../../../../components/BodyContent";
 import Layout from "../../../../../components/Layout";
 import EditForm from "./EditForm";
+import Loader from "../../../../../components/Loader";
 
 const EditPDI = () => {
   const [mentored, setMentored] = useState([]);
@@ -34,7 +35,7 @@ const EditPDI = () => {
   }, [empresaId, mentoredId, pdiId]);
 
   if (Object.keys(mentored).length === 0 || Object.keys(pdi).length === 0) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (

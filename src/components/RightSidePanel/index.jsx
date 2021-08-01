@@ -7,6 +7,7 @@ import userPhoto from "../../assets/images/evee.gif";
 import styles from "./styles.module.css";
 import history from "../../utils/history";
 import { api } from "../../services/api";
+import Loader from "../Loader";
 
 const RightSidePanel = () => {
   const [metricas, setMetricas] = useState([]);
@@ -28,7 +29,7 @@ const RightSidePanel = () => {
   }, [loggedUser]);
 
   if (!loggedUser) {
-    <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (
@@ -94,7 +95,9 @@ const RightSidePanel = () => {
         {loggedUser?.userType === "Admin" ||
         loggedUser?.userType === "Comum" ? (
           <div className={styles.metricasWrapper}>
-            <span className={styles.text}>Métricas <br></br> Organizacionais</span>
+            <span className={styles.text}>
+              Métricas <br></br> Organizacionais
+            </span>
             <span className={styles.aprendizes}>
               <b>{metricas[0]?.aprendizes} </b>Aprendizes
             </span>

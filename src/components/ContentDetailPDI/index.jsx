@@ -5,6 +5,7 @@ import { Row, Col, Badge } from "reactstrap";
 import { AuthContext } from "../../contexts/AuthContext";
 import history from "../../utils/history";
 import Button from "../Button";
+import Loader from "../Loader";
 
 import defaultPhoto from "../../assets/images/evee.png";
 import styles from "./styles.module.css";
@@ -25,7 +26,7 @@ const ContentDetailPDI = ({ pdi }) => {
   }, [pdi]);
 
   if (pdi?.competencias_tags === undefined || !loggedUser) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (
