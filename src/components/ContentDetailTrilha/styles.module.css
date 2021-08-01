@@ -1,15 +1,15 @@
 .BoxText h1 {
- font-size: 22px;
- font-weight: bold;
- color: var(--gray);
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--gray);
 }
 
 .BoxText h2 {
-  font-size:16px;
+  font-size: 16px;
   margin-top: 2vh;
 }
 
-.BoxText{
+.BoxText {
   margin-top: 2vh;
   margin-bottom: 2vh;
 }
@@ -42,16 +42,16 @@
   color: var(--yellow-gold);
 }
 
-.btnEdit{
+.btnEdit {
   display: flex;
   justify-content: flex-end;
   padding-right: 1.5vw;
   padding-bottom: 2vh;
 }
 
-.btnGroup{
+.btnGroup {
   display: flex;
-  justify-items: ease-in-out ;
+  justify-items: ease-in-out;
   padding-top: 2vh;
 }
 
@@ -69,6 +69,66 @@
   margin-bottom: 2vh;
 }
 
-p{
+p {
   color: var(--gray);
+}
+
+/* .blocoTrilha {
+  padding: 1%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  width: 35%;
+  margin-top: 2%;
+  border-bottom: 2px solid var(--yellow);
+} */
+
+.blocoTrilha {
+  padding: 1%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  width: 50%;
+  margin-top: 2%;
+  border-left: 15px solid var(--yellow);
+}
+
+.blocoTrilha:hover {
+  background-color: var(--light-yellow);
+}
+
+.blocoTrilha > span {
+  color: var(--gray);
+  font-weight: bold;
+  display: flex;
+ 
+}
+
+.activedBlocoTrilha {
+  padding: 1%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  margin-top: 2%;
+  background-color: var(--light-yellow);
+  border-radius: 33px;
+}
+
+.activedBlocoTrilha:hover {
+  background-color: var(--light-yellow);
+  border-radius: 33px;
+}
+
+.activedBlocoTrilha > span {
+  color: var(--gray);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.activedBlocoTrilha:hover > span {
+  color: var(--gray);
+}
+
+.tab-content {
+  background-color: #495458c4 !important;
 }

@@ -8,16 +8,17 @@ import * as Yup from "yup";
 
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { api } from "../../../../services/api";
+import { collaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
+import history from "../../../../utils/history";
 
 import Input from "../../../../components/Input";
 import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
-import history from "../../../../utils/history";
-import { collaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
-import userPhoto from "../../../../assets/images/evee.png";
+import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../components/Loader";
 
 const EditForm = ({ collaborator }) => {
   const { loggedUser } = useContext(AuthContext);
@@ -187,7 +188,7 @@ const EditForm = ({ collaborator }) => {
   };
 
   if (!collaborator || !loggedUser || !departamentos || !cargos) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (
@@ -280,6 +281,7 @@ const EditForm = ({ collaborator }) => {
                         type="file"
                         testid="fieldCelular"
                         id="file-upload"
+                        accept=".png,.jpeg,.jpg"
                         onChange={handleImg}
                       />
                     </div>

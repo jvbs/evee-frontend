@@ -22,6 +22,16 @@
   padding: 3%;
 }
 
+.bloco_img {
+  border-radius: 20px;
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 6%;
+  padding: 3%;
+}
+
+
 .bloco:hover{
   transition: all 0.5s;
   background-color: var(--light-yellow) !important;
@@ -80,6 +90,20 @@
     justify-content: center;
   }
   
+  .userPhotoWrapper {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+  }
+  
+  .userPhotoWrapper .userFoto {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    border: 0px solid var(--gray);
+    margin: 0 auto;
+    object-fit: cover;
+  }
   
   @media only screen and (min-width: 375px) {
   

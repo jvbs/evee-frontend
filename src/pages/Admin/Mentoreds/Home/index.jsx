@@ -60,11 +60,13 @@ const Mentoreds = () => {
           </Col>
 
           <Col lg={{ size: 3, offset: 1 }} style={{ backgroundColor: "" }}>
-            <Button
-              text="Cadastrar"
-              onClick={() => history.push("/admin/create-collaborator")}
-              style={{ width: "100%" }}
-            />
+            {loggedUser?.userType === "Admin" && (
+              <Button
+                text="Cadastrar"
+                onClick={() => history.push("/admin/create-collaborator")}
+                style={{ width: "100%" }}
+              />
+            )}
           </Col>
         </Row>
         <ListMentoreds users={users} filter={filter} />

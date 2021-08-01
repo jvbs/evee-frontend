@@ -1,0 +1,261 @@
+.BoxText h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--gray);
+}
+
+.BoxText h2 {
+  font-size: 16px;
+  margin-top: 2vh;
+}
+
+.BoxText {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.box {
+  border-radius: 20px;
+  /* border: 3px solid var(--background); */
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 2vh;
+}
+
+.boxCompetencias {
+  border-radius: 20px;
+  background-color: var(--background);
+  justify-content: center;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 2vh;
+  padding-bottom: 1vh;
+}
+
+.boxText {
+  padding-top: 2vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.boxTextCompetencias {
+  padding-top: 1vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.boxTextCompetencias h1 {
+  font-size: 22px;
+  font-weight: bold;
+  padding-top: 2%;
+  color: var(--gray);
+}
+
+.boxText h1 {
+  font-size: 22px;
+  font-weight: bold;
+  padding-top: 1%;
+  color: var(--gray);
+}
+
+.boxText h2 {
+  font-size: 18px;
+  margin-bottom: 2%;
+  color: var(--yellow-gold);
+}
+
+.btnEdit {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.5vw;
+  padding-bottom: 2vh;
+  padding-top: 1vh;
+}
+
+.btnGroup {
+  display: flex;
+  justify-items: ease-in-out;
+  padding-top: 2vh;
+}
+
+.circuloModal {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  background-color: var(--yellow);
+  border-radius: 50px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 2vh;
+}
+
+p {
+  color: var(--gray);
+}
+
+.statusPDI {
+  background-color: antiquewhite;
+  border-radius: 33px;
+  padding: 1% 2%;
+}
+
+/* .blocoTrilha {
+  padding: 1%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  width: 35%;
+  margin-top: 2%;
+  border-bottom: 2px solid var(--yellow);
+} */
+
+.blocoTrilha {
+  padding: 1%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  width: 50%;
+  margin-top: 2%;
+  border-left: 15px solid var(--yellow);
+}
+
+.blocoTrilha:hover {
+  background-color: var(--light-yellow);
+}
+
+.blocoTrilha > span {
+  color: var(--gray);
+  font-weight: bold;
+  display: flex;
+}
+
+.activedBlocoTrilha {
+  padding: 1%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  margin-top: 2%;
+  background-color: var(--light-yellow);
+  border-radius: 33px;
+}
+
+.activedBlocoTrilha:hover {
+  background-color: var(--light-yellow);
+  border-radius: 33px;
+}
+
+.activedBlocoTrilha > span {
+  color: var(--gray);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.activedBlocoTrilha:hover > span {
+  color: var(--gray);
+}
+
+.tab-content {
+  background-color: #495458c4 !important;
+}
+
+.bloco {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 5%;
+}
+
+.blocoStatus {
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s ease-in-out;
+  margin-top: 5%;
+  background-color: var(--background) !important;
+  padding: 3%;
+}
+
+.bloco:hover {
+  transition: all 0.5s;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.userPhotoWrapper {
+  padding: 2% 0 2% 0;
+}
+
+.userPhotoWrapper .userFoto {
+  width: 11vh;
+  height: 11vh;
+  border-radius: 50%;
+  border: 0px solid var(--gray);
+  margin: 0 auto;
+  object-fit: cover;
+  margin-left: 33px !important;
+}
+
+.BoxTextCollaborator {
+  /* background-color: aqua; */
+  margin-left: 10px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-top: 2%;
+  padding: 0;
+}
+
+.BoxTextStatus {
+  /* background-color: aqua; */
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.BoxTextCollaboratorName span {
+  font-size: 16px;
+  color: var(--gray) !important;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.BoxTextCollaboratorInformation p {
+  font-size: 16px;
+  color: #a4861e;
+}
+
+.tagCloseBtn {
+  cursor: pointer;
+}
+
+.tag {
+  padding: 1% 3% !important;
+  margin-right: 5px;
+  border-radius: 33px !important;
+  background-color: var(--light-yellow);
+  color: var(--title) !important;
+  font-weight: bold;
+  margin-bottom: 1.5%;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.tag:hover {
+  padding: 1% 3% !important;
+  margin-right: 5px;
+  border-radius: 33px !important;
+  background-color: var(--gray);
+  color: var(--background) !important;
+  font-weight: bold;
+  margin-bottom: 1.5%;
+}

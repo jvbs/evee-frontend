@@ -6,22 +6,36 @@ import { api } from "../../../../services/api";
 
 import BodyContent from "../../../../components/BodyContent";
 import Layout from "../../../../components/Layout";
+import TabsPDI from "../MentoredDetails/Tabs";
 
 import styles from "./styles.module.css";
 
 const MentoredDetails = () => {
   const [mentored, setMentored] = useState([]);
+  const [activePdi, setActivePdi] = useState([]);
+  const [pdiHistory, setPdiHistory] = useState([]);
   const { id: mentoredId } = useParams();
   const { loggedUser } = useContext(AuthContext);
   const empresaId = loggedUser?.empresa_id;
+  const [aprendizagem, setAprendizagem] = useState([]);
+  const [estagio, setEstagio] = useState([]);
 
   useEffect(() => {
     const fetchMentoreds = async (empresaId) => {
       if (empresaId && mentoredId) {
-        const { data } = await api.get(
+        const { data: mentored } = await api.get(
           `/colaborador/mentorado?empresa_id=${empresaId}&mentor_id=${mentoredId}`
         );
-        setMentored(data);
+
+        const { data: activePdi } = await api.get(
+          `/pdi/mentored/active/${mentoredId}`
+        );
+
+        const { data: history } = await api.get(`/pdi/mentored/${mentoredId}`);
+
+        setMentored(mentored);
+        setActivePdi(activePdi);
+        setPdiHistory(history);
       }
     };
 
@@ -34,7 +48,7 @@ const MentoredDetails = () => {
         header={`Painel do Mentorado: ${mentored.user?.nome}`}
         breadcrumb={`Home > Mentorados > ${mentored.user?.nome}`}
       >
-        <p>Mentored details {mentoredId}</p>
+        <TabsPDI activePdi={activePdi} pdiHistory={pdiHistory} />
       </BodyContent>
     </Layout>
   );

@@ -34,7 +34,18 @@ const Details = () => {
         header={`Painel do Colaborador: ${defaults.user?.nome}`}
         breadcrumb={`Home > Colaborador > ${defaults.user?.nome}`}
       >
-        <p>Comum details {id}</p>
+        <div className={styles.boxOneInfomation}>
+            <h1><strong style={{ color: "var(--gray)"}}>Recadinho da Evee!</strong></h1>
+            <h1>Você acessou o perfil de um colaborador do tipo <strong style={{ color: "var(--yellow-gold)"}}>Comum</strong>, esse tipo de usuário não podem ter mentorados</h1>
+            <p> Obs: É possivel vincular mentorados para o usuário comum, apenas após a alteração para o tipo mentor</p>
+            <h2> O que eu faço? </h2> 
+            <p>- Acesse a área de mentores e visualize os mentorados vinculados para cada mentor</p>
+            <p>- Acesse a área de mentorados e visualize os PDIs de cada mentorado</p>
+            </div>
+            <div className={styles.boxTwoInfomation}>
+            <h3>Ainda com dúvidas?</h3>
+            <h4>Solicite suporte ao time de RH ou procure o responsável do Departamento</h4>
+            </div>
       </BodyContent>
     </Layout>
   );

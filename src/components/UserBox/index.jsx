@@ -1,7 +1,7 @@
 import { Col } from "reactstrap";
 import styles from "./styles.module.css";
 
-import defaultPhoto from "../../assets/images/evee.png";
+import defaultPhoto from "../../assets/images/avatar2.png";
 
 const UserBox = ({
   nome,
@@ -28,8 +28,9 @@ const UserBox = ({
             <p>{nome}</p>
           </div>
 
+
           <div className={styles.BoxTextCollaboratorInformation}>
-            <p>{tipo}</p>
+            <p style={{ color: "gray" }}>{tipo}</p>
             <p>{cargo}</p>
             <p>{departamento}</p>
           </div>

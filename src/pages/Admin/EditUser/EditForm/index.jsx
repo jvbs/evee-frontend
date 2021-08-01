@@ -15,9 +15,10 @@ import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
 import { adminValidationSchema } from "../../../../helpers/UnformSchemas";
-import userPhoto from "../../../../assets/images/evee.png";
+import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../components/Loader";
 
 const EditForm = () => {
   const { loggedUser } = useContext(AuthContext);
@@ -94,8 +95,10 @@ const EditForm = () => {
     formData.append("img", img);
 
     try {
+      const routePrefix =
+        loggedUser?.userType === "Admin" ? "/usuario" : "/colaborador";
       const response = await api.post(
-        "/usuario/upload-profile-picture",
+        `${routePrefix}/upload-profile-picture`,
         formData,
         {
           headers: {
@@ -104,8 +107,26 @@ const EditForm = () => {
         }
       );
 
-      console.log(response.data);
-    } catch (err) {}
+      toast.success("🎉 Imagem atualizada com sucesso!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (err) {
+      toast.error("🎉 Ocorreu um erro ao enviar a imagem!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const handleSubmit = async (data) => {
@@ -181,7 +202,7 @@ const EditForm = () => {
   };
 
   if (!loggedUser) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (
@@ -239,7 +260,8 @@ const EditForm = () => {
                       name="celular"
                       testid="fieldCelular"
                       inputProps={{ maxLength: 14 }}
-                      defaultValue={loggedUser?.celular}
+                      value={celular}
+                      onChange={(e) => setCelular(e.target.value)}
                     />
                   </FormGroup>
                 </Col>
@@ -270,6 +292,7 @@ const EditForm = () => {
                         type="file"
                         testid="fieldCelular"
                         id="file-upload"
+                        accept=".png,.jpeg,.jpg"
                         onChange={handleImg}
                       />
                     </div>

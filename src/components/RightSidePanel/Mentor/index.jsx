@@ -1,13 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 
-import userPhoto from "../../../assets/images/aquaman.jpg";
+import userPhoto from "../../../assets/images/evee.gif";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { api } from "../../../services/api";
 import history from "../../../utils/history";
+import Loader from "../../Loader";
 import styles from "./styles.module.css";
 
 const RightSidePanelMentor = ({ data }) => {
   const { loggedUser } = useContext(AuthContext);
+  const [metricas, setMetricas] = useState([]);
+
+  useEffect(() => {
+    const fetchMetricas = async (loggedUser) => {
+      const query =
+        loggedUser?.userType === "Mentor"
+          ? `/metrica/mentor?empresa_id=${loggedUser?.empresa_id}&departamento_id=${loggedUser?.departamento_id}`
+          : `/metrica/admin-comum?empresa_id=${loggedUser?.empresa_id}`;
+      const { data } = await api.get(query);
+      setMetricas(data);
+      console.log(data);
+    };
+
+    if (loggedUser) {
+      fetchMetricas(loggedUser);
+    }
+  }, [loggedUser]);
+
+  if (!loggedUser) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -33,7 +56,6 @@ const RightSidePanelMentor = ({ data }) => {
           <span className={styles.userNome}>{data.user?.nome}</span>
           <span className={styles.userEmail}>{data.user?.email}</span>
           <span className={styles.userCargo}>{data.cargo?.nome_cargo}</span>
-          <span className={styles.userCargo}>{data.empresa?.nome_empresa}</span>
           {loggedUser?.userType !== "Admin" ? (
             <span className={styles.userDepartamento}>
               {loggedUser?.nome_departamento}
@@ -41,9 +63,13 @@ const RightSidePanelMentor = ({ data }) => {
           ) : (
             ""
           )}
+          <span className={styles.groupNameTitle}>
+            {loggedUser?.nome_empresa}
+          </span>
         </div>
 
-        {loggedUser?.userType !== "Admin" ? (
+        {loggedUser?.userType === "Admin" &&
+        loggedUser?.userType === "Comum" ? (
           <div className={styles.metricasWrapper}>
             <span className={styles.text}>Meus Mentorados</span>
             <span className={styles.mentoreds}>

@@ -20,12 +20,16 @@ import MentoredDetails from "../pages/Admin/Mentoreds/MentoredDetails";
 import EditCollaborator from "../pages/Admin/EditCollaborator";
 import Trilha from "../pages/Admin/Mentors/Trilha";
 import CreateTrilha from "../pages/Admin/Mentors/Trilha/CreateTrilha";
+import EditTrilha from "../pages/Admin/Mentors/Trilha/EditTrilha";
+import CreatePDI from "../pages/Admin/Mentoreds/MentoredDetails/CreatePDI";
+import EditPDI from "../pages/Admin/Mentoreds/MentoredDetails/EditPDI";
+import Loader from "../components/Loader";
 
 const ProtectedRoute = ({ isPrivate, ...rest }) => {
   const { authenticated, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   if (isPrivate && !authenticated) {
@@ -111,7 +115,7 @@ const Routes = () => {
         component={MentoredDetails}
       />
 
-      {/* PDI */}
+      {/* Trilha */}
       <ProtectedRoute
         path="/admin/mentors/trilha"
         exact
@@ -123,6 +127,26 @@ const Routes = () => {
         exact
         isPrivate
         component={CreateTrilha}
+      />
+      <ProtectedRoute
+        path="/admin/mentors/trilha/edit/:id"
+        exact
+        isPrivate
+        component={EditTrilha}
+      />
+
+      {/* PDI */}
+      <ProtectedRoute
+        path="/admin/mentoreds/:id/pdi/create"
+        exact
+        isPrivate
+        component={CreatePDI}
+      />
+      <ProtectedRoute
+        path="/admin/mentoreds/:id/pdi/edit/:pdi"
+        exact
+        isPrivate
+        component={EditPDI}
       />
     </Switch>
   );

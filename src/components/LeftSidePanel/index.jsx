@@ -29,17 +29,24 @@ const LeftSidePanel = () => {
             </div>
 
             <div className={styles.otherGroup}>
+              {loggedUser?.userType === "Mentor" ? (
+                <a
+                  onClick={() =>
+                    history.push(`/admin/mentors/details/${loggedUser?.id}`)
+                  }
+                  data-testid="btnMenuTrilha"
+                  href="#/"
+                >
+                  <li>Meus Mentorados</li>
+                </a>
+              ) : (
+                ""
+              )}
+
               {loggedUser?.userType === "Admin" ||
               (loggedUser?.userType === "Mentor" &&
                 loggedUser?.cargo === "RH") ? (
                 <>
-                  <a
-                    onClick={() => history.push("/admin/collaborator")}
-                    data-testid="btnMenuColaboradores"
-                    href="#/"
-                  >
-                    <li>Colaboradores</li>
-                  </a>
                   <a
                     onClick={() => history.push("/admin/create-collaborator")}
                     data-testid="btnMenuCadastroColaboradores"
@@ -49,6 +56,13 @@ const LeftSidePanel = () => {
                       <span>Cadastrar</span>
                       <span>Colaboradores</span>
                     </li>
+                  </a>
+                  <a
+                    onClick={() => history.push("/admin/collaborator")}
+                    data-testid="btnMenuColaboradores"
+                    href="#/"
+                  >
+                    <li>Colaboradores</li>
                   </a>
                 </>
               ) : (
@@ -78,13 +92,27 @@ const LeftSidePanel = () => {
                 ""
               )}
 
-              {loggedUser?.userType !== "Admin" ? (
+              {loggedUser?.userType === "Mentor" ? (
                 <a
                   onClick={() => history.push("/admin/mentors/trilha")}
                   data-testid="btnMenuTrilha"
                   href="#/"
                 >
                   <li>Trilhas do Departamento</li>
+                </a>
+              ) : (
+                ""
+              )}
+
+              {loggedUser?.userType === "Mentorado" ? (
+                <a
+                  onClick={() =>
+                    history.push(`/admin/mentoreds/details/${loggedUser?.id}`)
+                  }
+                  data-testid="btnMenuTrilha"
+                  href="#/"
+                >
+                  <li>PDI</li>
                 </a>
               ) : (
                 ""

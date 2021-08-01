@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FaPen } from "react-icons/fa";
 
-import userPhoto from "../../../assets/images/aquaman.jpg";
+import userPhoto from "../../../assets/images/evee.gif";
 import { AuthContext } from "../../../contexts/AuthContext";
 import history from "../../../utils/history";
 import styles from "./styles.module.css";
@@ -33,7 +33,6 @@ const RightSidePanelMentor = ({ data }) => {
           <span className={styles.userNome}>{data.user?.nome}</span>
           <span className={styles.userEmail}>{data.user?.email}</span>
           <span className={styles.userCargo}>{data.cargo?.nome_cargo}</span>
-          <span className={styles.userCargo}>{data.empresa?.nome_empresa}</span>
           {loggedUser?.userType !== "Admin" ? (
             <span className={styles.userDepartamento}>
               {loggedUser?.nome_departamento}
@@ -41,6 +40,7 @@ const RightSidePanelMentor = ({ data }) => {
           ) : (
             ""
           )}
+            <span className={styles.groupNameTitle}>{loggedUser?.nome_empresa}</span>
         </div>
         {loggedUser?.userType !== "Admin" ? (
           <div className={styles.metricasWrapper}>
@@ -70,15 +70,6 @@ const RightSidePanelMentor = ({ data }) => {
               {data.departamento?.nome_departamento}
             </span>
 
-            <span className={styles.text}>Mentorados</span>
-            <div className={styles.groupMentoreds}>
-              <span className={styles.aprendizes}>
-                <b>6 </b>Aprendizes
-              </span>
-              <span className={styles.estagiarios}>
-                <b>6 </b>Estagiários
-              </span>
-            </div>
           </div>
         )}
       </section>

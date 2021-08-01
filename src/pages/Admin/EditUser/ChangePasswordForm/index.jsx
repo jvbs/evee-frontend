@@ -7,13 +7,14 @@ import * as Yup from "yup";
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { api } from "../../../../services/api";
 
+import { passwordsValidationSchema } from "../../../../helpers/UnformSchemas";
 import Input from "../../../../components/Input";
 import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
-import { passwordsValidationSchema } from "../../../../helpers/UnformSchemas";
 import styles from "../EditForm/styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../components/Loader";
 
 const ChangePassword = () => {
   const { loggedUser } = useContext(AuthContext);
@@ -96,7 +97,7 @@ const ChangePassword = () => {
   };
 
   if (!loggedUser) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (

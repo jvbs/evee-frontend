@@ -15,7 +15,7 @@ import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
-import userPhoto from "../../../../assets/images/evee.png";
+import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -27,7 +27,7 @@ const CreateForm = () => {
   const [departamento, setDepartamento] = useState("");
   const [departamentos, setDepartamentos] = useState([]);
   const [tipo, setTipo] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("1");
 
   const { loggedUser } = useContext(AuthContext);
 
@@ -182,6 +182,7 @@ const CreateForm = () => {
                     name="cpf"
                     testid="fieldCPF"
                     type="text"
+                    // mask="99999999999"
                     inputProps={{ maxLength: 11 }}
                   />
                 </FormGroup>
@@ -223,6 +224,7 @@ const CreateForm = () => {
                     <input
                       name="img"
                       type="file"
+                      accept=".png,.jpeg,.jpg"
                       testid="fieldCelular"
                       id="file-upload"
                       onChange={handleImg}
@@ -331,6 +333,7 @@ const CreateForm = () => {
                   testid="fieldStatus"
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
+                  disabled
                 >
                   <MenuItem value={"0"}>Inativo</MenuItem>
                   <MenuItem value={"1"}>Ativo</MenuItem>

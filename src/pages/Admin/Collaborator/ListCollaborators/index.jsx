@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 import history from "../../../../utils/history";
 
 function SplitName(text) {
-  return text.split(" ").slice(0, 3).join(" ");
+  return text.split(" ").slice(0, 1).join(" ");
 }
 
 const ListCollaborators = ({ users, filter }) => {
@@ -66,7 +66,7 @@ const ListCollaborators = ({ users, filter }) => {
               Ops! nenhum resultado encontrado...
             </p>
             <p className={styles.BoxTextTwo}>O que eu faço?</p>
-            <p className={styles.BoxTexList}>
+            <p className={styles.BoxTextList}>
               Verifique se possui colaboradores cadastrados.
             </p>
             <p className={styles.BoxTextList}>
