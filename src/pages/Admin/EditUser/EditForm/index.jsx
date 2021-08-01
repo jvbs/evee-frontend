@@ -15,7 +15,7 @@ import Button from "../../../../components/Button";
 
 import history from "../../../../utils/history";
 import { adminValidationSchema } from "../../../../helpers/UnformSchemas";
-import userPhoto from "../../../../assets/images/evee.png";
+import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
