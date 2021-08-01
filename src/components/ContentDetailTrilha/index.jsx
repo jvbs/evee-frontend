@@ -3,12 +3,13 @@ import { Col, Collapse } from "reactstrap";
 import styles from "./styles.module.css";
 import Button from "../Button";
 import history from "../../utils/history";
+import Loader from "../Loader";
 
 const ContentDetailTrilha = ({ data }) => {
   const [toggleQuestion, setToggequestion] = useState(1);
 
   if (!data) {
-    <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (

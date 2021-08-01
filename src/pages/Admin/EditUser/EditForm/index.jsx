@@ -18,6 +18,7 @@ import { adminValidationSchema } from "../../../../helpers/UnformSchemas";
 import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../components/Loader";
 
 const EditForm = () => {
   const { loggedUser } = useContext(AuthContext);
@@ -201,7 +202,7 @@ const EditForm = () => {
   };
 
   if (!loggedUser) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (

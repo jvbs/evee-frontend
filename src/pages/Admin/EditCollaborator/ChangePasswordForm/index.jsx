@@ -15,6 +15,7 @@ import history from "../../../../utils/history";
 import { passwordsValidationSchema } from "../../../../helpers/UnformSchemas";
 import styles from "../EditForm/styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../components/Loader";
 
 const ChangePassword = () => {
   const { loggedUser } = useContext(AuthContext);
@@ -97,7 +98,7 @@ const ChangePassword = () => {
   };
 
   if (!loggedUser) {
-    return <span>Loading...</span>;
+    return <Loader />;
   }
 
   return (

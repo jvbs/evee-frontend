@@ -18,6 +18,7 @@ import history from "../../../../../utils/history";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import { useParams } from "react-router-dom";
+import Loader from "../../../../../components/Loader";
 
 const EditFormTrilha = () => {
   const formRef = useRef(null);
@@ -140,7 +141,7 @@ const EditFormTrilha = () => {
   };
 
   if (!loggedUser) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (

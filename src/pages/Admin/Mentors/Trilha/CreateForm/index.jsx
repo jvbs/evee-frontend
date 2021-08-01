@@ -17,6 +17,7 @@ import Button from "../../../../../components/Button";
 import history from "../../../../../utils/history";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import Loader from "../../../../../components/Loader";
 
 const CreateFormTrilha = () => {
   const formRef = useRef(null);
@@ -126,7 +127,7 @@ const CreateFormTrilha = () => {
   };
 
   if (!loggedUser) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   return (
