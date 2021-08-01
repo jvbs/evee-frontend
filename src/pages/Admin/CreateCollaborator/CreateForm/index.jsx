@@ -27,7 +27,7 @@ const CreateForm = () => {
   const [departamento, setDepartamento] = useState("");
   const [departamentos, setDepartamentos] = useState([]);
   const [tipo, setTipo] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("1");
 
   const { loggedUser } = useContext(AuthContext);
 
@@ -333,6 +333,7 @@ const CreateForm = () => {
                   testid="fieldStatus"
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
+                  disabled
                 >
                   <MenuItem value={"0"}>Inativo</MenuItem>
                   <MenuItem value={"1"}>Ativo</MenuItem>

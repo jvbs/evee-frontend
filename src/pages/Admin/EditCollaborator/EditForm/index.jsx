@@ -8,13 +8,13 @@ import * as Yup from "yup";
 
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { api } from "../../../../services/api";
+import { collaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
+import history from "../../../../utils/history";
 
 import Input from "../../../../components/Input";
 import Select from "../../../../components/Select";
 import Button from "../../../../components/Button";
 
-import history from "../../../../utils/history";
-import { collaboratorValidationSchema } from "../../../../helpers/UnformSchemas";
 import userPhoto from "../../../../assets/images/avatar2.png";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.min.css";

@@ -29,10 +29,24 @@ const LeftSidePanel = () => {
             </div>
 
             <div className={styles.otherGroup}>
+              {loggedUser?.userType === "Mentor" ? (
+                <a
+                  onClick={() =>
+                    history.push(`/admin/mentors/details/${loggedUser?.id}`)
+                  }
+                  data-testid="btnMenuTrilha"
+                  href="#/"
+                >
+                  <li>Meus Mentorados</li>
+                </a>
+              ) : (
+                ""
+              )}
+
               {loggedUser?.userType === "Admin" ||
               (loggedUser?.userType === "Mentor" &&
                 loggedUser?.cargo === "RH") ? (
-                <> 
+                <>
                   <a
                     onClick={() => history.push("/admin/create-collaborator")}
                     data-testid="btnMenuCadastroColaboradores"
@@ -50,7 +64,6 @@ const LeftSidePanel = () => {
                   >
                     <li>Colaboradores</li>
                   </a>
-                 
                 </>
               ) : (
                 ""
@@ -91,10 +104,11 @@ const LeftSidePanel = () => {
                 ""
               )}
 
-
               {loggedUser?.userType === "Mentorado" ? (
                 <a
-                  onClick={() => history.push("/admin/mentors/trilha")}
+                  onClick={() =>
+                    history.push(`/admin/mentoreds/details/${loggedUser?.id}`)
+                  }
                   data-testid="btnMenuTrilha"
                   href="#/"
                 >
@@ -103,7 +117,6 @@ const LeftSidePanel = () => {
               ) : (
                 ""
               )}
-
             </div>
           </ul>
         </nav>
