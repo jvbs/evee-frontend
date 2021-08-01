@@ -82,7 +82,6 @@ const RightSidePanel = () => {
               <span className={styles.estagiarios}>
                 <b>{metricas?.estagiarios} </b>Estagiários
               </span>
-              <hr></hr>
               <span className={styles.estagiarios}>
                 <b>{metricas?.mentores} </b>Mentores
               </span>
@@ -95,7 +94,7 @@ const RightSidePanel = () => {
         {loggedUser?.userType === "Admin" ||
         loggedUser?.userType === "Comum" ? (
           <div className={styles.metricasWrapper}>
-            <span className={styles.text}>Métricas</span>
+            <span className={styles.text}>Métricas <br></br> Organizacionais</span>
             <span className={styles.aprendizes}>
               <b>{metricas[0]?.aprendizes} </b>Aprendizes
             </span>
