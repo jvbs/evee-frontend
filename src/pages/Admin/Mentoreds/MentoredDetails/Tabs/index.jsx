@@ -119,7 +119,7 @@ const TabsPDI = ({ pdiHistory, activePdi }) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="2">
-          {pdiHistory !== "" ? (
+          {pdiHistory.length > 0 && pdiHistory !== "" ? (
             pdiHistory.map((pdi) => (
               <>
                 <div onClick={() => setToggleCollapse(pdi.id)}>
