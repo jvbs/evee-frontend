@@ -2,6 +2,49 @@
     justify-content: center !important;
 }
 
+.boxOneInfomation{
+  border-radius: 33px ;
+  padding: 2%;
+  margin-top: 3%;
+  text-align: center;
+}
+
+.boxOneInfomation h1{
+  font-size: 26px !important;
+  
+}
+
+.boxOneInfomation h2{
+  font-size: 24px !important;
+  font-weight: bolder;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  color: var(--gray);
+}
+
+.boxOneInfomation p{
+  font-size: 18px !important;
+}
+
+.boxTwoInfomation{
+  background-color: var(--light-yellow);
+  border-radius: 33px ;
+  padding: 3%;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.boxTwoInfomation h3{
+  font-size: 24px !important;
+  font-weight: bolder;
+  color: var(--gray);
+}
+
+.boxTwoInfomation h4{
+  font-size: 18px !important;
+}
+
+
 .tabs a:hover{
     color: var(--yellow-gold) !important;
 }
