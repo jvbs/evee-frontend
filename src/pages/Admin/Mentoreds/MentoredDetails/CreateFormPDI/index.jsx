@@ -189,7 +189,7 @@ const CreateFormTrilha = ({ mentored }) => {
                   <Select
                     label="Trilha*"
                     name="trilha_id"
-                    testid="fieldTrilhaNivel"
+                    data-testid="fieldTrilhaNivel"
                     value={tipoTrilha}
                     onChange={(e) => handleTrailSelect(e)}
                   >
@@ -206,7 +206,7 @@ const CreateFormTrilha = ({ mentored }) => {
                   <Select
                     label="Programa*"
                     name="nome_programa"
-                    testid="fieldNomePrograma"
+                    data-testid="fieldNomePrograma"
                     value={programa}
                     onChange={(e) => setPrograma(e.target.value)}
                     disabled
@@ -224,7 +224,7 @@ const CreateFormTrilha = ({ mentored }) => {
                   <Input
                     label="Nome*"
                     name="nome_trilha"
-                    testid="fieldNomeTrilha"
+                    data-testid="fieldNomeTrilha"
                     value={nome}
                     disabled
                   />
@@ -251,7 +251,7 @@ const CreateFormTrilha = ({ mentored }) => {
                   <Select
                     label="Mentor/Responsável*"
                     name="mentor_responsavel_id"
-                    testid="fieldMentorTrilha"
+                    data-testid="fieldMentorTrilha"
                     value={mentor}
                     onChange={(e) => setMentor(e.target.value)}
                   >
@@ -277,7 +277,7 @@ const CreateFormTrilha = ({ mentored }) => {
                   <Input
                     label="Competências"
                     name="competencias_tags"
-                    testid="fieldMentorTrilha"
+                    data-testid="fieldMentorTrilha"
                     value={competencia}
                     onChange={(e) => setCompetencia(e.target.value)}
                   />

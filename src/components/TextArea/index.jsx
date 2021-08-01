@@ -25,7 +25,7 @@ const TextArea = ({ label, testid, name, rows, ...rest }) => {
     <>
       <TextField
         style={{ marginTop: "3%", marginBottom: "3%" }}
-        testid={testid}
+        data-testid={testid}
         label={label}
         name={name}
         inputRef={inputRef}
