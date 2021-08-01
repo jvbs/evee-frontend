@@ -17,7 +17,7 @@ const ListMentors = ({ users, filter }) => {
   }, [users, filter]);
 
   const splitName = (text) => {
-    return text.split(" ").slice(0, 1).join(" ");
+    return text.split(" ").slice(0, 2).join(" ");
   };
 
   return (

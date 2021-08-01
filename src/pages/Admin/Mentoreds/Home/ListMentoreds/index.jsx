@@ -7,7 +7,7 @@ import ContentSearchReturn from "../../../../../components/ContentSearchReturn";
 import history from "../../../../../utils/history";
 
 function SplitName(text) {
-  return text.split(" ").slice(0, 1).join(" ");
+  return text.split(" ").slice(0, 2).join(" ");
 }
 
 const ListMentoreds = ({ users, filter }) => {

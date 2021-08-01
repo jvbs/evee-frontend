@@ -16,3 +16,4 @@
 // Import commands.js using ES2015 syntax:
 import './custom_commands/loginCommands'
 import './custom_commands/cadastroEmpresaCommands'
+import './custom_commands/cadastroColaboradorCommands'
