@@ -101,6 +101,7 @@ const LoginForm = () => {
               type="submit"
               onClick={handleSubmit}
               text="Entrar"
+              data-testid="loginBtnEntrar"
               style={{ width: "100%" }}
               data-testid="loginBtnEntrar"
             />
