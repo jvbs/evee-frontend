@@ -61,7 +61,7 @@ const CreateCompanyForm = () => {
         resetForm();
         handleLogin(data.email, data.senha);
       } catch (err) {
-        console.log(err.response)
+        console.log(err.response);
         if (!err) {
           console.log("connection refused");
         }
@@ -129,7 +129,11 @@ const CreateCompanyForm = () => {
           <Row>
             <Col lg="6">
               <FormGroup>
-                <Input label="Empresa*" name="empresa" data-testid="fieldEmpresa" />
+                <Input
+                  label="Empresa*"
+                  name="empresa"
+                  data-testid="fieldEmpresa"
+                />
               </FormGroup>{" "}
             </Col>
             <Col lg="6">
@@ -180,6 +184,7 @@ const CreateCompanyForm = () => {
                   label="Celular*"
                   name="celular"
                   data-testid="fieldCelularSolicitante"
+                  inputProps={{ maxLength: 14 }}
                 />
               </FormGroup>
             </Col>
