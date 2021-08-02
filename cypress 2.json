@@ -1,8 +1,6 @@
 {
     "baseUrl": "http://localhost:3000/",
-    "baseUrlStaging": "https://evee-frontend-staging.herokuapp.com/",
-    "email": "cypress_admin@teste.com",
-    "email_mentor": "cypress_mentor@teste.com",
+    "email": "caique@teste.com",
     "senha": "123",
     "reporter": "mochawesome",
     "reporterOptions": {
