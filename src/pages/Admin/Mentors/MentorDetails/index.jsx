@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Col, Row } from "reactstrap";
 
 import { AuthContext } from "../../../../contexts/AuthContext";
 import { api } from "../../../../services/api";
@@ -39,6 +40,7 @@ const MentorDetails = () => {
   }, [empresaId, mentorId]);
 
   return (
+    
     <Layout panel="mentor" data={mentor}>
       <BodyContent
         header={`Painel do Mentor: ${mentor.user?.nome}`}
@@ -59,11 +61,12 @@ const MentorDetails = () => {
           </p>
           </div>
           }
-
+      <Row>
         {mentorados
           .filter((el) => el.nome_cargo === "Aprendiz")
           .map((mentorado, index) => {
             return (
+              
               <UserBox
                 key={index}
                 nome={mentorado.nome}
@@ -74,16 +77,17 @@ const MentorDetails = () => {
                   history.push(`/admin/mentoreds/details/${mentorado.id}`)
                 }
               />
+             
             );
           })}
-
+       </Row>  
          <div className={styles.header}>
             <div className={styles.circuloModal}></div> 
             <div className={styles.BoxText}>
               <h1>Estagiário</h1> 
             </div>
         </div>
-
+        
         {mentorados.filter((el) => el.nome_cargo === "Estagiário").length ===
           0 && 
           <div className={styles.BoxTextGroup}>
@@ -92,12 +96,13 @@ const MentorDetails = () => {
           </p>
           </div>
           }
-
+      <Row>
         {mentorados
           .filter((el) => el.nome_cargo === "Estagiário")
           .map((mentorado, index) => {
             return (
               <>
+              <Col xl="4" md="6" sm="6" style={{ marginBottom: "2vh" }}>
                 <UserBox
                   key={index}
                   nome={mentorado.nome}
@@ -108,11 +113,14 @@ const MentorDetails = () => {
                     history.push(`/admin/mentoreds/details/${mentorado.id}`)
                   }
                 />
+                </Col>
               </>
             );
           })}
+        </Row>  
       </BodyContent>
     </Layout>
+
   );
 };
 
