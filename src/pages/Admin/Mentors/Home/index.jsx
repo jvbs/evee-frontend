@@ -14,25 +14,28 @@ import ListMentors from "./ListMentors";
 
 const Mentors = () => {
   const { loggedUser } = useContext(AuthContext);
-  const empresaId = loggedUser?.empresa_id;
 
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState(null);
 
   useEffect(() => {
-    const fetchUsers = async (empresaId) => {
-      if (empresaId) {
+    const fetchUsers = async (loggedUser) => {
+      if (loggedUser?.empresa_id) {
         const { data } = await api.get(
-          `/colaborador/mentores?empresa_id=${empresaId}`
+          loggedUser?.userType === "Mentor"
+            ? `/colaborador/mentores?empresa_id=${loggedUser?.empresa_id}&departamento_id=${loggedUser?.departamento_id}`
+            : `/colaborador/mentores/all?empresa_id=${loggedUser?.empresa_id}`
         );
 
         setUsers(data);
       }
     };
 
-    fetchUsers(empresaId);
-  }, [empresaId]);
+    if (loggedUser) {
+      fetchUsers(loggedUser);
+    }
+  }, [loggedUser]);
 
   return (
     <Layout>
