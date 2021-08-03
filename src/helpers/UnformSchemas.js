@@ -6,7 +6,7 @@ const createCollaboratorValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Digite um e-mail válido")
     .required('O campo "E-mail" é obrigatório.'),
-  celular: Yup.string().required('O campo "Celular" é obrigatório').length(14),
+  celular: Yup.string().required('O campo "Celular" é obrigatório').length(11),
   departamento_id: Yup.number()
     .moreThan(0, 'O campo "Departamento" é obrigatório.')
     .required('O campo "Departamento" é obrigatório.'),
@@ -85,7 +85,7 @@ const collaboratorValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Digite um e-mail válido")
     .required('O campo "E-mail" é obrigatório.'),
-  celular: Yup.string().required('O campo "Celular" é obrigatório').length(14),
+  celular: Yup.string().required('O campo "Celular" é obrigatório').length(11),
   departamento_id: Yup.number()
     .moreThan(0, 'O campo "Departamento" é obrigatório.')
     .required('O campo "Departamento" é obrigatório.'),
