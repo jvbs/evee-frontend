@@ -53,7 +53,7 @@ const CreateForm = () => {
 
     setCargo("");
     setDepartamento("");
-    setStatus("");
+    // setStatus("");
     setTipo("");
     setImg("");
   };
@@ -172,7 +172,7 @@ const CreateForm = () => {
             <Row>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="Nome*" name="nome" testid="fieldNome" />
+                  <Input label="Nome*" name="nome" data-testid="fieldNome" />
                 </FormGroup>
               </Col>
               <Col lg="6">
@@ -180,7 +180,7 @@ const CreateForm = () => {
                   <Input
                     label="CPF*"
                     name="cpf"
-                    testid="fieldCPF"
+                    data-testid="fieldCPF"
                     type="text"
                     // mask="99999999999"
                     inputProps={{ maxLength: 11 }}
@@ -189,7 +189,11 @@ const CreateForm = () => {
               </Col>
               <Col lg="6">
                 <FormGroup>
-                  <Input label="E-mail*" name="email" testid="fieldEmail" />
+                  <Input
+                    label="E-mail*"
+                    name="email"
+                    data-testid="fieldEmail"
+                  />
                 </FormGroup>
               </Col>
               <Col lg="6">
@@ -197,8 +201,8 @@ const CreateForm = () => {
                   <Input
                     label="Celular*"
                     name="celular"
-                    testid="fieldCelular"
-                    inputProps={{ maxLength: 14 }}
+                    data-testid="fieldCelular"
+                    inputProps={{ maxLength: 11 }}
                   />
                 </FormGroup>
               </Col>
@@ -225,7 +229,7 @@ const CreateForm = () => {
                       name="img"
                       type="file"
                       accept=".png,.jpeg,.jpg"
-                      testid="fieldCelular"
+                      data-testid="fieldCelular"
                       id="file-upload"
                       onChange={handleImg}
                     />
@@ -250,7 +254,7 @@ const CreateForm = () => {
                   <Select
                     name="departamento_id"
                     label="Departamento*"
-                    testid="fieldDepartamento"
+                    data-testid="fieldDepartamento"
                     onChange={(e) => setDepartamento(e.target.value)}
                     value={departamento}
                   >
@@ -268,7 +272,7 @@ const CreateForm = () => {
                     label="Cargo*"
                     name="cargo_id"
                     value={cargo}
-                    testid="fieldCargo"
+                    data-testid="fieldCargo"
                     onChange={(e) => setCargo(e.target.value)}
                   >
                     {cargos.map((cargo) => (
@@ -286,7 +290,7 @@ const CreateForm = () => {
                 <Select
                   label="Tipo Usuário*"
                   name="tipo_usuario"
-                  testid="fieldtipo_usuario"
+                  data-testid="fieldtipo_usuario"
                   value={tipo}
                   onChange={(e) => setTipo(e.target.value)}
                 >
@@ -310,7 +314,7 @@ const CreateForm = () => {
                     type="password"
                     label="Senha*"
                     name="senha"
-                    testid="fieldSenha"
+                    data-testid="fieldSenha"
                   />
                 </FormGroup>
               </Col>
@@ -320,7 +324,7 @@ const CreateForm = () => {
                     type="password"
                     name="confirmar_senha"
                     label="Confirmar senha*"
-                    testid="fieldConfirmarSenha"
+                    data-testid="fieldConfirmarSenha"
                   />
                 </FormGroup>
               </Col>
@@ -330,7 +334,7 @@ const CreateForm = () => {
                 <Select
                   label="Status*"
                   name="status"
-                  testid="fieldStatus"
+                  data-testid="fieldStatus"
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                   disabled

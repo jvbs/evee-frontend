@@ -198,7 +198,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Select
                     label="Trilha*"
                     name="trilha_id"
-                    testid="fieldTrilhaNivel"
+                    data-testid="fieldTrilhaNivel"
                     value={tipoTrilha}
                     onChange={(e) => handleTrailSelect(e)}
                   >
@@ -215,7 +215,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Select
                     label="Programa*"
                     name="nome_programa"
-                    testid="fieldNomePrograma"
+                    data-testid="fieldNomePrograma"
                     value={programa}
                     onChange={(e) => setPrograma(e.target.value)}
                     disabled
@@ -233,7 +233,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Input
                     label="Nome*"
                     name="nome_trilha"
-                    testid="fieldNomeTrilha"
+                    data-testid="fieldNomeTrilha"
                     value={nome}
                     disabled
                   />
@@ -260,7 +260,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Select
                     label="Mentor/Responsável*"
                     name="mentor_responsavel_id"
-                    testid="fieldMentorTrilha"
+                    data-testid="fieldMentorTrilha"
                     value={mentor}
                     onChange={(e) => setMentor(e.target.value)}
                   >
@@ -286,7 +286,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Input
                     label="Competências"
                     name="competencias_tags"
-                    testid="fieldMentorTrilha"
+                    data-testid="fieldMentorTrilha"
                     value={competencia}
                     onChange={(e) => setCompetencia(e.target.value)}
                   />
@@ -329,7 +329,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Select
                     label="Status*"
                     name="status"
-                    testid="fieldStatusPdi"
+                    data-testid="fieldStatusPdi"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                   >
@@ -346,7 +346,7 @@ const EditForm = ({ mentored, pdi }) => {
                   <Select
                     label="Avaliação*"
                     name="avaliacao"
-                    testid="fieldStatusPdi"
+                    data-testid="fieldStatusPdi"
                     value={avaliacao}
                     onChange={(e) => setAvaliacao(e.target.value)}
                   >

@@ -29,7 +29,7 @@ const Select = ({ label, testid, name, children, ...rest }) => {
           inputRef={inputRef}
           name={name}
           labelId={testid}
-          testid={testid}
+          data-testid={testid}
           {...rest}
         >
           {children}

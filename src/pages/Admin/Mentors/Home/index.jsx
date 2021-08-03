@@ -51,7 +51,7 @@ const Mentors = () => {
                 <Input
                   label="Informe o nome ou e-mail do mentor"
                   name="pesquisa"
-                  testid="fieldPesquisarColaborador"
+                  data-testid="fieldPesquisarColaborador"
                   style={{ marginTop: "0", marginBottom: "0" }}
                   onChange={(e) => setFilter(e.target.value)}
                 />
