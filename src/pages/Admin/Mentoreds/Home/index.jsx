@@ -14,25 +14,28 @@ import { AuthContext } from "../../../../contexts/AuthContext";
 
 const Mentoreds = () => {
   const { loggedUser } = useContext(AuthContext);
-  const empresaId = loggedUser?.empresa_id;
 
   const formRef = useRef(null);
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState(null);
 
   useEffect(() => {
-    const fetchUsers = async (empresaId) => {
-      if (empresaId) {
+    const fetchUsers = async (loggedUser) => {
+      if (loggedUser?.empresa_id) {
         const { data } = await api.get(
-          `/colaborador/mentorados?empresa_id=${empresaId}`
+          loggedUser?.userType === "Mentor"
+            ? `/colaborador/mentorados?empresa_id=${loggedUser?.empresa_id}&departamento_id=${loggedUser?.departamento_id}`
+            : `/colaborador/mentorados/all?empresa_id=${loggedUser?.empresa_id}`
         );
 
         setUsers(data);
       }
     };
 
-    fetchUsers(empresaId);
-  }, [empresaId]);
+    if (loggedUser) {
+      fetchUsers(loggedUser);
+    }
+  }, [loggedUser]);
 
   return (
     <Layout>
